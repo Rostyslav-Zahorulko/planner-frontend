@@ -16,6 +16,10 @@ const changeProjectTitleRequest = createAction('projects/changeTitleRequest');
 const changeProjectTitleSuccess = createAction('projects/changeTitleSuccess');
 const changeProjectTitleError = createAction('projects/changeTitleError');
 
+const getProjectInfoRequest = createAction('projects/getInformationRequest');
+const getProjectInfoSuccess = createAction('projects/getInfoSuccess ');
+const getProjectInfoError = createAction('projects/getInfoError');
+
 const projectsActions = {
   fetchProjectsRequest,
   fetchProjectsSuccess,
@@ -29,6 +33,9 @@ const projectsActions = {
   changeProjectTitleRequest,
   changeProjectTitleSuccess,
   changeProjectTitleError,
+  getProjectInfoRequest,
+  getProjectInfoSuccess,
+  getProjectInfoError,
 };
 
 export default projectsActions;
