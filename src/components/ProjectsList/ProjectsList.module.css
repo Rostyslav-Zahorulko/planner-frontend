@@ -1,4 +1,8 @@
-
+.list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
 
 @media screen and (min-width: 320px) {
 }

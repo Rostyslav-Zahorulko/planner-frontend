@@ -1,0 +1,48 @@
+.listItem {
+    display: block;
+    width: 135px;
+    height: 135px;
+    background-color: blueviolet;
+    margin-right: 10px;
+    margin-bottom: 10px;
+
+    border-radius: 5px;
+}
+
+@media screen and (max-width: 767px) {
+    .listItem:nth-child(2n) {
+        margin-right: 0px;
+}
+}
+
+
+@media screen and (min-width: 768px) {
+    .listItem {
+        width: 216px;
+        height: 216px;
+        margin-right: 20px;
+        margin-bottom: 20px;
+    }
+
+}
+
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+.listItem:nth-child(3n) {
+  margin-right: 0px;
+}
+
+}
+
+
+@media screen and (min-width: 1280px) {
+    .listItem {
+  width: 270px;
+  height: 270px;
+  margin-right: 30px;
+  margin-bottom: 30px;
+}
+
+.listItem:nth-child(4n) {
+  margin-right: 0px;
+}
+}

@@ -1,5 +1,10 @@
-// import s from './AddButton.module.css';
+import s from './AddButton.module.css';
+import { ReactComponent as PlusIcon } from '../../images/plus-icon.svg';
 
 export default function AddButton() {
-  return <button>Plus</button>;
+  return (
+    <button className={s.btn}>
+      <PlusIcon className={s.icon} />
+    </button>
+  );
 }
