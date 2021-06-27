@@ -5,10 +5,10 @@ import ProjectsPage from './pages/ProjectsPage';
 
 export default function App() {
   return (
-    <Container> 
+    <Container>
       {<RegisterPage></RegisterPage>}
       {/* {<LoginPage></LoginPage>} */}
-      <ProjectsPage></ProjectsPage>
+      {/* <ProjectsPage></ProjectsPage> */}
     </Container>
   );
 }
