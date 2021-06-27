@@ -5,11 +5,9 @@ import ProjectsListItem from '../ProjectsListItem';
 export default function ProjectsList({ projects }) {
   return (
     <ul className={s.list}>
-      {projects.length > 0
-        ? projects.map(({ id, title, description }) => (
-            <ProjectsListItem id={id} title={title} description={description} />
-          ))
-        : 'No projects added yet'}
+      {projects.map(({ id, title, description }) => (
+        <ProjectsListItem key={id} title={title} description={description} />
+      ))}
     </ul>
   );
 }

@@ -21,6 +21,15 @@ color: #181c27;
     display: none
 }
 
+.noProjects {
+  font-size: 18px;
+line-height: 22px;
+letter-spacing: 0.04em;
+color: rgba(24, 28, 39, 0.6);
+font-weight: 500;
+
+}
+
 
 @media screen and (min-width: 768px) {
     .container {
@@ -32,6 +41,11 @@ color: #181c27;
     display: flex;
     justify-content: space-between;
 }
+
+.noProjects {
+  font-size: 20px;
+}
+
 
 }
 
