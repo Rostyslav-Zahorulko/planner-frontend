@@ -5,9 +5,9 @@ import { useDispatch } from 'react-redux';
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
-import styles from './RegisterPage.module.css';
+import styles from './LoginPage.module.css';
 
-class RegisterPage extends Component {
+class LoginPage extends Component {
   state = {
     email: '',
     password: '',
@@ -26,12 +26,8 @@ class RegisterPage extends Component {
         .typeError('Must be a string')
         .matches(
           /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-          'Password must contain at least 8 characters, one uppercase, one number and one special case character',
+          'Wrong password',
         )
-        .required('Required'),
-      confirmPassword: yup
-        .string()
-        .oneOf([yup.ref('password')], 'Passwords do not match')
         .required('Required'),
     });
 
@@ -40,7 +36,6 @@ class RegisterPage extends Component {
         initialValues={{
           email: '',
           password: '',
-          confirmPassword: '',
         }}
         validateOnBlur
         onSubmit={(values, { resetForm }) => {
@@ -73,7 +68,7 @@ class RegisterPage extends Component {
               <div className={`${styles.circle} ${styles.circle10}`}></div>
             </div>
             <form className={styles.form} autoComplete="off">
-              <h1 className={styles.title}>Registration</h1>
+              <h1 className={styles.title}>Enter</h1>
               <label className={styles.label}>
                 <input
                   className={styles.input}
@@ -106,36 +101,18 @@ class RegisterPage extends Component {
                 )}
               </label>
 
-              <label className={styles.label}>
-                <input
-                  className={styles.input}
-                  placeholder=" "
-                  type={'password'}
-                  name={'confirmPassword'}
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.confirmPassword}
-                />
-                <span className={styles.headline}>Repeat password</span>
-                {touched.confirmPassword && errors.confirmPassword && (
-                  <p className={styles.error}>{errors.confirmPassword}</p>
-                )}
-              </label>
-
               <button
                 className={styles.btn}
                 disabled={!isValid || !dirty}
                 onClick={handleSubmit}
                 type={'submit'}
               >
-                Register
+                Enter
               </button>
               <div className={styles.account}>
-                <p className={styles.accountQuestion}>
-                  Do you have an account?
-                </p>
-                <a className={styles.accountLogin} href="users/login">
-                  Log in
+                <p className={styles.accountQuestion}>No account?</p>
+                <a className={styles.accountLogin} href="/users/signup">
+                  Register
                 </a>
               </div>
             </form>
@@ -146,4 +123,4 @@ class RegisterPage extends Component {
   }
 }
 
-export default RegisterPage;
+export default LoginPage;
