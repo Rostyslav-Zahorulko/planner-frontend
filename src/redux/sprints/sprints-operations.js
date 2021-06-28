@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { sprintsActions } from '../actions';
+import { sprintsActions } from '../sprints';
 
 const {
   getSprintsRequest,
