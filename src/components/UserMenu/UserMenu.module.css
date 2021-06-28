@@ -1,0 +1,25 @@
+.userMenu {
+  display: flex;
+  align-items: center;
+}
+
+.userName {
+  font-weight: 600;
+  color: #181c27;
+  margin-right: 77px;
+}
+
+.logOutBtn {
+  padding: 0;
+  display: flex;
+  align-content: center;
+  align-items: center;
+  font-weight: 400;
+  color: rgba(24, 28, 39, 0.6);
+
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.3s linear;
+  background-color: transparent;
+}
