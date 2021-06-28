@@ -6,9 +6,9 @@ import ProjectsPage from './pages/ProjectsPage';
 export default function App() {
   return (
     <Container>
-      {<RegisterPage></RegisterPage>}
+      {/* {<RegisterPage></RegisterPage>} */}
       {/* {<LoginPage></LoginPage>} */}
-      {/* <ProjectsPage></ProjectsPage> */}
+      <ProjectsPage></ProjectsPage>
     </Container>
   );
 }
