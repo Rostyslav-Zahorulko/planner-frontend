@@ -2,32 +2,32 @@ import axios from 'axios';
 import { projectsActions } from '../projects';
 
 const {
-  fetchProjectsRequest,
-  fetchProjectsSuccess,
-  fetchProjectsError,
+  getProjectsRequest,
+  getProjectsSuccess,
+  getProjectsError,
   addProjectRequest,
   addProjectSuccess,
   addProjectError,
   deleteProjectRequest,
   deleteProjectSuccess,
   deleteProjectError,
-  changeProjectTitleRequest,
-  changeProjectTitleSuccess,
-  changeProjectTitleError,
-  getProjectInfoRequest,
-  getProjectInfoSuccess,
-  getProjectInfoError,
+  editProjectTitleRequest,
+  editProjectTitleSuccess,
+  editProjectTitleError,
+  // getProjectInfoRequest,
+  // getProjectInfoSuccess,
+  // getProjectInfoError,
 } = projectsActions;
 
 const getProjects = () => async dispatch => {
-  dispatch(fetchProjectsRequest());
+  dispatch(getProjectsRequest());
 
   try {
     const { data } = await axios.get('/projects');
 
-    dispatch(fetchProjectsSuccess(data));
+    dispatch(getProjectsSuccess(data));
   } catch ({ message }) {
-    dispatch(fetchProjectsError(message));
+    dispatch(getProjectsError(message));
   }
 };
 
@@ -55,39 +55,39 @@ const deleteProject = id => async dispatch => {
   }
 };
 
-const changeProjectTitle =
+const editProjectTitle =
   ({ id, title }) =>
   async dispatch => {
     const update = { title };
 
-    dispatch(changeProjectTitleRequest());
+    dispatch(editProjectTitleRequest());
     try {
       const { data } = await axios.patch(`/projects/${id}`, update);
 
-      dispatch(changeProjectTitleSuccess(data));
+      dispatch(editProjectTitleSuccess(data));
     } catch ({ message }) {
-      dispatch(changeProjectTitleError(message));
+      dispatch(editProjectTitleError(message));
     }
   };
 
-const getProjectInfo = id => async dispatch => {
-  dispatch(getProjectInfoRequest());
+// const getProjectInfo = id => async dispatch => {
+//   dispatch(getProjectInfoRequest());
 
-  try {
-    const { data } = await axios.get(`/projects/${id}`);
+//   try {
+//     const { data } = await axios.get(`/projects/${id}`);
 
-    dispatch(getProjectInfoSuccess(data));
-  } catch ({ message }) {
-    dispatch(getProjectInfoError(message));
-  }
-};
+//     dispatch(getProjectInfoSuccess(data));
+//   } catch ({ message }) {
+//     dispatch(getProjectInfoError(message));
+//   }
+// };
 
 const projectsOperations = {
   getProjects,
   addProject,
   deleteProject,
-  changeProjectTitle,
-  getProjectInfo,
+  editProjectTitle,
+  // getProjectInfo,
 };
 
 export default projectsOperations;
