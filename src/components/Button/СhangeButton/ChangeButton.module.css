@@ -1,0 +1,12 @@
+.chenge_button {
+  display: flex;
+}
+
+.chenge_pencil {
+  width: 20px;
+  height: 20px;
+  background-image: url(../../icons/pencil.svg);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}

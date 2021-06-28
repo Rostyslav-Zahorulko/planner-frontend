@@ -1,0 +1,13 @@
+.basket_button {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.basket {
+  width: 20px;
+  height: 20px;
+  background-image: url(../../icons/basket.svg);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
