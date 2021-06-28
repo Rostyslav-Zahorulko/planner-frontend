@@ -1,8 +1,8 @@
 import React from 'react';
 //import PropTypes from 'prop-types';
-import SprintItem from './SprintItem';
-import styles from './Sprint.module.css';
-const SprintList = ({ sprints }) => (
+import SprintItem from '../SprintItem';
+import styles from './SprintList.module.css';
+const SprintsList = ({ sprints }) => (
   <>
     <ul className={styles.sprint_list}>
       {sprints.map(sprint => (
@@ -23,4 +23,4 @@ const SprintList = ({ sprints }) => (
 /*SprintList.defaultProps = {
   sprints: [],
 };*/
-export default SprintList;
+export default SprintsList;

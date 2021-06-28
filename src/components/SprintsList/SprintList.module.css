@@ -1,0 +1,8 @@
+.sprint_list {
+  /* position: absolute;*/
+
+  min-width: 280px;
+  height: 530px;
+  left: 20px;
+  top: 241px;
+}

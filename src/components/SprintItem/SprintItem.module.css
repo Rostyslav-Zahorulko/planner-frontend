@@ -1,12 +1,4 @@
 @media screen and (min-width: 320px) {
-  .sprint_list {
-    /* position: absolute;*/
-
-    min-width: 280px;
-    height: 530px;
-    left: 20px;
-    top: 241px;
-  }
   .sprint_item {
     height: 170px;
     padding: 20px;

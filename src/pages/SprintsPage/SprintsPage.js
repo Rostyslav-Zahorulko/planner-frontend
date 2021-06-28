@@ -1,4 +1,4 @@
-import SprintList from '../../components/Sprints/SprintsList';
+import SprintList from '../../components/SprintsList';
 import AddIconButton from '../../components/AddIconButton';
 import СhangeButton from '../../components/СhangeButton';
 import { ReactComponent as AddIcon } from '../../images/add.svg';

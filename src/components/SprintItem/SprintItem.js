@@ -1,7 +1,7 @@
 import React from 'react';
 import BasketButton from '../BasketButton';
 //import PropTypes from 'prop-types';
-import styles from './Sprint.module.css';
+import styles from './SprintItem.module.css';
 
 const SprintItem = ({ sprint }) => (
   <li className={styles.sprint_item}>
