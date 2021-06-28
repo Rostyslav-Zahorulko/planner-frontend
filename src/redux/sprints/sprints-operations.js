@@ -34,7 +34,7 @@ const addSprint =
     dispatch(addSprintRequest());
 
     try {
-      const { data } = axios.post(`/projects/${projectId}`, sprint);
+      const { data } = await axios.post(`/projects/${projectId}`, sprint);
 
       dispatch(addSprintSuccess(data));
     } catch ({ message }) {
@@ -48,7 +48,7 @@ const deleteSprint =
     dispatch(deleteSprintRequest());
 
     try {
-      axios.delete(`/projects/${projectId}/${sprintId}`);
+      await axios.delete(`/projects/${projectId}/${sprintId}`);
 
       dispatch(deleteSprintSuccess(sprintId));
     } catch ({ message }) {
@@ -64,7 +64,7 @@ const editSprintTitle =
     dispatch(editSprintTitleRequest());
 
     try {
-      const { data } = axios.patch(
+      const { data } = await axios.patch(
         `/projects/${projectId}/${sprintId}`,
         update,
       );
