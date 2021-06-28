@@ -1,6 +1,6 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
-import { projectsActions } from './projects-actions';
+import { projectsActions } from '../projects';
 
 const {
   getProjectsSuccess,
