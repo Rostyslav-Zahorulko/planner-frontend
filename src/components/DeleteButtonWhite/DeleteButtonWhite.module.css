@@ -1,0 +1,47 @@
+
+    .btn { 
+        position: absolute;
+        bottom: 10px;
+        right: 10px;
+        width: 30px;
+        height: 30px;
+        padding: 0;
+
+
+        border-width: 0px;
+        border-radius: 25px;
+    
+        background-image: url(../../images/trash-icon.svg);
+        background-position: 50%;
+        background-position-y: -24px;
+        background-repeat: no-repeat;
+        background-color: transparent;
+
+
+        cursor: pointer;
+        transition: all 0.2s ease;
+    }
+
+    .btn:hover {
+       bottom: 12px;
+       box-shadow: 0px 0px 21px 1px rgba(255, 255, 255, 0.6);
+    }
+
+    @media screen and (min-width: 768px) {
+        .btn {
+           width: 34px;
+           height: 34px;
+        }
+
+        .btn:hover {
+             bottom: 15px;
+}
+
+    }
+
+
+
+
+
+
+
