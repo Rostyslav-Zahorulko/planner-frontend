@@ -1,5 +1,5 @@
 import React from 'react';
-import BasketButton from '../Button/BasketButton';
+import BasketButton from '../BasketButton';
 //import PropTypes from 'prop-types';
 import styles from './Sprint.module.css';
 
