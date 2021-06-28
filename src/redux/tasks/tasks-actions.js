@@ -12,15 +12,15 @@ const deleteTaskRequest = createAction('tasks/deleteRequest');
 const deleteTaskSuccess = createAction('tasks/deleteSuccess');
 const deleteTaskError = createAction('tasks/deleteErTasks');
 
-const editHoursSpentOnTaskPerDayRequest = createAction(
-  'tasks/editSpentHoursPerDayRequest',
-);
-const editHoursSpentOnTaskPerDaySuccess = createAction(
-  'tasks/editSpentHoursPerDaySuccess',
-);
-const editHoursSpentOnTaskPerDayError = createAction(
-  'tasks/editSpentHoursPerDayError',
-);
+// const editHoursSpentOnTaskPerDayRequest = createAction(
+//   'tasks/editSpentHoursPerDayRequest',
+// );
+// const editHoursSpentOnTaskPerDaySuccess = createAction(
+//   'tasks/editSpentHoursPerDaySuccess',
+// );
+// const editHoursSpentOnTaskPerDayError = createAction(
+//   'tasks/editSpentHoursPerDayError',
+// );
 
 const filterTasksByTitle = createAction('tasks/filterByTitle');
 
@@ -34,9 +34,9 @@ const tasksActions = {
   deleteTaskRequest,
   deleteTaskSuccess,
   deleteTaskError,
-  editHoursSpentOnTaskPerDayRequest,
-  editHoursSpentOnTaskPerDaySuccess,
-  editHoursSpentOnTaskPerDayError,
+  // editHoursSpentOnTaskPerDayRequest,
+  // editHoursSpentOnTaskPerDaySuccess,
+  // editHoursSpentOnTaskPerDayError,
   filterTasksByTitle,
 };
 
