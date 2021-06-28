@@ -10,7 +10,6 @@ import AddButton from '../../components/AddButton';
 export default function ProjectsPage() {
   return (
     <>
-      {/* <AppBar /> */}
       <div className={s.container}>
         <div className={s.headbar}>
           <h1 className={s.title}>Projects</h1>
