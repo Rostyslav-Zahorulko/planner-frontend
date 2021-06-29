@@ -1,16 +1,14 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
+import { sprintsActions } from '../sprints';
 import { tasksActions } from '../tasks';
 
-const {
-  getTasksSuccess,
-  addTaskSuccess,
-  deleteTaskSuccess,
-  filterTasksByTitle,
-} = tasksActions;
+const { getSprintInfoSuccess } = sprintsActions;
+
+const { addTaskSuccess, deleteTaskSuccess, filterTasksByTitle } = tasksActions;
 
 const itemsReducer = createReducer([], {
-  [getTasksSuccess]: (_, { payload }) => payload,
+  [getSprintInfoSuccess]: (_, { payload }) => payload.items,
   [addTaskSuccess]: (state, { payload }) => [...state, payload],
   [deleteTaskSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),

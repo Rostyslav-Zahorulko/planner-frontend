@@ -2,9 +2,6 @@ import axios from 'axios';
 import { tasksActions } from '../tasks';
 
 const {
-  getTasksRequest,
-  getTasksSuccess,
-  getTasksError,
   addTaskRequest,
   addTaskSuccess,
   addTaskError,
@@ -15,20 +12,6 @@ const {
   //   editHoursSpentOnTaskPerDaySuccess,
   //   editHoursSpentOnTaskPerDayError,
 } = tasksActions;
-
-const getTasks =
-  ({ projectId, sprintId }) =>
-  async dispatch => {
-    dispatch(getTasksRequest());
-
-    try {
-      const { data } = await axios.get(`/projects/${projectId}/${sprintId}`);
-
-      dispatch(getTasksSuccess(data));
-    } catch ({ message }) {
-      dispatch(getTasksError(message));
-    }
-  };
 
 const addTask =
   ({ projectId, sprintId }) =>
@@ -76,7 +59,6 @@ const deleteTask =
 //   };
 
 const tasksOperations = {
-  getTasks,
   addTask,
   deleteTask,
   //   editHoursSpentOnTaskPerDay,

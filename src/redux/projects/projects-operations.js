@@ -14,9 +14,9 @@ const {
   editProjectTitleRequest,
   editProjectTitleSuccess,
   editProjectTitleError,
-  // getProjectInfoRequest,
-  // getProjectInfoSuccess,
-  // getProjectInfoError,
+  getProjectInfoRequest,
+  getProjectInfoSuccess,
+  getProjectInfoError,
 } = projectsActions;
 
 const getProjects = () => async dispatch => {
@@ -70,24 +70,24 @@ const editProjectTitle =
     }
   };
 
-// const getProjectInfo = id => async dispatch => {
-//   dispatch(getProjectInfoRequest());
+const getProjectInfo = id => async dispatch => {
+  dispatch(getProjectInfoRequest());
 
-//   try {
-//     const { data } = await axios.get(`/projects/${id}`);
+  try {
+    const { data } = await axios.get(`/projects/${id}`);
 
-//     dispatch(getProjectInfoSuccess(data));
-//   } catch ({ message }) {
-//     dispatch(getProjectInfoError(message));
-//   }
-// };
+    dispatch(getProjectInfoSuccess(data));
+  } catch ({ message }) {
+    dispatch(getProjectInfoError(message));
+  }
+};
 
 const projectsOperations = {
   getProjects,
   addProject,
   deleteProject,
   editProjectTitle,
-  // getProjectInfo,
+  getProjectInfo,
 };
 
 export default projectsOperations;

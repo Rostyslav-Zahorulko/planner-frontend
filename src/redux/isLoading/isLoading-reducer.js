@@ -32,12 +32,12 @@ const {
   editProjectTitleRequest,
   editProjectTitleSuccess,
   editProjectTitleError,
+  getProjectInfoRequest,
+  getProjectInfoSuccess,
+  getProjectInfoError,
 } = projectsActions;
 
 const {
-  getSprintsRequest,
-  getSprintsSuccess,
-  getSprintsError,
   addSprintRequest,
   addSprintSuccess,
   addSprintError,
@@ -47,12 +47,12 @@ const {
   editSprintTitleRequest,
   editSprintTitleSuccess,
   editSprintTitleError,
+  getSprintInfoRequest,
+  getSprintInfoSuccess,
+  getSprintInfoError,
 } = sprintsActions;
 
 const {
-  getTasksRequest,
-  getTasksSuccess,
-  getTasksError,
   addTaskRequest,
   addTaskSuccess,
   addTaskError,
@@ -74,6 +74,7 @@ const isLoadingReducer = createReducer(false, {
   [getCurrentUserRequest]: () => true,
   [getCurrentUserSuccess]: () => false,
   [getCurrentUserError]: () => false,
+
   [getProjectsRequest]: () => true,
   [getProjectsSuccess]: () => false,
   [getProjectsError]: () => false,
@@ -86,9 +87,10 @@ const isLoadingReducer = createReducer(false, {
   [editProjectTitleRequest]: () => true,
   [editProjectTitleSuccess]: () => false,
   [editProjectTitleError]: () => false,
-  [getSprintsRequest]: () => true,
-  [getSprintsSuccess]: () => false,
-  [getSprintsError]: () => false,
+  [getProjectInfoRequest]: () => true,
+  [getProjectInfoSuccess]: () => false,
+  [getProjectInfoError]: () => false,
+
   [addSprintRequest]: () => true,
   [addSprintSuccess]: () => false,
   [addSprintError]: () => false,
@@ -98,9 +100,10 @@ const isLoadingReducer = createReducer(false, {
   [editSprintTitleRequest]: () => true,
   [editSprintTitleSuccess]: () => false,
   [editSprintTitleError]: () => false,
-  [getTasksRequest]: () => true,
-  [getTasksSuccess]: () => false,
-  [getTasksError]: () => false,
+  [getSprintInfoRequest]: () => true,
+  [getSprintInfoSuccess]: () => false,
+  [getSprintInfoError]: () => false,
+
   [addTaskRequest]: () => true,
   [addTaskSuccess]: () => false,
   [addTaskError]: () => false,
