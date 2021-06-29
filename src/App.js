@@ -48,14 +48,9 @@ export default function App() {
             <LoginPage />
           </PublicRoute>
 
-          {/* ДЛЯ РАЗРАБОТКИ */}
-          {/* <PublicRoute exact path={projects} restricted redirectTo={projects}>
-            <ProjectsPage />
-          </PublicRoute> */}
-
-          <PrivateRoute exact path={projects} redirectTo={login}>
-            <ProjectsPage />
-          </PrivateRoute>
+          {/* <PrivateRoute exact path={projects} redirectTo={login}> */}
+          <ProjectsPage />
+          {/* </PrivateRoute> */}
 
           <PrivateRoute exact path={sprints} redirectTo={login}>
             <SprintsPage />
