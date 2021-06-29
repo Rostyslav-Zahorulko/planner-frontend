@@ -1,21 +1,28 @@
 // import react from 'react';
-// import { NavLink } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import s from './ProjectsListItem.module.css';
 
 import DeleteButtonWhite from '../DeleteButtonWhite';
+import projectsOperations from '../../redux/projects/projects-operations';
 
 export default function ProjectsListItem({ id, title, description }) {
+  const dispatch = useDispatch();
+
+  const onDeleteProject = value =>
+    dispatch(projectsOperations.deleteProject(value));
+
   return (
     <li className={s.listItem}>
-      {/* <NavLink to={`/projects/${id}`}> */}
-      {title.length > 12 ? (
-        <div className={s.longTitle}>{title}</div>
-      ) : (
-        <div className={s.title}>{title}</div>
-      )}
-      <div className={s.description}>{description}</div>
-      {/* </NavLink> */}
-      <DeleteButtonWhite />
+      <NavLink to={`/projects/${id}`}>
+        {title.length > 12 ? (
+          <div className={s.longTitle}>{title}</div>
+        ) : (
+          <div className={s.title}>{title}</div>
+        )}
+        <div className={s.description}>{description}</div>
+      </NavLink>
+      <DeleteButtonWhite onDeleteProject={onDeleteProject} projectId={id} />
     </li>
   );
 }

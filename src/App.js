@@ -31,9 +31,9 @@ const SprintsPage = lazy(() =>
   ),
 );
 
-const TasksPage = lazy(() =>
-  import('./pages/TasksPage/TasksPage' /* webpackChunkName: "tasks-page" */),
-);
+// const TasksPage = lazy(() =>
+//   import('./pages/TasksPage/TasksPage' /* webpackChunkName: "tasks-page" */),
+// );
 
 export default function App() {
   return (
@@ -48,6 +48,11 @@ export default function App() {
             <LoginPage />
           </PublicRoute>
 
+          {/* ДЛЯ РАЗРАБОТКИ */}
+          {/* <PublicRoute exact path={projects} restricted redirectTo={projects}>
+            <ProjectsPage />
+          </PublicRoute> */}
+
           <PrivateRoute exact path={projects} redirectTo={login}>
             <ProjectsPage />
           </PrivateRoute>
@@ -56,9 +61,9 @@ export default function App() {
             <SprintsPage />
           </PrivateRoute>
 
-          <PrivateRoute path={tasks} redirectTo={login}>
+          {/* <PrivateRoute path={tasks} redirectTo={login}>
             <TasksPage />
-          </PrivateRoute>
+          </PrivateRoute> */}
         </Switch>
       </Suspense>
     </Container>

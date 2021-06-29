@@ -25,7 +25,7 @@ const getProjects = () => async dispatch => {
   try {
     const { data } = await axios.get('/projects');
 
-    dispatch(getProjectsSuccess(data));
+    dispatch(getProjectsSuccess(data.data.projects));
   } catch ({ message }) {
     dispatch(getProjectsError(message));
   }

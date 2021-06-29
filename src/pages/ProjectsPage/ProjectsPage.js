@@ -1,13 +1,29 @@
 import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useEffect } from 'react';
+
 import s from './ProjectsPage.module.css';
-import projects from '../../data/projects.json';
+// БАЗА ДЛЯ ПРОВЕРКИ (ЕСЛИ НЕ ЗАПУЩЕН БЭК)
+// import projects from '../../data/projects.json';
+
+import projectsOperations from '../../redux/projects/projects-operations';
+import { getProjectsItems } from '../../redux/projects/projects-selectors';
 
 // Components
-// import AppBar from '../../components/AppBar';
 import ProjectsList from '../../components/ProjectsList';
 import AddButton from '../../components/AddButton';
 
 export default function ProjectsPage() {
+  const dispatch = useDispatch();
+  const projects = useSelector(getProjectsItems);
+
+  // СДЕЛАТЬ КОГДА БУДЕТ МОДАЛКА
+  // const onAddProject = value => dispatch(projectsOperations.addProject(value));
+
+  useEffect(() => {
+    dispatch(projectsOperations.getProjects());
+  }, [dispatch]);
+
   return (
     <>
       <div className={s.container}>
