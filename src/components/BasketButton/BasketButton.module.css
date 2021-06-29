@@ -1,0 +1,18 @@
+.basket_button {
+  display: flex;
+  flex-direction: row-reverse;
+}
+
+.basket {
+  width: 20px;
+  height: 20px;
+  background-image: url(../../images/basket.svg);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+}
+.basket:hover {
+  transform: rotate(65deg);
+  box-shadow: 8px 2px 13px rgba(156, 54, 6, 0.294);
+  transition: all 0.25s linear;
+}

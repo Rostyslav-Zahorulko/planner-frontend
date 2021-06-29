@@ -1,0 +1,19 @@
+@media screen and (min-width: 320px) {
+  .sprints_list {
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20;
+  }
+}
+@media screen and (min-width: 768px) {
+  .sprints_list {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .sprints_list {
+    width: 870px;
+  }
+}
