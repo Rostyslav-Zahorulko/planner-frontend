@@ -1,4 +1,4 @@
-import s from '../UserMenu';
+import s from './UserMenu.module.css';
 
 export default function UserMenu() {
   return (
