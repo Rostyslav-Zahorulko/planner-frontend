@@ -2,9 +2,7 @@ import st from './SprintHeader.module.css';
 
 import search from '../../images/search.svg';
 
-const Sprint = () => {
-
-
+const SprintHeader = () => {
   return (
     <div className={st.title_sprint}>
       <ul className={st.list_sprint}>
@@ -20,4 +18,4 @@ const Sprint = () => {
   );
 };
 
-export default Sprint;
+export default SprintHeader;
