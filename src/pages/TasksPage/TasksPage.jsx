@@ -10,8 +10,7 @@ export default function TasksPage() {
   return (
     <>
       <div className={st.date}>
-        <span className={st.date_left}>
-        </span>
+        <span className={st.date_left}></span>
         <p className={st.date_sprint}>
           1/
           <span>10 </span>
