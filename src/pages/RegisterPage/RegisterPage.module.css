@@ -1,0 +1,302 @@
+.wrapper {
+  color: #181c27;
+}
+
+.title {
+  margin-left: auto;
+  margin-right: auto;
+  padding-bottom: 30px;
+  font-weight: 500;
+}
+
+.form {
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
+  background-color: #fafafa;
+  box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
+  border-radius: 5px;
+}
+
+.label {
+  position: relative;
+  display: block;
+  margin-bottom: 30px;
+  font-weight: 600;
+}
+
+.headline {
+  position: absolute;
+  left: 5px;
+  transform: translateY(9px);
+  transition: transform 250ms linear;
+  font-weight: normal;
+}
+
+.label:focus-within > .headline {
+  transform: translateY(-18px);
+  font-size: 12px;
+}
+
+.input {
+  padding: 10px;
+  width: 100%;
+  outline: none;
+  border-style: none;
+  border-bottom: 1px solid #181c27;
+}
+
+.input:invalid {
+  margin-bottom: 5px;
+  color: #ff2c0c;
+  border-bottom: 1px solid #ff2c0c;
+}
+
+.input:focus {
+  border-color: #441e04;
+  box-shadow: 0px 3px 4px rgba(255, 107, 8, 0.3);
+}
+
+.input:not(:placeholder-shown) + .headline {
+  transform: translateY(-8px);
+  font-size: 12px;
+}
+
+.error {
+  padding-left: 8px;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.account {
+  display: flex;
+  justify-content: center;
+  font-weight: 400;
+  font-size: 12px;
+}
+
+.accountLogin {
+  padding-left: 5px;
+  text-decoration: underline;
+  color: #181c27;
+}
+
+.accountLogin:visited {
+  color: #181c27;
+}
+
+.btn {
+  margin-bottom: 11px;
+  margin-top: 10px;
+  cursor: pointer;
+  width: 100%;
+  height: 45px;
+  text-align: center;
+  vertical-align: middle;
+  font-weight: 500;
+  font-size: 18px;
+  color: #ffffff;
+  background-color: rgba(255, 107, 8, 0.3);
+  border: none;
+  border-radius: 25px;
+}
+
+.btn:enabled {
+  background-color: #ff6b08;
+  box-shadow: 0px 3px 4px rgba(255, 107, 8, 0.3);
+  transition: all 300ms ease;
+}
+.btn:enabled:hover {
+  color: #ff6b08;
+  font-weight: 800;
+  background-color: #ffffff;
+  box-shadow: 0px 4px 10px 4px rgba(255, 107, 8, 0.3);
+}
+
+@media screen and (min-width: 320px) {
+  .circle {
+    display: none;
+  }
+
+  .title {
+    width: 174px;
+    font-size: 26px;
+  }
+  .form {
+    padding: 47px 20px;
+  }
+
+  .headline {
+    font-size: 16px;
+  }
+
+  .input {
+    font-size: 16px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .circle {
+    display: block;
+    position: fixed;
+    border-radius: 50%;
+    z-index: -1;
+  }
+
+  .circle1 {
+    background-color: #ff6b08;
+    width: 78px;
+    height: 78px;
+    top: calc(113px - 80px);
+    left: 621px;
+  }
+
+  .circle2 {
+    background-color: #ff6b08;
+    width: 26px;
+    height: 26px;
+    top: calc(139px - 80px);
+    left: 799px;
+  }
+
+  .circle3 {
+    background-color: white;
+    width: 431px;
+    height: 439px;
+    top: calc(209px - 80px);
+    left: 669px;
+  }
+
+  .circle4 {
+    background-color: #ff6b08;
+    width: 387px;
+    height: 387px;
+    top: calc(243px - 80px);
+    left: 669px;
+  }
+
+  .circle5 {
+    background-color: white;
+    width: 314px;
+    height: 320px;
+    top: calc(459px - 80px);
+    left: 496px;
+    z-index: -2;
+  }
+
+  .circle6 {
+    background-color: #ff6b08;
+    width: 282px;
+    height: 282px;
+    top: calc(463px - 80px);
+    left: 514px;
+  }
+
+  .circle7 {
+    background-color: #ff6b08;
+    width: 252px;
+    height: 252px;
+    top: calc(526px - 80px);
+    left: -73px;
+  }
+
+  .circle8 {
+    background-color: white;
+    width: 298px;
+    height: 298px;
+    top: calc(517px - 80px);
+    left: -111px;
+    z-index: -2;
+  }
+
+  .circle9 {
+    background-color: white;
+    width: 118px;
+    height: 118px;
+    top: calc(377px - 80px);
+    left: -145px;
+  }
+
+  .circle10 {
+    background-color: white;
+    width: 48px;
+    height: 48px;
+    top: calc(250px - 80px);
+    left: -26px;
+  }
+
+  .title {
+    width: 241px;
+    font-size: 36px;
+  }
+  .form {
+    margin-top: 114px;
+    width: 570px;
+    padding: 60px 70px;
+  }
+
+  .headline {
+    font-size: 18px;
+  }
+
+  .input {
+    font-size: 18px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .circle1 {
+    top: calc(103px - 80px);
+    left: 877px;
+  }
+
+  .circle2 {
+    top: calc(129px - 80px);
+    left: 1055px;
+  }
+
+  .circle3 {
+    top: calc(199px - 80px);
+    left: 925px;
+  }
+
+  .circle4 {
+    top: calc(233px - 80px);
+    left: 925px;
+  }
+
+  .circle5 {
+    top: calc(449px - 80px);
+    left: 752px;
+  }
+
+  .circle6 {
+    top: calc(453px - 80px);
+    left: 770px;
+  }
+
+  .circle7 {
+    top: calc(516px - 80px);
+    left: 183px;
+  }
+
+  .circle8 {
+    top: calc(507px - 80px);
+    left: 145px;
+  }
+
+  .circle9 {
+    top: calc(367px - 80px);
+    left: 111px;
+  }
+
+  .circle10 {
+    top: calc(240px - 80px);
+    left: 230px;
+  }
+
+  .form {
+    margin-top: 56px;
+    padding: 60px 70px;
+  }
+}
