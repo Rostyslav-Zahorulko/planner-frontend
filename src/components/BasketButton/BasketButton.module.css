@@ -11,3 +11,8 @@
   border: none;
   cursor: pointer;
 }
+.basket:hover {
+  transform: rotate(65deg);
+  box-shadow: 8px 2px 13px rgba(156, 54, 6, 0.294);
+  transition: all 0.25s linear;
+}

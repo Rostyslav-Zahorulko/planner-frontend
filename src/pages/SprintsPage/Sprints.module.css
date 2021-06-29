@@ -1,8 +1,8 @@
-.sprint {
+.sprints {
   position: relative;
   margin-right: 20px;
 }
-.sprint_title {
+.title {
   display: flex;
   align-items: center;
   width: 160px;
@@ -10,22 +10,13 @@
   margin-top: 30px;
   margin-bottom: 20px;
 }
-.title {
+.project_title {
   margin-right: 20px;
 }
-.sprint_desc {
+.project_desc {
   margin-bottom: 30px;
 }
-/*font-family: Montserrat;
-font-style: normal;
-font-weight: 500;
-font-size: 18px;
-line-height: 22px;
- identical to box height 
-display: flex;
-align-items: center;
-letter-spacing: 0.04em;
-text-decoration-line: underline;*/
+
 .subject {
   display: inline-flex;
   align-items: center;

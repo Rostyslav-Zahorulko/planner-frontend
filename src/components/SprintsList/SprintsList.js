@@ -1,10 +1,10 @@
 import React from 'react';
 //import PropTypes from 'prop-types';
 import SprintItem from '../SprintItem';
-import styles from './SprintList.module.css';
+import styles from './SprintsList.module.css';
 const SprintsList = ({ sprints }) => (
   <>
-    <ul className={styles.sprint_list}>
+    <ul className={styles.sprints_list}>
       {sprints.map(sprint => (
         <SprintItem key={sprint.id} sprint={sprint} />
       ))}

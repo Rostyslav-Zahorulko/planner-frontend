@@ -23,19 +23,26 @@ const projects = [
     startDate: '24 June',
     duration: 5,
   },
+  {
+    id: 'fgfgggzs',
+    title: 'string4',
+    startDate: '24 June',
+    duration: 5,
+  },
 ];
 const SprintsPage = () => {
   return (
-    <div className={styles.sprint}>
-      <div className={styles.sprint_title}>
-        <h1 className={styles.title}> Project1</h1>
+    <div className={styles.sprints}>
+      {/*<Sidebars></Sidebars>*/}
+      <div className={styles.title}>
+        <h1 className={styles.project_title}> Project1</h1>
         <СhangeButton
           type="button"
           // onClick={}
           aria-label="Сhange"
         />
       </div>
-      <p className={styles.sprint_desc}>
+      <p className={styles.project_desc}>
         Short description of the project, if it exist, it is posted here. The
         width of the text block
       </p>
@@ -49,9 +56,9 @@ const SprintsPage = () => {
       <AddIconButton
         type="button"
         // onClick={}
-        aria-label="add"
+        aria-label="add-sprint"
       >
-        <AddIcon width="44" hanging="44" fill="#fff" />
+        <AddIcon width="44" height="44" fill="#fff" />
       </AddIconButton>
 
       {/*<p cllassName={styles.text}> Ваш проект не має спринтів, скористайтесь кнопкою "Створити спринт"</p>*/}
