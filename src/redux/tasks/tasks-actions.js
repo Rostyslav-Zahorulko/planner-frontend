@@ -1,8 +1,8 @@
 import { createAction } from '@reduxjs/toolkit';
 
-const fetchTasksRequest = createAction('tasks/fetchRequest');
-const fetchTasksSuccess = createAction('tasks/fetchSuccess');
-const fetchTasksError = createAction('tasks/fetchError');
+const getTasksRequest = createAction('tasks/getRequest');
+const getTasksSuccess = createAction('tasks/getSuccess');
+const getTasksError = createAction('tasks/getError');
 
 const addTaskRequest = createAction('tasks/addRequest');
 const addTaskSuccess = createAction('tasks/addSuccess');
@@ -12,31 +12,31 @@ const deleteTaskRequest = createAction('tasks/deleteRequest');
 const deleteTaskSuccess = createAction('tasks/deleteSuccess');
 const deleteTaskError = createAction('tasks/deleteErTasks');
 
-const changeHoursSpentOnTaskPerDayRequest = createAction(
-  'tasks/changeSpentHoursPerDayRequest',
-);
-const changeHoursSpentOnTaskPerDaySuccess = createAction(
-  'tasks/changeSpentHoursPerDaySuccess',
-);
-const changeHoursSpentOnTaskPerDayError = createAction(
-  'tasks/changeSpentHoursPerDayError',
-);
+// const editHoursSpentOnTaskPerDayRequest = createAction(
+//   'tasks/editSpentHoursPerDayRequest',
+// );
+// const editHoursSpentOnTaskPerDaySuccess = createAction(
+//   'tasks/editSpentHoursPerDaySuccess',
+// );
+// const editHoursSpentOnTaskPerDayError = createAction(
+//   'tasks/editSpentHoursPerDayError',
+// );
 
 const filterTasksByTitle = createAction('tasks/filterByTitle');
 
 const tasksActions = {
-  fetchTasksRequest,
-  fetchTasksSuccess,
-  fetchTasksError,
+  getTasksRequest,
+  getTasksSuccess,
+  getTasksError,
   addTaskRequest,
   addTaskSuccess,
   addTaskError,
   deleteTaskRequest,
   deleteTaskSuccess,
   deleteTaskError,
-  changeHoursSpentOnTaskPerDayRequest,
-  changeHoursSpentOnTaskPerDaySuccess,
-  changeHoursSpentOnTaskPerDayError,
+  // editHoursSpentOnTaskPerDayRequest,
+  // editHoursSpentOnTaskPerDaySuccess,
+  // editHoursSpentOnTaskPerDayError,
   filterTasksByTitle,
 };
 
