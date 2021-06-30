@@ -14,8 +14,10 @@ import { authReducer } from './auth';
 import { projectsReducer } from './projects';
 import { sprintsReducer } from './sprints';
 import { tasksReducer } from './tasks';
-import isLoadingReducer from './isLoading/isLoading-reducer';
-import errorReducer from './error/error-reducer';
+import { currentProjectReducer } from './current-project';
+import { currentSprintReducer } from './current-sprint';
+import { isLoadingReducer } from './is-loading';
+import { errorReducer } from './error';
 
 const authPersistConfig = {
   key: 'token',
@@ -38,7 +40,9 @@ export const store = configureStore({
     projects: projectsReducer,
     sprints: sprintsReducer,
     tasks: tasksReducer,
-    isoading: isLoadingReducer,
+    currentProject: currentProjectReducer,
+    currentSprint: currentSprintReducer,
+    isLoading: isLoadingReducer,
     error: errorReducer,
   },
   devTools: process.env.NODE_ENV === 'development',

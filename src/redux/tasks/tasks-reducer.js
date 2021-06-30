@@ -4,7 +4,6 @@ import { sprintsActions } from '../sprints';
 import { tasksActions } from '../tasks';
 
 const { getSprintInfoSuccess } = sprintsActions;
-
 const { addTaskSuccess, deleteTaskSuccess, filterTasksByTitle } = tasksActions;
 
 const itemsReducer = createReducer([], {
