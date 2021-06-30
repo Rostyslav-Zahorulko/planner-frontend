@@ -1,0 +1,111 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+}
+.date_sprint {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  color: #181c27;
+  margin-right: 30px;
+  position: relative;
+}
+
+.title {
+  margin-right: 40px;
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 36px;
+  line-height: 44px;
+  letter-spacing: 0.04em;
+  color: #181c27;
+  max-width: 340px;
+  word-wrap: break-word;
+}
+
+
+
+.title_wrapper {
+  font-family: 'Montserrat';
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  color: #181c27;
+  margin-right: 30px;
+  position: relative;
+}
+
+.button_edit {
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  background-image: url('../../images/edit.svg');
+  transition: all 200ms linear;
+}
+
+.name_button {
+  cursor: pointer;
+}
+
+.button_wrapper {
+  width: 240px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.list_sprint {
+  padding: 0 30px 0 30px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.title_sprint {
+  position: relative;
+  border-bottom: 1px solid rgba(24, 28, 39, 0.1);
+  /* padding: 0 30px 10px 70px; */
+  padding: 20px 0 10px 0;
+}
+
+.search {
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+  cursor: pointer;
+  outline: none;
+  position: absolute;
+  right: 20px;
+  top: 50%;
+  background-image: url('../../images/search.svg');
+}
+
+.date_left {
+  cursor: pointer;
+  position: absolute;
+  width: 10px;
+  height: 14px;
+  background-size: cover;
+  /* background-image: url('../../images/left.svg'); */
+  opacity: 0.3;
+  padding-right: 15px;
+}

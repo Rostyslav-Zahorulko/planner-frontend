@@ -16,9 +16,9 @@ const editProjectTitleRequest = createAction('projects/editTitleRequest');
 const editProjectTitleSuccess = createAction('projects/editTitleSuccess');
 const editProjectTitleError = createAction('projects/editTitleError');
 
-// const getProjectInfoRequest = createAction('projects/getInfoRequest');
-// const getProjectInfoSuccess = createAction('projects/getInfoSuccess ');
-// const getProjectInfoError = createAction('projects/getInfoError');
+const getProjectInfoRequest = createAction('projects/getInfoRequest');
+const getProjectInfoSuccess = createAction('projects/getInfoSuccess ');
+const getProjectInfoError = createAction('projects/getInfoError');
 
 const projectsActions = {
   getProjectsRequest,
@@ -33,9 +33,9 @@ const projectsActions = {
   editProjectTitleRequest,
   editProjectTitleSuccess,
   editProjectTitleError,
-  // getProjectInfoRequest,
-  // getProjectInfoSuccess,
-  // getProjectInfoError,
+  getProjectInfoRequest,
+  getProjectInfoSuccess,
+  getProjectInfoError,
 };
 
 export default projectsActions;

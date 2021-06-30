@@ -2,9 +2,6 @@ import axios from 'axios';
 import { sprintsActions } from '../sprints';
 
 const {
-  getSprintsRequest,
-  getSprintsSuccess,
-  getSprintsError,
   addSprintRequest,
   addSprintSuccess,
   addSprintError,
@@ -14,19 +11,10 @@ const {
   editSprintTitleRequest,
   editSprintTitleSuccess,
   editSprintTitleError,
+  getSprintInfoRequest,
+  getSprintInfoSuccess,
+  getSprintInfoError,
 } = sprintsActions;
-
-const getSprints = projectId => async dispatch => {
-  dispatch(getSprintsRequest());
-
-  try {
-    const { data } = await axios.get(`/projects/${projectId}`);
-
-    dispatch(getSprintsSuccess(data));
-  } catch ({ message }) {
-    dispatch(getSprintsError(message));
-  }
-};
 
 const addSprint =
   ({ projectId, sprint }) =>
@@ -75,11 +63,25 @@ const editSprintTitle =
     }
   };
 
+const getSprintInfo =
+  ({ projectId, sprintId }) =>
+  async dispatch => {
+    dispatch(getSprintInfoRequest());
+
+    try {
+      const { data } = await axios.get(`/projects/${projectId}/${sprintId}`);
+
+      dispatch(getSprintInfoSuccess(data));
+    } catch ({ message }) {
+      dispatch(getSprintInfoError(message));
+    }
+  };
+
 const sprintsOperations = {
-  getSprints,
   addSprint,
   deleteSprint,
   editSprintTitle,
+  getSprintInfo,
 };
 
 export default sprintsOperations;

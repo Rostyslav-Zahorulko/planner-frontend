@@ -1,0 +1,119 @@
+.listItem {
+  display: flex;
+  align-items: flex-end;
+  padding: 20px 30px;
+  width: 100%;
+  background: #ffffff;
+  box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
+  border-radius: 5px;
+  transition: all 250ms linear;
+}
+
+.listItem_tasks {
+  display: flex;
+  align-items: flex-end;
+  flex-wrap: wrap;
+}
+
+.listItem_tasks li:hover {
+  transform: scale(1.02);
+}
+
+.listItem_tasks li:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.listItem_tasks li:nth-child(3n + 1)::after {
+  padding-top: 7px;
+  display: block;
+  content: '';
+  width: 106px;
+  border-bottom: 1px solid rgba(24, 28, 39, 0.2);
+}
+
+.listItem_tasks li:first-child {
+  width: 170px;
+}
+
+.listItem_tasks li:not(:first-child) {
+  width: 110px;
+}
+
+.listItem_tasks li:nth-child(4) {
+  margin-right: 100px;
+  justify-content: center;
+}
+
+.listItem_tasks li:not(:nth-last-child(-n + 2)):not(:first-child) {
+  margin-right: 100px;
+}
+
+.planHours {
+  padding-bottom: 8px;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  justify-content: center;
+}
+
+.totalHours {
+  padding-left: 10px;
+  color: rgba(24, 28, 39, 0.6);
+}
+
+.delete_btn {
+  width: 20px;
+  height: 20px;
+  border: none;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-color: transparent;
+  cursor: pointer;
+  background-image: url('../../images/delete.svg');
+  outline: none;
+  transition: all 500ms linear;
+}
+.delete_item {
+  align-self: center;
+}
+
+.hoursPerDay_wrapper {
+  border: 0;
+  margin: 0;
+  display: inline-flex;
+  padding: 0;
+  position: relative;
+  min-width: 0;
+  flex-direction: column;
+  vertical-align: top;
+}
+.hoursPerDay_input {
+ 
+  width: 100%;
+  border: none;
+  height: 1.1876em;
+  margin: 0;
+  display: block;
+  padding: 6px 0 7px;
+  min-width: 0;
+  background: none;
+  box-sizing: content-box;
+}
+
+/* .hoursPerDay_input::after:hover {
+  left: 0;
+  right: 0;
+  bottom: 0;
+  content: '';
+  position: absolute;
+  transform: scaleX(0);
+  transition: transform 200ms cubic-bezier(0, 0, 0.2, 1) 0ms;
+  border-bottom: 2px solid #3f51b5;
+  pointer-events: none;
+} */
+/* .hoursPerDay_wrapper_input {
+  color: #181c27;
+  padding-top: 2px;
+  padding-bottom: 2px;
+} */

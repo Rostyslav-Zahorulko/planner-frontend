@@ -1,8 +1,8 @@
 import { createAction } from '@reduxjs/toolkit';
 
-const getSprintsRequest = createAction('sprints/getRequest');
-const getSprintsSuccess = createAction('sprints/getSuccess');
-const getSprintsError = createAction('sprints/getError');
+// const getSprintsRequest = createAction('sprints/getRequest');
+// const getSprintsSuccess = createAction('sprints/getSuccess');
+// const getSprintsError = createAction('sprints/getError');
 
 const addSprintRequest = createAction('sprints/addRequest');
 const addSprintSuccess = createAction('sprints/addSuccess');
@@ -16,10 +16,11 @@ const editSprintTitleRequest = createAction('sprints/editTitleRequest');
 const editSprintTitleSuccess = createAction('sprints/editTitleSuccess');
 const editSprintTitleError = createAction('sprints/editTitleError');
 
+const getSprintInfoRequest = createAction('sprints/getInfoRequest');
+const getSprintInfoSuccess = createAction('sprints/getInfoSuccess ');
+const getSprintInfoError = createAction('sprints/getInfoError');
+
 const sprintsActions = {
-  getSprintsRequest,
-  getSprintsSuccess,
-  getSprintsError,
   addSprintRequest,
   addSprintSuccess,
   addSprintError,
@@ -29,6 +30,9 @@ const sprintsActions = {
   editSprintTitleRequest,
   editSprintTitleSuccess,
   editSprintTitleError,
+  getSprintInfoRequest,
+  getSprintInfoSuccess,
+  getSprintInfoError,
 };
 
 export default sprintsActions;

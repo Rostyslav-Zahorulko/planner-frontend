@@ -1,9 +1,5 @@
 import { createAction } from '@reduxjs/toolkit';
 
-const getTasksRequest = createAction('tasks/getRequest');
-const getTasksSuccess = createAction('tasks/getSuccess');
-const getTasksError = createAction('tasks/getError');
-
 const addTaskRequest = createAction('tasks/addRequest');
 const addTaskSuccess = createAction('tasks/addSuccess');
 const addTaskError = createAction('tasks/addError');
@@ -25,9 +21,6 @@ const deleteTaskError = createAction('tasks/deleteErTasks');
 const filterTasksByTitle = createAction('tasks/filterByTitle');
 
 const tasksActions = {
-  getTasksRequest,
-  getTasksSuccess,
-  getTasksError,
   addTaskRequest,
   addTaskSuccess,
   addTaskError,
