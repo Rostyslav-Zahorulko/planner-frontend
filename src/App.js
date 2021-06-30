@@ -2,6 +2,7 @@ import { Suspense, lazy } from 'react';
 import { Switch } from 'react-router-dom';
 
 import Container from './components/Container';
+import AppBar from './components/AppBar';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 
@@ -38,6 +39,8 @@ const TasksPage = lazy(() =>
 export default function App() {
   return (
     <Container>
+      <AppBar />
+
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
           <PublicRoute exact path={register} restricted redirectTo={projects}>
