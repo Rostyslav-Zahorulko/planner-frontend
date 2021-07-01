@@ -2,6 +2,8 @@ import axios from 'axios';
 import { authActions } from '../auth';
 
 axios.defaults.baseURL = 'https://dreamteam-planner-api.herokuapp.com';
+// ДЛЯ ЛОКАЛЬНОГО БЭКА
+axios.defaults.baseURL = 'http://localhost:3000/';
 
 const token = {
   set(token) {
