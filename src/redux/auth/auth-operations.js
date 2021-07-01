@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
+
 import { authActions } from '../auth';
 
 axios.defaults.baseURL = 'https://dreamteam-planner-api.herokuapp.com';
@@ -29,8 +31,7 @@ const {
   getCurrentUserError,
 } = authActions;
 
-const register = credentials => async dispatch => {
-  // console.log('started register');
+const register = credentials => async (dispatch, getState) => {
   dispatch(registerRequest());
 
   try {
@@ -39,8 +40,10 @@ const register = credentials => async dispatch => {
     token.set(data.token);
 
     dispatch(registerSuccess(data));
-  } catch ({ message }) {
-    dispatch(registerError(message));
+  } catch ({ response }) {
+    console.log(response.data.message);
+    dispatch(registerError(response.data.message));
+    toast.error(response.data.message);
   }
 };
 

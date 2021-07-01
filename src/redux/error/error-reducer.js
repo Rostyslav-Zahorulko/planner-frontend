@@ -3,6 +3,7 @@ import { authActions } from '../auth';
 import { projectsActions } from '../projects';
 import { sprintsActions } from '../sprints';
 import { tasksActions } from '../tasks';
+import deleteError from './error-actions';
 
 const { registerError, loginError, logoutError, getCurrentUserError } =
   authActions;
@@ -25,6 +26,8 @@ const {
 const { addTaskError, deleteTaskError } = tasksActions;
 
 const errorReducer = createReducer(null, {
+  [deleteError]: () => null,
+
   [registerError]: (_, { payload }) => payload,
   [loginError]: (_, { payload }) => payload,
   [logoutError]: (_, { payload }) => payload,

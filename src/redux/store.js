@@ -18,6 +18,7 @@ import { currentProjectReducer } from './current-project';
 import { currentSprintReducer } from './current-sprint';
 import { isLoadingReducer } from './is-loading';
 import { errorReducer } from './error';
+import { reducer as toastrReducer } from 'react-redux-toastr';
 
 const authPersistConfig = {
   key: 'token',
@@ -44,6 +45,7 @@ export const store = configureStore({
     currentSprint: currentSprintReducer,
     isLoading: isLoadingReducer,
     error: errorReducer,
+    toastr: toastrReducer,
   },
   devTools: process.env.NODE_ENV === 'development',
   middleware,
