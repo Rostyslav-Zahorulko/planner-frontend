@@ -44,6 +44,8 @@
   outline: none;
   border-style: none;
   border-bottom: 1px solid #181c27;
+  background-color: #fafafa;
+
 }
 
 .input:invalid {
@@ -147,7 +149,7 @@
     background-color: #ff6b08;
     width: 78px;
     height: 78px;
-    top: calc(113px - 80px);
+    top: calc(81px + 80px);
     left: 621px;
   }
 
@@ -155,7 +157,8 @@
     background-color: #ff6b08;
     width: 26px;
     height: 26px;
-    top: calc(139px - 80px);
+    /* FOR POSITION FIXED */
+    top: calc(107px + 80px);
     left: 799px;
   }
 
@@ -163,23 +166,24 @@
     background-color: white;
     width: 431px;
     height: 439px;
-    top: calc(209px - 80px);
-    left: 669px;
+    top: calc(177px + 80px);
+    left: 670px;
   }
 
   .circle4 {
     background-color: #ff6b08;
     width: 387px;
     height: 387px;
-    top: calc(243px - 80px);
-    left: 669px;
+    /* FOR POSITION FIXED */
+    top: calc(211px + 80px);
+    left: 670px;
   }
 
   .circle5 {
     background-color: white;
     width: 314px;
     height: 320px;
-    top: calc(459px - 80px);
+    top: calc(427px + 80px);
     left: 496px;
     z-index: -2;
   }
@@ -188,7 +192,7 @@
     background-color: #ff6b08;
     width: 282px;
     height: 282px;
-    top: calc(463px - 80px);
+    top: calc(431px + 80px);
     left: 514px;
   }
 
@@ -196,15 +200,15 @@
     background-color: #ff6b08;
     width: 252px;
     height: 252px;
-    top: calc(526px - 80px);
-    left: -73px;
+    top: calc(496px + 80px);
+    left: -72px;
   }
 
   .circle8 {
     background-color: white;
     width: 298px;
     height: 298px;
-    top: calc(517px - 80px);
+    top: calc(487px + 80px);
     left: -111px;
     z-index: -2;
   }
@@ -213,7 +217,7 @@
     background-color: white;
     width: 118px;
     height: 118px;
-    top: calc(377px - 80px);
+    top: calc(250px + 80px);
     left: -145px;
   }
 
@@ -221,16 +225,16 @@
     background-color: white;
     width: 48px;
     height: 48px;
-    top: calc(250px - 80px);
+    top: calc(218px + 80px);
     left: -26px;
   }
 
   .title {
-    width: 106px;
+    width: 241px;
     font-size: 36px;
   }
   .form {
-    margin-top: 103px;
+    margin-top: 114px;
     width: 570px;
     padding: 60px 70px;
   }
@@ -246,57 +250,57 @@
 
 @media screen and (min-width: 1280px) {
   .circle1 {
-    top: calc(103px - 80px);
+    top: calc(23px + 80px);
     left: 877px;
   }
 
   .circle2 {
-    top: calc(129px - 80px);
+    top: calc(49px + 80px);
     left: 1055px;
   }
 
   .circle3 {
-    top: calc(199px - 80px);
+    top: calc(119px + 80px);
     left: 925px;
   }
 
   .circle4 {
-    top: calc(233px - 80px);
+    top: calc(153px + 80px);
     left: 925px;
   }
 
   .circle5 {
-    top: calc(449px - 80px);
+    top: calc(368px + 80px);
     left: 752px;
   }
 
   .circle6 {
-    top: calc(453px - 80px);
+    top: calc(373px + 80px);
     left: 770px;
   }
 
   .circle7 {
-    top: calc(516px - 80px);
+    top: calc(436px + 80px);
     left: 183px;
   }
 
   .circle8 {
-    top: calc(507px - 80px);
+    top: calc(427px + 80px);
     left: 145px;
   }
 
   .circle9 {
-    top: calc(367px - 80px);
+    top: calc(287px + 80px);
     left: 111px;
   }
 
   .circle10 {
-    top: calc(240px - 80px);
+    top: calc(160px + 80px);
     left: 230px;
   }
 
   .form {
-    margin-top: 93px;
+    margin-top: 56px;
     padding: 60px 70px;
   }
 }
