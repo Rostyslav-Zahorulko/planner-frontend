@@ -56,8 +56,9 @@ const logIn = credentials => async dispatch => {
     token.set(data.token);
 
     dispatch(loginSuccess(data));
-  } catch ({ message }) {
-    dispatch(loginError(message));
+  } catch ({ response }) {
+    dispatch(loginError(response.data.message));
+    toast.error(response.data.message);
   }
 };
 

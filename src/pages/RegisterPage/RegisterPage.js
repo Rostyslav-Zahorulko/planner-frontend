@@ -51,6 +51,7 @@ class RegisterPage extends Component {
             updateState(values);
             this.props.onRegister(this.state);
             this.props.resetError();
+            this.setState({ email: '', password: '' });
             resetForm();
           }}
           validationSchema={validationsSchema}
