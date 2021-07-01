@@ -51,9 +51,9 @@ export default function App() {
             <LoginPage />
           </PublicRoute>
 
-          <PrivateRoute exact path={projects} redirectTo={login}>
-            <ProjectsPage />
-          </PrivateRoute>
+          {/* <PrivateRoute exact path={projects} redirectTo={login}> */}
+          <ProjectsPage exact path={projects} />
+          {/* </PrivateRoute> */}
 
           <PrivateRoute exact path={sprints} redirectTo={login}>
             <SprintsPage />
