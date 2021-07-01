@@ -3,8 +3,8 @@ import { Switch } from 'react-router-dom';
 
 import Container from './components/Container';
 import AppBar from './components/AppBar';
-import PrivateRoute from './components/PrivateRoute';
-import PublicRoute from './components/PublicRoute';
+// import PrivateRoute from './components/PrivateRoute';
+// import PublicRoute from './components/PublicRoute';
 
 import routes from './routes';
 
@@ -16,9 +16,9 @@ const RegisterPage = lazy(() =>
   ),
 );
 
-// const LoginPage = lazy(() =>
-//   import('./pages/LoginPage/LoginPage' /* webpackChunkName: "login-page" */),
-// );
+const LoginPage = lazy(() =>
+  import('./pages/LoginPage/LoginPage' /* webpackChunkName: "login-page" */),
+);
 
 const ProjectsPage = lazy(() =>
   import(
@@ -42,8 +42,8 @@ export default function App() {
       <AppBar />
 
       <Suspense fallback={<div>Loading...</div>}>
-        <Switch>
-          {/* <PublicRoute exact path={register} restricted redirectTo={projects}>
+        {/* <Switch>
+          <PublicRoute exact path={register} restricted redirectTo={projects}>
             <RegisterPage />
           </PublicRoute>
 
@@ -53,15 +53,27 @@ export default function App() {
 
           <PrivateRoute exact path={projects} redirectTo={login}>
             <ProjectsPage />
-          </PrivateRoute> */}
+          </PrivateRoute>
 
-          {/* <PrivateRoute exact path={sprints} redirectTo={login}> */}
-          {/* <SprintsPage  path={sprints} /> */}
-          {/* </PrivateRoute> */}
+          <PrivateRoute exact path={sprints} redirectTo={login}>
+            <SprintsPage />
+          </PrivateRoute>
 
-          {/* <PrivateRoute path={tasks} redirectTo={login}> */}
+          <PrivateRoute path={tasks} redirectTo={login}>
+            <TasksPage />
+          </PrivateRoute>
+        </Switch> */}
+
+        <Switch>
+          <RegisterPage exact path={register} />
+
+          <LoginPage path={login} />
+
+          <ProjectsPage exact path={projects} />
+
+          <SprintsPage exact path={sprints} />
+
           <TasksPage path={tasks} />
-          {/* </PrivateRoute> */}
         </Switch>
       </Suspense>
     </Container>
