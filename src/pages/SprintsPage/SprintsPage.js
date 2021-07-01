@@ -3,7 +3,7 @@ import ProjectName from '../../components/ProjectName';
 import AddButton from '../../components/AddButton';
 
 import Sidebar from '../../components/Sidebar';
-
+import ModalCreateSprint from '../../components/ModalCreateSprint';
 import '../../styles/base.css';
 import styles from './SprintsPage.module.css';
 
