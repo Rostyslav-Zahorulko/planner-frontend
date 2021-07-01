@@ -27,9 +27,9 @@
   word-wrap: break-word;
 }
 
-
-
 .title_wrapper {
+  display: flex;
+  align-items: center;
   font-family: 'Montserrat';
   font-style: normal;
   font-weight: normal;
@@ -39,9 +39,10 @@
   color: #181c27;
   margin-right: 30px;
   position: relative;
+  margin-right: 30px;
 }
 
-.button_edit {
+/* .button_edit {
   width: 20px;
   height: 20px;
   border: none;
@@ -57,7 +58,7 @@
   transform: translateY(-50%);
   background-image: url('../../images/edit.svg');
   transition: all 200ms linear;
-}
+} */
 
 .name_button {
   cursor: pointer;

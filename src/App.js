@@ -16,9 +16,9 @@ const RegisterPage = lazy(() =>
   ),
 );
 
-const LoginPage = lazy(() =>
-  import('./pages/LoginPage/LoginPage' /* webpackChunkName: "login-page" */),
-);
+// const LoginPage = lazy(() =>
+//   import('./pages/LoginPage/LoginPage' /* webpackChunkName: "login-page" */),
+// );
 
 const ProjectsPage = lazy(() =>
   import(
@@ -43,7 +43,7 @@ export default function App() {
 
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
-          <PublicRoute exact path={register} restricted redirectTo={projects}>
+          {/* <PublicRoute exact path={register} restricted redirectTo={projects}>
             <RegisterPage />
           </PublicRoute>
 
@@ -53,15 +53,15 @@ export default function App() {
 
           <PrivateRoute exact path={projects} redirectTo={login}>
             <ProjectsPage />
-          </PrivateRoute>
+          </PrivateRoute> */}
 
-          <PrivateRoute exact path={sprints} redirectTo={login}>
-            <SprintsPage />
-          </PrivateRoute>
+          {/* <PrivateRoute exact path={sprints} redirectTo={login}> */}
+          {/* <SprintsPage  path={sprints} /> */}
+          {/* </PrivateRoute> */}
 
-          <PrivateRoute path={tasks} redirectTo={login}>
-            <TasksPage />
-          </PrivateRoute>
+          {/* <PrivateRoute path={tasks} redirectTo={login}> */}
+          <TasksPage path={tasks} />
+          {/* </PrivateRoute> */}
         </Switch>
       </Suspense>
     </Container>
