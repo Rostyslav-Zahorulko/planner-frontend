@@ -41,7 +41,7 @@ const register = credentials => async (dispatch, getState) => {
 
     dispatch(registerSuccess(data));
   } catch ({ response }) {
-    console.log(response.data.message);
+    // console.log(response.data.message);
     dispatch(registerError(response.data.message));
     toast.error(response.data.message);
   }
