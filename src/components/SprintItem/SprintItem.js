@@ -5,7 +5,7 @@ import styles from './SprintItem.module.css';
 
 const SprintItem = ({ sprint }) => (
   <li className={styles.sprint_item}>
-    <h3 className={styles.sprint_subject}> Sprint Burndown Chart 1 </h3>
+    <h3 className={styles.sprint_subject}>{sprint.title}</h3>
     <p className={styles.sprint_desc}>
       Start date
       <span className={styles.sprint_desc_item}>24 Jun</span>

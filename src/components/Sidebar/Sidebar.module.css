@@ -1,0 +1,26 @@
+@media screen and (max-width: 767px) {
+  .sidebar {
+    height: 40px;
+    box-sizing: border-box;
+    border-bottom: 1px solid rgba(24, 28, 39, 0.1);
+  }
+}
+@media screen and (min-width: 768px) {
+  .sidebar {
+    width: 170px;
+    height: 844px;
+    padding: 15px;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-right: 1px solid rgba(24, 28, 39, 0.1);
+    box-sizing: border-box;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .sidebar {
+    padding: 30px;
+  }
+}
