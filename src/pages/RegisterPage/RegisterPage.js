@@ -50,6 +50,7 @@ class RegisterPage extends Component {
           onSubmit={(values, { resetForm }) => {
             updateState(values);
             this.props.onRegister(this.state);
+            this.props.resetError();
             resetForm();
           }}
           validationSchema={validationsSchema}
@@ -140,7 +141,7 @@ class RegisterPage extends Component {
                   <p className={styles.accountQuestion}>
                     Do you have an account?
                   </p>
-                  <a className={styles.accountLogin} href="users/login">
+                  <a className={styles.accountLogin} href="/login">
                     Log in
                   </a>
                 </div>

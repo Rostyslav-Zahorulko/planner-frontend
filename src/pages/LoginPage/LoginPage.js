@@ -1,6 +1,7 @@
-import React, { Component, useState, useCallback } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { authOperations } from '../redux/auth';
+import React, { Component } from 'react';
+import { connect } from 'react-redux';
+import { authOperations } from '../../redux/auth';
+import resetErrorOperation from '../../redux/error/error-operations';
 
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -25,8 +26,8 @@ class LoginPage extends Component {
         .string()
         .typeError('Must be a string')
         .matches(
-          /^.*(?=.{8,})((?=.*[!@#$%^&*()\-_=+{};:,<.>]){1})(?=.*\d)((?=.*[a-z]){1})((?=.*[A-Z]){1}).*$/,
-          'Wrong password',
+          /^(?=.*[0-9]).{8,32}$/,
+          'Incorrect password (must contain at least 8 characters and at least one number)',
         )
         .required('Required'),
     });
@@ -123,4 +124,14 @@ class LoginPage extends Component {
   }
 }
 
-export default LoginPage;
+const mapStateToProps = state => {
+  return {
+    error: state.error,
+  };
+};
+const mapDispatchToProps = {
+  onRegister: authOperations.register,
+  resetError: resetErrorOperation,
+};
+
+export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);
