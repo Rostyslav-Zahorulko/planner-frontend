@@ -3,8 +3,10 @@ import { toast } from 'react-toastify';
 
 import { authActions } from '../auth';
 
-axios.defaults.baseURL = 'https://dreamteam-planner-api.herokuapp.com';
-// ДЛЯ ЛОКАЛЬНОГО БЭКА
+// ССЫЛКА НА ОПУБЛИКОВАНЫЙ БЭК
+// axios.defaults.baseURL = 'https://dreamteam-planner-api.herokuapp.com/';
+
+// ССЫЛКА НА ЛОКАЛЬНО ЗАПУЩЕННЫЙ БЭК ДЛЯ РАЗРАБОТКИ
 axios.defaults.baseURL = 'http://localhost:3000/';
 
 const token = {

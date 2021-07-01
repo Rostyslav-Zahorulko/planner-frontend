@@ -1,13 +1,16 @@
 import SprintList from '../../components/SprintsList';
-import AddIconButton from '../../components/AddIconButton';
-import СhangeButton from '../../components/СhangeButton';
-import { ReactComponent as AddIcon } from '../../images/add.svg';
+import ProjectName from '../../components/ProjectName';
+import AddButton from '../../components/AddButton';
+
+import Sidebar from '../../components/Sidebar';
+import ModalCreateSprint from '../../components/ModalCreateSprint';
 import '../../styles/base.css';
-import styles from './Sprints.module.css';
-const projects = [
+import styles from './SprintsPage.module.css';
+
+const sprints = [
   {
     id: '1asdfg',
-    title: 'string1',
+    title: 'string1 много слов очень много!',
     startDate: '24 June',
     duration: 33,
   },
@@ -32,38 +35,25 @@ const projects = [
 ];
 const SprintsPage = () => {
   return (
-    <div className={styles.sprints}>
-      {/*<Sidebars></Sidebars>*/}
-      <div className={styles.title}>
-        <h1 className={styles.project_title}> Project1</h1>
-        <СhangeButton
-          type="button"
-          // onClick={}
-          aria-label="Сhange"
-        />
+    <div className={styles.project}>
+      <Sidebar />
+      <div className={styles.sprints}>
+        <ProjectName />
+        <div className={styles.addButtonSprint}>
+          <AddButton />
+          <p className={styles.createSprint}>Create a sprint</p>
+        </div>
+
+        <h3
+          className={styles.subject}
+          //onClick={}
+        >
+          Add people
+        </h3>
+
+        {/*<p cllassName={styles.text}> Ваш проект не має спринтів, скористайтесь кнопкою "Створити спринт"</p>*/}
+        <SprintList sprints={sprints} />
       </div>
-      <p className={styles.project_desc}>
-        Short description of the project, if it exist, it is posted here. The
-        width of the text block
-      </p>
-      <h3
-        className={styles.subject}
-        //onClick={}
-      >
-        Add people
-      </h3>
-
-      <AddIconButton
-        type="button"
-        // onClick={}
-        aria-label="add-sprint"
-      >
-        <AddIcon width="44" height="44" fill="#fff" />
-      </AddIconButton>
-
-      {/*<p cllassName={styles.text}> Ваш проект не має спринтів, скористайтесь кнопкою "Створити спринт"</p>*/}
-
-      <SprintList sprints={projects} />
     </div>
   );
 };

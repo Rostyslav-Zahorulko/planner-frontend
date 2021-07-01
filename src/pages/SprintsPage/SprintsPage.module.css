@@ -1,0 +1,65 @@
+.subject {
+  display: inline-flex;
+  align-items: center;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  margin-bottom: 30px;
+  letter-spacing: 0.04em;
+  text-decoration-line: underline;
+}
+
+.subject::before {
+  content: '';
+  width: 20px;
+  height: 20px;
+  margin-right: 10px;
+  background-image: url(../../images/add_people.svg);
+  background-size: contain;
+}
+.subject:hover {
+  text-shadow: 1px 1px 12px rgba(0, 0, 0, 0.53);
+  transition: all 0.25s linear;
+  transform: scale(1.03);
+}
+
+@media screen and (min-width: 768px) {
+  .project {
+    display: flex;
+    margin-right: 20px;
+  }
+  .sprints {
+    padding: 20px;
+  }
+}
+@media screen and (max-width: 1279px) {
+  .addButtonSprint {
+    position: absolute;
+    top: 120px;
+    right: 40px;
+  }
+  .createSprint {
+    display: none;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .addButtonSprint {
+    position: absolute;
+
+    height: 44px;
+    right: 90px;
+    top: 120px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0, 04em;
+  }
+
+  .createSprint {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.04em;
+    color: #181c27;
+    margin-left: 20px;
+  }
+}
