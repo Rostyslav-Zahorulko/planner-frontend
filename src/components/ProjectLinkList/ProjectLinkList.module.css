@@ -1,0 +1,26 @@
+@media screen and (max-width: 767px) {
+  .link_list {
+    display: none;
+  }
+}
+@media screen and (min-width: 768px) {
+  .link_list {
+    width: 160px;
+    height: 170px;
+    display: flex;
+    align-content: flex-start;
+    flex-wrap: wrap;
+    overflow-y: auto;
+    overflow-x: hidden;
+    padding-bottom: 5px;
+  }
+  .link_list::-webkit-scrollbar {
+    width: 3px;
+  }
+  .link_list::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #ff6b08;
+  }
+}
+
+/**/

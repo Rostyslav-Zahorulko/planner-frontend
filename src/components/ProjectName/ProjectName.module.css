@@ -1,0 +1,26 @@
+.title {
+  display: flex;
+  align-items: center;
+  width: 160px;
+  height: 32px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+.project_title {
+  margin-right: 20px;
+}
+.project_desc {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0, 04em;
+
+  margin-bottom: 30px;
+}
+@media screen and (min-width: 1280px) {
+  .project_desc {
+    width: 400px;
+    height: 66px;
+  }
+}
