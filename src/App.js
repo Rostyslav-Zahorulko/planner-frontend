@@ -2,8 +2,9 @@ import { Suspense, lazy } from 'react';
 import { Switch } from 'react-router-dom';
 
 import Container from './components/Container';
-import PrivateRoute from './components/PrivateRoute';
-import PublicRoute from './components/PublicRoute';
+import AppBar from './components/AppBar';
+// import PrivateRoute from './components/PrivateRoute';
+// import PublicRoute from './components/PublicRoute';
 
 import routes from './routes';
 
@@ -31,15 +32,17 @@ const SprintsPage = lazy(() =>
   ),
 );
 
-// const TasksPage = lazy(() =>
-//   import('./pages/TasksPage/TasksPage' /* webpackChunkName: "tasks-page" */),
-// );
+const TasksPage = lazy(() =>
+  import('./pages/TasksPage/TasksPage' /* webpackChunkName: "tasks-page" */),
+);
 
 export default function App() {
   return (
     <Container>
+      <AppBar />
+
       <Suspense fallback={<div>Loading...</div>}>
-        <Switch>
+        {/* <Switch>
           <PublicRoute exact path={register} restricted redirectTo={projects}>
             <RegisterPage />
           </PublicRoute>
@@ -48,17 +51,29 @@ export default function App() {
             <LoginPage />
           </PublicRoute>
 
-          {/* <PrivateRoute exact path={projects} redirectTo={login}> */}
-          <ProjectsPage />
-          {/* </PrivateRoute> */}
+          <PrivateRoute exact path={projects} redirectTo={login}>
+            <ProjectsPage />
+          </PrivateRoute>
 
           <PrivateRoute exact path={sprints} redirectTo={login}>
             <SprintsPage />
           </PrivateRoute>
 
-          {/* <PrivateRoute path={tasks} redirectTo={login}>
+          <PrivateRoute path={tasks} redirectTo={login}>
             <TasksPage />
-          </PrivateRoute> */}
+          </PrivateRoute>
+        </Switch> */}
+
+        <Switch>
+          <RegisterPage exact path={register} />
+
+          <LoginPage path={login} />
+
+          <ProjectsPage exact path={projects} />
+
+          <SprintsPage exact path={sprints} />
+
+          <TasksPage path={tasks} />
         </Switch>
       </Suspense>
     </Container>
