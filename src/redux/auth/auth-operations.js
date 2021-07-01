@@ -30,6 +30,7 @@ const {
 } = authActions;
 
 const register = credentials => async dispatch => {
+  // console.log('started register');
   dispatch(registerRequest());
 
   try {

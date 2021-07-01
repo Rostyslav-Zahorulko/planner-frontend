@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
-// import { useDispatch } from 'react-redux';
-// import { authOperations } from '../redux/auth';
+import { connect } from 'react-redux';
+import { authOperations } from '../../redux/auth';
 
 import { Formik } from 'formik';
 import * as yup from 'yup';
@@ -45,6 +45,7 @@ class RegisterPage extends Component {
         validateOnBlur
         onSubmit={(values, { resetForm }) => {
           updateState(values);
+          this.props.onRegister(this.state);
           resetForm();
         }}
         validationSchema={validationsSchema}
@@ -146,4 +147,10 @@ class RegisterPage extends Component {
   }
 }
 
-export default RegisterPage;
+const mapDispatchToProps = {
+  onRegister: authOperations.register,
+};
+
+export default connect(null, mapDispatchToProps)(RegisterPage);
+
+// export default RegisterPage;
