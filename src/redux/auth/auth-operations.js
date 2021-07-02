@@ -1,7 +1,13 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
+
 import { authActions } from '../auth';
 
-axios.defaults.baseURL = 'https://dreamteam-planner-api.herokuapp.com';
+// ССЫЛКА НА ОПУБЛИКОВАНЫЙ БЭК
+// axios.defaults.baseURL = 'https://dreamteam-planner-api.herokuapp.com/';
+
+// ССЫЛКА НА ЛОКАЛЬНО ЗАПУЩЕННЫЙ БЭК ДЛЯ РАЗРАБОТКИ
+axios.defaults.baseURL = 'http://localhost:3000/';
 
 const token = {
   set(token) {
@@ -36,8 +42,10 @@ const register = credentials => async dispatch => {
     token.set(data.token);
 
     dispatch(registerSuccess(data));
-  } catch ({ message }) {
-    dispatch(registerError(message));
+  } catch ({ response }) {
+    // console.log(response.data.message);
+    dispatch(registerError(response.data.message));
+    toast.error(response.data.message);
   }
 };
 
@@ -50,8 +58,9 @@ const logIn = credentials => async dispatch => {
     token.set(data.token);
 
     dispatch(loginSuccess(data));
-  } catch ({ message }) {
-    dispatch(loginError(message));
+  } catch ({ response }) {
+    dispatch(loginError(response.data.message));
+    toast.error(response.data.message);
   }
 };
 

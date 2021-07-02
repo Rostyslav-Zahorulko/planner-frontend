@@ -1,21 +1,40 @@
-// import React, { Component } from 'react';
+// Libraries
 import React, { useState, useCallback, useEffect } from 'react';
-import s from './ProjectsPage.module.css';
-import projects from '../../data/projects.json';
+import { useSelector, useDispatch } from 'react-redux';
 
 // Components
-// import AppBar from '../../components/AppBar';
 import ProjectsList from '../../components/ProjectsList';
 import AddButton from '../../components/AddButton';
 import CreateProjectModal from '../../components/CreateProjectModal';
 
-export default function ProjectsPage({ children }) {
+// Redux 
+import projectsOperations from '../../redux/projects/projects-operations';
+import { getProjectsItems } from '../../redux/projects/projects-selectors';
+
+// Styles
+import s from './ProjectsPage.module.css';
+
+// БАЗА ДЛЯ ПРОВЕРКИ (ЕСЛИ НЕ ЗАПУЩЕН БЭК)
+// import projects from '../../data/projects.json';
+
+export default function ProjectsPage() {
   const [showModal, setShowModal] = useState(false);
 
   const toggleModal = useCallback(() => {
     setShowModal(prevShowModal => !prevShowModal);
   }, []);
+  
+  const dispatch = useDispatch();
+  
+  const projects = useSelector(getProjectsItems);  
 
+  // TODO: СДЕЛАТЬ, КОГДА БУДЕТ МОДАЛКА
+  // const onAddProject = value => dispatch(projectsOperations.addProject(value));
+
+  useEffect(() => {
+    dispatch(projectsOperations.getProjects());
+  }, [dispatch]);
+  
   return (
     <>
       <div className={s.container}>
@@ -36,5 +55,3 @@ export default function ProjectsPage({ children }) {
     </>
   );
 }
-
-// export default ProjectsPage;
