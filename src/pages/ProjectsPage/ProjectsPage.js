@@ -1,36 +1,47 @@
-import React from 'react';
+// Libraries
+import React, { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-
-import s from './ProjectsPage.module.css';
-// БАЗА ДЛЯ ПРОВЕРКИ (ЕСЛИ НЕ ЗАПУЩЕН БЭК)
-// import projects from '../../data/projects.json';
-
-import projectsOperations from '../../redux/projects/projects-operations';
-import { getProjectsItems } from '../../redux/projects/projects-selectors';
 
 // Components
 import ProjectsList from '../../components/ProjectsList';
 import AddButton from '../../components/AddButton';
+import CreateProjectModal from '../../components/CreateProjectModal';
+
+// Redux 
+import projectsOperations from '../../redux/projects/projects-operations';
+import { getProjectsItems } from '../../redux/projects/projects-selectors';
+
+// Styles
+import s from './ProjectsPage.module.css';
+
+// БАЗА ДЛЯ ПРОВЕРКИ (ЕСЛИ НЕ ЗАПУЩЕН БЭК)
+// import projects from '../../data/projects.json';
 
 export default function ProjectsPage() {
-  const dispatch = useDispatch();
-  const projects = useSelector(getProjectsItems);
+  const [showModal, setShowModal] = useState(false);
 
-  // СДЕЛАТЬ КОГДА БУДЕТ МОДАЛКА
+  const toggleModal = useCallback(() => {
+    setShowModal(prevShowModal => !prevShowModal);
+  }, []);
+  
+  const dispatch = useDispatch();
+  
+  const projects = useSelector(getProjectsItems);  
+
+  // TODO: СДЕЛАТЬ, КОГДА БУДЕТ МОДАЛКА
   // const onAddProject = value => dispatch(projectsOperations.addProject(value));
 
   useEffect(() => {
     dispatch(projectsOperations.getProjects());
   }, [dispatch]);
-
+  
   return (
     <>
       <div className={s.container}>
         <div className={s.headbar}>
           <h1 className={s.title}>Projects</h1>
           <div className={s.btnWrapper}>
-            <AddButton />
+            <AddButton onClick={toggleModal} />
             <p className={s.btnText}>Create a project</p>
           </div>
         </div>
@@ -39,6 +50,7 @@ export default function ProjectsPage() {
         ) : (
           <div className={s.noProjects}>No projects added yet</div>
         )}
+        {showModal && <CreateProjectModal onClose={toggleModal} />}
       </div>
     </>
   );
