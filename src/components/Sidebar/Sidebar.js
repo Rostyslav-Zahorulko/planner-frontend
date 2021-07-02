@@ -1,6 +1,7 @@
 import ShowProjects from '../ShowProjects';
 import ProjectLink from '../ProjectLinkList';
 import SidebarAddButton from '../SidebarAddButton';
+
 import projects from '../../data/projects.json';
 import styles from './Sidebar.module.css';
 
