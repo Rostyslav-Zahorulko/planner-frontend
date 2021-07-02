@@ -110,3 +110,13 @@
   opacity: 0.3;
   padding-right: 15px;
 }
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    display: flex;
+    margin-right: 20px;
+  }
+  .wrapper_tasks {
+    padding: 20px;
+  }
+}

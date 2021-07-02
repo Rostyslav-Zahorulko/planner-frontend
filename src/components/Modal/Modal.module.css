@@ -1,0 +1,141 @@
+.ModalBackdrop {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+}
+
+.ModalContent {
+  position: absolute;
+  height: 100%;
+  right: 0px;
+  top: 0px;
+  padding-top: 63px;
+  padding-bottom: 0;
+  padding-right: 20px;
+  padding-left: 20px;
+  background-color: #fff;
+  border-radius: 3px;
+  box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
+    0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
+  z-index: 101;
+}
+
+.ModalCloseBtn {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+  font-weight: 300;
+  font-size: 25px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  color: rgba(24, 28, 39, 0.6);
+  background: #fff;
+  transform: rotate(45deg);
+  transition: all 0.25s linear;
+}
+
+.ModalCloseBtn:hover,
+.ModalCloseBtn:focus {
+  right: 8px;
+  top: 7px;
+  transform: rotate(225deg);
+}
+
+.ModalTitle {
+  margin-bottom: 30px;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.2188;
+
+  text-align: center;
+}
+
+.ModalBtnWrapper {
+  margin-top: 40px;
+  padding: 0;
+  @media screen and (min-width: 767px) {
+    padding: 40px 0;
+  }
+}
+
+.ModalCreateBtn,
+.ModalCancelBtn {
+  display: block;
+  margin: 0 auto;
+  padding: 11px 44px;
+  width: 148px;
+  height: 44px;
+  border-radius: 25px;
+
+  font-family: 'Montserrat';
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.22;
+  letter-spacing: 0.04em;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  transition: all 0.25s linear;
+}
+
+.ModalCreateBtn {
+  margin-bottom: 20px;
+
+  color: #ffffff;
+  background-color: #ff6b08;
+  box-shadow: 0px 3px 4px rgba(255, 107, 8, 0.3);
+}
+
+.ModalCancelBtn {
+  color: rgba(24, 28, 39, 0.6);
+  background-color: #ffffff;
+  text-decoration-line: underline;
+}
+
+.ModalCreateBtn:focus,
+.ModalCreateBtn:hover {
+  color: #ff6b08;
+  background-color: #ffffff;
+}
+
+.ModalCancelBtn:hover,
+.ModalCancelBtn:focus {
+  color: #181c27;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (min-width: 320px) {
+  .ModalContent {
+    width: 320px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .ModalContent {
+    padding-top: 120px;
+    padding-right: 40px;
+    padding-left: 40px;
+    width: 512px;
+  }
+
+  .ModalTitle {
+    margin-bottom: 50px;
+    font-style: 36px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .ModalContent {
+    width: 530px;
+    padding-right: 50px;
+    padding-left: 50px;
+  }
+}

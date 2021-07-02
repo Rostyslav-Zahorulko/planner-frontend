@@ -1,0 +1,23 @@
+[
+  {
+    "id": 1,
+    "title": "Helli1",
+    "startDate": "24 July",
+    "endDate": "30 July",
+    "duration": 10
+  },
+  {
+    "id": 1,
+    "title": "Helli2",
+    "startDate": "24 July",
+    "endDate": "30 July",
+    "duration": 10
+  },
+  {
+    "id": 1,
+    "title": "Helli3",
+    "startDate": "24 July",
+    "endDate": "30 July",
+    "duration": 10
+  }
+]

@@ -14,20 +14,16 @@ const SprintHeader = () => {
                 {matches =>
                   matches.big ? (
                     <>
-                      <li className={st.list_sprint_item}>Заплановано годин</li>
-                      <li className={st.list_sprint_item}>
-                        Витрачено год / день
-                      </li>
-                      <li className={st.list_sprint_item}>Витрачено годин</li>
+                      <li className={st.list_sprint_item}>Scheduled hours</li>
+                      <li className={st.list_sprint_item}>Spent hour / day</li>
+                      <li className={st.list_sprint_item}>Hours spent</li>
                     </>
                   ) : (
                     <>
-                      <li className={st.list_sprint_item}>Задача</li>
-                      <li className={st.list_sprint_item}>Заплановано годин</li>
-                      <li className={st.list_sprint_item}>
-                        Витрачено год / день
-                      </li>
-                      <li className={st.list_sprint_item}>Витрачено годин</li>
+                      <li className={st.list_sprint_item}>Task</li>
+                      <li className={st.list_sprint_item}>Scheduled hours</li>
+                      <li className={st.list_sprint_item}>Spent hour / day</li>
+                      <li className={st.list_sprint_item}>Hours spent</li>
                       <li className={st.list_sprint_item}>
                         <img
                           className={st.search}
