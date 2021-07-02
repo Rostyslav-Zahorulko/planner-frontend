@@ -5,11 +5,11 @@ import { useSelector, useDispatch } from 'react-redux';
 // Components
 import ProjectsList from '../../components/ProjectsList';
 import AddButton from '../../components/AddButton';
-import CreateProjectModal from '../../components/CreateProjectModal';
+import Modal from '../../components/Modal';
 
-// Redux 
-import projectsOperations from '../../redux/projects/projects-operations';
-import { getProjectsItems } from '../../redux/projects/projects-selectors';
+// Redux
+import { projectsOperations } from '../../redux/projects';
+import { projectsSelectors } from '../../redux/projects';
 
 // Styles
 import s from './ProjectsPage.module.css';
@@ -17,24 +17,27 @@ import s from './ProjectsPage.module.css';
 // БАЗА ДЛЯ ПРОВЕРКИ (ЕСЛИ НЕ ЗАПУЩЕН БЭК)
 // import projects from '../../data/projects.json';
 
+// const { addProject } = projectsOperations;
+const { getProjectsItems } = projectsSelectors;
+
 export default function ProjectsPage() {
-  const [showModal, setShowModal] = useState(false);
+  const [isShown, setIsShown] = useState(false);
 
   const toggleModal = useCallback(() => {
-    setShowModal(prevShowModal => !prevShowModal);
+    setIsShown(prevIsShown => !prevIsShown);
   }, []);
-  
+
   const dispatch = useDispatch();
-  
-  const projects = useSelector(getProjectsItems);  
+
+  const projects = useSelector(getProjectsItems);
 
   // TODO: СДЕЛАТЬ, КОГДА БУДЕТ МОДАЛКА
-  // const onAddProject = value => dispatch(projectsOperations.addProject(value));
+  // const onAddProject = value => dispatch(addProject(value));
 
   useEffect(() => {
     dispatch(projectsOperations.getProjects());
   }, [dispatch]);
-  
+
   return (
     <>
       <div className={s.container}>
@@ -50,7 +53,19 @@ export default function ProjectsPage() {
         ) : (
           <div className={s.noProjects}>No projects added yet</div>
         )}
-        {showModal && <CreateProjectModal onClose={toggleModal} />}
+        {isShown && (
+          <Modal onClose={toggleModal}>
+            <div>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
+              ipsa obcaecati veniam fugiat a corrupti quibusdam laborum nostrum
+              voluptatum delectus modi, sit commodi error libero natus magnam
+              quam necessitatibus voluptatem optio officia deserunt! Quisquam
+              labore reiciendis optio, delectus doloremque, quis aperiam facilis
+              laboriosam voluptate a beatae animi praesentium reprehenderit
+              repellendus.
+            </div>
+          </Modal>
+        )}
       </div>
     </>
   );
