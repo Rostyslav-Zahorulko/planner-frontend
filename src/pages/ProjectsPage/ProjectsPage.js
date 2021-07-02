@@ -54,7 +54,7 @@ export default function ProjectsPage() {
           <div className={s.noProjects}>No projects added yet</div>
         )}
         {isShown && (
-          <Modal onClose={toggleModal}>
+          <Modal title={'Creating a project'} onClose={toggleModal}>
             <div>
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
               ipsa obcaecati veniam fugiat a corrupti quibusdam laborum nostrum
