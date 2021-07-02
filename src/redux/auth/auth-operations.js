@@ -33,7 +33,7 @@ const {
   getCurrentUserError,
 } = authActions;
 
-const register = credentials => async (dispatch, getState) => {
+const register = credentials => async dispatch => {
   dispatch(registerRequest());
 
   try {
