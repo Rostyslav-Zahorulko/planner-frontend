@@ -49,6 +49,15 @@
   transform: rotate(225deg);
 }
 
+.ModalTitle {
+  margin-bottom: 30px;
+  font-size: 26px;
+  font-weight: 500;
+  line-height: 1.2188;
+
+  text-align: center;
+}
+
 .ModalBtnWrapper {
   margin-top: 40px;
   padding: 0;
@@ -115,6 +124,11 @@
     padding-right: 40px;
     padding-left: 40px;
     width: 512px;
+  }
+
+  .ModalTitle {
+    margin-bottom: 50px;
+    font-style: 36px;
   }
 }
 
