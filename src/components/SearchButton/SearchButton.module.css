@@ -1,0 +1,36 @@
+.btn {
+  position: absolute;
+  
+  width: 20px;
+  height: 20px;
+
+  display: flex;
+  align-items: center;
+  padding: 0;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  border: none;
+  background: none;
+
+  
+}
+
+.bth:hover {
+  transform: scale(1.2);
+
+}
+
+
+@media screen and (min-width: 768px) {
+  .btn {
+    right: 20px;
+  }
+}
+
+@media screen and (min-width: 1280px) {
+  .btn {
+    right: 0px
+  }
+}
