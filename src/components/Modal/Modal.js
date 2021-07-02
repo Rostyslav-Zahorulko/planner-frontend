@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import s from './CreateProjectModal.module.css';
+import s from './Modal.module.css';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export default function CreateProjectModal({ onClose, children }) {
+export default function CreateProjectModal({ children, onClose, onCreate }) {
   useEffect(() => {
     const handleEscape = e => {
       if (e.code === 'Escape') {
@@ -37,7 +37,10 @@ export default function CreateProjectModal({ onClose, children }) {
         </button>
         {children}
         <div className={s.ModalBtnWrapper}>
-          <button className={s.ModalBtnExit} onClick={handleClose}>
+          <button className={s.ModalCreateBtn} onClick={onCreate}>
+            Ready
+          </button>
+          <button className={s.ModalCancelBtn} onClick={handleClose}>
             Cancel
           </button>
         </div>

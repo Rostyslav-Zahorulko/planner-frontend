@@ -10,24 +10,18 @@
 
 .ModalContent {
   position: absolute;
-  width: 320px;
   height: 100%;
   right: 0px;
   top: 0px;
   padding-top: 63px;
+  padding-bottom: 0;
+  padding-right: 20px;
+  padding-left: 20px;
   background-color: #fff;
   border-radius: 3px;
   box-shadow: 0px 2px 1px -1px rgba(0, 0, 0, 0.2),
     0px 1px 1px 0px rgba(0, 0, 0, 0.14), 0px 1px 3px 0px rgba(0, 0, 0, 0.12);
   z-index: 101;
-
-  @media screen and (min-width: 767px) {
-    padding-top: 120px;
-    width: 512px;
-  }
-  @media screen and (min-width: 1200px) {
-    width: 530px;
-  }
 }
 
 .ModalCloseBtn {
@@ -46,45 +40,88 @@
   background: #fff;
   transform: rotate(45deg);
   transition: all 0.25s linear;
+}
 
-  &:hover,
-  &:focus {
-    right: 8px;
-    top: 7px;
-    transform: rotate(225deg);
-  }
+.ModalCloseBtn:hover,
+.ModalCloseBtn:focus {
+  right: 8px;
+  top: 7px;
+  transform: rotate(225deg);
 }
 
 .ModalBtnWrapper {
+  margin-top: 40px;
   padding: 0;
   @media screen and (min-width: 767px) {
     padding: 40px 0;
   }
 }
 
-.ModalBtnExit {
+.ModalCreateBtn,
+.ModalCancelBtn {
   display: block;
   margin: 0 auto;
-  padding: 0;
-  width: 154px;
+  padding: 11px 44px;
+  width: 148px;
   height: 44px;
+  border-radius: 25px;
+
   font-family: 'Montserrat';
   font-weight: 500;
   font-size: 18px;
-  line-height: 22px;
+  line-height: 1.22;
   letter-spacing: 0.04em;
   border: none;
   outline: none;
   cursor: pointer;
-
-  color: rgba(24, 28, 39, 0.6);
-  background: #fff;
-  text-decoration-line: underline;
   transition: all 0.25s linear;
+}
 
-  &:hover,
-  &:focus {
-    color: #181c27;
-    text-shadow: 4px 4px 2px #969696;
+.ModalCreateBtn {
+  margin-bottom: 20px;
+
+  color: #ffffff;
+  background-color: #ff6b08;
+  box-shadow: 0px 3px 4px rgba(255, 107, 8, 0.3);
+}
+
+.ModalCancelBtn {
+  color: rgba(24, 28, 39, 0.6);
+  background-color: #ffffff;
+  text-decoration-line: underline;
+}
+
+.ModalCreateBtn:focus,
+.ModalCreateBtn:hover {
+  color: #ff6b08;
+  background-color: #ffffff;
+}
+
+.ModalCancelBtn:hover,
+.ModalCancelBtn:focus {
+  color: #181c27;
+  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.5);
+}
+
+@media screen and (min-width: 320px) {
+  .ModalContent {
+    width: 320px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .ModalContent {
+    padding-top: 120px;
+    padding-right: 40px;
+    padding-left: 40px;
+    width: 512px;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .ModalContent {
+    width: 530px;
+    padding-right: 50px;
+    padding-left: 50px;
   }
 }
