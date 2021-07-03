@@ -73,8 +73,8 @@ const logOut = () => async dispatch => {
     token.unset();
 
     dispatch(logoutSuccess());
-  } catch ({ message }) {
-    dispatch(logoutError(message));
+  } catch ({ response }) {
+    dispatch(logoutError(response.data.message));
   }
 };
 
@@ -94,9 +94,9 @@ const getCurrentUser = () => async (dispatch, getState) => {
   try {
     const { data } = await axios.get('/users/current');
 
-    dispatch(getCurrentUserSuccess(data));
-  } catch ({ message }) {
-    dispatch(getCurrentUserError(message));
+    dispatch(getCurrentUserSuccess(data.user));
+  } catch ({ response }) {
+    dispatch(getCurrentUserError(response.data.message));
   }
 };
 
