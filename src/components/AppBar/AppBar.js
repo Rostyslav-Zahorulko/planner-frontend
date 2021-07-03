@@ -14,8 +14,6 @@ const { getIsLoggedIn, getEmail } = authSelectors;
 export default function AppBar() {
   const isLoggedIn = useSelector(getIsLoggedIn);
   const email = useSelector(getEmail);
-  console.log(isLoggedIn);
-  console.log(email);
 
   return (
     <header className={s.header}>
