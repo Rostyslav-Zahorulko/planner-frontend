@@ -17,6 +17,8 @@ import FormCreateSprint from '../../components/FormCreateSprint';
 // Styles
 import styles from './SprintsPage.module.css';
 
+import projects from '../../data/projects.json';
+
 const sprints = [
   {
     id: '1asdfg',
@@ -45,16 +47,17 @@ const sprints = [
 ];
 
 const SprintsPage = () => {
-  const [isCreateSprintModalShown, setCreateSprintModalIsShown] = useState(false);
+  const [isCreateSprintModalShown, setCreateSprintModalIsShown] =
+    useState(false);
   const [isAddPeopleModalShown, setAddPeopleModalIsShown] = useState(false);
-  
+
   /*Create sprint*/
   const toggleCreateSprintModal = useCallback(() => {
     setCreateSprintModalIsShown(prevValue => !prevValue);
   }, []);
-  
+
   /*Add people*/
-  const toggleShowAddPeopleModal = useCallback(() => {
+  const toggleAddPeopleModal = useCallback(() => {
     setAddPeopleModalIsShown(prevValue => !prevValue);
   }, []);
 
@@ -75,28 +78,25 @@ const SprintsPage = () => {
           <p className={styles.createSprint}>Create a sprint</p>
         </div>
 
-        // Треба переробити на кнопку
+        {/* Треба переробити на кнопку */}
         <h3
           className={styles.subject}
           //onClick={}
         >
           Add people
         </h3>
-
         {/*<p cllassName={styles.text}> Ваш проект не має спринтів, скористайтесь кнопкою "Створити спринт"</p>*/}
         <SprintList sprints={sprints} />
-         
         {isAddPeopleModalShown && (
-          <Modal title={'Add people'} onClose={toggleModalAddPeople}>
+          <Modal title={'Add people'} onClose={toggleCreateSprintModal}>
             <FormAddPeople />
           </Modal>
         )}
-        
         {isCreateSprintModalShown && (
-          <Modal title={'Creating a sprint'} onClose={toggleModal}>
+          <Modal title={'Creating a sprint'} onClose={toggleAddPeopleModal}>
             <FormCreateSprint />
           </Modal>
-        )}          
+        )}
       </div>
     </div>
   );
