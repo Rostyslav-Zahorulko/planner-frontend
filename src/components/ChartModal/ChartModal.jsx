@@ -1,6 +1,7 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
 import styles from './ChartModal.module.css';
+import styleButton from '../Modal/Modal.module.css';
 
 const ChartModalRoot = document.querySelector('#chart-modal-root');
 
@@ -28,7 +29,10 @@ const ChartModal = ({ onClose, children }) => {
   return createPortal(
     <div className={styles.backdrop} onClick={handleBackdropClick}>
       <div className={styles.modal}>
-        <button onClick={onClose}>Close</button> {children}
+        <button className={styleButton.ModalCloseBtn} onClick={onClose}>
+          +
+        </button>{' '}
+        {children}
       </div>
     </div>,
     ChartModalRoot,
