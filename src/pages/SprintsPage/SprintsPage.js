@@ -77,23 +77,18 @@ const SprintsPage = () => {
           <AddButton onClick={toggleCreateSprintModal} />
           <p className={styles.createSprint}>Create a sprint</p>
         </div>
-
-        {/* Треба переробити на кнопку */}
-        <h3
-          className={styles.subject}
-          //onClick={}
-        >
+        <h3 className={styles.subject} onClick={toggleAddPeopleModal}>
           Add people
         </h3>
         {/*<p cllassName={styles.text}> Ваш проект не має спринтів, скористайтесь кнопкою "Створити спринт"</p>*/}
         <SprintList sprints={sprints} />
         {isAddPeopleModalShown && (
-          <Modal title={'Add people'} onClose={toggleCreateSprintModal}>
+          <Modal title={'Add people'} onClose={toggleAddPeopleModal}>
             <FormAddPeople />
           </Modal>
         )}
         {isCreateSprintModalShown && (
-          <Modal title={'Creating a sprint'} onClose={toggleAddPeopleModal}>
+          <Modal title={'Creating a sprint'} onClose={toggleCreateSprintModal}>
             <FormCreateSprint />
           </Modal>
         )}
