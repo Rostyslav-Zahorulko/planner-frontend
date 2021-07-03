@@ -31,6 +31,7 @@
 
 @media screen and (min-width: 1280px) {
   .btn {
-    right: 0px
+    right: 0px;
+    top: 50%;
   }
 }
