@@ -1,24 +1,38 @@
-import React from 'react';
+// Libraries
+import React, { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useEffect } from 'react';
-
-import s from './ProjectsPage.module.css';
-// БАЗА ДЛЯ ПРОВЕРКИ (ЕСЛИ НЕ ЗАПУЩЕН БЭК)
-// import projects from '../../data/projects.json';
-
-import projectsOperations from '../../redux/projects/projects-operations';
-import { getProjectsItems } from '../../redux/projects/projects-selectors';
 
 // Components
 import ProjectsList from '../../components/ProjectsList';
 import AddButton from '../../components/AddButton';
+import Modal from '../../components/Modal';
+
+// Redux
+import { projectsOperations } from '../../redux/projects';
+import { projectsSelectors } from '../../redux/projects';
+
+// Styles
+import s from './ProjectsPage.module.css';
+
+// БАЗА ДЛЯ ПРОВЕРКИ (ЕСЛИ НЕ ЗАПУЩЕН БЭК)
+// import projects from '../../data/projects.json';
+
+// const { addProject } = projectsOperations;
+const { getProjectsItems } = projectsSelectors;
 
 export default function ProjectsPage() {
+  const [isShown, setIsShown] = useState(false);
+
+  const toggleModal = useCallback(() => {
+    setIsShown(prevIsShown => !prevIsShown);
+  }, []);
+
   const dispatch = useDispatch();
+
   const projects = useSelector(getProjectsItems);
 
-  // СДЕЛАТЬ КОГДА БУДЕТ МОДАЛКА
-  // const onAddProject = value => dispatch(projectsOperations.addProject(value));
+  // TODO: СДЕЛАТЬ, КОГДА БУДЕТ МОДАЛКА
+  // const onAddProject = value => dispatch(addProject(value));
 
   useEffect(() => {
     dispatch(projectsOperations.getProjects());
@@ -30,7 +44,7 @@ export default function ProjectsPage() {
         <div className={s.headbar}>
           <h1 className={s.title}>Projects</h1>
           <div className={s.btnWrapper}>
-            <AddButton />
+            <AddButton onClick={toggleModal} />
             <p className={s.btnText}>Create a project</p>
           </div>
         </div>
@@ -38,6 +52,19 @@ export default function ProjectsPage() {
           <ProjectsList projects={projects} />
         ) : (
           <div className={s.noProjects}>No projects added yet</div>
+        )}
+        {isShown && (
+          <Modal title={'Creating a project'} onClose={toggleModal}>
+            <div>
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
+              ipsa obcaecati veniam fugiat a corrupti quibusdam laborum nostrum
+              voluptatum delectus modi, sit commodi error libero natus magnam
+              quam necessitatibus voluptatem optio officia deserunt! Quisquam
+              labore reiciendis optio, delectus doloremque, quis aperiam facilis
+              laboriosam voluptate a beatae animi praesentium reprehenderit
+              repellendus.
+            </div>
+          </Modal>
         )}
       </div>
     </>

@@ -1,3 +1,7 @@
-// import { createSelector } from 'reselect';
+const getProjectsItems = state => state.projects.items;
 
-export const getProjectsItems = state => state.projects.items;
+const projectsSelectors = {
+  getProjectsItems,
+};
+
+export default projectsSelectors;
