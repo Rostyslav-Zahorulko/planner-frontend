@@ -1,11 +1,12 @@
+import SidebarProjectsList from '../../components/SidebarProjectsList';
 import SprintList from '../../components/SprintsList';
 import ProjectName from '../../components/ProjectName';
 import AddButton from '../../components/AddButton';
-
 import Sidebar from '../../components/Sidebar';
-import ModalCreateSprint from '../../components/ModalCreateSprint';
-import '../../styles/base.css';
+
 import styles from './SprintsPage.module.css';
+
+import projects from '../../data/projects.json';
 
 const sprints = [
   {
@@ -36,7 +37,14 @@ const sprints = [
 const SprintsPage = () => {
   return (
     <div className={styles.project}>
-      <Sidebar />
+      <Sidebar
+        text={'project'}
+        modalTitle={'Creating a project'}
+        modalContent={'Тут повинен бути компонент форми для створення проекту'}
+      >
+        <SidebarProjectsList projects={projects} />
+      </Sidebar>
+
       <div className={styles.sprints}>
         <ProjectName />
         <div className={styles.addButtonSprint}>

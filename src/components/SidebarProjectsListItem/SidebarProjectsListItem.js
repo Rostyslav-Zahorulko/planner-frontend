@@ -1,6 +1,6 @@
-import styles from './ProjectLinkListItem.module.css';
+import styles from './SidebarProjectsListItem.module.css';
 
-const ProjectLinkListItem = project => (
+const SidebarProjectsListItem = project => (
   <li className={styles.list_item}>
     <a className={styles.link_list_item} href={`/projects/${project.id}`}>
       <span className={styles.link_list_item_sp}>test1{project.title} </span>
@@ -10,4 +10,4 @@ const ProjectLinkListItem = project => (
     {/* </NavLink> */}
   </li>
 );
-export default ProjectLinkListItem;
+export default SidebarProjectsListItem;
