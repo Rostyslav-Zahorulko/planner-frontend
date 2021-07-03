@@ -1,17 +1,37 @@
-import ShowProjects from '../ShowProjects';
-import ProjectLink from '../ProjectLinkList';
-import SidebarAddButton from '../SidebarAddButton';
+import { useState, useCallback } from 'react';
 
-import projects from '../../data/projects.json';
+import BackButton from '../BackButton';
+import AddButton from '../AddButton';
+import Modal from '../Modal';
 import styles from './Sidebar.module.css';
 
-const Sidebar = () => {
+const Sidebar = ({ text, modalTitle, modalContent, children }) => {
+  const [isShown, setIsShown] = useState(false);
+
+  const toggleModal = useCallback(() => {
+    setIsShown(prevIsShown => !prevIsShown);
+  }, []);
+
   return (
     <div className={styles.sidebar}>
-      <ShowProjects />
-      <ProjectLink projects={projects} />
-      <SidebarAddButton children={'Create a project'} />
+      <div className={styles.wrapper}>
+        <BackButton className={styles.backBtn} />
+        <p className={styles.text}>Show {text.concat('s')}</p>
+      </div>
+      {children}
+
+      <div className={styles.container}>
+        <AddButton onClick={toggleModal} />
+        <p className={styles.text}>Create a {text}</p>
+      </div>
+
+      {isShown && (
+        <Modal title={modalTitle} onClose={toggleModal}>
+          {modalContent}
+        </Modal>
+      )}
     </div>
   );
 };
+
 export default Sidebar;

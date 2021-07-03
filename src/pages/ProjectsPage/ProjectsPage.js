@@ -55,15 +55,7 @@ export default function ProjectsPage() {
         )}
         {isShown && (
           <Modal title={'Creating a project'} onClose={toggleModal}>
-            <div>
-              Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolorum
-              ipsa obcaecati veniam fugiat a corrupti quibusdam laborum nostrum
-              voluptatum delectus modi, sit commodi error libero natus magnam
-              quam necessitatibus voluptatem optio officia deserunt! Quisquam
-              labore reiciendis optio, delectus doloremque, quis aperiam facilis
-              laboriosam voluptate a beatae animi praesentium reprehenderit
-              repellendus.
-            </div>
+            <div>Тут повинен бути компонент форми для створення проекту</div>
           </Modal>
         )}
       </div>
