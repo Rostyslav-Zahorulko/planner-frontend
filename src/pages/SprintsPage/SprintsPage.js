@@ -1,5 +1,6 @@
 // Libraries
 import { useState, useCallback } from 'react';
+import { useSelector } from 'react-redux';
 
 // Components
 import SidebarProjectsList from '../../components/SidebarProjectsList';
@@ -12,7 +13,7 @@ import FormAddPeople from '../../components/FormAddPeople';
 import FormCreateSprint from '../../components/FormCreateSprint';
 
 // Redux
-// ...
+import { projectsSelectors } from '../../redux/projects';
 
 // Styles
 import styles from './SprintsPage.module.css';
@@ -45,16 +46,19 @@ const sprints = [
 ];
 
 const SprintsPage = () => {
-  const [isCreateSprintModalShown, setCreateSprintModalIsShown] = useState(false);
+  const projects = useSelector(projectsSelectors.getProjectsItems);
+
+  const [isCreateSprintModalShown, setCreateSprintModalIsShown] =
+    useState(false);
   const [isAddPeopleModalShown, setAddPeopleModalIsShown] = useState(false);
-  
+
   /*Create sprint*/
   const toggleCreateSprintModal = useCallback(() => {
     setCreateSprintModalIsShown(prevValue => !prevValue);
   }, []);
-  
+
   /*Add people*/
-  const toggleShowAddPeopleModal = useCallback(() => {
+  const toggleShowAddPeople = useCallback(() => {
     setAddPeopleModalIsShown(prevValue => !prevValue);
   }, []);
 
@@ -75,7 +79,7 @@ const SprintsPage = () => {
           <p className={styles.createSprint}>Create a sprint</p>
         </div>
 
-        // Треба переробити на кнопку
+        {/* {Треба переробити на кнопку} */}
         <h3
           className={styles.subject}
           //onClick={}
@@ -85,18 +89,18 @@ const SprintsPage = () => {
 
         {/*<p cllassName={styles.text}> Ваш проект не має спринтів, скористайтесь кнопкою "Створити спринт"</p>*/}
         <SprintList sprints={sprints} />
-         
+
         {isAddPeopleModalShown && (
-          <Modal title={'Add people'} onClose={toggleModalAddPeople}>
+          <Modal title={'Add people'} onClose={toggleShowAddPeople}>
             <FormAddPeople />
           </Modal>
         )}
-        
+
         {isCreateSprintModalShown && (
-          <Modal title={'Creating a sprint'} onClose={toggleModal}>
+          <Modal title={'Creating a sprint'} onClose={toggleShowAddPeople}>
             <FormCreateSprint />
           </Modal>
-        )}          
+        )}
       </div>
     </div>
   );
