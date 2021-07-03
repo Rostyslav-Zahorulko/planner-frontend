@@ -50,7 +50,7 @@ function App(props) {
       <AppBar />
 
       <Suspense fallback={<div>Loading...</div>}>
-        {/* <Switch>
+        <Switch>
           <PublicRoute exact path={register} restricted redirectTo={projects}>
             <RegisterPage />
           </PublicRoute>
@@ -70,9 +70,9 @@ function App(props) {
           <PrivateRoute path={tasks} redirectTo={login}>
             <TasksPage />
           </PrivateRoute>
-        </Switch> */}
+        </Switch>
 
-        <Switch>
+        {/* <Switch>
           <RegisterPage exact path={register} />
 
           <LoginPage path={login} />
@@ -82,7 +82,7 @@ function App(props) {
           <SprintsPage exact path={sprints} />
 
           <TasksPage path={tasks} />
-        </Switch>
+        </Switch> */}
       </Suspense>
     </Container>
   );

@@ -18,6 +18,8 @@ import { projectsSelectors } from '../../redux/projects';
 // Styles
 import styles from './SprintsPage.module.css';
 
+import projects from '../../data/projects.json';
+
 const sprints = [
   {
     id: '1asdfg',
@@ -50,6 +52,7 @@ const SprintsPage = () => {
 
   const [isCreateSprintModalShown, setCreateSprintModalIsShown] =
     useState(false);
+
   const [isAddPeopleModalShown, setAddPeopleModalIsShown] = useState(false);
 
   /*Create sprint*/
@@ -58,7 +61,7 @@ const SprintsPage = () => {
   }, []);
 
   /*Add people*/
-  const toggleShowAddPeople = useCallback(() => {
+  const toggleAddPeopleModal = useCallback(() => {
     setAddPeopleModalIsShown(prevValue => !prevValue);
   }, []);
 
@@ -71,33 +74,24 @@ const SprintsPage = () => {
       >
         <SidebarProjectsList projects={projects} />
       </Sidebar>
-
       <div className={styles.sprints}>
         <ProjectName />
         <div className={styles.addButtonSprint}>
           <AddButton onClick={toggleCreateSprintModal} />
           <p className={styles.createSprint}>Create a sprint</p>
         </div>
-
-        {/* {Треба переробити на кнопку} */}
-        <h3
-          className={styles.subject}
-          //onClick={}
-        >
+        <h3 className={styles.subject} onClick={toggleAddPeopleModal}>
           Add people
         </h3>
-
         {/*<p cllassName={styles.text}> Ваш проект не має спринтів, скористайтесь кнопкою "Створити спринт"</p>*/}
         <SprintList sprints={sprints} />
-
         {isAddPeopleModalShown && (
-          <Modal title={'Add people'} onClose={toggleShowAddPeople}>
+          <Modal title={'Add people'} onClose={toggleAddPeopleModal}>
             <FormAddPeople />
           </Modal>
         )}
-
         {isCreateSprintModalShown && (
-          <Modal title={'Creating a sprint'} onClose={toggleShowAddPeople}>
+          <Modal title={'Creating a sprint'} onClose={toggleCreateSprintModal}>
             <FormCreateSprint />
           </Modal>
         )}
