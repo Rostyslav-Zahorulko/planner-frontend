@@ -1,4 +1,7 @@
 @media screen and (max-width: 767px) {
+  .link_list {
+    display: none;
+  }
 }
 @media screen and (min-width: 768px) {
   .list_item {

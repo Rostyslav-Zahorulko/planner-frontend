@@ -1,0 +1,49 @@
+.show_back {
+  display: inline-flex;
+  align-items: center;
+  margin-bottom: 30px;
+  letter-spacing: 0.04em;
+  color: #181c27;
+
+  cursor: pointer;
+
+  transition: scale 0.25s linear, box-shadow 0.25s linear;
+}
+
+.show_back::before {
+  content: '';
+  width: 30px;
+  height: 10px;
+  display: inline-block;
+  margin-right: 20px;
+  background-repeat: no-repeat;
+  background-image: url(../../images/arrow.svg);
+  /* transition: all 0.25s linear; */
+}
+
+.show_back:hover {
+  transform: scale(1.03);
+}
+
+@media screen and (max-width: 767px) {
+  .show_back {
+    height: 40px;
+    text-align: center;
+  }
+}
+@media screen and (min-width: 768px) {
+  .show_back {
+    margin-bottom: 60px;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+  }
+  
+
+}
+
+@media screen and (min-width: 1280px) {
+  .show_back {
+    margin-bottom: 165px;
+  }
+}
