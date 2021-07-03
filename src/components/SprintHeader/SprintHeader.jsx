@@ -1,9 +1,13 @@
 import st from './SprintHeader.module.css';
+import { useState } from 'react';
 
-import search from '../../images/search.svg';
+import SearchButton from '../SearchButton';
+import TasksSearchInput from '../TasksSearchInput';
 import Media from 'react-media';
 
 const SprintHeader = () => {
+  const [searchActive, setSearchActive] = useState(false);
+
   return (
     <div className={st.title_sprint}>
       <Media queries={{ small: { minWidth: 768 } }}>
@@ -25,13 +29,12 @@ const SprintHeader = () => {
                       <li className={st.list_sprint_item}>Spent hour / day</li>
                       <li className={st.list_sprint_item}>Hours spent</li>
                       <li className={st.list_sprint_item}>
-                        <img
-                          className={st.search}
-                          src={search}
-                          alt="search"
-                          width="20"
-                          height="20"
-                        />
+                        {searchActive && (
+                          <TasksSearchInput
+                            onBlur={() => setSearchActive(false)}
+                          />
+                        )}
+                        <SearchButton onClick={() => setSearchActive(true)} />
                       </li>
                     </>
                   )

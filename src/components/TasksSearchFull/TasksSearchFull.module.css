@@ -1,0 +1,54 @@
+.wrapper {
+    display: flex;
+    position: relative;
+}
+
+/* ИКОНКА ЛУПЫ, ЕСЛИ НЕ КЛИКАБЕЛЬНАЯ */
+/* .wrapper::before {
+    width: 20px;
+    height: 20px;
+
+    position: absolute;
+    left: 10px;
+    bottom: 10px;
+
+    content: url(../../images/search.svg);
+} */
+
+.hiddenInput {
+    display: none;
+}
+
+.input {
+    background: transparent;
+
+    width: 280px;
+    height: 30px;
+    border: none;
+    border-bottom: 1px solid rgba(24, 28, 39, 0.1); 
+
+    padding-left: 40px;
+}
+
+.input:focus {
+    outline: none;
+
+}
+
+@media screen and (min-width: 768px) {
+.input {
+
+  width: 214px;
+  height: 30px;
+
+  padding-left: 20px;
+}
+
+  }
+
+  @media screen and (min-width: 1280px) {
+      .wrapper{
+          display: none;
+      }
+
+}

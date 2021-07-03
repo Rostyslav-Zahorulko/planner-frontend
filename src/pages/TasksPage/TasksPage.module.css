@@ -2,17 +2,7 @@
   display: flex;
   justify-content: space-between;
 }
-.date_sprint {
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 22px;
-  letter-spacing: 0.04em;
-  color: #181c27;
-  margin-right: 30px;
-  position: relative;
-}
+
 
 .title {
   margin-right: 40px;
@@ -100,23 +90,19 @@
   background-image: url('../../images/search.svg');
 }
 
-.date_left {
-  cursor: pointer;
-  position: absolute;
-  width: 10px;
-  height: 14px;
-  background-size: cover;
-  /* background-image: url('../../images/left.svg'); */
-  opacity: 0.3;
-  padding-right: 15px;
+
+.headPanelWrapper {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  margin-bottom: 7.5px;
 }
 
-@media screen and (min-width: 768px) {
-  .wrapper {
-    display: flex;
-    margin-right: 20px;
+@media screen and (max-width: 767px) {
+  .headPanelWrapper {
+    flex-direction: column;
+    align-items: baseline;
+    margin: 0;
+
   }
-  .wrapper_tasks {
-    padding: 20px;
-  }
-}
+};

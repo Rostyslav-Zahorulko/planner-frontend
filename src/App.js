@@ -1,12 +1,16 @@
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Switch } from 'react-router-dom';
 
 import Container from './components/Container';
 import AppBar from './components/AppBar';
-// import PrivateRoute from './components/PrivateRoute';
-// import PublicRoute from './components/PublicRoute';
+import PrivateRoute from './components/PrivateRoute';
+import PublicRoute from './components/PublicRoute';
+
+import { authOperations } from './redux/auth';
 
 import routes from './routes';
+// import { connect } from 'formik';
 
 const { register, login, projects, sprints, tasks } = routes;
 
@@ -36,13 +40,18 @@ const TasksPage = lazy(() =>
   import('./pages/TasksPage/TasksPage' /* webpackChunkName: "tasks-page" */),
 );
 
-export default function App() {
+function App(props) {
+  useEffect(() => {
+    // console.log(props);
+    props.onGetCurrentUser();
+  });
+
   return (
     <Container>
       <AppBar />
 
       <Suspense fallback={<div>Loading...</div>}>
-        {/* <Switch>
+        <Switch>
           <PublicRoute exact path={register} restricted redirectTo={projects}>
             <RegisterPage />
           </PublicRoute>
@@ -62,9 +71,9 @@ export default function App() {
           <PrivateRoute path={tasks} redirectTo={login}>
             <TasksPage />
           </PrivateRoute>
-        </Switch> */}
+        </Switch>
 
-        <Switch>
+        {/* <Switch>
           <RegisterPage exact path={register} />
 
           <LoginPage path={login} />
@@ -74,8 +83,13 @@ export default function App() {
           <SprintsPage exact path={sprints} />
 
           <TasksPage path={tasks} />
-        </Switch>
+        </Switch> */}
       </Suspense>
     </Container>
   );
 }
+
+const mapDispatchToProps = {
+  onGetCurrentUser: authOperations.getCurrentUser,
+};
+export default connect(null, mapDispatchToProps)(App);
