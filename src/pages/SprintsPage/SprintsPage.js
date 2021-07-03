@@ -5,6 +5,7 @@ import AddButton from '../../components/AddButton';
 import Sidebar from '../../components/Sidebar';
 //import ModalDeletesSprint from '../../components/ModalDeletesSprint';
 import Modal from '../../components/Modal';
+import FormAddPeople from '../../components/FormAddPeople';
 import FormCreateSprint from '../../components/FormCreateSprint';
 import '../../styles/base.css';
 import styles from './SprintsPage.module.css';
@@ -72,7 +73,9 @@ const SprintsPage = () => {
         <SprintList sprints={sprints} />
         {/*{showModal && <ModalDeletesSprint />}*/}
         {showAddPeople && (
-          <Modal title={'Add people'} onClose={toggleModalAddPeople}></Modal>
+          <Modal title={'Add people'} onClose={toggleModalAddPeople}>
+            <FormAddPeople />
+          </Modal>
         )}
         {showForm && (
           <Modal title={'Creating a sprint'} onClose={toggleModal}>
