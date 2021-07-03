@@ -1,4 +1,4 @@
-import EmailPeopleListItem from '../ProjectsListItem';
+import EmailPeopleListItem from '../EmailPeopleListItem';
 import styles from './EmailPeopleList.module.css';
 
 const EmailPeopleList = () => {

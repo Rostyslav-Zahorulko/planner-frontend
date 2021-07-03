@@ -1,5 +1,6 @@
 // Libraries
 import { useState, useCallback } from 'react';
+import { useSelector } from 'react-redux';
 
 // Components
 import SidebarProjectsList from '../../components/SidebarProjectsList';
@@ -12,7 +13,7 @@ import FormAddPeople from '../../components/FormAddPeople';
 import FormCreateSprint from '../../components/FormCreateSprint';
 
 // Redux
-// ...
+import { projectsSelectors } from '../../redux/projects';
 
 // Styles
 import styles from './SprintsPage.module.css';
@@ -47,8 +48,11 @@ const sprints = [
 ];
 
 const SprintsPage = () => {
+  const projects = useSelector(projectsSelectors.getProjectsItems);
+
   const [isCreateSprintModalShown, setCreateSprintModalIsShown] =
     useState(false);
+
   const [isAddPeopleModalShown, setAddPeopleModalIsShown] = useState(false);
 
   /*Create sprint*/
@@ -70,7 +74,6 @@ const SprintsPage = () => {
       >
         <SidebarProjectsList projects={projects} />
       </Sidebar>
-
       <div className={styles.sprints}>
         <ProjectName />
         <div className={styles.addButtonSprint}>

@@ -6,9 +6,12 @@ import TasksDatesNav from '../../components/TasksDatesNav';
 import TasksSearch from '../../components/TasksSearchFull';
 import SprintHeader from '../../components/SprintHeader';
 import ChangeButton from '../../components/СhangeButton/ChangeButton';
-import SidebarSprints from '../../components/SidebarSprints/SidebarSprints';
+import SidebarForReuse from '../../components/SidebarForReuse';
+import SprintLinkList from '../../components/SprintLinkList';
 import Modal from '../../components/Modal';
 import addTask from '../../redux/tasks/tasks-operations';
+
+import sprints from '../../data/sprints.json';
 
 import AddButton from '../../components/AddButton';
 
@@ -25,16 +28,50 @@ export default function TasksPage() {
   };
 
   return (
-    <>
-      <div className={st.headPanelWrapper}>
-        <TasksDatesNav />
-        {window.matchMedia('(max-width: 1279px)') && <TasksSearch />}
-      </div>
-      <div className={st.header}>
-        <div className={st.title_wrapper}>
-          <h1 className={st.title}>Sprint 1</h1>
-          {/* <button className={st.button_edit}></button> */}
-          <ChangeButton />
+    // <>
+    //   <div className={st.headPanelWrapper}>
+    //     <TasksDatesNav />
+    //     {window.matchMedia('(max-width: 1279px)') && <TasksSearch />}
+    //   </div>
+    //   <div className={st.header}>
+    //     <div className={st.title_wrapper}>
+    //       <h1 className={st.title}>Sprint 1</h1>
+    //       {/* <button className={st.button_edit}></button> */}
+    //       <ChangeButton />
+    //     </div>
+    //     <div className={st.header}>
+    //       <div className={st.title_wrapper}>
+    //         <h1 className={st.title}>Sprint 1</h1>
+    //         {/* <button className={st.button_edit}></button> */}
+    //         <ChangeButton />
+    //       </div>
+    //       <div className={st.button_wrapper}>
+    //         <AddButton createModal={handleCreateModal} />
+    //         <Media queries={{ big: { minWidth: 1280 } }}>
+    //           {matches =>
+    //             matches.big ? (
+    //               <p className={st.name_button}>Create a task</p>
+    //             ) : (
+    //               ' '
+    //             )
+    //           }
+    //         </Media>
+    //       </div>
+    //     </div>
+    //     <SprintHeader />
+    //     <TasksList tasks={tasks} />
+    //     {showModal && <Modal onClose={handleCancelModal} />}
+    //   </div>
+    // </>
+
+    <div className={st.wrapper}>
+      <SidebarForReuse goBackTo={'sprints'}>
+        <SprintLinkList sprints={sprints} />
+      </SidebarForReuse>
+      <div className={st.wrapper_tasks}>
+        <div className={st.headPanelWrapper}>
+          <TasksDatesNav />
+          {window.matchMedia('(max-width: 1279px)') && <TasksSearch />}
         </div>
         <div className={st.header}>
           <div className={st.title_wrapper}>
@@ -59,43 +96,6 @@ export default function TasksPage() {
         <TasksList tasks={tasks} />
         {showModal && <Modal onClose={handleCancelModal} />}
       </div>
-    </>
-
-    // <div className={st.wrapper}>
-    //   <SidebarSprints />
-    //   <div className={st.wrapper_tasks}>
-    //     <div className={st.date}>
-    //       <span className={st.date_left}></span>
-    //       <p className={st.date_sprint}>
-    //         1/
-    //         <span>10 </span>
-    //         <span className={st.date_right}> </span>
-    //         <span>08.08.2020</span>
-    //       </p>
-    //     </div>
-    //      <div className={st.header}>
-    //       <div className={st.title_wrapper}>
-    //         <h1 className={st.title}>Sprint 1</h1>
-    //         {/* <button className={st.button_edit}></button> */}
-    //         <ChangeButton />
-    //       </div>
-    //       <div className={st.button_wrapper}>
-    //         <AddButton createModal={handleCreateModal} />
-    //         <Media queries={{ big: { minWidth: 1280 } }}>
-    //           {matches =>
-    //             matches.big ? (
-    //               <p className={st.name_button}>Create a task</p>
-    //             ) : (
-    //               ' '
-    //             )
-    //           }
-    //         </Media>
-    //       </div>
-    //     </div>
-    //     <SprintHeader />
-    //     <TasksList tasks={tasks} />
-    //     {showModal && <Modal onClose={handleCancelModal} />}
-    //   </div>
-    // </div>    
+    </div>
   );
 }

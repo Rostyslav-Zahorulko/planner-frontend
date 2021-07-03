@@ -1,4 +1,5 @@
 .header {
+  width: 100%;
   display: flex;
   justify-content: space-between;
 }
@@ -31,32 +32,16 @@
   margin-right: 30px;
 }
 
-/* .button_edit {
-  width: 20px;
-  height: 20px;
-  border: none;
-  background-position: 50%;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-color: transparent;
-  cursor: pointer;
-  outline: none;
-  position: absolute;
-  right: 0;
-  top: 50%;
-  transform: translateY(-50%);
-  background-image: url('../../images/edit.svg');
-  transition: all 200ms linear;
-} */
-
 .name_button {
   cursor: pointer;
+  margin-left: 20px;
+  font-weight: 500;
+
 }
 
 .button_wrapper {
-  width: 240px;
+  /* width: 240px; */
   display: flex;
-  justify-content: space-between;
   align-items: center;
 }
 
@@ -92,11 +77,17 @@
 .headPanelWrapper {
   display: flex;
   justify-content: space-between;
-  margin-top: 20px;
+  /* margin-top: 20px; */
   margin-bottom: 7.5px;
 }
 
 @media screen and (max-width: 767px) {
+  .header {
+    margin-top: 20px;
+  }
+  .button_wrapper {
+    width: 0px;
+  }
   .headPanelWrapper {
     flex-direction: column;
     align-items: baseline;
@@ -107,9 +98,33 @@
 @media screen and (min-width: 768px) {
   .wrapper {
     display: flex;
-    margin-right: 20px;
+    /* justify-content: space-between; */
+    border-right: 1px solid rgba(24, 28, 39, 0.1);
+
   }
   .wrapper_tasks {
     padding: 20px;
   }
+
+  .button_wrapper {
+    width: 44px;
+  }
 }
+
+@media screen and (min-width: 1280px) {
+  .wrapper {
+  justify-content: space-between;
+}
+
+.wrapper_tasks {
+  width: 970px;
+}
+
+.button_wrapper {
+  width: 240px;
+}
+
+
+
+}
+

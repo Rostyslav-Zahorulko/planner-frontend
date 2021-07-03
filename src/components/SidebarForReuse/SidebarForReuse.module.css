@@ -2,15 +2,30 @@
   .sidebar {
     height: 40px;
     box-sizing: border-box;
-    border-bottom: 1px solid rgba(24, 28, 39, 0.1);
+    /* border-bottom: 1px solid rgba(24, 28, 39, 0.1); */
+    position: relative;
   }
+
+  .sidebar::after {
+    position: absolute;
+    bottom: 0;
+    left: -20px;
+
+    content: '';
+    font-display: block;
+    width: 320px;
+    height: 1px;
+    background-color: rgba(24, 28, 39, 0.1);
+    
+  }
+  
 }
 @media screen and (min-width: 768px) {
   .sidebar {
-    width: 170px;
+    width: 140px;
     height: 844px;
-    padding: 15px;
     margin: 0;
+    padding: 20px 30px 0 0 ;
 
     display: flex;
     flex-direction: column;
@@ -20,9 +35,9 @@
   }
 }
 @media screen and (min-width: 1280px) {
-  .sidebar {
-    padding: 30px;
-  }
+  /* .sidebar {
+    padding: 20px 30px;
+  } */
 }
 
 .show_back {
