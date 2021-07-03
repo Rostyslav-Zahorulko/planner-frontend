@@ -12,6 +12,8 @@ import { authOperations } from './redux/auth';
 import routes from './routes';
 // import { connect } from 'formik';
 
+import ChartModalContainer from './components/ChartModal';
+
 const { register, login, projects, sprints, tasks } = routes;
 
 const RegisterPage = lazy(() =>
@@ -47,8 +49,7 @@ function App(props) {
 
   return (
     <Container>
-      <AppBar />
-
+      <AppBar /> <ChartModalContainer />
       <Suspense fallback={<div>Loading...</div>}>
         {/* <Switch>
           <PublicRoute exact path={register} restricted redirectTo={projects}>
@@ -71,8 +72,7 @@ function App(props) {
             <TasksPage />
           </PrivateRoute>
         </Switch> */}
-
-        <Switch>
+        {/* <Switch>
           <RegisterPage exact path={register} />
 
           <LoginPage path={login} />
@@ -82,7 +82,7 @@ function App(props) {
           <SprintsPage exact path={sprints} />
 
           <TasksPage path={tasks} />
-        </Switch>
+        </Switch>*/}
       </Suspense>
     </Container>
   );
