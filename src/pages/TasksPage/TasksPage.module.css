@@ -3,7 +3,6 @@
   justify-content: space-between;
 }
 
-
 .title {
   margin-right: 40px;
   font-family: 'Montserrat';
@@ -90,7 +89,6 @@
   background-image: url('../../images/search.svg');
 }
 
-
 .headPanelWrapper {
   display: flex;
   justify-content: space-between;
@@ -103,6 +101,15 @@
     flex-direction: column;
     align-items: baseline;
     margin: 0;
-
   }
-};
+}
+
+@media screen and (min-width: 768px) {
+  .wrapper {
+    display: flex;
+    margin-right: 20px;
+  }
+  .wrapper_tasks {
+    padding: 20px;
+  }
+}
