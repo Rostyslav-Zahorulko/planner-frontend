@@ -1,4 +1,5 @@
-import { Suspense, lazy } from 'react';
+import { Suspense, lazy, useEffect } from 'react';
+import { connect } from 'react-redux';
 import { Switch } from 'react-router-dom';
 
 import Container from './components/Container';
@@ -6,7 +7,10 @@ import AppBar from './components/AppBar';
 // import PrivateRoute from './components/PrivateRoute';
 // import PublicRoute from './components/PublicRoute';
 
+import { authOperations } from './redux/auth';
+
 import routes from './routes';
+// import { connect } from 'formik';
 
 const { register, login, projects, sprints, tasks } = routes;
 
@@ -36,7 +40,11 @@ const TasksPage = lazy(() =>
   import('./pages/TasksPage/TasksPage' /* webpackChunkName: "tasks-page" */),
 );
 
-export default function App() {
+function App(props) {
+  useEffect(() => {
+    props.onGetCurrentUser();
+  });
+
   return (
     <Container>
       <AppBar />
@@ -79,3 +87,9 @@ export default function App() {
     </Container>
   );
 }
+
+const mapDispatchToProps = {
+  onGetCurrentUser: authOperations.getCurrentUser,
+};
+
+export default connect(null, mapDispatchToProps)(App);

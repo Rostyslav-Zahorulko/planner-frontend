@@ -21,7 +21,7 @@
 
 .listItem_tasks {
   display: flex;
-  flex-wrap: wrap;
+  /* flex-wrap: wrap; */
 }
 
 .listItem_tasks li:hover {

@@ -10,7 +10,7 @@ const Sidebar = () => {
     <div className={styles.sidebar}>
       <ShowProjects />
       <ProjectLink projects={projects} />
-      <SidebarAddButton />
+      <SidebarAddButton children={'Create a project'} />
     </div>
   );
 };

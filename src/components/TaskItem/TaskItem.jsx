@@ -22,7 +22,7 @@ export default function TaskItem({
         </li>
         <li className={st.totalHours}>{totalHours}</li>
         <li className={st.delete_item}>
-          <button className={st.delete_btn}></button>
+          <button className={st.delete_btn} type='button'></button>
         </li>
       </ul>
     </li>

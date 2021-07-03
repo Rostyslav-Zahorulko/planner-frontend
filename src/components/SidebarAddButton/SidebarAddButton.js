@@ -4,6 +4,7 @@ import AddButton from '../AddButton';
 import Modal from '../Modal';
 import FormSideBar from '../FormSideBar';
 import styles from './SidebarAddButton.module.css';
+
 const SidebarAddButton = () => {
   const [showModal, setShowModal] = useState(false);
   const toggleModal = useCallback(() => {
