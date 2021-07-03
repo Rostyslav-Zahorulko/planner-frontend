@@ -98,7 +98,6 @@
   margin-bottom: 7.5px;
 }
 
-
 @media screen and (max-width: 767px) {
   .headPanelWrapper {
     flex-direction: column;
@@ -107,9 +106,3 @@
 
   }
 };
-
-
-
-
-
-
