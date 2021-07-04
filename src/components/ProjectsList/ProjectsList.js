@@ -1,7 +1,7 @@
 import s from './ProjectsList.module.css';
 import ProjectsListItem from '../ProjectsListItem';
 
-export default function ProjectsList({ projects, onDeleteProject }) {
+export default function ProjectsList({ projects }) {
   const cropDescription = description => {
     if (description.length > 42) {
       const croppedDescription = `${description.substr(0, 38)}...`;

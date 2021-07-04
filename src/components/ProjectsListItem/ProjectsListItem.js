@@ -1,5 +1,5 @@
 // import react from 'react';
-import { NavLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import s from './ProjectsListItem.module.css';
 
@@ -14,15 +14,16 @@ export default function ProjectsListItem({ id, title, description }) {
 
   return (
     <li className={s.listItem}>
-      <NavLink to={`/projects/${id}`}>
+      <Link to={`/projects/${id}`} className={s.link}>
         {title.length > 12 ? (
           <div className={s.longTitle}>{title}</div>
         ) : (
           <div className={s.title}>{title}</div>
         )}
         <div className={s.description}>{description}</div>
-      </NavLink>
-      <DeleteButtonWhite onDeleteProject={onDeleteProject} projectId={id} />
+
+        <DeleteButtonWhite onDeleteProject={onDeleteProject} projectId={id} />
+      </Link>
     </li>
   );
 }
