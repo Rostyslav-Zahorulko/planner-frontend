@@ -10,11 +10,13 @@ import ChangeButton from '../../components/СhangeButton/ChangeButton';
 import SidebarForReuse from '../../components/SidebarForReuse';
 import SprintLinkList from '../../components/SprintLinkList';
 import Modal from '../../components/Modal';
+
 import FormCreateTask from '../../components/FormCreateTask';
 import { getSprintItem } from '../../redux/tasks/tasks-selectors';
 import FormCreateSprint from '../../components/FormCreateSprint';
 
-// import addTask from '../../redux/tasks/tasks-operations';
+import addTask from '../../redux/tasks/tasks-operations';
+import ChartModalContainer from '../../components/ChartModal';
 
 import sprints from '../../data/sprints.json';
 
@@ -69,6 +71,7 @@ export default function TasksPage() {
           </Modal>
         )}
       </div>
+      {tasks.length > 3 ? <ChartModalContainer /> : ''}
     </div>
   );
 }

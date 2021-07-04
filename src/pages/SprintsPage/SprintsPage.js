@@ -18,7 +18,7 @@ import { projectsSelectors } from '../../redux/projects';
 // Styles
 import styles from './SprintsPage.module.css';
 
-import projects from '../../data/projects.json';
+//import projects from '../../data/projects.json';
 
 const sprints = [
   {
