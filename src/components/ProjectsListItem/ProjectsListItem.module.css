@@ -2,16 +2,20 @@
   position:relative;
     
   display: block;
-    width: 135px;
-    height: 135px;
-    margin-right: 10px;
-    margin-bottom: 10px;
-    padding: 10px;
-
-    border-radius: 5px;
+  margin-right: 10px;
+  margin-bottom: 10px;
+  border-radius: 5px;
 
     cursor:pointer;
-    transition: box-shadow 0.2s ease;
+    transition: all 0.2s ease;
+
+}
+
+.link {
+  display: block;
+  width: 135px;
+  height: 135px;
+  padding: 10px;
 
 }
 
@@ -26,6 +30,7 @@
 
 .listItem:hover:nth-child(3n + 1) {
   box-shadow: 0px 0px 17px -1px rgba(140, 114, 223, 0.6);
+  transform: scale(1.02);
 }
 
 .listItem:nth-child(3n + 2) {
@@ -34,6 +39,8 @@
 
 .listItem:hover:nth-child(3n + 2) {
   box-shadow: 0px 0px 17px -1px rgba(255, 118, 95, 0.6);
+  transform: scale(1.02);
+
 }
 
 
@@ -43,6 +50,8 @@
 
 .listItem:hover:nth-child(3n + 3) {
 box-shadow: 0px 0px 17px -1px rgba(113, 223, 135, 0.6);
+transform: scale(1.02);
+
 }
 
 
@@ -55,6 +64,9 @@ font-size: 16px;
 line-height: 20px;
 letter-spacing: 0.04em;
 color: #ffffff;
+
+word-wrap: break-word;
+
 }
 
 .longTitle {
@@ -66,11 +78,15 @@ color: #ffffff;
   line-height: 18px;
   letter-spacing: 0.04em;
   color: #ffffff;
+
+  word-wrap:break-word;
 }
 
 .description {
   font-size: 10px;
   line-height: 12px;
+  word-wrap: break-word;
+
 
 color: #ffffff;
 
@@ -90,14 +106,20 @@ color: #ffffff;
         height: 216px;
         margin-right: 20px;
         margin-bottom: 20px;
-        padding: 20px;
 
 background-image: url(../../images/parabolas.png);
 background-size: 280%;
 background-repeat: no-repeat;
 
-
     }
+
+.link {
+  display: block;
+  width: 216px;
+  height: 216px;
+  padding: 20px;
+}
+
 
 .listItem:nth-child(4n + 1) {
       background-position: 0px 61px;
@@ -151,8 +173,16 @@ background-position: -236px 61px;
   height: 270px;
   margin-right: 30px;
   margin-bottom: 30px;
-  padding: 28px 30px;
 }
+
+.link {
+  display: block;
+  width: 270px;
+height: 270px;
+
+padding: 28px 30px;
+}
+
 
 .listItem:nth-child(4n + 1) {
   background-position: 0px 76px;

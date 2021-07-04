@@ -24,7 +24,7 @@ const getProjects = () => async dispatch => {
 
   try {
     const { data } = await axios.get('/projects');
-    console.log(data.data.projects);
+    // console.log(data.data.projects);
 
     dispatch(getProjectsSuccess(data.data.projects));
   } catch ({ message }) {
@@ -76,10 +76,11 @@ const getProjectInfo = id => async dispatch => {
 
   try {
     const { data } = await axios.get(`/projects/${id}`);
+    // console.log(data.project);
 
-    dispatch(getProjectInfoSuccess(data));
-  } catch ({ message }) {
-    dispatch(getProjectInfoError(message));
+    dispatch(getProjectInfoSuccess(data.project));
+  } catch ({ response }) {
+    dispatch(getProjectInfoError(response.data.message));
   }
 };
 

@@ -10,6 +10,7 @@ import PublicRoute from './components/PublicRoute';
 import { authOperations } from './redux/auth';
 
 import routes from './routes';
+// import { connect } from 'formik';
 
 const { register, login, projects, sprints, tasks } = routes;
 
