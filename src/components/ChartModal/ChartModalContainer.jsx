@@ -6,7 +6,7 @@ const ChartModalContainer = () => {
   const toggleModal = () => {
     setShowModal(!ShowModal);
   };
-  console.log(Chart);
+
   return (
     <div>
       <button type="button" onClick={toggleModal}>
@@ -14,8 +14,6 @@ const ChartModalContainer = () => {
       </button>
       {ShowModal && (
         <ChartModal onClose={toggleModal}>
-          {/* сюда передаю график */}
-
           <h2>Burndown Chart(Calendar Team)</h2>
 
           <Chart />

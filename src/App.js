@@ -72,7 +72,7 @@ function App(props) {
             <TasksPage />
           </PrivateRoute>
         </Switch> */}
-        {/* <Switch>
+        <Switch>
           <RegisterPage exact path={register} />
 
           <LoginPage path={login} />
@@ -82,7 +82,7 @@ function App(props) {
           <SprintsPage exact path={sprints} />
 
           <TasksPage path={tasks} />
-        </Switch>*/}
+        </Switch>
       </Suspense>
     </Container>
   );
