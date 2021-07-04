@@ -71,7 +71,8 @@ export default function TasksPage() {
           </Modal>
         )}
       </div>
-      {tasks.length > 3 ? <ChartModalContainer /> : ''}
+      {/* {tasks.length > 3 ? <ChartModalContainer /> : ''} */}
+      <ChartModalContainer />
     </div>
   );
 }
