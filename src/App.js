@@ -59,17 +59,17 @@ function App(props) {
             <LoginPage />
           </PublicRoute>
 
-          <PrivateRoute exact path={projects} redirectTo={login}>
+          {/* <PrivateRoute exact path={projects} redirectTo={login}>
             <ProjectsPage />
-          </PrivateRoute>
+          </PrivateRoute> */}
 
-          <PrivateRoute exact path={sprints} redirectTo={login}>
-            <SprintsPage />
-          </PrivateRoute>
+          {/* <PrivateRoute exact path={sprints} redirectTo={login}> */}
+          {/* <SprintsPage /> */}
+          {/* </PrivateRoute> */}
 
-          <PrivateRoute path={tasks} redirectTo={login}>
-            <TasksPage />
-          </PrivateRoute>
+          {/* <PrivateRoute path={tasks} redirectTo={login}> */}
+          <TasksPage path={tasks} />
+          {/* </PrivateRoute> */}
         </Switch>
 
         {/* <Switch>

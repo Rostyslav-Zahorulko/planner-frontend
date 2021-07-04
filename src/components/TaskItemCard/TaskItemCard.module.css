@@ -1,34 +1,33 @@
+.list_sprint {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20;
+}
+.list_sprint_item {
+  height: 214px;
+  width: 280px;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0px 6px 15px rgb(2 4 48 / 10%);
+  border-radius: 5px;
+  margin-right: 20px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  transition: all 0.25s linear;
+}
+.title {
+  margin-bottom: 20px;
+}
 
-  .list_sprint {
-    margin-left: auto;
-    margin-right: auto;
-    padding: 20;
-  }
-  .list_sprint_item {
-    height: 214px;
-    width: 280px;
-    padding: 20px;
-    background: #ffffff;
-    box-shadow: 0px 6px 15px rgb(2 4 48 / 10%);
-    border-radius: 5px;
-    margin-right: 20px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    transition: all 0.25s linear;
-  }
-  .title {
-    margin-bottom: 20px;
-  }
-
-  .list_sprint_item_title {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    margin-bottom: 10px;
-  }
-  .delete_btn {
-    /* margin-left: 243px; */
-  }
+.list_sprint_item_title {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+.delete_btn {
+  /* margin-left: 243px; */
+}
 
 .list_sprint_item {
   font-style: normal;
@@ -67,20 +66,23 @@
 .delete_btn {
   width: 20px;
   height: 20px;
-  border: none;
   background-position: center;
   background-repeat: no-repeat;
   background-size: contain;
   background-color: transparent;
   cursor: pointer;
-  background-image: url('../../images/delete.svg');
-  outline: none;
-  transition: all 500ms linear;
+  background-image: url('../../images/basket.svg');
+  border: none;
+  border-radius: 50%;
 }
+.delete_item {
+  align-self: center;
+}
+
 .delete_btn:hover {
-  box-shadow: 8px 2px 13px rgb(156 54 6 / 29%);
-  transition: all 0.25s linear;
   transform: rotate(65deg);
+  box-shadow: 8px 2px 13px rgba(156, 54, 6, 0.294);
+  transition: all 0.25s linear;
 }
 
 @media screen and (min-width: 786px) and (max-width: 1279px) {
@@ -90,11 +92,10 @@
     margin-right: 0;
 
     width: 231px;
-
   }
 
   .list_sprint_item {
-    width: 231px
+    width: 231px;
   }
 
   .list_sprint:nth-child(2n + 1) {
