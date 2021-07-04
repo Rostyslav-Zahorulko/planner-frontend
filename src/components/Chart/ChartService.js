@@ -4,29 +4,30 @@ import Chart from './Chart';
 const ChartService = () => {
   const [chartData, setChartData] = useState({});
 
-  //   const [incomingData, setIncomingData] = useState([]);
-  //   const [incomingHours, setIncomingHours] = useState([]);
-  //   const [plannedHours, setPlannedHours] = useState([]);
+  // const [incomingData, setIncomingData] = useState([]);
+  // const [incomingHours, setIncomingHours] = useState([]);
+  // const [plannedHours, setPlannedHours] = useState([]);
 
-  // const handleGetData = () => {
-  //   const days = [];
-  //   const incomingHours = [];
-  //   const plannedHours = [];
-  //   axios
-  //     .get('')
-  //     .then(res => {
-  //       console.log(res.data.sprints);
+  const handleGetData = () => {
+    const days = [];
+    const incomingHours = [];
+    const plannedHours = [];
+    axios
+      .get('')
+      .then(res => {
+        console.log(res.data.sprints);
 
-  //       for (const dataObj of res.data.sprints) console.log(dataObj.tasks);
-  //       // days.push(parseInt(dataObj.tasks));
-  //       // incomingHours.push(parseInt(dataObj.plannedHours));
-  //       // plannedHours.push(parseInt(dataObj.plannedHours));
-  //     })
-  //     .catch(err => {
-  //       console.log(err);
-  //     });
+        // for (const dataObj of res.data.sprints) {
+        //   days.push(parseInt(dataObj.tasks));
+        //   incomingHours.push(parseInt(dataObj.plannedHours));
+        //   plannedHours.push(parseInt(dataObj.plannedHours));
+        // }
+      })
+      .catch(err => {
+        console.log(err);
+      });
 
-    // console.log(days, incomingHours, plannedHours);
+    console.log(days, incomingHours, plannedHours);
     setChartData({
       labels: ['Red', 'Blue', 'Yellow', 'Green', 'Purple', 'Orange'], // days
       datasets: [
