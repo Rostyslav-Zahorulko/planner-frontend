@@ -76,7 +76,7 @@ const SprintsPage = () => {
       </Sidebar>
       <div className={styles.sprints}>
         <ProjectName />
-        <div className={styles.addButtonSprint}>
+        <div className={styles.addSprintButton}>
           <AddButton onClick={toggleCreateSprintModal} />
           <p className={styles.createSprint}>Create a sprint</p>
         </div>
