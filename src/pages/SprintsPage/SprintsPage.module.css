@@ -27,12 +27,11 @@
 @media screen and (min-width: 768px) {
   .project {
     display: flex;
-    /* margin-right: 20px; */
-    /* padding-top: 40px; */
   }
 
   .sprints {
-    padding: 20px;
+    width: 472px;
+    padding-left: 20px;
   }
 }
 
@@ -49,6 +48,11 @@
 }
 
 @media screen and (min-width: 1280px) {
+  .sprints {
+    width: 940px;
+    padding-left: 70px;
+  }
+
   .addSprintButton {
     position: absolute;
 
