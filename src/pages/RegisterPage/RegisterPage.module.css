@@ -7,8 +7,9 @@
 .title {
   margin-left: auto;
   margin-right: auto;
-  padding-bottom: 30px;
+  margin-bottom: 30px;
   font-weight: 500;
+  text-align: center;
 }
 
 .form {
@@ -122,9 +123,9 @@
   }
 
   .title {
-    width: 174px;
     font-size: 26px;
   }
+
   .form {
     padding: 47px 20px;
   }
@@ -152,7 +153,6 @@
     height: 78px;
     top: calc(81px + 80px);
     left: 621px;
-
   }
 
   .circle2 {
@@ -232,9 +232,9 @@
   }
 
   .title {
-    width: 241px;
     font-size: 36px;
   }
+
   .form {
     margin-top: 114px;
     width: 570px;

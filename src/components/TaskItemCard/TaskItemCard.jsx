@@ -10,7 +10,7 @@ export default function TaskItemCard({
 }) {
   return (
     <div className={st.list_sprint}>
-      <ul className={st.list_sprint}>
+      <ul>
         <li className={st.list_sprint_item}>
           <h3 className={st.title}>{title}</h3>
           <p className={st.list_sprint_item_title}>
@@ -26,7 +26,7 @@ export default function TaskItemCard({
             Витрачено годин <span>{totalHours}</span>
           </p>
           <p className={st.list_sprint_item_title}>
-            <button className={st.delete_btn} type='button'></button>
+            <button className={st.delete_btn} type="button"></button>
           </p>
         </li>
       </ul>

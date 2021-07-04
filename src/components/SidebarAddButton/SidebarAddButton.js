@@ -1,6 +1,6 @@
 import AddButton from '../AddButton';
 import styles from './SidebarAddButton.module.css';
-const SidebarAddButton = ({children}) => {
+const SidebarAddButton = ({ children }) => {
   return (
     <div className={styles.sidebar_add_button}>
       <AddButton />
