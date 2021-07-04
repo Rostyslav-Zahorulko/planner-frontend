@@ -10,7 +10,6 @@ import PublicRoute from './components/PublicRoute';
 import { authOperations } from './redux/auth';
 
 import routes from './routes';
-// import { connect } from 'formik';
 
 const { register, login, projects, sprints, tasks } = routes;
 
@@ -48,7 +47,7 @@ function App(props) {
   return (
     <Container>
       <AppBar />
-
+    
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
           <PublicRoute exact path={register} restricted redirectTo={projects}>
@@ -70,7 +69,7 @@ function App(props) {
           <PrivateRoute path={tasks} redirectTo={login}>
             <TasksPage />
           </PrivateRoute>
-        </Switch>
+        <Switch>
 
         {/* <Switch>
           <RegisterPage exact path={register} />
