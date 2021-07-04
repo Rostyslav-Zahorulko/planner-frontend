@@ -1,6 +1,7 @@
 // Libraries
-import { useState, useCallback } from 'react';
-import { useSelector } from 'react-redux';
+import { useState, useCallback, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router';
 
 // Components
 import SidebarProjectsList from '../../components/SidebarProjectsList';
@@ -13,42 +14,48 @@ import FormAddPeople from '../../components/FormAddPeople';
 import FormCreateSprint from '../../components/FormCreateSprint';
 
 // Redux
+import { projectsOperations } from '../../redux/projects';
 import { projectsSelectors } from '../../redux/projects';
+import { currentProjectSelectors } from '../../redux/current-project';
 
 // Styles
 import styles from './SprintsPage.module.css';
 
-import projects from '../../data/projects.json';
+const { getCurrentProjectSprints } = currentProjectSelectors;
 
-const sprints = [
-  {
-    id: '1asdfg',
-    title: 'string1 много слов очень много!',
-    startDate: '24 June',
-    duration: 33,
-  },
-  {
-    id: '1sdfghj',
-    title: 'string2',
-    startDate: '24 June',
-    duration: 4,
-  },
-  {
-    id: '1dfghvbm',
-    title: 'string3',
-    startDate: '24 June',
-    duration: 5,
-  },
-  {
-    id: 'fgfgggzs',
-    title: 'string4',
-    startDate: '24 June',
-    duration: 5,
-  },
-];
+// const sprints = [
+//   {
+//     id: '1asdfg',
+//     title: 'string1 много слов очень много!',
+//     startDate: '24 June',
+//     duration: 33,
+//   },
+//   {
+//     id: '1sdfghj',
+//     title: 'string2',
+//     startDate: '24 June',
+//     duration: 4,
+//   },
+//   {
+//     id: '1dfghvbm',
+//     title: 'string3',
+//     startDate: '24 June',
+//     duration: 5,
+//   },
+//   {
+//     id: 'fgfgggzs',
+//     title: 'string4',
+//     startDate: '24 June',
+//     duration: 5,
+//   },
+// ];
 
 const SprintsPage = () => {
+  const dispatch = useDispatch();
   const projects = useSelector(projectsSelectors.getProjectsItems);
+  const { projectId } = useParams();
+  const sprints = useSelector(getCurrentProjectSprints);
+  // console.log(sprints);
 
   const [isCreateSprintModalShown, setCreateSprintModalIsShown] =
     useState(false);
@@ -64,6 +71,10 @@ const SprintsPage = () => {
   const toggleAddPeopleModal = useCallback(() => {
     setAddPeopleModalIsShown(prevValue => !prevValue);
   }, []);
+
+  useEffect(() => {
+    dispatch(projectsOperations.getProjectInfo(projectId));
+  }, [dispatch, projectId]);
 
   return (
     <div className={styles.project}>
