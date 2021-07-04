@@ -1,6 +1,8 @@
 import ChartModal from './ChartModal';
 import { useState } from 'react';
 import Chart from '../Chart';
+import styles from '../AddButton/AddButton.module.css';
+import { ReactComponent as AnalyticsIcon } from '../../images/analytics.svg';
 const ChartModalContainer = () => {
   const [ShowModal, setShowModal] = useState(false);
   const toggleModal = () => {
@@ -9,8 +11,8 @@ const ChartModalContainer = () => {
 
   return (
     <div>
-      <button type="button" onClick={toggleModal}>
-        open modal
+      <button type="button" className={styles.btn} onClick={toggleModal}>
+        <AnalyticsIcon />
       </button>
       {ShowModal && (
         <ChartModal onClose={toggleModal}>
