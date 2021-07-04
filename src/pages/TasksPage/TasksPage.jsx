@@ -10,7 +10,7 @@ import SidebarForReuse from '../../components/SidebarForReuse';
 import SprintLinkList from '../../components/SprintLinkList';
 import Modal from '../../components/Modal';
 import addTask from '../../redux/tasks/tasks-operations';
-
+import ChartModalContainer from '../../components/ChartModal';
 import sprints from '../../data/sprints.json';
 
 import AddButton from '../../components/AddButton';
@@ -96,6 +96,7 @@ export default function TasksPage() {
         <TasksList tasks={tasks} />
         {showModal && <Modal onClose={handleCancelModal} />}
       </div>
+      {tasks.length > 3 ? <ChartModalContainer /> : ''}
     </div>
   );
 }
