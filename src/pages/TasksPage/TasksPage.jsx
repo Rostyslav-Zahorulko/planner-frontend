@@ -96,7 +96,7 @@ export default function TasksPage() {
         <TasksList tasks={tasks} />
         {showModal && <Modal onClose={handleCancelModal} />}
       </div>
-      <ChartModalContainer />
+      {tasks.length > 3 ? <ChartModalContainer /> : ''}
     </div>
   );
 }
