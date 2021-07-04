@@ -1,5 +1,7 @@
 import ShowBackArrow from '../ShowBackArrow';
 import SidebarAddButton from '../SidebarAddButton';
+// import FormCreateSprint from '../FormCreateSprint';
+
 import styles from './SidebarForReuse.module.css';
 
 const SidebarForReuse = ({ children, goBackTo }) => {
@@ -7,7 +9,9 @@ const SidebarForReuse = ({ children, goBackTo }) => {
     <div className={styles.sidebar}>
       <ShowBackArrow goBackTo={goBackTo} />
       {children}
-      <SidebarAddButton children={'Create a sprint'} />
+      <SidebarAddButton children={'Create a sprint'}>
+        {/* <FormCreateSprint /> */}
+      </SidebarAddButton>
     </div>
   );
 };
