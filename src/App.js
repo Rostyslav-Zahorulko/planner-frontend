@@ -47,7 +47,7 @@ function App(props) {
   return (
     <Container>
       <AppBar />
-    
+
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
           <PublicRoute exact path={register} restricted redirectTo={projects}>
@@ -69,7 +69,7 @@ function App(props) {
           <PrivateRoute path={tasks} redirectTo={login}>
             <TasksPage />
           </PrivateRoute>
-        <Switch>
+        </Switch>
 
         {/* <Switch>
           <RegisterPage exact path={register} />
