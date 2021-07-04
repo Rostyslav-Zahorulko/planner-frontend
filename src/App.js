@@ -49,7 +49,7 @@ function App(props) {
 
   return (
     <Container>
-      <AppBar /> <ChartModalContainer />
+      <AppBar />
       <Suspense fallback={<div>Loading...</div>}>
         {/* <Switch>
           <PublicRoute exact path={register} restricted redirectTo={projects}>
