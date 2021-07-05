@@ -26,7 +26,7 @@ import sprints from '../../data/sprints.json';
 // REDUX
 import { sprintsOperations } from '../../redux/sprints';
 import { currentSprintSelectors } from '../../redux/current-sprint';
-import { getTasks } from '../../redux/tasks/tasks-selectors';
+import { tasksSelectors } from '../../redux/tasks';
 // import addTask from '../../redux/tasks/tasks-operations';
 import { currentSprintOperations } from '../../redux/current-sprint';
 const { getCurrentSprintTitle, getCurrentSprintStartDate } =
@@ -37,7 +37,7 @@ export default function TasksPage() {
   const { projectId, sprintId } = useParams();
   const sprintTitle = useSelector(getCurrentSprintTitle);
   const sprintStartDate = useSelector(getCurrentSprintStartDate);
-  const tasks = useSelector(getTasks);
+  const tasks = useSelector(tasksSelectors.getTasks);
   const [isShown, setIsShown] = useState(false);
 
   const toggleModal = useCallback(() => {
