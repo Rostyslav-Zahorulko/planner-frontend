@@ -10,12 +10,12 @@ import { ReactComponent as LeftIcon } from '../../images/arrow-left.svg';
 import { ReactComponent as RightIcon } from '../../images/arrow-right.svg';
 
 // redux
-// import { currentSprintSelectors } from '../../redux/current-sprint';
-// const { getCurrentSprintDuration, getCurrentSprintStartDate } =
-//   currentSprintSelectors;
+import { currentSprintSelectors } from '../../redux/current-sprint';
+const { getCurrentSprintDisplayedDate } = currentSprintSelectors;
 
-export default function TasksDatesNav({ currentDay }) {
-  // console.log(currentDay);
+export default function TasksDatesNav() {
+  const displayedDay = useSelector(getCurrentSprintDisplayedDate);
+
   return (
     <div className={s.wrapper}>
       <div className={s.daysPanel}>
@@ -40,7 +40,7 @@ export default function TasksDatesNav({ currentDay }) {
           <RightIcon className={s.icon} width="8px" height="12px" />
         </button>
       </div>
-      <div className={s.date}>{currentDay}</div>
+      <div className={s.date}>{displayedDay}</div>
     </div>
   );
 }

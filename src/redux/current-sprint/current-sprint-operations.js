@@ -20,7 +20,6 @@ const getDisplayedDate = date => dispatch => {
   diff > 0
     ? (baseDisplayedDate = todayFormatted)
     : (baseDisplayedDate = startDateFormatted);
-  console.log(baseDisplayedDate);
   dispatch(getSprintDisplayedDateSuccess(baseDisplayedDate));
 };
 
