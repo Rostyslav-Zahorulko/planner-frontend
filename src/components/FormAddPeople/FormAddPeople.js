@@ -51,4 +51,5 @@ const FormAddPeople = ({ onSubmit, users }) => {
     </form>
   );
 };
+
 export default FormAddPeople;
