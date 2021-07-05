@@ -1,4 +1,3 @@
-import axios from 'axios';
 import * as dayjs from 'dayjs';
 import { currentSprintActions } from '../current-sprint';
 
