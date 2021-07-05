@@ -41,6 +41,7 @@ export default function SprintItem({ sprint }) {
           Duration
           <span className={styles.sprint_desc_item}>{duration}</span>
         </p>
+        </Link>
         <BasketButton
           type="button"
           onDeleteSprint={onDeleteSprint}
@@ -48,7 +49,6 @@ export default function SprintItem({ sprint }) {
           sprintId={id}
           aria-label="delete"
         ></BasketButton>
-      </Link>
     </li>
   );
 }

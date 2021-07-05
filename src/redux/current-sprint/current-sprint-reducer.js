@@ -7,8 +7,8 @@ const initialSprintState = { title: '', duration: '' };
 
 const currentSprintReducer = createReducer(initialSprintState, {
   [getSprintInfoSuccess]: (_, { payload }) => ({
-    title: payload.title,
-    duration: payload.duration,
+    title: payload.sprint.title,
+    duration: payload.sprint.duration,
   }),
 });
 

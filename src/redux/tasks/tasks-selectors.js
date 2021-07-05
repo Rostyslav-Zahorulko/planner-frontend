@@ -1,1 +1,1 @@
-export const getSprintItem = state => state.projects.tasks;
+export const getTasks = state => state.tasks.items;

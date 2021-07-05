@@ -21,9 +21,8 @@ export default function ProjectsListItem({ id, title, description }) {
           <div className={s.title}>{title}</div>
         )}
         <div className={s.description}>{description}</div>
-
-        <DeleteButtonWhite onDeleteProject={onDeleteProject} projectId={id} />
       </Link>
+      <DeleteButtonWhite onDeleteProject={onDeleteProject} projectId={id} />
     </li>
   );
 }
