@@ -12,6 +12,7 @@
 }
 .label {
   position: relative;
+  width: 100%;
   display: block;
   margin-bottom: 30px;
   font-weight: 600;
@@ -106,12 +107,3 @@
     margin-right: 30px;
   }
 }
-/*
-
-position: absolute;
-width: 34px;
-height: 34px;
-left: 20px;
-top: 254px;
-
-*/

@@ -13,7 +13,6 @@ const { addSprint } = sprintsOperations;
 
 const FormCreateSprint = ({ onClose, projectId }) => {
   const [title, setTitle] = useState('');
-  // const [startDate, setStartDate] = useState('');
   const [duration, setDuration] = useState(false);
 
   const dispatch = useDispatch();
@@ -37,25 +36,23 @@ const FormCreateSprint = ({ onClose, projectId }) => {
     event => {
       event.preventDefault();
 
-      // const labelPicker = document.querySelector(
-      //   '.react-datepicker-ignore-onclickoutside',
-      // );
+      const input = document.querySelector(
+        '.react-datepicker__input-container > input',
+      );
 
-      // console.dir(labelPicker);
-      // console.log(labelPicker);
-
-      // setStartDate(labelPicker.value);
+      // console.log(input.value);
 
       const sprint = {
         title,
-        startDate: '2021-07-04',
+        startDate: input.value,
         duration,
       };
+
+      // console.log(sprint);
 
       dispatch(addSprint({ projectId, sprint }));
 
       setTitle('');
-      // setStartDate('');
       setDuration(false);
       onClose();
     },
@@ -101,6 +98,8 @@ const FormCreateSprint = ({ onClose, projectId }) => {
             value={duration}
             required
             placeholder=" "
+            min="5"
+            max="30"
             onChange={handleInputChange}
           />
           <span className={styles.headline}>Duration</span>

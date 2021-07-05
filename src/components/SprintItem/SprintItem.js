@@ -7,7 +7,7 @@ const SprintItem = ({ sprint }) => (
     <h3 className={styles.sprint_subject}>{sprint.title}</h3>
     <p className={styles.sprint_desc}>
       Start date
-      <span className={styles.sprint_desc_item}>24 Jun</span>
+      <span className={styles.sprint_desc_item}>{sprint.startDate}</span>
     </p>
     <p className={styles.sprint_desc}>
       End date

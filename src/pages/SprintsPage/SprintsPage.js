@@ -16,20 +16,20 @@ import FormCreateSprint from '../../components/FormCreateSprint';
 // Redux
 import { projectsOperations } from '../../redux/projects';
 import { projectsSelectors } from '../../redux/projects';
-import { currentProjectSelectors } from '../../redux/current-project';
+import { sprintsSelectors } from '../../redux/sprints';
 
 // Styles
 import styles from './SprintsPage.module.css';
 
 const { getProjectInfo } = projectsOperations;
 const { getProjectsItems } = projectsSelectors;
-const { getCurrentProjectSprints } = currentProjectSelectors;
+const { getSprints } = sprintsSelectors;
 
 const SprintsPage = () => {
   const dispatch = useDispatch();
   const projects = useSelector(getProjectsItems);
   const { projectId } = useParams();
-  const sprints = useSelector(getCurrentProjectSprints);
+  const sprints = useSelector(getSprints);
   // console.log(sprints);
 
   const [isCreateProjectModalShown, setCreateProjectModalIsShown] =
@@ -77,8 +77,11 @@ const SprintsPage = () => {
           Add people
         </h3>
 
-        {/*<p cllassName={styles.text}> Ваш проект не має спринтів, скористайтесь кнопкою "Створити спринт"</p>*/}
-        <SprintList sprints={sprints} />
+        {sprints.length > 0 ? (
+          <SprintList sprints={sprints} />
+        ) : (
+          <div>You have no sprints yet</div>
+        )}
 
         {isCreateProjectModalShown && (
           <Modal
