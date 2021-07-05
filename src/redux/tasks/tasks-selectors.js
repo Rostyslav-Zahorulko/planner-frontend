@@ -10,10 +10,10 @@ const getVisibleTasks = state => {
   );
 };
 
-const taskSelectors = {
+const tasksSelectors = {
   getTasks,
   getFilter,
   getVisibleTasks,
 };
 
-export default taskSelectors;
+export default tasksSelectors;
