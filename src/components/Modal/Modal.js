@@ -1,16 +1,10 @@
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
-import CreateProjectForm from '../CreatePojectForm';
 import s from './Modal.module.css';
 
 const modalRoot = document.querySelector('#modal-root');
 
-export default function CreateProjectModal({
-  title,
-  children,
-  onClose,
-  onCreate,
-}) {
+export default function Modal({ title, children, onClose }) {
   useEffect(() => {
     const handleEscape = e => {
       if (e.code === 'Escape') {
@@ -31,17 +25,9 @@ export default function CreateProjectModal({
     }
   };
 
-  const handleClose = project => {
+  const handleClose = () => {
     onClose();
   };
-
-  // const handleSubmit = () => {};
-
-  // const [showModal, setShowModal] = useState(false);
-
-  // const toggleModal = useCallback(() => {
-  //   setShowModal(prevShowModal => !prevShowModal);
-  // }, []);
 
   return createPortal(
     <div className={s.ModalBackdrop} onClick={handleBackdropClick}>
@@ -50,15 +36,7 @@ export default function CreateProjectModal({
           +
         </button>
         <h2 className={s.ModalTitle}>{title}</h2>
-        <CreateProjectForm />
-        <div className={s.ModalBtnWrapper}>
-          <button className={s.ModalCreateBtn} onClick={onCreate}>
-            Ready
-          </button>
-          <button className={s.ModalCancelBtn} onClick={handleClose}>
-            Cancel
-          </button>
-        </div>
+        {children}
       </div>
     </div>,
     modalRoot,
