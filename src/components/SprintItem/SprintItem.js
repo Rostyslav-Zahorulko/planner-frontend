@@ -27,26 +27,28 @@ export default function SprintItem({ sprint }) {
 
   return (
     <li className={styles.sprint_item}>
-      <h3 className={styles.sprint_subject}>{title}</h3>
-      <p className={styles.sprint_desc}>
-        Start date
-        <span className={styles.sprint_desc_item}>{displayedStartDate}</span>
-      </p>
-      <p className={styles.sprint_desc}>
-        End date
-        <span className={styles.sprint_desc_item}>{displayedEndDate}</span>
-      </p>
-      <p className={styles.sprint_desc}>
-        Duration
-        <span className={styles.sprint_desc_item}>{duration}</span>
-      </p>
-      <BasketButton
-        type="button"
-        onDeleteSprint={onDeleteSprint}
-        projectId={projectId}
-        sprintId={id}
-        aria-label="delete"
-      ></BasketButton>
+      <Link to={`/projects/${projectId}/${id}`} className={styles.link}>
+        <h3 className={styles.sprint_subject}>{title}</h3>
+        <p className={styles.sprint_desc}>
+          Start date
+          <span className={styles.sprint_desc_item}>{displayedStartDate}</span>
+        </p>
+        <p className={styles.sprint_desc}>
+          End date
+          <span className={styles.sprint_desc_item}>{displayedEndDate}</span>
+        </p>
+        <p className={styles.sprint_desc}>
+          Duration
+          <span className={styles.sprint_desc_item}>{duration}</span>
+        </p>
+        <BasketButton
+          type="button"
+          onDeleteSprint={onDeleteSprint}
+          projectId={projectId}
+          sprintId={id}
+          aria-label="delete"
+        ></BasketButton>
+      </Link>
     </li>
   );
 }
