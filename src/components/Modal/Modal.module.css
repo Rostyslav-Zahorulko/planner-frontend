@@ -58,60 +58,6 @@
   text-align: center;
 }
 
-.ModalBtnWrapper {
-  margin-top: 40px;
-  padding: 0;
-  @media screen and (min-width: 767px) {
-    padding: 40px 0;
-  }
-}
-
-.ModalCreateBtn,
-.ModalCancelBtn {
-  display: block;
-  margin: 0 auto;
-  padding: 11px 44px;
-  width: 148px;
-  height: 44px;
-  border-radius: 25px;
-
-  font-family: 'Montserrat';
-  font-weight: 500;
-  font-size: 18px;
-  line-height: 1.22;
-  letter-spacing: 0.04em;
-  border: none;
-  outline: none;
-  cursor: pointer;
-  transition: all 0.25s linear;
-}
-
-.ModalCreateBtn {
-  margin-bottom: 20px;
-
-  color: #ffffff;
-  background-color: #ff6b08;
-  box-shadow: 0px 3px 4px rgba(255, 107, 8, 0.3);
-}
-
-.ModalCancelBtn {
-  color: rgba(24, 28, 39, 0.6);
-  background-color: #ffffff;
-  text-decoration-line: underline;
-}
-
-.ModalCreateBtn:focus,
-.ModalCreateBtn:hover {
-  color: #ff6b08;
-  background-color: #ffffff;
-}
-
-.ModalCancelBtn:hover,
-.ModalCancelBtn:focus {
-  color: #181c27;
-  box-shadow: 0px 3px 4px rgba(0, 0, 0, 0.5);
-}
-
 @media screen and (min-width: 320px) {
   .ModalContent {
     width: 320px;
@@ -127,21 +73,8 @@
   }
 
   .ModalTitle {
-    margin: 0;
-    font-weight: 500;
-    font-size: 26px;
-    line-height: 32px;
-    letter-spacing: 0.04em;
-    color: #181c27;
-    margin-bottom: 30px;
-
-    @media screen and (min-width: 767px) {
-      font-weight: 500;
-      font-size: 36px;
-      line-height: 44px;
-      letter-spacing: 0.04em;
-      margin-bottom: 50px;
-    }
+    margin-bottom: 50px;
+    font-style: 36px;
   }
 }
 
