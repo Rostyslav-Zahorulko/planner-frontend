@@ -2,13 +2,10 @@ import st from './TasksList.module.css';
 import TaskItem from '../TaskItem/TaskItem';
 import TaskItemCard from '../TaskItemCard/TaskItemCard';
 import Media from 'react-media';
-import { getVisibleTasks } from '../../redux/tasks/tasks-selectors';
-import { useSelector } from 'react-redux';
 
-const TasksList = () => {
-  const visibleTasks = useSelector(getVisibleTasks);
 
-const TasksList = ({ tasks, projectId, sprintId }) => {
+
+const TasksList = ({ visibleTasks, projectId, sprintId }) => {
   return (
     <Media queries={{ big: { minWidth: 1280 } }}>
       {matches =>
@@ -35,7 +32,7 @@ const TasksList = ({ tasks, projectId, sprintId }) => {
           <>
             <ul className={st.task_list}>
               {visibleTasks.map(
-                ({ id, title, planHours, hoursPerDay, totalHours }) => (
+                ({ id, title, plannedHours, hoursPerDay, totalHours }) => (
                   <TaskItemCard
                     key={id}
                     title={title}

@@ -39,7 +39,7 @@ const CreateProjectForm = ({ onClose }) => {
         description,
       };
 
-      console.log(project);
+      // console.log(project);
 
       dispatch(addProject(project));
 
