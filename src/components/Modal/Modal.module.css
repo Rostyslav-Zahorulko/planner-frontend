@@ -127,8 +127,21 @@
   }
 
   .ModalTitle {
-    margin-bottom: 50px;
-    font-style: 36px;
+    margin: 0;
+    font-weight: 500;
+    font-size: 26px;
+    line-height: 32px;
+    letter-spacing: 0.04em;
+    color: #181c27;
+    margin-bottom: 30px;
+
+    @media screen and (min-width: 767px) {
+      font-weight: 500;
+      font-size: 36px;
+      line-height: 44px;
+      letter-spacing: 0.04em;
+      margin-bottom: 50px;
+    }
   }
 }
 
