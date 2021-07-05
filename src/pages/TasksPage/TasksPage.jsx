@@ -53,47 +53,51 @@ export default function TasksPage() {
   }, [dispatch, sprintStartDate]);
 
   return (
-    <div className={st.wrapper}>
-      <SidebarForReuse goBackTo={'sprints'}>
-        <SprintLinkList sprints={sprints} />
-        {/* <FormCreateSprint /> */}
-      </SidebarForReuse>
+    <>
+      <div className={st.wrapper}>
+        <SidebarForReuse goBackTo={'sprints'}>
+          <SprintLinkList sprints={sprints} />
+          {/* <FormCreateSprint /> */}
+        </SidebarForReuse>
 
-      <div className={st.wrapper_tasks}>
-        <div className={st.headPanelWrapper}>
-          <TasksDatesNav />
-          {window.matchMedia('(max-width: 1279px)') && <TasksSearch />}
-        </div>
-
-        <div className={st.header}>
-          <div className={st.title_wrapper}>
-            <h1 className={st.title}> {sprintTitle}</h1>
-            <ChangeButton />
+        <div className={st.wrapper_tasks}>
+          <div className={st.headPanelWrapper}>
+            <TasksDatesNav />
+            {window.matchMedia('(max-width: 1279px)') && <TasksSearch />}
           </div>
-          <div className={st.button_wrapper}>
-            <AddButton onClick={toggleModal} />
-            <Media queries={{ big: { minWidth: 1280 } }}>
-              {matches =>
-                matches.big ? (
-                  <p className={st.name_button}>Create a task</p>
-                ) : (
-                  ' '
-                )
-              }
-            </Media>
-          </div>
-        </div>
-        <SprintHeader />
-        <TasksList tasks={tasks} />
 
-        {isShown && (
-          <Modal onClose={toggleModal}>
-            <FormCreateTask />
-          </Modal>
-        )}
+          <div className={st.header}>
+            <div className={st.title_wrapper}>
+              <h1 className={st.title}> {sprintTitle}</h1>
+              <ChangeButton />
+            </div>
+            <div className={st.button_wrapper}>
+              <AddButton onClick={toggleModal} />
+              <Media queries={{ big: { minWidth: 1280 } }}>
+                {matches =>
+                  matches.big ? (
+                    <p className={st.name_button}>Create a task</p>
+                  ) : (
+                    ' '
+                  )
+                }
+              </Media>
+            </div>
+          </div>
+          <SprintHeader />
+          <TasksList tasks={tasks} projectId={projectId} sprintId={sprintId} />
+
+          {isShown && (
+            <Modal onClose={toggleModal}>
+              <FormCreateTask />
+            </Modal>
+          )}
+        </div>
+        {/* {tasks.length > 3 ? <ChartModalContainer /> : ''} */}
       </div>
-      {/* {tasks.length > 3 ? <ChartModalContainer /> : ''} */}
-      <ChartModalContainer />
-    </div>
+      <div className={st.chart_wrapper}>
+        <ChartModalContainer />
+      </div>
+    </>
   );
 }

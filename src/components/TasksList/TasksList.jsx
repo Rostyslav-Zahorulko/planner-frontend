@@ -4,7 +4,7 @@ import TaskItem from '../TaskItem/TaskItem';
 import TaskItemCard from '../TaskItemCard/TaskItemCard';
 import Media from 'react-media';
 
-const TasksList = ({ tasks }) => {
+const TasksList = ({ tasks, projectId, sprintId }) => {
   return (
     <Media queries={{ big: { minWidth: 1280 } }}>
       {matches =>
@@ -19,6 +19,9 @@ const TasksList = ({ tasks }) => {
                     plannedHours={plannedHours}
                     hoursPerDay={hoursPerDay}
                     totalHours={totalHours}
+                    projectId={projectId}
+                    sprintId={sprintId}
+                    taskId={id}
                   />
                 ),
               )}
@@ -28,13 +31,16 @@ const TasksList = ({ tasks }) => {
           <>
             <ul className={st.task_list}>
               {tasks.map(
-                ({ id, title, planHours, hoursPerDay, totalHours }) => (
+                ({ id, title, plannedHours, hoursPerDay, totalHours }) => (
                   <TaskItemCard
                     key={id}
                     title={title}
-                    planHours={planHours}
+                    plannedHours={plannedHours}
                     hoursPerDay={hoursPerDay}
                     totalHours={totalHours}
+                    projectId={projectId}
+                    sprintId={sprintId}
+                    taskId={id}
                   />
                 ),
               )}
