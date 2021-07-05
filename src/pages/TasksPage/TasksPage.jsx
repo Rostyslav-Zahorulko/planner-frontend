@@ -1,4 +1,4 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
 import Media from 'react-media';
@@ -27,8 +27,11 @@ import sprints from '../../data/sprints.json';
 import { sprintsOperations } from '../../redux/sprints';
 import { currentSprintSelectors } from '../../redux/current-sprint';
 import { tasksSelectors } from '../../redux/tasks';
+
 // import addTask from '../../redux/tasks/tasks-operations';
 import { currentSprintOperations } from '../../redux/current-sprint';
+import { getVisibleTasks } from '../../redux/tasks/tasks-selectors';
+
 const { getCurrentSprintTitle, getCurrentSprintStartDate } =
   currentSprintSelectors;
 
@@ -37,7 +40,10 @@ export default function TasksPage() {
   const { projectId, sprintId } = useParams();
   const sprintTitle = useSelector(getCurrentSprintTitle);
   const sprintStartDate = useSelector(getCurrentSprintStartDate);
+
   const tasks = useSelector(tasksSelectors.getTasks);
+  const visibleTasks = useSelector(tasksSelectors.getVisibleTasks);
+
   const [isShown, setIsShown] = useState(false);
 
   const toggleModal = useCallback(() => {
@@ -85,7 +91,11 @@ export default function TasksPage() {
             </div>
           </div>
           <SprintHeader />
-          <TasksList tasks={tasks} projectId={projectId} sprintId={sprintId} />
+          <TasksList
+            visibleTasks={visibleTasks}
+            projectId={projectId}
+            sprintId={sprintId}
+          />
 
           {isShown && (
             <Modal onClose={toggleModal}>

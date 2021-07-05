@@ -10,7 +10,7 @@ const Calendar = () => {
       selected={startDate}
       onChange={date => setStartDate(date)}
       startDate={startDate}
-      shouldCloseOnSelect={false}
+      shouldCloseOnSelect={true}
       className=""
       placeholderText=" Start Date "
     />

@@ -7,7 +7,6 @@ import Calendar from '../Calendar/Calendar';
 import styles from './FormCreateSprint.module.css';
 
 import { sprintsOperations } from '../../redux/sprints';
-import {} from '../../redux/current-project';
 
 const { addSprint } = sprintsOperations;
 

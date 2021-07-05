@@ -4,7 +4,7 @@ import { sprintsActions } from '../sprints';
 import { tasksActions } from '../tasks';
 
 const { getSprintInfoSuccess } = sprintsActions;
-const { addTaskSuccess, deleteTaskSuccess, filterTasksByTitle } = tasksActions;
+const { addTaskSuccess, deleteTaskSuccess, changeFilter } = tasksActions;
 
 const itemsReducer = createReducer([], {
   [getSprintInfoSuccess]: (_, { payload }) => payload.sprint.tasks,
@@ -14,7 +14,7 @@ const itemsReducer = createReducer([], {
 });
 
 const filterReducer = createReducer('', {
-  [filterTasksByTitle]: (_, { payload }) => payload,
+  [changeFilter]: (_, { payload }) => payload,
 });
 
 const tasksReducer = combineReducers({

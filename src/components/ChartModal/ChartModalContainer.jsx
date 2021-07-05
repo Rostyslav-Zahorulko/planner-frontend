@@ -1,7 +1,7 @@
 import ChartModal from './ChartModal';
 import { useState } from 'react';
 import Chart from '../Chart';
-import styles from '../AddButton/AddButton.module.css';
+import styles from './ChartModalContainer.module.css';
 import { ReactComponent as AnalyticsIcon } from '../../images/analytics.svg';
 const ChartModalContainer = () => {
   const [ShowModal, setShowModal] = useState(false);
