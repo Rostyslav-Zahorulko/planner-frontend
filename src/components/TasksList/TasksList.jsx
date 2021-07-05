@@ -1,6 +1,5 @@
 import st from './TasksList.module.css';
 import TaskItem from '../TaskItem/TaskItem';
-// import tasks from '../../data/tasks.json';
 import TaskItemCard from '../TaskItemCard/TaskItemCard';
 import Media from 'react-media';
 import { getVisibleTasks } from '../../redux/tasks/tasks-selectors';
@@ -9,6 +8,7 @@ import { useSelector } from 'react-redux';
 const TasksList = () => {
   const visibleTasks = useSelector(getVisibleTasks);
 
+const TasksList = ({ tasks, projectId, sprintId }) => {
   return (
     <Media queries={{ big: { minWidth: 1280 } }}>
       {matches =>
@@ -23,6 +23,9 @@ const TasksList = () => {
                     plannedHours={plannedHours}
                     hoursPerDay={hoursPerDay}
                     totalHours={totalHours}
+                    projectId={projectId}
+                    sprintId={sprintId}
+                    taskId={id}
                   />
                 ),
               )}
@@ -36,9 +39,12 @@ const TasksList = () => {
                   <TaskItemCard
                     key={id}
                     title={title}
-                    planHours={planHours}
+                    plannedHours={plannedHours}
                     hoursPerDay={hoursPerDay}
                     totalHours={totalHours}
+                    projectId={projectId}
+                    sprintId={sprintId}
+                    taskId={id}
                   />
                 ),
               )}

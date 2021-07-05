@@ -10,34 +10,36 @@ import ProjectName from '../../components/ProjectName';
 import AddButton from '../../components/AddButton';
 import Sidebar from '../../components/Sidebar';
 import Modal from '../../components/Modal';
+import CreateProjectForm from '../../components/CreatePojectForm';
 import FormAddPeople from '../../components/FormAddPeople';
 import FormCreateSprint from '../../components/FormCreateSprint';
 
 // Redux
 import { projectsOperations } from '../../redux/projects';
 import { projectsSelectors } from '../../redux/projects';
-import { sprintsOperations } from '../../redux/sprints';
+// import { sprintsOperations } from '../../redux/sprints';
 import { sprintsSelectors } from '../../redux/sprints';
 
 // Styles
 import styles from './SprintsPage.module.css';
 
-const SprintsPage = () => {  
+const SprintsPage = () => {
   const { getProjectInfo } = projectsOperations;
   const { getProjectsItems } = projectsSelectors;
-  const { getAllSprints } = sprintsOperations 
-  const { getSprints } = sprintsSelectors;
-  
+  // const { getAllSprints } = sprintsOperations;
+  const { getSprintsItems } = sprintsSelectors;
+
   const dispatch = useDispatch();
   const { projectId } = useParams();
   const projects = useSelector(getProjectsItems);
-  const sprints = useSelector(getSprints);
+  const sprints = useSelector(getSprintsItems);
 
   const [isCreateProjectModalShown, setCreateProjectModalIsShown] =
     useState(false);
 
   const [isCreateSprintModalShown, setCreateSprintModalIsShown] =
     useState(false);
+
   const [isAddPeopleModalShown, setAddPeopleModalIsShown] = useState(false);
 
   /*Create project*/
@@ -49,7 +51,7 @@ const SprintsPage = () => {
   const toggleCreateSprintModal = useCallback(() => {
     setCreateSprintModalIsShown(prevValue => !prevValue);
   }, []);
-  
+
   /*Add people*/
   const toggleAddPeopleModal = useCallback(() => {
     setAddPeopleModalIsShown(prevValue => !prevValue);
@@ -57,11 +59,11 @@ const SprintsPage = () => {
 
   useEffect(() => {
     dispatch(getProjectInfo(projectId));
-  }, [dispatch, projectId]);
+  }, [dispatch, projectId, getProjectInfo]);
 
-  useEffect(() => {
-    dispatch(getAllSprints(projectId));
-  }, [dispatch, projectId]);
+  // useEffect(() => {
+  //   dispatch(getAllSprints(projectId));
+  // }, [dispatch, projectId, getProjectInfo, getAllSprints]);
 
   return (
     <div className={styles.project}>
@@ -92,7 +94,7 @@ const SprintsPage = () => {
             title={'Creating a project'}
             onClose={toggleCreateProjectModal}
           >
-            <div>Тут повинен бути компонент форми для створення проекту</div>
+            <CreateProjectForm onClose={toggleCreateProjectModal} />
           </Modal>
         )}
 

@@ -38,7 +38,9 @@ const addProject = project => async dispatch => {
   try {
     const { data } = await axios.post('/projects', project);
 
-    dispatch(addProjectSuccess(data));
+    // console.dir(data.project);
+
+    dispatch(addProjectSuccess(data.project));
   } catch ({ message }) {
     dispatch(addProjectError(message));
   }

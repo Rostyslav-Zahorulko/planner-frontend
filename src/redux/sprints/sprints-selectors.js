@@ -1,7 +1,7 @@
-const getSprints = state => state.sprints.items;
+const getSprintsItems = state => state.sprints.items;
 
 const sprintsSelectors = {
-  getSprints,
+  getSprintsItems,
 };
 
 export default sprintsSelectors;

@@ -22,11 +22,11 @@
 }
 
 @media screen and (max-width: 767px) {
-  .btn {
+  /* .btn {
     position: fixed;
     bottom: 20px;
     right: 20px;
 
     z-index: 2;
-  }
+  } */
 }

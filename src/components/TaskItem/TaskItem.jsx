@@ -1,18 +1,19 @@
 import st from './TaskItem.module.css';
 import { useSelector, useDispatch } from 'react-redux';
-import deleteTask from '../../redux/tasks/tasks-operations';
+
+import { tasksOperations } from '../../redux/tasks/';
 
 export default function TaskItem({
-  sprintId,
-  id,
   title,
   plannedHours,
   hoursPerDay,
   totalHours,
+  projectId,
+  sprintId,
+  taskId,
 }) {
   const dispatch = useDispatch();
 
-  const handleDeleteClick = () => dispatch(deleteTask(sprintId, id));
   return (
     <li className={st.listItem}>
       <ul className={st.listItem_tasks}>
@@ -31,7 +32,9 @@ export default function TaskItem({
           <button
             className={st.delete_btn}
             type="button"
-            onClick={handleDeleteClick}
+            onClick={() =>
+              dispatch(tasksOperations.deleteTask(projectId, sprintId, taskId))
+            }
           ></button>
         </li>
       </ul>

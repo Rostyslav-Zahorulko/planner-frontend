@@ -1,0 +1,86 @@
+/* Form */
+
+.ProjectForm {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.FormField {
+  position: relative;
+  margin: 30px 0;
+}
+
+.FormLable {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: flex;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  align-items: center;
+  letter-spacing: 0.04em;
+  color: rgba(24, 28, 39, 0.6);
+  pointer-events: none;
+}
+
+.FormInput {
+  width: 280px;
+  height: 29px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 22px;
+  display: flex;
+  align-items: center;
+  letter-spacing: 0.04em;
+  color: rgba(24, 28, 39, 0.6);
+  border: none;
+  border-bottom: 1px solid rgba(24, 28, 39, 0.2);
+}
+
+@media screen and (min-width: 767px) {
+  .FormInput {
+    width: 429px;
+    height: 30px;
+  }
+}
+
+.FormInput:hover {
+  border-bottom: 2px solid black;
+}
+
+.FormInput:focus {
+  outline: none;
+  border-bottom: 2px solid #ff6b08;
+  transition: all 0.25s linear;
+}
+
+.FormInput:focus + .FormLable,
+.FormInput:not(:placeholder-shown) + .FormLable {
+  font-size: 14px;
+  color: #ff6b08;
+  transform: translateY(-23px);
+  transition: all 0.25s linear;
+}
+
+.ErrorInput {
+  display: block;
+  color: #ff6b08;
+  margin-top: -20px;
+  font-size: 14px;
+
+  @media screen and (min-width: 767px) {
+    margin-top: -15px;
+  }
+}
+
+/* .ErrorDescription {
+  display: block;
+  color: #ff6b08;
+  margin-top: -20px;
+  font-size: 14px;
+} */

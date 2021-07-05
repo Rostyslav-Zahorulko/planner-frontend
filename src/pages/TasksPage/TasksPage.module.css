@@ -1,3 +1,4 @@
+
 .header {
   width: 100%;
   display: flex;
@@ -81,17 +82,31 @@
   margin-bottom: 7.5px;
 }
 
+.chart_wrapper {
+  position: fixed;
+}
+
 @media screen and (max-width: 767px) {
   .header {
     margin-top: 20px;
   }
   .button_wrapper {
-    width: 0px;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+
+    /* width: 0px; */
   }
   .headPanelWrapper {
     flex-direction: column;
     align-items: baseline;
     margin: 0;
+  }
+  
+  .chart_wrapper {
+    left: 20px;
+    bottom: 20px;
+
   }
 }
 
@@ -109,6 +124,12 @@
   .button_wrapper {
     width: 44px;
   }
+
+  .chart_wrapper {
+  right: 55px;
+  bottom: 60px;
+}
+
 }
 
 @media screen and (min-width: 1280px) {
@@ -123,8 +144,6 @@
 .button_wrapper {
   width: 240px;
 }
-
-
 
 }
 
