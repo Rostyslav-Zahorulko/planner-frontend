@@ -1,8 +1,13 @@
 import * as dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { currentSprintActions } from '../current-sprint';
+dayjs.extend(customParseFormat);
 
-const { getSprintDisplayedDateRequest, getSprintDisplayedDateSuccess } =
-  currentSprintActions;
+const {
+  getSprintDisplayedDateRequest,
+  getSprintDisplayedDateSuccess,
+  setNewDisplayedDateSuccess,
+} = currentSprintActions;
 
 const getDisplayedDate = date => dispatch => {
   dispatch(getSprintDisplayedDateRequest());
@@ -22,8 +27,25 @@ const getDisplayedDate = date => dispatch => {
   dispatch(getSprintDisplayedDateSuccess(baseDisplayedDate));
 };
 
+const setNextDate = date => dispatch => {
+  const newDisplayedDate = dayjs(date, 'DD.MM.YYYY')
+    .add(1, 'day')
+    .format('DD.MM.YYYY');
+  // console.log(newDisplayedDate);
+  dispatch(setNewDisplayedDateSuccess(newDisplayedDate));
+};
+
+const setPreviousDate = date => dispatch => {
+  const newDisplayedDate = dayjs(date, 'DD.MM.YYYY')
+    .subtract(1, 'day')
+    .format('DD.MM.YYYY');
+  dispatch(setNewDisplayedDateSuccess(newDisplayedDate));
+};
+
 const currentSprintOperations = {
   getDisplayedDate,
+  setNextDate,
+  setPreviousDate,
 };
 
 export default currentSprintOperations;

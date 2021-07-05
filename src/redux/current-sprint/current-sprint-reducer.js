@@ -4,7 +4,8 @@ import { sprintsActions } from '../sprints';
 import currentSprintActions from '../current-sprint/current-sprint-actions';
 
 const { getSprintInfoSuccess } = sprintsActions;
-const { getSprintDisplayedDateSuccess } = currentSprintActions;
+const { getSprintDisplayedDateSuccess, setNewDisplayedDateSuccess } =
+  currentSprintActions;
 
 // const initialSprintState = {
 //   title: '',
@@ -35,6 +36,7 @@ const startDateReducer = createReducer(0, {
 
 const displayedDateReducer = createReducer('', {
   [getSprintDisplayedDateSuccess]: (_, { payload }) => payload,
+  [setNewDisplayedDateSuccess]: (_, { payload }) => payload,
 });
 
 const currentSprintReducer = combineReducers({

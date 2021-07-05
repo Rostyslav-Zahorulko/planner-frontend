@@ -11,15 +11,18 @@ import { ReactComponent as LeftIcon } from '../../images/arrow-left.svg';
 import { ReactComponent as RightIcon } from '../../images/arrow-right.svg';
 
 // redux
+import { currentSprintOperations } from '../../redux/current-sprint';
 import { currentSprintSelectors } from '../../redux/current-sprint';
 const {
   getCurrentSprintDisplayedDate,
   getCurrentSprintDuration,
   getCurrentSprintStartDate,
 } = currentSprintSelectors;
+const { setNextDate, setPreviousDate } = currentSprintOperations;
 
 export default function TasksDatesNav() {
-  let displayedDate = useSelector(getCurrentSprintDisplayedDate);
+  const dispatch = useDispatch();
+  const displayedDate = useSelector(getCurrentSprintDisplayedDate);
   const startDate = useSelector(getCurrentSprintStartDate);
   const duration = useSelector(getCurrentSprintDuration);
   const array = new Array(duration).fill('');
@@ -30,7 +33,8 @@ export default function TasksDatesNav() {
   const displayedDay =
     sprintDates.findIndex(date => date === displayedDate) + 1;
 
-  // const handleForwardClick = ()=> {}
+  const handleForwardClick = () => dispatch(setNextDate(displayedDate));
+  const handleBackClick = () => dispatch(setPreviousDate(displayedDate));
 
   return (
     <div className={s.wrapper}>
@@ -38,7 +42,7 @@ export default function TasksDatesNav() {
         <button
           type="button"
           className={`${s.btn} ${s.daysPanelItem}`}
-          onClick={() => {}}
+          onClick={handleBackClick}
         >
           <LeftIcon className={s.icon} width="8px" height="12px" />
         </button>
@@ -51,7 +55,7 @@ export default function TasksDatesNav() {
         <button
           type="button"
           className={`${s.btn} ${s.daysPanelItem}`}
-          onClick={() => {}}
+          onClick={handleForwardClick}
         >
           <RightIcon className={s.icon} width="8px" height="12px" />
         </button>

@@ -10,10 +10,15 @@ const getSprintDisplayedDateError = createAction(
   'sprints/getSprintDisplayedDateError',
 );
 
+const setNewDisplayedDateSuccess = createAction(
+  'sprints/setNewDisplayedDateSuccess',
+);
+
 const currentSprintActions = {
   getSprintDisplayedDateRequest,
   getSprintDisplayedDateSuccess,
   getSprintDisplayedDateError,
+  setNewDisplayedDateSuccess,
 };
 
 export default currentSprintActions;
