@@ -57,9 +57,14 @@ const SprintsPage = () => {
   const sprints = useSelector(getCurrentProjectSprints);
   // console.log(sprints);
 
+  const [users, setUsers] = useState([]);
+  const handleSubmit = user => {
+    //console.log('user:', newUser);
+    setUsers(prevState => [user, ...prevState]);
+  };
+
   const [isCreateSprintModalShown, setCreateSprintModalIsShown] =
     useState(false);
-
   const [isAddPeopleModalShown, setAddPeopleModalIsShown] = useState(false);
 
   /*Create sprint*/
@@ -98,7 +103,7 @@ const SprintsPage = () => {
         <SprintList sprints={sprints} />
         {isAddPeopleModalShown && (
           <Modal title={'Add people'} onClose={toggleAddPeopleModal}>
-            <FormAddPeople />
+            <FormAddPeople onSubmit={handleSubmit} users={users} />
           </Modal>
         )}
         {isCreateSprintModalShown && (
