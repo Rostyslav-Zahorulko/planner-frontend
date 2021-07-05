@@ -1,10 +1,10 @@
 import st from './TasksList.module.css';
 import TaskItem from '../TaskItem/TaskItem';
-import tasks from '../../data/tasks.json';
+// import tasks from '../../data/tasks.json';
 import TaskItemCard from '../TaskItemCard/TaskItemCard';
 import Media from 'react-media';
 
-const TasksList = () => {
+const TasksList = ({ tasks }) => {
   return (
     <Media queries={{ big: { minWidth: 1280 } }}>
       {matches =>
@@ -12,11 +12,11 @@ const TasksList = () => {
           <>
             <ul className={st.task_list}>
               {tasks.map(
-                ({ id, title, planHours, hoursPerDay, totalHours }) => (
+                ({ id, title, plannedHours, hoursPerDay, totalHours }) => (
                   <TaskItem
                     key={id}
                     title={title}
-                    planHours={planHours}
+                    plannedHours={plannedHours}
                     hoursPerDay={hoursPerDay}
                     totalHours={totalHours}
                   />

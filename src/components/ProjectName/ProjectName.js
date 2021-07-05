@@ -1,10 +1,18 @@
+import { useSelector } from 'react-redux';
 import СhangeButton from '../../components/СhangeButton';
 import styles from './ProjectName.module.css';
+
+//Redux
+import { currentProjectSelectors } from '../../redux/current-project';
+const { getCurrentProjectTitle, getCurrentProjectDescription } =
+  currentProjectSelectors;
 
 const ProjectName = () => (
   <>
     <div className={styles.title}>
-      <h1 className={styles.project_title}> Project1</h1>
+      <h1 className={styles.project_title}>
+        {useSelector(getCurrentProjectTitle)}
+      </h1>
       <СhangeButton
         type="button"
         // onClick={}
@@ -12,8 +20,7 @@ const ProjectName = () => (
       />
     </div>
     <p className={styles.project_desc}>
-      Short description of the project, if it exist, it is posted here. The
-      width of the text block
+      {useSelector(getCurrentProjectDescription)}
     </p>
   </>
 );

@@ -14,6 +14,9 @@ const {
   getSprintInfoRequest,
   getSprintInfoSuccess,
   getSprintInfoError,
+  getAllSprintsRequest,
+  getAllSprintsSuccess,
+  getAllSprintsError,
 } = sprintsActions;
 
 const addSprint =
@@ -30,19 +33,17 @@ const addSprint =
     }
   };
 
-const deleteSprint =
-  ({ projectId, sprintId }) =>
-  async dispatch => {
-    dispatch(deleteSprintRequest());
+const deleteSprint = (projectId, sprintId) => async dispatch => {
+  dispatch(deleteSprintRequest());
 
-    try {
-      await axios.delete(`/projects/${projectId}/${sprintId}`);
+  try {
+    await axios.delete(`/projects/${projectId}/${sprintId}`);
 
-      dispatch(deleteSprintSuccess(sprintId));
-    } catch ({ message }) {
-      dispatch(deleteSprintError(message));
-    }
-  };
+    dispatch(deleteSprintSuccess(sprintId));
+  } catch ({ message }) {
+    dispatch(deleteSprintError(message));
+  }
+};
 
 const editSprintTitle =
   ({ projectId, sprintId, title }) =>
@@ -63,25 +64,36 @@ const editSprintTitle =
     }
   };
 
-const getSprintInfo =
-  ({ projectId, sprintId }) =>
-  async dispatch => {
-    dispatch(getSprintInfoRequest());
+const getSprintInfo = (projectId, sprintId) => async dispatch => {
+  dispatch(getSprintInfoRequest());
 
-    try {
-      const { data } = await axios.get(`/projects/${projectId}/${sprintId}`);
+  try {
+    const { data } = await axios.get(`/projects/${projectId}/${sprintId}`);
 
-      dispatch(getSprintInfoSuccess(data));
-    } catch ({ message }) {
-      dispatch(getSprintInfoError(message));
-    }
-  };
+    dispatch(getSprintInfoSuccess(data));
+  } catch ({ message }) {
+    dispatch(getSprintInfoError(message));
+  }
+};
+
+const getAllSprints = projectId => async dispatch => {
+  dispatch(getAllSprintsRequest());
+
+  try {
+    const { data } = await axios.get(`/projects/${projectId}`);
+
+    dispatch(getAllSprintsSuccess(data.project.sprints));
+  } catch ({ response }) {
+    dispatch(getAllSprintsError(response.data.message));
+  }
+};
 
 const sprintsOperations = {
   addSprint,
   deleteSprint,
   editSprintTitle,
   getSprintInfo,
+  getAllSprints,
 };
 
 export default sprintsOperations;

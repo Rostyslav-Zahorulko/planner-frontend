@@ -6,7 +6,7 @@ export default function TaskItem({
   sprintId,
   id,
   title,
-  planHours,
+  plannedHours,
   hoursPerDay,
   totalHours,
 }) {
@@ -17,9 +17,9 @@ export default function TaskItem({
     <li className={st.listItem}>
       <ul className={st.listItem_tasks}>
         <li className={st.title}>{title}</li>
-        <li className={st.planHours}>{planHours}</li>
+        <li className={st.planHours}>{plannedHours}</li>
         <li className={st.hoursPerDay}>
-          {hoursPerDay}
+          hoursPerDay
           <div className={st.hoursPerDay_wrapper}>
             <div className={st.hoursPerDay_wrapper_input}>
               <input className={st.hoursPerDay_input}></input>

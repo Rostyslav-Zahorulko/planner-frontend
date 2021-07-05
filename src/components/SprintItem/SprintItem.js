@@ -1,28 +1,54 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { useParams } from 'react-router';
+import { useDispatch } from 'react-redux';
+import * as dayjs from 'dayjs';
+
 import BasketButton from '../BasketButton';
 import styles from './SprintItem.module.css';
 
-const SprintItem = ({ sprint }) => (
-  <li className={styles.sprint_item}>
-    <h3 className={styles.sprint_subject}>{sprint.title}</h3>
-    <p className={styles.sprint_desc}>
-      Start date
-      <span className={styles.sprint_desc_item}>{sprint.startDate}</span>
-    </p>
-    <p className={styles.sprint_desc}>
-      End date
-      <span className={styles.sprint_desc_item}>08 Jul</span>
-    </p>
-    <p className={styles.sprint_desc}>
-      Duration
-      <span className={styles.sprint_desc_item}>{sprint.duration}</span>
-    </p>
-    <BasketButton
-      type="button"
-      // onClick={}
-      aria-label="delete"
-    ></BasketButton>
-  </li>
-);
+// REDUX
+import { sprintsOperations } from '../../redux/sprints';
 
-export default SprintItem;
+export default function SprintItem({ sprint }) {
+  const { id, title, startDate, duration } = sprint;
+  const endDate = dayjs(startDate).add(duration, 'day');
+  const normalizeDate = date => {
+    const displayedDate = dayjs(date).format('D MMM');
+    return displayedDate;
+  };
+  const displayedStartDate = normalizeDate(startDate);
+  const displayedEndDate = normalizeDate(endDate);
+
+  const { projectId } = useParams();
+  const dispatch = useDispatch();
+  const onDeleteSprint = (id1, id2) =>
+    dispatch(sprintsOperations.deleteSprint(id1, id2));
+
+  return (
+    <li className={styles.sprint_item}>
+      <Link to={`/projects/${projectId}/${id}`} className={styles.link}>
+        <h3 className={styles.sprint_subject}>{title}</h3>
+        <p className={styles.sprint_desc}>
+          Start date
+          <span className={styles.sprint_desc_item}>{displayedStartDate}</span>
+        </p>
+        <p className={styles.sprint_desc}>
+          End date
+          <span className={styles.sprint_desc_item}>{displayedEndDate}</span>
+        </p>
+        <p className={styles.sprint_desc}>
+          Duration
+          <span className={styles.sprint_desc_item}>{duration}</span>
+        </p>
+        </Link>
+        <BasketButton
+          type="button"
+          onDeleteSprint={onDeleteSprint}
+          projectId={projectId}
+          sprintId={id}
+          aria-label="delete"
+        ></BasketButton>
+    </li>
+  );
+}

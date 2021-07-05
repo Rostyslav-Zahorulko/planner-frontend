@@ -20,6 +20,10 @@ const getSprintInfoRequest = createAction('sprints/getInfoRequest');
 const getSprintInfoSuccess = createAction('sprints/getInfoSuccess ');
 const getSprintInfoError = createAction('sprints/getInfoError');
 
+const getAllSprintsRequest = createAction('sprints/getAllSprintsRequest');
+const getAllSprintsSuccess = createAction('sprints/getAllSprintsSuccess');
+const getAllSprintsError = createAction('sprints/getAllSprintsError');
+
 const sprintsActions = {
   addSprintRequest,
   addSprintSuccess,
@@ -33,6 +37,9 @@ const sprintsActions = {
   getSprintInfoRequest,
   getSprintInfoSuccess,
   getSprintInfoError,
+  getAllSprintsRequest,
+  getAllSprintsSuccess,
+  getAllSprintsError,
 };
 
 export default sprintsActions;
