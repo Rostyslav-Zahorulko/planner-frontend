@@ -22,17 +22,16 @@ import { sprintsSelectors } from '../../redux/sprints';
 // Styles
 import styles from './SprintsPage.module.css';
 
-const SprintsPage = () => {
-  const dispatch = useDispatch();
+const SprintsPage = () => {  
   const { getProjectInfo } = projectsOperations;
   const { getProjectsItems } = projectsSelectors;
+  const { getAllSprints } = sprintsOperations 
   const { getSprints } = sprintsSelectors;
   
+  const dispatch = useDispatch();
   const { projectId } = useParams();
   const projects = useSelector(getProjectsItems);
   const sprints = useSelector(getSprints);
-
-  // console.log(sprints);
 
   const [isCreateProjectModalShown, setCreateProjectModalIsShown] =
     useState(false);
@@ -50,6 +49,7 @@ const SprintsPage = () => {
   const toggleCreateSprintModal = useCallback(() => {
     setCreateSprintModalIsShown(prevValue => !prevValue);
   }, []);
+  
   /*Add people*/
   const toggleAddPeopleModal = useCallback(() => {
     setAddPeopleModalIsShown(prevValue => !prevValue);
@@ -60,7 +60,7 @@ const SprintsPage = () => {
   }, [dispatch, projectId]);
 
   useEffect(() => {
-    dispatch(sprintsOperations.getAllSprints(projectId));
+    dispatch(getAllSprints(projectId));
   }, [dispatch, projectId]);
 
   return (
