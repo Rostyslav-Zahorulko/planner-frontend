@@ -17,8 +17,8 @@ const deleteTaskError = createAction('tasks/deleteErTasks');
 // const editHoursSpentOnTaskPerDayError = createAction(
 //   'tasks/editSpentHoursPerDayError',
 // );
+export const changeFilter = createAction('tasks/changeFilter');
 
-const filterTasksByTitle = createAction('tasks/filterByTitle');
 
 const tasksActions = {
   addTaskRequest,
@@ -30,7 +30,7 @@ const tasksActions = {
   // editHoursSpentOnTaskPerDayRequest,
   // editHoursSpentOnTaskPerDaySuccess,
   // editHoursSpentOnTaskPerDayError,
-  filterTasksByTitle,
+  changeFilter,
 };
 
 export default tasksActions;

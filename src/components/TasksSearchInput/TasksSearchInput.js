@@ -1,13 +1,24 @@
 import s from './TasksSearchInput.module.css';
+import { useSelector, useDispatch } from 'react-redux';
 
-export default function TasksSearchInput({ value, onChange, onBlur }) {
+import { getFilter } from '../../redux/tasks/tasks-selectors';
+import * as tasksActions from '../../redux/tasks/tasks-actions';
+
+export default function TasksSearchInput({ onBlur }) {
+  const dispatch = useDispatch();
+  const filter = useSelector(getFilter);
+
+  const handleFilterChange = e => {
+    // console.log(e.currentTarget.value);
+    dispatch(tasksActions.changeFilter(e.currentTarget.value));
+  };
   return (
     <label className={s.label}>
       <input
         className={s.input}
         type="text"
-        value={value}
-        onChange={onChange}
+        value={filter}
+        onChange={handleFilterChange}
         autoFocus
         placeholder="Your search"
         onBlur={onBlur}
