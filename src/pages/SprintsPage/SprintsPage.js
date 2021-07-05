@@ -16,12 +16,11 @@ import FormCreateSprint from '../../components/FormCreateSprint';
 // Redux
 import { projectsOperations } from '../../redux/projects';
 import { projectsSelectors } from '../../redux/projects';
-import { currentProjectSelectors } from '../../redux/current-project';
+import { sprintsOperations } from '../../redux/sprints';
+import { sprintsSelectors } from '../../redux/sprints';
 
 // Styles
 import styles from './SprintsPage.module.css';
-
-const { getCurrentProjectSprints } = currentProjectSelectors;
 
 // const sprints = [
 //   {
@@ -53,20 +52,18 @@ const { getCurrentProjectSprints } = currentProjectSelectors;
 const SprintsPage = () => {
   const dispatch = useDispatch();
   const projects = useSelector(projectsSelectors.getProjectsItems);
+  const sprints = useSelector(sprintsSelectors.getSprintsItems);
   const { projectId } = useParams();
-  const sprints = useSelector(getCurrentProjectSprints);
   // console.log(sprints);
 
   const [isCreateSprintModalShown, setCreateSprintModalIsShown] =
     useState(false);
-
   const [isAddPeopleModalShown, setAddPeopleModalIsShown] = useState(false);
 
   /*Create sprint*/
   const toggleCreateSprintModal = useCallback(() => {
     setCreateSprintModalIsShown(prevValue => !prevValue);
   }, []);
-
   /*Add people*/
   const toggleAddPeopleModal = useCallback(() => {
     setAddPeopleModalIsShown(prevValue => !prevValue);
@@ -74,6 +71,10 @@ const SprintsPage = () => {
 
   useEffect(() => {
     dispatch(projectsOperations.getProjectInfo(projectId));
+  }, [dispatch, projectId]);
+
+  useEffect(() => {
+    dispatch(sprintsOperations.getAllSprints(projectId));
   }, [dispatch, projectId]);
 
   return (
