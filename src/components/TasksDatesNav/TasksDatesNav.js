@@ -1,6 +1,18 @@
+import { useState, useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { useParams } from 'react-router';
+
+// Styles
 import s from './TasksDatesNav.module.css';
+
+// Components
 import { ReactComponent as LeftIcon } from '../../images/arrow-left.svg';
 import { ReactComponent as RightIcon } from '../../images/arrow-right.svg';
+
+// redux
+import { currentSprintSelectors } from '../../redux/current-sprint';
+const { getCurrentSprintDuration, getCurrentSprintStartDate } =
+  currentSprintSelectors;
 
 export default function TasksDatesNav() {
   return (
@@ -13,6 +25,7 @@ export default function TasksDatesNav() {
         >
           <LeftIcon className={s.icon} width="8px" height="12px" />
         </button>
+
         <span className={`${s.days} ${s.daysPanelItem}`}>
           <span className={s.currentDay}>1</span>
           <span className={s.daysTotal}>/10</span>

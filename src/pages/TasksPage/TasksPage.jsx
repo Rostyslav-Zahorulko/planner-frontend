@@ -16,7 +16,7 @@ import SidebarForReuse from '../../components/SidebarForReuse';
 import SprintLinkList from '../../components/SprintLinkList';
 import Modal from '../../components/Modal';
 import FormCreateTask from '../../components/FormCreateTask';
-import FormCreateSprint from '../../components/FormCreateSprint';
+// import FormCreateSprint from '../../components/FormCreateSprint';
 import ChartModalContainer from '../../components/ChartModal';
 import AddButton from '../../components/AddButton';
 
@@ -27,9 +27,8 @@ import sprints from '../../data/sprints.json';
 import { sprintsOperations } from '../../redux/sprints';
 import { currentSprintSelectors } from '../../redux/current-sprint';
 import { getTasks } from '../../redux/tasks/tasks-selectors';
-import addTask from '../../redux/tasks/tasks-operations';
-const { getCurrentSprintTitle, getCurrentSprinDuration } =
-  currentSprintSelectors;
+// import addTask from '../../redux/tasks/tasks-operations';
+const { getCurrentSprintTitle } = currentSprintSelectors;
 
 export default function TasksPage() {
   const dispatch = useDispatch();
