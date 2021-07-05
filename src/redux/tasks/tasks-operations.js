@@ -27,19 +27,17 @@ const addTask =
     }
   };
 
-const deleteTask =
-  ({ projectId, sprintId, taskId }) =>
-  async dispatch => {
-    dispatch(deleteTaskRequest());
+const deleteTask = (projectId, sprintId, taskId) => async dispatch => {
+  dispatch(deleteTaskRequest());
 
-    try {
-      await axios.delete(`/projects/${projectId}/${sprintId}/${taskId}`);
+  try {
+    await axios.delete(`/projects/${projectId}/${sprintId}/${taskId}`);
 
-      dispatch(deleteTaskSuccess(taskId));
-    } catch ({ message }) {
-      dispatch(deleteTaskError(message));
-    }
-  };
+    dispatch(deleteTaskSuccess(taskId));
+  } catch ({ message }) {
+    dispatch(deleteTaskError(message));
+  }
+};
 
 // const editHoursSpentOnTaskPerDay =
 //   ({ projectId, sprintId, taskId, hours }) =>
