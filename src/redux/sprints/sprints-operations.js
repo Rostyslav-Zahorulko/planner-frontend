@@ -24,7 +24,7 @@ const addSprint =
     try {
       const { data } = await axios.post(`/projects/${projectId}`, sprint);
 
-      dispatch(addSprintSuccess(data));
+      dispatch(addSprintSuccess(data.data.sprints));
     } catch ({ message }) {
       dispatch(addSprintError(message));
     }

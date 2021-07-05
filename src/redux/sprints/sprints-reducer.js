@@ -8,8 +8,8 @@ const { addSprintSuccess, deleteSprintSuccess, editSprintTitleSuccess } =
   sprintsActions;
 
 const itemsReducer = createReducer([], {
-  [getProjectInfoSuccess]: (_, { payload }) => payload.items,
-  [addSprintSuccess]: (state, { payload }) => [...state, payload],
+  [getProjectInfoSuccess]: (_, { payload }) => payload.sprints,
+  [addSprintSuccess]: (_, { payload }) => payload,
   [deleteSprintSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
   [editSprintTitleSuccess]: (state, { payload }) =>

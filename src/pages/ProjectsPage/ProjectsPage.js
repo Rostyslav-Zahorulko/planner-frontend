@@ -44,7 +44,7 @@ export default function ProjectsPage() {
         <div className={s.headbar}>
           <h1 className={s.title}>Projects</h1>
           <div className={s.btnWrapper}>
-            <AddButton onClick={toggleModal} />
+            <AddButton onOpen={toggleModal} />
             <p className={s.btnText}>Create a project</p>
           </div>
         </div>

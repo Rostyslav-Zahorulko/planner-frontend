@@ -50,7 +50,7 @@
   .container {
     position: absolute;
     bottom: 50px;
-    left: 64px;
+    left: 45px;
 
     display: flex;
     flex-direction: column;
@@ -78,6 +78,6 @@
   }
 
   .container {
-    left: 72px;
+    left: 35px;
   }
 }
