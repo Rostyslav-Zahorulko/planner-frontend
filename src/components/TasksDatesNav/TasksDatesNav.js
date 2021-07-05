@@ -39,26 +39,30 @@ export default function TasksDatesNav() {
   return (
     <div className={s.wrapper}>
       <div className={s.daysPanel}>
-        <button
-          type="button"
-          className={`${s.btn} ${s.daysPanelItem}`}
-          onClick={handleBackClick}
-        >
-          <LeftIcon className={s.icon} width="8px" height="12px" />
-        </button>
+        {displayedDay > 1 && (
+          <button
+            type="button"
+            className={`${s.btn} ${s.daysPanelItem}`}
+            onClick={handleBackClick}
+          >
+            <LeftIcon className={s.icon} width="8px" height="12px" />
+          </button>
+        )}
 
         <span className={`${s.days} ${s.daysPanelItem}`}>
           <span className={s.currentDay}>{displayedDay}</span>
           <span className={s.daysTotal}>/{duration}</span>
         </span>
 
-        <button
-          type="button"
-          className={`${s.btn} ${s.daysPanelItem}`}
-          onClick={handleForwardClick}
-        >
-          <RightIcon className={s.icon} width="8px" height="12px" />
-        </button>
+        {displayedDay < duration && (
+          <button
+            type="button"
+            className={`${s.btn} ${s.daysPanelItem}`}
+            onClick={handleForwardClick}
+          >
+            <RightIcon className={s.icon} width="8px" height="12px" />
+          </button>
+        )}
       </div>
       <div className={s.date}>{displayedDate}</div>
     </div>
