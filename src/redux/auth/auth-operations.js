@@ -42,10 +42,10 @@ const register = credentials => async dispatch => {
     token.set(data.token);
 
     dispatch(registerSuccess(data));
-  } catch ({ response }) {
+  } catch ({ message }) {
     // console.log(response.data.message);
-    dispatch(registerError(response.data.message));
-    toast.error(response.data.message);
+    dispatch(registerError(message));
+    toast.error(message);
   }
 };
 
@@ -58,9 +58,9 @@ const logIn = credentials => async dispatch => {
     token.set(data.token);
 
     dispatch(loginSuccess(data));
-  } catch ({ response }) {
-    dispatch(loginError(response.data.message));
-    toast.error(response.data.message);
+  } catch ({ message }) {
+    dispatch(loginError(message));
+    toast.error(message);
   }
 };
 
@@ -73,8 +73,8 @@ const logOut = () => async dispatch => {
     token.unset();
 
     dispatch(logoutSuccess());
-  } catch ({ response }) {
-    dispatch(logoutError(response.data.message));
+  } catch ({ message }) {
+    dispatch(logoutError(message));
   }
 };
 
@@ -95,8 +95,8 @@ const getCurrentUser = () => async (dispatch, getState) => {
     const { data } = await axios.get('/users/current');
 
     dispatch(getCurrentUserSuccess(data.user));
-  } catch ({ response }) {
-    dispatch(getCurrentUserError(response.data.message));
+  } catch ({ message }) {
+    dispatch(getCurrentUserError(message));
   }
 };
 

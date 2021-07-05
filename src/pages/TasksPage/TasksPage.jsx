@@ -1,7 +1,8 @@
-import React, { useState, useCallback, useEffect } from 'react';
+import React, { useState, useCallback, useEffect, useRef } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams } from 'react-router';
 import Media from 'react-media';
+import * as dayjs from 'dayjs';
 
 // STYLES
 import st from './TasksPage.module.css';
@@ -28,19 +29,43 @@ import { sprintsOperations } from '../../redux/sprints';
 import { currentSprintSelectors } from '../../redux/current-sprint';
 import { getTasks } from '../../redux/tasks/tasks-selectors';
 // import addTask from '../../redux/tasks/tasks-operations';
-const { getCurrentSprintTitle } = currentSprintSelectors;
+const {
+  getCurrentSprintTitle,
+  getCurrentSprintStartDate,
+  getCurrentSprintDuration,
+} = currentSprintSelectors;
 
 export default function TasksPage() {
   const dispatch = useDispatch();
   const { projectId, sprintId } = useParams();
   const sprintTitle = useSelector(getCurrentSprintTitle);
+  const sprintStartDate = useSelector(getCurrentSprintStartDate);
+  const sprintDuration = useSelector(getCurrentSprintDuration);
+  const sprintEndDate = dayjs(sprintStartDate).add(sprintDuration, 'day');
   const tasks = useSelector(getTasks);
 
   const [isShown, setIsShown] = useState(false);
+  const baseDisplayedDate = useRef(sprintStartDate);
 
   const toggleModal = useCallback(() => {
     setIsShown(prevIsShown => !prevIsShown);
   }, []);
+
+  useEffect(() => {
+    // console.log(sprintStartDate);
+    const today = dayjs();
+    const todayFormatted = dayjs().format('DD.MM.YYYY');
+    const startDate = dayjs(sprintStartDate);
+    const startDateFormatted = dayjs(startDate).format('DD.MM.YYYY');
+    const diff = today.diff(startDate, 'day');
+    // console.log(startDateFormatted);
+    // console.log(todayFormatted);
+    // console.log(diff);
+    diff > 0
+      ? (baseDisplayedDate.current = todayFormatted)
+      : (baseDisplayedDate.current = startDateFormatted);
+    // console.log(baseDisplayedDate);
+  }, [sprintStartDate]);
 
   useEffect(() => {
     dispatch(sprintsOperations.getSprintInfo(projectId, sprintId));

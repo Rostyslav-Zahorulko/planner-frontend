@@ -3,7 +3,12 @@ import { sprintsActions } from '../sprints';
 
 const { getSprintInfoSuccess } = sprintsActions;
 
-const initialSprintState = { title: '', duration: '', startDate: '' };
+const initialSprintState = {
+  title: '',
+  duration: '',
+  startDate: '',
+  displayedDate: '',
+};
 
 const currentSprintReducer = createReducer(initialSprintState, {
   [getSprintInfoSuccess]: (_, { payload }) => ({
