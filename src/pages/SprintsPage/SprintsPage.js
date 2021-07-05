@@ -83,9 +83,9 @@ const SprintsPage = () => {
         {isCreateProjectModalShown && (
           <Modal
             title={'Creating a project'}
-            onCLose={toggleCreateProjectModal}
+            onClose={toggleCreateProjectModal}
           >
-            Тут повинен бути компонент форми для створення проекту
+            <div>Тут повинен бути компонент форми для створення проекту</div>
           </Modal>
         )}
 
