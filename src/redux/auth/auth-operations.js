@@ -42,10 +42,15 @@ const register = credentials => async dispatch => {
     token.set(data.token);
 
     dispatch(registerSuccess(data));
-  } catch ({ message }) {
-    // console.log(response.data.message);
-    dispatch(registerError(message));
-    toast.error(message);
+  } catch (e) {
+    if (e.response) {
+      dispatch(registerError(e.response.data.message));
+      toast.error(e.response.data.message);
+      return;
+    }
+
+    dispatch(registerError(e.message));
+    toast.error(e.message);
   }
 };
 
@@ -58,9 +63,15 @@ const logIn = credentials => async dispatch => {
     token.set(data.token);
 
     dispatch(loginSuccess(data));
-  } catch ({ message }) {
-    dispatch(loginError(message));
-    toast.error(message);
+  } catch (e) {
+    if (e.response) {
+      dispatch(loginError(e.response.data.message));
+      toast.error(e.response.data.message);
+      return;
+    }
+
+    dispatch(loginError(e.message));
+    toast.error(e.message);
   }
 };
 
@@ -73,8 +84,15 @@ const logOut = () => async dispatch => {
     token.unset();
 
     dispatch(logoutSuccess());
-  } catch ({ message }) {
-    dispatch(logoutError(message));
+  } catch (e) {
+    if (e.response) {
+      dispatch(logoutError(e.response.data.message));
+      toast.error(e.response.data.message);
+      return;
+    }
+
+    dispatch(logoutError(e.message));
+    toast.error(e.message);
   }
 };
 
@@ -95,8 +113,15 @@ const getCurrentUser = () => async (dispatch, getState) => {
     const { data } = await axios.get('/users/current');
 
     dispatch(getCurrentUserSuccess(data.user));
-  } catch ({ message }) {
-    dispatch(getCurrentUserError(message));
+  } catch (e) {
+    if (e.response) {
+      dispatch(getCurrentUserError(e.response.data.message));
+      toast.error(e.response.data.message);
+      return;
+    }
+
+    dispatch(getCurrentUserError(e.message));
+    toast.error(e.message);
   }
 };
 
