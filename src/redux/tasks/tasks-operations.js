@@ -14,7 +14,22 @@ const {
   updateHoursSpentOnTaskPerDayRequest,
   updateHoursSpentOnTaskPerDaySuccess,
   updateHoursSpentOnTaskPerDayError,
+  getAllTasksRequest,
+  getAllTasksSuccess,
+  getAllTasksError,
 } = tasksActions;
+
+const getAllTasks = (projectId, sprintId) => async dispatch => {
+  dispatch(getAllTasksRequest());
+
+  try {
+    const { data } = await axios.get(`/projects/${projectId}/${sprintId}`);
+
+    dispatch(getAllTasksSuccess(data.tasks));
+  } catch ({ message }) {
+    dispatch(getAllTasksError(message));
+  }
+};
 
 const addTask =
   ({ projectId, sprintId }) =>
@@ -70,6 +85,7 @@ const tasksOperations = {
   addTask,
   deleteTask,
   updateHoursPerDay,
+  getAllTasks,
 };
 
 export default tasksOperations;

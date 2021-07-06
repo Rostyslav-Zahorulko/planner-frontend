@@ -26,7 +26,7 @@ import sprints from '../../data/sprints.json';
 // REDUX
 import { sprintsOperations } from '../../redux/sprints';
 import { currentSprintSelectors } from '../../redux/current-sprint';
-import { tasksSelectors } from '../../redux/tasks';
+import { tasksSelectors, tasksOperations } from '../../redux/tasks';
 
 // import addTask from '../../redux/tasks/tasks-operations';
 import { currentSprintOperations } from '../../redux/current-sprint';
@@ -41,7 +41,7 @@ export default function TasksPage() {
   const sprintTitle = useSelector(getCurrentSprintTitle);
   const sprintStartDate = useSelector(getCurrentSprintStartDate);
 
-  const tasks = useSelector(tasksSelectors.getTasks);
+  // const tasks = useSelector(tasksSelectors.getTasks);
   const visibleTasks = useSelector(tasksSelectors.getVisibleTasks);
 
   const [isShown, setIsShown] = useState(false);
@@ -57,6 +57,10 @@ export default function TasksPage() {
   useEffect(() => {
     dispatch(currentSprintOperations.getDisplayedDate(sprintStartDate));
   }, [dispatch, sprintStartDate]);
+
+  useEffect(() => {
+    dispatch(tasksOperations.getAllTasks(projectId, sprintId));
+  }, [dispatch, projectId, sprintId]);
 
   return (
     <>

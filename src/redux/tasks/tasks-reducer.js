@@ -9,6 +9,7 @@ const {
   deleteTaskSuccess,
   changeFilter,
   updateHoursSpentOnTaskPerDaySuccess,
+  getAllTasksSuccess,
 } = tasksActions;
 
 const itemsReducer = createReducer([], {
@@ -16,7 +17,8 @@ const itemsReducer = createReducer([], {
   [addTaskSuccess]: (state, { payload }) => [...state, payload],
   [deleteTaskSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
-  [updateHoursSpentOnTaskPerDaySuccess]: (state, { payload }) => payload,
+  [updateHoursSpentOnTaskPerDaySuccess]: (_, { payload }) => payload,
+  [getAllTasksSuccess]: (_, { payload }) => payload,
 });
 
 const filterReducer = createReducer('', {

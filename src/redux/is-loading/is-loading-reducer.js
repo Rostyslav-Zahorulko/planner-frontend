@@ -59,6 +59,9 @@ const {
   deleteTaskRequest,
   deleteTaskSuccess,
   deleteTaskError,
+  getAllTasksRequest,
+  getAllTasksSuccess,
+  getAllTasksError,
 } = tasksActions;
 
 const isLoadingReducer = createReducer(false, {
@@ -110,6 +113,9 @@ const isLoadingReducer = createReducer(false, {
   [deleteTaskRequest]: () => true,
   [deleteTaskSuccess]: () => false,
   [deleteTaskError]: () => false,
+  [getAllTasksRequest]: () => true,
+  [getAllTasksSuccess]: () => false,
+  [getAllTasksError]: () => false,
 });
 
 export default isLoadingReducer;

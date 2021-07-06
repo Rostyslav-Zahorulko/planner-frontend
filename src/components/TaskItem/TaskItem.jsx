@@ -17,21 +17,16 @@ import customParseFormat from 'dayjs/plugin/customParseFormat';
 
 dayjs.extend(customParseFormat);
 
-export default function TaskItem({
-  title,
-  plannedHours,
-  totalHours,
-  projectId,
-  sprintId,
-  taskId,
-}) {
+export default function TaskItem({ projectId, sprintId, taskId }) {
   const dispatch = useDispatch();
   const tasks = useSelector(tasksSelectors.getTasks);
   const displayedDate = useSelector(
     currentSprintSelectors.getCurrentSprintDisplayedDate,
   );
+  const task = tasks.find(task => task.id === taskId);
+  const { title, plannedHours, totalHours } = task;
 
-  const [currentDay, setCurrentDay] = useState({});
+  const [currentDay, setCurrentDay] = useState({ date: '', hoursSpent: '0' });
 
   const handleHoursPerDayChange = e => {
     e.preventDefault();
@@ -78,6 +73,10 @@ export default function TaskItem({
       toast.error('Please enter a non-negative integer');
     }
   };
+
+  useEffect(() => {
+    dispatch(tasksOperations.getAllTasks(projectId, sprintId));
+  }, [dispatch, projectId, sprintId]);
 
   useEffect(() => {
     const standartDisplayedDate = dayjs(displayedDate, 'DD.MM.YYYY').format(

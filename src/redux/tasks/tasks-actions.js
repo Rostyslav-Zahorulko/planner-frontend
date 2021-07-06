@@ -1,5 +1,9 @@
 import { createAction } from '@reduxjs/toolkit';
 
+const getAllTasksRequest = createAction('tasks/getTasksRequest');
+const getAllTasksSuccess = createAction('tasks/getTasksSuccess');
+const getAllTasksError = createAction('tasks/getTasksError');
+
 const addTaskRequest = createAction('tasks/addRequest');
 const addTaskSuccess = createAction('tasks/addSuccess');
 const addTaskError = createAction('tasks/addError');
@@ -30,6 +34,9 @@ const tasksActions = {
   updateHoursSpentOnTaskPerDaySuccess,
   updateHoursSpentOnTaskPerDayError,
   changeFilter,
+  getAllTasksRequest,
+  getAllTasksSuccess,
+  getAllTasksError,
 };
 
 export default tasksActions;

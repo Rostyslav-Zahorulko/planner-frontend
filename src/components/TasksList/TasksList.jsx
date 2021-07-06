@@ -10,20 +10,17 @@ const TasksList = ({ visibleTasks, projectId, sprintId }) => {
         matches.big ? (
           <>
             <ul className={st.task_list}>
-              {visibleTasks.map(
-                ({ id, title, plannedHours, hoursPerDay, totalHours }) => (
-                  <TaskItem
-                    key={id}
-                    title={title}
-                    plannedHours={plannedHours}
-                    // hoursPerDay={hoursPerDay}
-                    totalHours={totalHours}
-                    projectId={projectId}
-                    sprintId={sprintId}
-                    taskId={id}
-                  />
-                ),
-              )}
+              {visibleTasks.map(({ id, title, plannedHours, totalHours }) => (
+                <TaskItem
+                  key={id}
+                  title={title}
+                  plannedHours={plannedHours}
+                  totalHours={totalHours}
+                  projectId={projectId}
+                  sprintId={sprintId}
+                  taskId={id}
+                />
+              ))}
             </ul>
           </>
         ) : (
