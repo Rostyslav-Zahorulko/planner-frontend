@@ -13,6 +13,7 @@ import Modal from '../../components/Modal';
 import CreateProjectForm from '../../components/CreatePojectForm';
 import FormAddPeople from '../../components/FormAddPeople';
 import FormCreateSprint from '../../components/FormCreateSprint';
+import ChangeTitleInput from '../../components/ChangeTitleInput';
 
 // Redux
 import { projectsOperations } from '../../redux/projects';
@@ -76,7 +77,7 @@ const SprintsPage = () => {
 
       <div className={styles.sprints}>
         <ProjectName />
-
+        <ChangeTitleInput/>
         <div className={styles.addSprintButton}>
           <AddButton onOpen={toggleCreateSprintModal} />
           <p className={styles.createSprint}>Create a sprint</p>
