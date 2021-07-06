@@ -1,13 +1,15 @@
 import styles from './SidebarProjectsListItem.module.css';
+import { NavLink } from 'react-router-dom';
 
-const SidebarProjectsListItem = project => (
+const SidebarProjectsListItem = ({ project }) => (
   <li className={styles.list_item}>
-    <a className={styles.link_list_item} href={`/projects/${project.id}`}>
-      <span className={styles.link_list_item_sp}>test1{project.title} </span>
-      {/* </NavLink> */}
-    </a>
-    {/* <NavLink to={`/projects/${id}`}> */}
-    {/* </NavLink> */}
+    <NavLink
+      className={styles.link_list_item}
+      to={`/projects/${project.id}`}
+      activeClassName={styles.link_active}
+    >
+      <span className={styles.link_list_item_sp}>{project.title} </span>
+    </NavLink>
   </li>
 );
 export default SidebarProjectsListItem;

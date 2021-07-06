@@ -21,9 +21,6 @@ import ChartModalContainer from '../../components/ChartModal';
 import AddButton from '../../components/AddButton';
 import ChangeTitleInput from '../../components/ChangeTitleInput'
 
-// LOCAl DATA
-import sprints from '../../data/sprints.json';
-
 // REDUX
 import { sprintsOperations } from '../../redux/sprints';
 import { currentSprintSelectors } from '../../redux/current-sprint';
@@ -70,8 +67,8 @@ export default function TasksPage() {
   return (
     <>
       <div className={st.wrapper}>
-        <SidebarForReuse goBackTo={'sprints'}>
-          <SprintLinkList sprints={sprints} />
+        <SidebarForReuse text={'sprint'} onOpen={() => {}}>
+          <SprintLinkList />
         </SidebarForReuse>
 
         <div className={st.wrapper_tasks}>

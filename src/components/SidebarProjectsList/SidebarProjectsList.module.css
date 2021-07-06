@@ -6,13 +6,11 @@
 
 @media screen and (min-width: 768px) {
   .link_list {
-    width: 160px;
-    height: 170px;
     display: flex;
+    flex-direction: column;
     align-content: flex-start;
     flex-wrap: wrap;
-    overflow-y: auto;
-    overflow-x: hidden;
+
   }
 
   .link_list::-webkit-scrollbar {

@@ -4,12 +4,12 @@ import SidebarAddButton from '../SidebarAddButton';
 
 import styles from './SidebarForReuse.module.css';
 
-const SidebarForReuse = ({ children, goBackTo }) => {
+const SidebarForReuse = ({ children, text, onOpen }) => {
   return (
     <div className={styles.sidebar}>
-      <ShowBackArrow goBackTo={goBackTo} />
+      <ShowBackArrow text={text} />
       {children}
-      <SidebarAddButton children={'Create a sprint'}>
+      <SidebarAddButton text={`Create a ${text}`} onOpen={onOpen}>
         {/* <FormCreateSprint /> */}
       </SidebarAddButton>
     </div>
