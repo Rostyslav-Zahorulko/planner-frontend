@@ -8,8 +8,7 @@ import styles from './FormAddPeople.module.css';
 
 import { projectsOperations } from '../../redux/projects';
 
-// TODO: написати операцію
-// const { addUserInProject } = projectsOperations;
+const { addUser } = projectsOperations;
 
 const FormAddPeople = ({ onClose, users }) => {
   const [email, setEmail] = useState('');
@@ -26,7 +25,9 @@ const FormAddPeople = ({ onClose, users }) => {
 
       const user = { email };
 
-      // dispatch(addUserInProject(user));
+      console.log(user);
+
+      dispatch(addUser(user));
 
       setEmail('');
 
