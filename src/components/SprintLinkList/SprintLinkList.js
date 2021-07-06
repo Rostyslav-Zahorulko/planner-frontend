@@ -7,7 +7,7 @@ import { sprintsSelectors } from '../../redux/sprints';
 
 export default function SprintLinkList() {
   const sprints = useSelector(sprintsSelectors.getSprintsItems);
-  console.log(sprints);
+  // console.log(sprints);
 
   return (
     <ul className={styles.link_list}>

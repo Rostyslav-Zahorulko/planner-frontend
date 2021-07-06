@@ -1,7 +1,7 @@
 // Libraries
 import { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router';
+import { useParams, useLocation, useHistory } from 'react-router';
 
 // Components
 import SidebarProjectsList from '../../components/SidebarProjectsList';
@@ -32,6 +32,8 @@ const SprintsPage = () => {
   const { getCurrentProjectTeam } = currentProjectSelectors;
 
   const dispatch = useDispatch();
+  const history = useHistory();
+  const location = useLocation();
   const { projectId } = useParams();
   const projects = useSelector(getProjectsItems);
   const sprints = useSelector(getSprintsItems);
@@ -60,17 +62,22 @@ const SprintsPage = () => {
     setAddPeopleModalIsShown(prevValue => !prevValue);
   }, []);
 
+  // Show sprints btn for sidebar
+  const handleGoBack = () => {
+    history.push(location?.state?.from?.location ?? '/projects');
+  };
+
   useEffect(() => {
     dispatch(getProjectInfo(projectId));
   }, [dispatch, projectId, getProjectInfo]);
 
-  // useEffect(() => {
-  //   dispatch(getAllSprints(projectId));
-  // }, [dispatch, projectId, getProjectInfo, getAllSprints]);
-
   return (
     <div className={styles.project}>
-      <SidebarForReuse text={'project'} onOpen={toggleCreateProjectModal}>
+      <SidebarForReuse
+        text={'project'}
+        onOpen={toggleCreateProjectModal}
+        onClick={handleGoBack}
+      >
         <SidebarProjectsList projects={projects} />
       </SidebarForReuse>
 
