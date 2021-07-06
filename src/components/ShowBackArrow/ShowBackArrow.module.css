@@ -2,8 +2,11 @@
   display: inline-flex;
   align-items: center;
   margin-bottom: 30px;
+  padding: 0;
   letter-spacing: 0.04em;
   color: #181c27;
+  border: none;
+  background-color: inherit;
 
   cursor: pointer;
 
@@ -38,12 +41,16 @@
     font-size: 18px;
     line-height: 22px;
   }
-  
-
 }
 
 @media screen and (min-width: 1280px) {
   .show_back {
     margin-bottom: 165px;
   }
+}
+
+.text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2142;
 }
