@@ -29,12 +29,18 @@ const SprintsPage = () => {
   const { getProjectsItems } = projectsSelectors;
   // const { getAllSprints } = sprintsOperations;
   const { getSprintsItems } = sprintsSelectors;
-  const { getCurrentProjectTeam } = currentProjectSelectors;
+  const {
+    getCurrentProjectTitle,
+    getCurrentProjectDescription,
+    getCurrentProjectTeam,
+  } = currentProjectSelectors;
 
   const dispatch = useDispatch();
   const { projectId } = useParams();
   const projects = useSelector(getProjectsItems);
   const sprints = useSelector(getSprintsItems);
+  const title = useSelector(getCurrentProjectTitle);
+  const description = useSelector(getCurrentProjectDescription);
   const users = useSelector(getCurrentProjectTeam);
 
   const [isCreateProjectModalShown, setCreateProjectModalIsShown] =
@@ -75,7 +81,7 @@ const SprintsPage = () => {
       </SidebarForReuse>
 
       <div className={styles.sprints}>
-        <ProjectName />
+        <ProjectName title={title} description={description} />
         <ChangeTitleInput />
         <div className={styles.addSprintButton}>
           <AddButton onOpen={toggleCreateSprintModal} />
