@@ -19,6 +19,7 @@ import FormCreateTask from '../../components/FormCreateTask';
 // import FormCreateSprint from '../../components/FormCreateSprint';
 import ChartModalContainer from '../../components/ChartModal';
 import AddButton from '../../components/AddButton';
+import ChangeTitleInput from '../../components/ChangeTitleInput'
 
 // LOCAl DATA
 import sprints from '../../data/sprints.json';
@@ -74,6 +75,7 @@ export default function TasksPage() {
             <div className={st.title_wrapper}>
               <h1 className={st.title}> {sprintTitle}</h1>
               <ChangeButton />
+              <ChangeTitleInput/>
             </div>
             <div className={st.button_wrapper}>
               <AddButton onClick={toggleModal} />
