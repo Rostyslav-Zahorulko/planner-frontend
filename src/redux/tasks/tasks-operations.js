@@ -22,14 +22,20 @@ const addTask =
     dispatch(addTaskRequest());
 
     try {
-      const { data } = await axios.post(
-        `/projects/${projectId}/${sprintId}`,
-        task,
-      );
+      const {
+        data: {
+          project: { sprints },
+        },
+      } = await axios.post(`/projects/${projectId}/sprints/${sprintId}`, task);
 
-      // console.dir(data.project.sprints);
+      // console.dir(sprints);
 
-      dispatch(addTaskSuccess(data.project.sprints));
+      // Не працює, оскільки вибирає не поточний спринт, а останній в масиві
+      // const lastSprint = sprints[sprints.length - 1];
+
+      // console.dir(lastSprint.tasks);
+
+      // dispatch(addTaskSuccess(currentSprint.tasks));
     } catch ({ message }) {
       dispatch(addTaskError(message));
     }
@@ -39,7 +45,7 @@ const deleteTask = (projectId, sprintId, taskId) => async dispatch => {
   dispatch(deleteTaskRequest());
 
   try {
-    await axios.delete(`/projects/${projectId}/${sprintId}/${taskId}`);
+    await axios.delete(`/projects/${projectId}/sprints/${sprintId}/${taskId}`);
 
     dispatch(deleteTaskSuccess(taskId));
   } catch ({ message }) {
@@ -60,7 +66,7 @@ const updateHoursPerDay =
     // console.log(normalizedDaywithHours);
     try {
       const { data } = await axios.patch(
-        `/projects/${projectId}/${sprintId}/${taskId}`,
+        `/projects/${projectId}/sprints/${sprintId}/${taskId}`,
         normalizedDaywithHours,
       );
       // console.log(data);
