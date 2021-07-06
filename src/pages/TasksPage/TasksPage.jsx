@@ -16,7 +16,7 @@ import SidebarForReuse from '../../components/SidebarForReuse';
 import SprintLinkList from '../../components/SprintLinkList';
 import Modal from '../../components/Modal';
 import FormCreateTask from '../../components/FormCreateTask';
-// import FormCreateSprint from '../../components/FormCreateSprint';
+import FormCreateSprint from '../../components/FormCreateSprint';
 import ChartModalContainer from '../../components/ChartModal';
 import AddButton from '../../components/AddButton';
 import ChangeTitleInput from '../../components/ChangeTitleInput'
@@ -67,7 +67,7 @@ export default function TasksPage() {
   return (
     <>
       <div className={st.wrapper}>
-        <SidebarForReuse text={'sprint'} onOpen={() => {}}>
+        <SidebarForReuse text={'sprint'} onOpen={toggleCreateSprintModal}>
           <SprintLinkList />
         </SidebarForReuse>
 
@@ -97,11 +97,22 @@ export default function TasksPage() {
             </div>
           </div>
           <SprintHeader />
-          <TasksList
+
+          {visibleTasks.length > 0 ? <TasksList
             visibleTasks={visibleTasks}
             projectId={projectId}
             sprintId={sprintId}
-          />
+          /> : <div>You have no tasks yet</div>}
+          
+
+          {isCreateSprintModalShown && (
+          <Modal title={'Creating a sprint'} onClose={toggleCreateSprintModal}>
+            <FormCreateSprint
+              projectId={projectId}
+              onClose={toggleCreateSprintModal}
+            />
+          </Modal>
+        )}
 
           {isCreateTaskModalShown && (
             <Modal title={"Creating a task"} onClose={toggleCreateTaskModal}>
