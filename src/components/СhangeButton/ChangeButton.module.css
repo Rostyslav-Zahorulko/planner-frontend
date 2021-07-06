@@ -11,7 +11,10 @@
   cursor: pointer;
 }
 .chenge_pencil:hover {
-  transform: rotate(65deg);
-  box-shadow: 8px 2px 13px rgba(156, 54, 6, 0.294);
-  transition: all 0.25s linear;
+  width: 20px;
+  height: 20px;
+  background-image: url(../../images/pencil.svg);
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
 }
