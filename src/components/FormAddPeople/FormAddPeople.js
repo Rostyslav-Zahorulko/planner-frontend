@@ -17,21 +17,24 @@ const FormAddPeople = ({ onClose, users }) => {
   const dispatch = useDispatch();
 
   const handleInputChange = useCallback(e => {
-    setEmail(e.target.value)
-  }, [])
-  
-  const handleFormSubmit = useCallback(e => {
-    e.preventDefault();
+    setEmail(e.target.value);
+  }, []);
 
-    const user = { email };
+  const handleFormSubmit = useCallback(
+    e => {
+      e.preventDefault();
 
-    // dispatch(addUserInProject(user));
-    
-    setEmail('');
-    
-    onClose();
-  }, [email, onClose, dispatch]);
-      
+      const user = { email };
+
+      // dispatch(addUserInProject(user));
+
+      setEmail('');
+
+      onClose();
+    },
+    [email, onClose, dispatch],
+  );
+
   return (
     <form className={styles.wrap} onSubmit={handleFormSubmit}>
       <label className={styles.label}>
@@ -47,7 +50,11 @@ const FormAddPeople = ({ onClose, users }) => {
         <span className={styles.headline}>Enter e-mail</span>
       </label>
       <p>Added users:</p>
-      <EmailPeopleList users={users} />
+      {users.length > 0 ? (
+        <EmailPeopleList users={users} />
+      ) : (
+        "You haven't any users yet"
+      )}
       <FormButtons onClose={onClose} />
     </form>
   );

@@ -19,6 +19,7 @@ import { projectsOperations } from '../../redux/projects';
 import { projectsSelectors } from '../../redux/projects';
 // import { sprintsOperations } from '../../redux/sprints';
 import { sprintsSelectors } from '../../redux/sprints';
+import { currentProjectSelectors } from '../../redux/current-project';
 
 // Styles
 import styles from './SprintsPage.module.css';
@@ -28,11 +29,13 @@ const SprintsPage = () => {
   const { getProjectsItems } = projectsSelectors;
   // const { getAllSprints } = sprintsOperations;
   const { getSprintsItems } = sprintsSelectors;
+  const { getCurrentProjectTeam } = currentProjectSelectors;
 
   const dispatch = useDispatch();
   const { projectId } = useParams();
   const projects = useSelector(getProjectsItems);
   const sprints = useSelector(getSprintsItems);
+  const users = useSelector(getCurrentProjectTeam);
 
   const [isCreateProjectModalShown, setCreateProjectModalIsShown] =
     useState(false);
@@ -102,7 +105,7 @@ const SprintsPage = () => {
           <Modal title={'Creating a sprint'} onClose={toggleCreateSprintModal}>
             <FormCreateSprint
               projectId={projectId}
-              onClose={toggleCreateSprintModal}              
+              onClose={toggleCreateSprintModal}
             />
           </Modal>
         )}
