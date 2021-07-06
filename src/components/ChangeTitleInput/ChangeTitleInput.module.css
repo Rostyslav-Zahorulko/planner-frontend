@@ -1,0 +1,49 @@
+.headline {
+  position: absolute;
+  left: 5px;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.04em;
+  color: rgba(24, 28, 39, 0.6);
+  transform: translateY(9px);
+  transition: transform 250ms linear;
+}
+.label {
+  position: relative;
+  display: block;
+  margin-bottom: 30px;
+  font-weight: 600;
+  color: rgba(24, 28, 39, 0.6);
+}
+.label:focus-within > .headline {
+  transform: translateY(-18px);
+  font-size: 14px;
+  line-height: 17px;
+}
+.input {
+  padding: 10px;
+  width: 250px;
+  outline: none;
+  border-style: none;
+  margin-bottom: 40px;
+  background-color: #f1f2f7;
+  border-bottom: 1px solid #d1d2d4;
+}
+
+.input:invalid {
+  margin-bottom: 5px;
+  color: #ff2c0c;
+  border-bottom: 1px solid #ff2c0c;
+}
+.input:focus {
+  border-color: #f37c2d;
+  box-shadow: -2px 22px 16px -14px rgba(254, 138, 8, 0.75);
+  -webkit-box-shadow: -2px 22px 16px -14px rgba(254, 138, 8, 0.75);
+  -moz-box-shadow: -2px 22px 16px -14px rgba(254, 138, 8, 0.75);
+}
+.input:not(:placeholder-shown) + .headline {
+  transform: translateY(-8px);
+  font-size: 12px;
+}
