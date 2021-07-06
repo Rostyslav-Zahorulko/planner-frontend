@@ -101,15 +101,15 @@ const SprintsPage = () => {
         {isCreateSprintModalShown && (
           <Modal title={'Creating a sprint'} onClose={toggleCreateSprintModal}>
             <FormCreateSprint
-              onClose={toggleCreateSprintModal}
               projectId={projectId}
+              onClose={toggleCreateSprintModal}              
             />
           </Modal>
         )}
 
         {isAddPeopleModalShown && (
           <Modal title={'Add people'} onClose={toggleAddPeopleModal}>
-            <FormAddPeople />
+            <FormAddPeople users={users} onClose={toggleAddPeopleModal} />
           </Modal>
         )}
       </div>
