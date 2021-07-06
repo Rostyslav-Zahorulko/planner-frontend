@@ -11,7 +11,7 @@ import TasksList from '../../components/TasksList';
 import TasksDatesNav from '../../components/TasksDatesNav';
 import TasksSearch from '../../components/TasksSearchFull';
 import SprintHeader from '../../components/SprintHeader';
-import ChangeButton from '../../components/СhangeButton/ChangeButton';
+// import ChangeButton from '../../components/СhangeButton/ChangeButton';
 import SidebarForReuse from '../../components/SidebarForReuse';
 import SprintLinkList from '../../components/SprintLinkList';
 import Modal from '../../components/Modal';
@@ -19,6 +19,7 @@ import FormCreateTask from '../../components/FormCreateTask';
 // import FormCreateSprint from '../../components/FormCreateSprint';
 import ChartModalContainer from '../../components/ChartModal';
 import AddButton from '../../components/AddButton';
+// import ChangeTitleInput from '../../components/ChangeTitleInput';
 
 // LOCAl DATA
 import sprints from '../../data/sprints.json';
@@ -44,9 +45,32 @@ export default function TasksPage() {
 
   const [isShown, setIsShown] = useState(false);
 
+  const [showInput, setShowInput] = useState(false);
+  const [title, setTitle] = useState('');
+
   const toggleModal = useCallback(() => {
     setIsShown(prevIsShown => !prevIsShown);
   }, []);
+
+  const handleClickBtnChange = () => {
+    setShowInput(prevshowInput => !prevshowInput);
+  };
+  const handleInputChangeTitle = e => {
+    setTitle(e.target.value);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (sprintTitle !== title) {
+      dispatch(
+        sprintsOperations.editSprintTitle(projectId, sprintId, {
+          title: title,
+        }),
+      );
+    }
+
+    setShowInput(false);
+  };
 
   useEffect(() => {
     dispatch(sprintsOperations.getSprintInfo(projectId, sprintId));
@@ -72,8 +96,32 @@ export default function TasksPage() {
 
           <div className={st.header}>
             <div className={st.title_wrapper}>
-              <h1 className={st.title}> {sprintTitle}</h1>
-              <ChangeButton />
+              <h1 className={showInput ? st.titleDisable : st.title}>
+                {sprintTitle}
+              </h1>
+              <form
+                onSubmit={handleSubmit}
+                className={
+                  showInput ? st.changeTitleFormActive : st.changeTitleForm
+                }
+              >
+                <label className={st.label}>
+                  <input
+                    className={st.input}
+                    placeholder=" "
+                    type="text"
+                    required
+                    value={title}
+                    onChange={handleInputChangeTitle}
+                  />
+                </label>
+              </form>
+              <button
+                type="button"
+                className={showInput ? st.btnChangeDisable : st.btnChange}
+                onClick={handleClickBtnChange}
+              ></button>
+              {/* <ChangeTitleInput /> */}
             </div>
             <div className={st.button_wrapper}>
               <AddButton onClick={toggleModal} />
