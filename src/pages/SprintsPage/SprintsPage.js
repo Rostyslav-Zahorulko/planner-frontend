@@ -19,6 +19,7 @@ import { projectsOperations } from '../../redux/projects';
 import { projectsSelectors } from '../../redux/projects';
 // import { sprintsOperations } from '../../redux/sprints';
 import { sprintsSelectors } from '../../redux/sprints';
+import { authSelectors } from '../../redux/auth'; //создать getUserEmail!!!
 
 // Styles
 import styles from './SprintsPage.module.css';
@@ -28,11 +29,13 @@ const SprintsPage = () => {
   const { getProjectsItems } = projectsSelectors;
   // const { getAllSprints } = sprintsOperations;
   const { getSprintsItems } = sprintsSelectors;
+  const { getUserEmail } = authSelectors; //создать getUserEmail!!!
 
   const dispatch = useDispatch();
   const { projectId } = useParams();
   const projects = useSelector(getProjectsItems);
   const sprints = useSelector(getSprintsItems);
+  const users = useSelector(getUserEmail); //создать getUserEmail!!!
 
   const [isCreateProjectModalShown, setCreateProjectModalIsShown] =
     useState(false);
@@ -109,7 +112,7 @@ const SprintsPage = () => {
 
         {isAddPeopleModalShown && (
           <Modal title={'Add people'} onClose={toggleAddPeopleModal}>
-            <FormAddPeople />
+            <FormAddPeople onClose={toggleAddPeopleModal} users={users} />
           </Modal>
         )}
       </div>
