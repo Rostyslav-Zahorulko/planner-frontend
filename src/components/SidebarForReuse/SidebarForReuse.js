@@ -5,19 +5,20 @@ import { useHistory, useLocation } from 'react-router-dom';
 
 import styles from './SidebarForReuse.module.css';
 
-const SidebarForReuse = ({ children, goBackTo }) => {
-  const history = useHistory();
-  const location = useLocation();
+//   return (
+//     <div className={styles.sidebar}>
+//       <ShowBackArrow goBackTo={goBackTo} onClick={handleGoBack} />
 
-  const handleGoBack = () => {
-    history.push(location?.state?.from?.location ?? '/projects/sprints');
-  };
-
+const SidebarForReuse = ({ children, text, onOpen, onClick }) => {
   return (
     <div className={styles.sidebar}>
-      <ShowBackArrow goBackTo={goBackTo} onClick={handleGoBack} />
+      <ShowBackArrow text={text} onClick={onClick} />
       {children}
-      <SidebarAddButton children={'Create a sprint'}>
+      <SidebarAddButton
+        text={`Create a ${text}`}
+        onOpen={onOpen}
+        onClick={onClick}
+      >
         {/* <FormCreateSprint /> */}
       </SidebarAddButton>
     </div>

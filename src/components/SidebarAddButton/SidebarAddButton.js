@@ -1,10 +1,10 @@
 import AddButton from '../AddButton';
 import styles from './SidebarAddButton.module.css';
-const SidebarAddButton = ({ children }) => {
+const SidebarAddButton = ({ text, onOpen }) => {
   return (
     <div className={styles.sidebar_add_button}>
-      <AddButton />
-      <p className={styles.create_project_text}>{children}</p>
+      <AddButton onOpen={onOpen} />
+      <p className={styles.create_project_text}>{text}</p>
     </div>
   );
 };

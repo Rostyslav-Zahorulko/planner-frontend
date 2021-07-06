@@ -1,6 +1,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router';
+import { useParams, useHistory, useLocation } from 'react-router';
 import Media from 'react-media';
 
 // STYLES
@@ -19,10 +19,7 @@ import FormCreateTask from '../../components/FormCreateTask';
 // import FormCreateSprint from '../../components/FormCreateSprint';
 import ChartModalContainer from '../../components/ChartModal';
 import AddButton from '../../components/AddButton';
-import ChangeTitleInput from '../../components/ChangeTitleInput'
-
-// LOCAl DATA
-import sprints from '../../data/sprints.json';
+import ChangeTitleInput from '../../components/ChangeTitleInput';
 
 // REDUX
 import { sprintsOperations } from '../../redux/sprints';
@@ -38,16 +35,32 @@ const { getCurrentSprintTitle, getCurrentSprintStartDate } =
 
 export default function TasksPage() {
   const dispatch = useDispatch();
+  const history = useHistory();
+  const location = useLocation();
   const { projectId, sprintId } = useParams();
   const sprintTitle = useSelector(getCurrentSprintTitle);
   const sprintStartDate = useSelector(getCurrentSprintStartDate);
   const visibleTasks = useSelector(tasksSelectors.getVisibleTasks);
 
-  const [isShown, setIsShown] = useState(false);
+  const [isCreateSprintModalShown, setCreateSprintModalIsShown] =
+    useState(false);
 
-  const toggleModal = useCallback(() => {
-    setIsShown(prevIsShown => !prevIsShown);
+  const [isCreateTaskModalShown, setCreateTaskModalIsShown] = useState(false);
+
+  /*Create sprint*/
+  const toggleCreateSprintModal = useCallback(() => {
+    setCreateSprintModalIsShown(prevValue => !prevValue);
   }, []);
+
+  /*Create task*/
+  const toggleCreateTaskModal = useCallback(() => {
+    setCreateTaskModalIsShown(prevValue => !prevValue);
+  }, []);
+
+  // Show sprints btn for sidebar
+  const handleGoBack = () => {
+    history.push(location?.state?.from?.location ?? `/projects/${projectId}`);
+  };
 
   useEffect(() => {
     dispatch(sprintsOperations.getSprintInfo(projectId, sprintId));
@@ -60,9 +73,12 @@ export default function TasksPage() {
   return (
     <>
       <div className={st.wrapper}>
-        <SidebarForReuse goBackTo={'sprints'}>
-          <SprintLinkList sprints={sprints} />
-          {/* <FormCreateSprint /> */}
+        <SidebarForReuse
+          text={'sprint'}
+          onOpen={toggleCreateSprintModal}
+          onClick={handleGoBack}
+        >
+          <SprintLinkList />
         </SidebarForReuse>
 
         <div className={st.wrapper_tasks}>
@@ -75,10 +91,10 @@ export default function TasksPage() {
             <div className={st.title_wrapper}>
               <h1 className={st.title}> {sprintTitle}</h1>
               <ChangeButton />
-              <ChangeTitleInput/>
+              <ChangeTitleInput />
             </div>
             <div className={st.button_wrapper}>
-              <AddButton onClick={toggleModal} />
+              <AddButton onOpen={toggleCreateTaskModal} />
               <Media queries={{ big: { minWidth: 1280 } }}>
                 {matches =>
                   matches.big ? (
@@ -97,9 +113,13 @@ export default function TasksPage() {
             sprintId={sprintId}
           />
 
-          {isShown && (
-            <Modal onClose={toggleModal}>
-              <FormCreateTask />
+          {isCreateTaskModalShown && (
+            <Modal title={'Creating a task'} onClose={toggleCreateTaskModal}>
+              <FormCreateTask
+                projectId={projectId}
+                sprintId={sprintId}
+                onClose={toggleCreateTaskModal}
+              />
             </Modal>
           )}
         </div>

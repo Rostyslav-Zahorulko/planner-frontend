@@ -17,14 +17,19 @@ const {
 } = tasksActions;
 
 const addTask =
-  ({ projectId, sprintId }) =>
+  ({ task, projectId, sprintId }) =>
   async dispatch => {
     dispatch(addTaskRequest());
 
     try {
-      const { data } = await axios.post(`/projects/${projectId}/${sprintId}`);
+      const { data } = await axios.post(
+        `/projects/${projectId}/${sprintId}`,
+        task,
+      );
 
-      dispatch(addTaskSuccess(data));
+      // console.dir(data.project.sprints);
+
+      dispatch(addTaskSuccess(data.project.sprints));
     } catch ({ message }) {
       dispatch(addTaskError(message));
     }

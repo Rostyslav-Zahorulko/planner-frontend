@@ -1,14 +1,14 @@
 // Libraries
 import { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { useParams } from 'react-router';
+import { useParams, useLocation, useHistory } from 'react-router';
 
 // Components
 import SidebarProjectsList from '../../components/SidebarProjectsList';
 import SprintList from '../../components/SprintsList';
 import ProjectName from '../../components/ProjectName';
 import AddButton from '../../components/AddButton';
-import Sidebar from '../../components/Sidebar';
+import SidebarForReuse from '../../components/SidebarForReuse';
 import Modal from '../../components/Modal';
 import CreateProjectForm from '../../components/CreatePojectForm';
 import FormAddPeople from '../../components/FormAddPeople';
@@ -18,7 +18,6 @@ import ChangeTitleInput from '../../components/ChangeTitleInput';
 // Redux
 import { projectsOperations } from '../../redux/projects';
 import { projectsSelectors } from '../../redux/projects';
-// import { sprintsOperations } from '../../redux/sprints';
 import { sprintsSelectors } from '../../redux/sprints';
 import { currentProjectSelectors } from '../../redux/current-project';
 
@@ -33,6 +32,8 @@ const SprintsPage = () => {
   const { getCurrentProjectTeam } = currentProjectSelectors;
 
   const dispatch = useDispatch();
+  const history = useHistory();
+  const location = useLocation();
   const { projectId } = useParams();
   const projects = useSelector(getProjectsItems);
   const sprints = useSelector(getSprintsItems);
@@ -61,23 +62,28 @@ const SprintsPage = () => {
     setAddPeopleModalIsShown(prevValue => !prevValue);
   }, []);
 
+  // Show sprints btn for sidebar
+  const handleGoBack = () => {
+    history.push(location?.state?.from?.location ?? '/projects');
+  };
+
   useEffect(() => {
     dispatch(getProjectInfo(projectId));
   }, [dispatch, projectId, getProjectInfo]);
 
-  // useEffect(() => {
-  //   dispatch(getAllSprints(projectId));
-  // }, [dispatch, projectId, getProjectInfo, getAllSprints]);
-
   return (
     <div className={styles.project}>
-      <Sidebar text={'project'} onOpen={toggleCreateProjectModal}>
+      <SidebarForReuse
+        text={'project'}
+        onOpen={toggleCreateProjectModal}
+        onClick={handleGoBack}
+      >
         <SidebarProjectsList projects={projects} />
-      </Sidebar>
+      </SidebarForReuse>
 
       <div className={styles.sprints}>
         <ProjectName />
-        <ChangeTitleInput/>
+        <ChangeTitleInput />
         <div className={styles.addSprintButton}>
           <AddButton onOpen={toggleCreateSprintModal} />
           <p className={styles.createSprint}>Create a sprint</p>
