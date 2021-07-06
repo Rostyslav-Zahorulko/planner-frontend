@@ -1,5 +1,4 @@
-@media screen and (max-width: 767px) {
-}
+
 @media screen and (min-width: 768px) {
   .list_item {
     margin-bottom: 15px;
@@ -14,6 +13,10 @@
     line-height: 17px;
     letter-spacing: 0.04em;
     color: #181c27;
+  }
+
+  .link_active {
+    font-weight: bold;
   }
   .list_item:nth-child(3n + 1)::before {
     background: #8c72df;
@@ -33,6 +36,12 @@
     border-radius: 5px;
   }
   .link_list_item_sp {
+    display: block;
+    max-width: 120px;
     margin-left: 15px;
+    color: #181c27;
+    overflow-wrap: break-word;
+
+
   }
 }

@@ -5,7 +5,8 @@
 }
 @media screen and (min-width: 768px) {
   .sidebar_add_button {
-    position: fixed;
+    /* position: fixed; */
+    margin-top: 110px;
     bottom: 50px;
     width: 160px;
     height: 76px;

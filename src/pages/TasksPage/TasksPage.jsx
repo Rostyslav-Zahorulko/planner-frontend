@@ -20,9 +20,6 @@ import FormCreateTask from '../../components/FormCreateTask';
 import ChartModalContainer from '../../components/ChartModal';
 import AddButton from '../../components/AddButton';
 
-// LOCAl DATA
-import sprints from '../../data/sprints.json';
-
 // REDUX
 import { sprintsOperations } from '../../redux/sprints';
 import { currentSprintSelectors } from '../../redux/current-sprint';
@@ -59,8 +56,8 @@ export default function TasksPage() {
   return (
     <>
       <div className={st.wrapper}>
-        <SidebarForReuse goBackTo={'sprints'}>
-          <SprintLinkList sprints={sprints} />
+        <SidebarForReuse text={'sprint'} onOpen={() => {}}>
+          <SprintLinkList />
           {/* <FormCreateSprint /> */}
         </SidebarForReuse>
 

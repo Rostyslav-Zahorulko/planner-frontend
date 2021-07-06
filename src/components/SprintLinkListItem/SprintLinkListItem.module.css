@@ -1,3 +1,10 @@
+.link, .link_active {
+  color: #181C27;
+}
+
+.link_active {
+  font-weight: bold;
+}
 @media screen and (min-width: 768px) {
   .list_item {
     margin-bottom: 15px;

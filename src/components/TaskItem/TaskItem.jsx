@@ -6,10 +6,7 @@ import { toast, ToastContainer } from 'react-toastify';
 
 // Redux
 import { tasksOperations, tasksSelectors } from '../../redux/tasks';
-import {
-  currentSprintOperations,
-  currentSprintSelectors,
-} from '../../redux/current-sprint';
+import { currentSprintSelectors } from '../../redux/current-sprint';
 
 // dayjs
 import * as dayjs from 'dayjs';

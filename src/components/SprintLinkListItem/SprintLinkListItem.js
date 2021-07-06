@@ -1,18 +1,22 @@
 import { NavLink } from 'react-router-dom';
+import { useSelector } from 'react-redux';
+import { useParams } from 'react-router';
 
 import styles from './SprintLinkListItem.module.css';
 
-const SprintLinkListItem = ({ project, sprint }) => (
-  <li className={styles.list_item}>
-    {/* в to надо вставить `/projects/${project.id}/${sprint.id}`*/}
-    <NavLink
-      to={`/projects/`}
-      // activeStyle={{
-      //   fontWeight: 'bold',
-      // }}
-    >
-      <span className={styles.link_list_item_sp}>{sprint.title} </span>
-    </NavLink>
-  </li>
-);
-export default SprintLinkListItem;
+export default function SprintLinkListItem({ sprint }) {
+  const { projectId } = useParams();
+  const { title, id } = sprint;
+  return (
+    <li className={styles.list_item}>
+      {/* в to надо вставить `/projects/${project.id}/${sprint.id}`*/}
+      <NavLink
+        to={`/projects/${projectId}/${id}`}
+        className={styles.link}
+        activeClassName={styles.link_active}
+      >
+        <span className={styles.link_list_item_sp}>{title}</span>
+      </NavLink>
+    </li>
+  );
+}

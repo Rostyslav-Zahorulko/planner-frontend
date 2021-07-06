@@ -8,7 +8,7 @@ import SidebarProjectsList from '../../components/SidebarProjectsList';
 import SprintList from '../../components/SprintsList';
 import ProjectName from '../../components/ProjectName';
 import AddButton from '../../components/AddButton';
-import Sidebar from '../../components/Sidebar';
+import SidebarForReuse from '../../components/SidebarForReuse';
 import Modal from '../../components/Modal';
 import CreateProjectForm from '../../components/CreatePojectForm';
 import FormAddPeople from '../../components/FormAddPeople';
@@ -17,7 +17,6 @@ import FormCreateSprint from '../../components/FormCreateSprint';
 // Redux
 import { projectsOperations } from '../../redux/projects';
 import { projectsSelectors } from '../../redux/projects';
-// import { sprintsOperations } from '../../redux/sprints';
 import { sprintsSelectors } from '../../redux/sprints';
 
 // Styles
@@ -67,9 +66,9 @@ const SprintsPage = () => {
 
   return (
     <div className={styles.project}>
-      <Sidebar text={'project'} onOpen={toggleCreateProjectModal}>
+      <SidebarForReuse text={'project'} onOpen={toggleCreateProjectModal}>
         <SidebarProjectsList projects={projects} />
-      </Sidebar>
+      </SidebarForReuse>
 
       <div className={styles.sprints}>
         <ProjectName />
