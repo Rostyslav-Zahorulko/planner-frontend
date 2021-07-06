@@ -1,59 +1,81 @@
-import styles from './FormCreateTask.module.css';
-import tasksOperations from '../../redux/tasks/tasks-operations';
-
-import { useState } from 'react';
+import { useState, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 
-const FormCreateTask = ({ projectId, sprintId }) => {
-  const [task, setTask] = useState('');
-  const [hours, setHours] = useState('');
+import FormButtons from '../FormButtons';
+
+import styles from './FormCreateTask.module.css';
+
+import { tasksOperations } from '../../redux/tasks';
+
+const { addTask } = tasksOperations;
+
+const FormCreateTask = ({ projectId, sprintId, onClose }) => {
+  const [title, setTitle] = useState('');
+  const [plannedHours, setPlannedHours] = useState('');
 
   const dispatch = useDispatch();
 
-  const handleChangeTask = e => {
-    setTask(e.target.value);
-  };
+  const handleInputChange = useCallback(({ target: { name, value } }) => {
+    switch (name) {
+      case 'title':
+        setTitle(value);
+        break;
 
-  const handleChangeHours = e => {
-    setHours(e.target.value);
-  };
+      case 'plannedHours':
+        setPlannedHours(value);
+        break;
 
-  const handleSubmit = e => {
-    e.preventDefault();
+      default:
+        console.warn(`Тип поля ${name} не обрабатывается`);
+    }
+  }, []);
 
-    dispatch(
-      tasksOperations.addTask(projectId, sprintId, {
-        task,
-        scheduledTime: hours,
-      }),
-    );
-    setTask('');
-    setHours('');
-  };
+  const handleFormSubmit = useCallback(
+    event => {
+      event.preventDefault();
+
+      const task = { title, plannedHours };
+
+      dispatch(addTask({ projectId, sprintId, task }));
+
+      setTitle('');
+      setPlannedHours('');
+
+      onClose();
+    },
+    [title, plannedHours, projectId, sprintId, onClose, dispatch],
+  );
+
   return (
-    <div className={styles.wrapper}>
-      <h2 className={styles.title}>Creating a task</h2>
-      <form className={styles.input_modal} onSubmit={handleSubmit}>
-        <label className={styles.label}>
-          <input
-            id={task}
-            value={task}
-            className={styles.input}
-            placeholder="Task name"
-            onChange={handleChangeTask}
-          />
-        </label>
-        <label className={styles.label}>
-          <input
-            id={hours}
-            value={hours}
-            className={styles.input}
-            placeholder="Scheduled hours"
-            onChange={handleChangeHours}
-          />
-        </label>
-      </form>
-    </div>
+    <form autoComplete="off" onSubmit={handleFormSubmit}>
+      <label className={styles.label}>
+        <input
+          className={styles.input}
+          type="text"
+          name="title"
+          value={title}
+          required
+          placeholder=" "
+          onChange={handleInputChange}
+        />
+        <span className={styles.headline}>Task name</span>
+      </label>
+
+      <label className={styles.label}>
+        <input
+          className={styles.input}
+          type="number"
+          name="plannedHours"
+          value={plannedHours}
+          required
+          placeholder=" "
+          min="1"
+          onChange={handleInputChange}
+        />
+        <span className={styles.headline}>Sheduled hours</span>
+      </label>
+      <FormButtons onClose={onClose} />
+    </form>
   );
 };
 

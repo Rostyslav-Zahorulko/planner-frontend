@@ -12,7 +12,7 @@ const { addSprint } = sprintsOperations;
 
 const FormCreateSprint = ({ onClose, projectId }) => {
   const [title, setTitle] = useState('');
-  const [duration, setDuration] = useState(false);
+  const [duration, setDuration] = useState('');
 
   const dispatch = useDispatch();
 
@@ -52,7 +52,7 @@ const FormCreateSprint = ({ onClose, projectId }) => {
       dispatch(addSprint({ projectId, sprint }));
 
       setTitle('');
-      setDuration(false);
+      setDuration('');
       onClose();
     },
     [title, duration, projectId, onClose, dispatch],
@@ -78,8 +78,8 @@ const FormCreateSprint = ({ onClose, projectId }) => {
           <input
             className={styles.input_radio}
             type="radio"
-            checked="prev-date"
-            value="prev-date"
+            // checked="prev-date"
+            // value="prev-date"
             // readOnly
           />
           <span className={styles.headline_radio}>Previous days</span>
