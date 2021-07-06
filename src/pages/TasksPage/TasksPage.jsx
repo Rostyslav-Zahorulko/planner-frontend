@@ -26,24 +26,23 @@ import sprints from '../../data/sprints.json';
 // REDUX
 import { sprintsOperations } from '../../redux/sprints';
 import { currentSprintSelectors } from '../../redux/current-sprint';
-// import { getTasks } from '../../redux/tasks/tasks-selectors';
+import { tasksSelectors } from '../../redux/tasks';
+
 // import addTask from '../../redux/tasks/tasks-operations';
 import { currentSprintOperations } from '../../redux/current-sprint';
-import { getVisibleTasks } from "../../redux/tasks/tasks-selectors";
+// import { getVisibleTasks } from '../../redux/tasks/tasks-selectors';
 
 const { getCurrentSprintTitle, getCurrentSprintStartDate } =
   currentSprintSelectors;
-
 
 export default function TasksPage() {
   const dispatch = useDispatch();
   const { projectId, sprintId } = useParams();
   const sprintTitle = useSelector(getCurrentSprintTitle);
   const sprintStartDate = useSelector(getCurrentSprintStartDate);
-  // const tasks = useSelector(getTasks);
-  const visibleTasks = useSelector(getVisibleTasks);
+  const visibleTasks = useSelector(tasksSelectors.getVisibleTasks);
+
   const [isShown, setIsShown] = useState(false);
-  
 
   const toggleModal = useCallback(() => {
     setIsShown(prevIsShown => !prevIsShown);
@@ -90,7 +89,11 @@ export default function TasksPage() {
             </div>
           </div>
           <SprintHeader />
-          <TasksList visibleTasks={visibleTasks} projectId={projectId} sprintId={sprintId} />
+          <TasksList
+            visibleTasks={visibleTasks}
+            projectId={projectId}
+            sprintId={sprintId}
+          />
 
           {isShown && (
             <Modal onClose={toggleModal}>

@@ -1,8 +1,6 @@
-export const getTasks = state => state.tasks.items;
-
-export const getFilter = state => state.tasks.filter;
-
-export const getVisibleTasks = state => {
+const getTasks = state => state.tasks.items;
+const getFilter = state => state.tasks.filter;
+const getVisibleTasks = state => {
   const items = getTasks(state);
   const filter = getFilter(state);
   const normalizedFilter = filter.toLowerCase();
@@ -11,3 +9,11 @@ export const getVisibleTasks = state => {
     title.toLowerCase().includes(normalizedFilter),
   );
 };
+
+const tasksSelectors = {
+  getTasks,
+  getFilter,
+  getVisibleTasks,
+};
+
+export default tasksSelectors;

@@ -1,5 +1,8 @@
 import axios from 'axios';
 import { tasksActions } from '../tasks';
+import * as dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+dayjs.extend(customParseFormat);
 
 const {
   addTaskRequest,
@@ -8,9 +11,9 @@ const {
   deleteTaskRequest,
   deleteTaskSuccess,
   deleteTaskError,
-  //   editHoursSpentOnTaskPerDayRequest,
-  //   editHoursSpentOnTaskPerDaySuccess,
-  //   editHoursSpentOnTaskPerDayError,
+  updateHoursSpentOnTaskPerDayRequest,
+  updateHoursSpentOnTaskPerDaySuccess,
+  updateHoursSpentOnTaskPerDayError,
 } = tasksActions;
 
 const addTask =
@@ -39,27 +42,34 @@ const deleteTask = (projectId, sprintId, taskId) => async dispatch => {
   }
 };
 
-// const editHoursSpentOnTaskPerDay =
-//   ({ projectId, sprintId, taskId, hours }) =>
-//   async dispatch => {
-//     dispatch(editHoursSpentOnTaskPerDayRequest());
+const updateHoursPerDay =
+  (projectId, sprintId, taskId, dayWithHours) => async dispatch => {
+    // console.log(dayWithHours);
+    const formattedDate = dayjs(dayWithHours.date).format('YYYY-MM-DD');
+    const normalizedDaywithHours = {
+      ...dayWithHours,
+      date: formattedDate,
+    };
 
-//     try {
-//       const { data } = await axios.patch(
-//         `/projects/${projectId}/${sprintId}/${taskId}`,
-//         hours,
-//       );
+    dispatch(updateHoursSpentOnTaskPerDayRequest());
+    // console.log(normalizedDaywithHours);
+    try {
+      const { data } = await axios.patch(
+        `/projects/${projectId}/${sprintId}/${taskId}`,
+        normalizedDaywithHours,
+      );
+      // console.log(data);
 
-//       dispatch(editHoursSpentOnTaskPerDaySuccess(data));
-//     } catch ({ message }) {
-//       dispatch(editHoursSpentOnTaskPerDayError(message));
-//     }
-//   };
+      dispatch(updateHoursSpentOnTaskPerDaySuccess(data.tasks));
+    } catch ({ message }) {
+      dispatch(updateHoursSpentOnTaskPerDayError(message));
+    }
+  };
 
 const tasksOperations = {
   addTask,
   deleteTask,
-  //   editHoursSpentOnTaskPerDay,
+  updateHoursPerDay,
 };
 
 export default tasksOperations;

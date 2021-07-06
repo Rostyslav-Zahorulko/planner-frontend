@@ -32,8 +32,12 @@ export default function TasksDatesNav() {
   const displayedDay =
     sprintDates.findIndex(date => date === displayedDate) + 1;
 
-  const handleForwardClick = () => dispatch(setNextDate(displayedDate));
-  const handleBackClick = () => dispatch(setPreviousDate(displayedDate));
+  const handleForwardClick = () => {
+    dispatch(setNextDate(displayedDate));
+  };
+  const handleBackClick = () => {
+    dispatch(setPreviousDate(displayedDate));
+  };
 
   return (
     <div className={s.wrapper}>

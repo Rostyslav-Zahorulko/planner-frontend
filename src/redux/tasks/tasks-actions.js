@@ -8,17 +8,16 @@ const deleteTaskRequest = createAction('tasks/deleteRequest');
 const deleteTaskSuccess = createAction('tasks/deleteSuccess');
 const deleteTaskError = createAction('tasks/deleteErTasks');
 
-// const editHoursSpentOnTaskPerDayRequest = createAction(
-//   'tasks/editSpentHoursPerDayRequest',
-// );
-// const editHoursSpentOnTaskPerDaySuccess = createAction(
-//   'tasks/editSpentHoursPerDaySuccess',
-// );
-// const editHoursSpentOnTaskPerDayError = createAction(
-//   'tasks/editSpentHoursPerDayError',
-// );
+const updateHoursSpentOnTaskPerDayRequest = createAction(
+  'tasks/updateSpentHoursPerDayRequest',
+);
+const updateHoursSpentOnTaskPerDaySuccess = createAction(
+  'tasks/updateSpentHoursPerDaySuccess',
+);
+const updateHoursSpentOnTaskPerDayError = createAction(
+  'tasks/updateSpentHoursPerDayError',
+);
 export const changeFilter = createAction('tasks/changeFilter');
-
 
 const tasksActions = {
   addTaskRequest,
@@ -27,9 +26,9 @@ const tasksActions = {
   deleteTaskRequest,
   deleteTaskSuccess,
   deleteTaskError,
-  // editHoursSpentOnTaskPerDayRequest,
-  // editHoursSpentOnTaskPerDaySuccess,
-  // editHoursSpentOnTaskPerDayError,
+  updateHoursSpentOnTaskPerDayRequest,
+  updateHoursSpentOnTaskPerDaySuccess,
+  updateHoursSpentOnTaskPerDayError,
   changeFilter,
 };
 
