@@ -5,7 +5,7 @@ const ChangeTitleInput = ()=>(
   <input
     className={styles.input}
     placeholder=" "
-    onChange='{handleInputChange}'  
+    maxlength="30" 
     type="text"
     required
   />
