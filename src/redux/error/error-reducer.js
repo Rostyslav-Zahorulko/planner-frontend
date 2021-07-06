@@ -14,6 +14,7 @@ const {
   deleteProjectError,
   editProjectTitleError,
   getProjectInfoError,
+  addUserInProjectError,
 } = projectsActions;
 
 const {
@@ -38,6 +39,7 @@ const errorReducer = createReducer(null, {
   [deleteProjectError]: (_, { payload }) => payload,
   [editProjectTitleError]: (_, { payload }) => payload,
   [getProjectInfoError]: (_, { payload }) => payload,
+  [addUserInProjectError]: (_, { payload }) => payload,
 
   [addSprintError]: (_, { payload }) => payload,
   [deleteSprintError]: (_, { payload }) => payload,

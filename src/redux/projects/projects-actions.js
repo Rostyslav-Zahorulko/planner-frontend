@@ -20,6 +20,10 @@ const getProjectInfoRequest = createAction('projects/getInfoRequest');
 const getProjectInfoSuccess = createAction('projects/getInfoSuccess ');
 const getProjectInfoError = createAction('projects/getInfoError');
 
+const addUserInProjectRequest = createAction('projects/addUserRequest');
+const addUserInProjectSuccess = createAction('projects/addUserSuccess');
+const addUserInProjectError = createAction('projects/addUserError');
+
 const projectsActions = {
   getProjectsRequest,
   getProjectsSuccess,
@@ -36,6 +40,9 @@ const projectsActions = {
   getProjectInfoRequest,
   getProjectInfoSuccess,
   getProjectInfoError,
+  addUserInProjectRequest,
+  addUserInProjectSuccess,
+  addUserInProjectError,
 };
 
 export default projectsActions;
