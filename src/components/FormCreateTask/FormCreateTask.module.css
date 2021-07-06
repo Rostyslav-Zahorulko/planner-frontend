@@ -1,23 +1,14 @@
-.wrapper {
-  position: relative;
-}
-.title {
-  margin-left: auto;
-  margin-right: auto;
-  padding-bottom: 30px;
-  font-weight: 500;
-  font-size: 26px;
-  line-height: 32px;
-  text-align: center;
-  color: #181c27;
-}
-.input_modal {
-  text-align: center;
+.headline {
+  position: absolute;
+  left: 5px;
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
   line-height: 20px;
   letter-spacing: 0.04em;
+  color: rgba(24, 28, 39, 0.6);
+  transform: translateY(9px);
+  transition: transform 250ms linear;
 }
 
 .label {
@@ -27,6 +18,7 @@
   font-weight: 600;
   color: rgba(24, 28, 39, 0.6);
 }
+
 .label:focus-within > .headline {
   transform: translateY(-18px);
   font-size: 14px;
@@ -47,12 +39,14 @@
   color: #ff2c0c;
   border-bottom: 1px solid #ff2c0c;
 }
+
 .input:focus {
   border-color: #f37c2d;
   box-shadow: -2px 22px 16px -14px rgba(254, 138, 8, 0.75);
   -webkit-box-shadow: -2px 22px 16px -14px rgba(254, 138, 8, 0.75);
   -moz-box-shadow: -2px 22px 16px -14px rgba(254, 138, 8, 0.75);
 }
+
 .input:not(:placeholder-shown) + .headline {
   transform: translateY(-8px);
   font-size: 12px;

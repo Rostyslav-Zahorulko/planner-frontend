@@ -43,15 +43,25 @@ export default function TasksPage() {
   const sprintStartDate = useSelector(getCurrentSprintStartDate);
   const visibleTasks = useSelector(tasksSelectors.getVisibleTasks);
 
-  const [isShown, setIsShown] = useState(false);
+  const [isCreateSprintModalShown, setCreateSprintModalIsShown] =
+    useState(false);
+  
+  const [isCreateTaskModalShown, setCreateTaskModalIsShown] =
+    useState(false);
 
-  const toggleModal = useCallback(() => {
-    setIsShown(prevIsShown => !prevIsShown);
+ /*Create sprint*/
+  const toggleCreateSprintModal = useCallback(() => {
+    setCreateSprintModalIsShown(prevValue => !prevValue);
+  }, []);
+
+  /*Create task*/
+  const toggleCreateTaskModal = useCallback(() => {
+    setCreateTaskModalIsShown(prevValue => !prevValue);
   }, []);
 
   useEffect(() => {
     dispatch(sprintsOperations.getSprintInfo(projectId, sprintId));
-  }, [dispatch, projectId, sprintId]);
+  }, [dispatch, projectId, sprintId]); 
 
   useEffect(() => {
     dispatch(currentSprintOperations.getDisplayedDate(sprintStartDate));
@@ -62,7 +72,6 @@ export default function TasksPage() {
       <div className={st.wrapper}>
         <SidebarForReuse goBackTo={'sprints'}>
           <SprintLinkList sprints={sprints} />
-          {/* <FormCreateSprint /> */}
         </SidebarForReuse>
 
         <div className={st.wrapper_tasks}>
@@ -78,7 +87,7 @@ export default function TasksPage() {
               <ChangeTitleInput/>
             </div>
             <div className={st.button_wrapper}>
-              <AddButton onClick={toggleModal} />
+              <AddButton onOpen={toggleCreateTaskModal} />
               <Media queries={{ big: { minWidth: 1280 } }}>
                 {matches =>
                   matches.big ? (
@@ -97,9 +106,9 @@ export default function TasksPage() {
             sprintId={sprintId}
           />
 
-          {isShown && (
-            <Modal onClose={toggleModal}>
-              <FormCreateTask />
+          {isCreateTaskModalShown && (
+            <Modal title={"Creating a task"} onClose={toggleCreateTaskModal}>
+              <FormCreateTask projectId={projectId} sprintId={sprintId} onClose={toggleCreateTaskModal}/>
             </Modal>
           )}
         </div>
