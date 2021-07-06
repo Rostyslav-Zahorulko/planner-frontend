@@ -13,7 +13,7 @@ const {
 
 const itemsReducer = createReducer([], {
   [getSprintInfoSuccess]: (_, { payload }) => payload.sprint.tasks,
-  [addTaskSuccess]: (state, { payload }) => [...state, payload],
+  [addTaskSuccess]: (_, { payload }) => payload,
   [deleteTaskSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
   [updateHoursSpentOnTaskPerDaySuccess]: (_, { payload }) => payload,
