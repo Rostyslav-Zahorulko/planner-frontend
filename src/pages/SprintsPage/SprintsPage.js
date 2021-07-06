@@ -13,7 +13,8 @@ import Modal from '../../components/Modal';
 import CreateProjectForm from '../../components/CreatePojectForm';
 import FormAddPeople from '../../components/FormAddPeople';
 import FormCreateSprint from '../../components/FormCreateSprint';
-import ChangeTitleInput from '../../components/ChangeTitleInput'
+import ChangeTitleInput from '../../components/ChangeTitleInput';
+
 // Redux
 import { projectsOperations } from '../../redux/projects';
 import { projectsSelectors } from '../../redux/projects';
