@@ -64,10 +64,6 @@ export default function TasksPage() {
     history.push(location?.state?.from?.location ?? `/projects/${projectId}`);
   };
 
-  // const toggleModal = useCallback(() => {
-  //   setIsShown(prevIsShown => !prevIsShown);
-  // }, []);
-
   const handleClickBtnChange = () => {
     setShowInput(prevshowInput => !prevshowInput);
   };

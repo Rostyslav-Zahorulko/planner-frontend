@@ -27,8 +27,6 @@ const addTask =
         task,
       );
 
-      // console.dir(data.project.sprints);
-
       dispatch(addTaskSuccess(data.project.sprints));
     } catch ({ message }) {
       dispatch(addTaskError(message));
