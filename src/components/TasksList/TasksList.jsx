@@ -3,8 +3,6 @@ import TaskItem from '../TaskItem/TaskItem';
 import TaskItemCard from '../TaskItemCard/TaskItemCard';
 import Media from 'react-media';
 
-
-
 const TasksList = ({ visibleTasks, projectId, sprintId }) => {
   return (
     <Media queries={{ big: { minWidth: 1280 } }}>
@@ -18,7 +16,7 @@ const TasksList = ({ visibleTasks, projectId, sprintId }) => {
                     key={id}
                     title={title}
                     plannedHours={plannedHours}
-                    hoursPerDay={hoursPerDay}
+                    // hoursPerDay={hoursPerDay}
                     totalHours={totalHours}
                     projectId={projectId}
                     sprintId={sprintId}

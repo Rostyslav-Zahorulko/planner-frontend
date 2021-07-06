@@ -2,6 +2,8 @@ import st from './TaskItem.module.css';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
+import { toast, ToastContainer } from 'react-toastify';
+
 // Redux
 import { tasksOperations, tasksSelectors } from '../../redux/tasks';
 import {
@@ -18,7 +20,6 @@ dayjs.extend(customParseFormat);
 export default function TaskItem({
   title,
   plannedHours,
-  hoursPerDay,
   totalHours,
   projectId,
   sprintId,
@@ -31,6 +32,52 @@ export default function TaskItem({
   );
 
   const [currentDay, setCurrentDay] = useState({});
+
+  const handleHoursPerDayChange = e => {
+    e.preventDefault();
+    const standartDisplayedDate = dayjs(displayedDate, 'DD.MM.YYYY').format(
+      'YYYY-MM-DDTHH:mm:ss.SSS[Z]',
+    );
+
+    if (isNaN(e.target.value)) {
+      console.log('Please enter a number');
+      toast.error('Please enter a number');
+      return;
+    }
+
+    setCurrentDay({
+      date: standartDisplayedDate,
+      hoursSpent: e.target.value,
+    });
+  };
+
+  const handleHoursPerDayBlur = e => {
+    e.preventDefault();
+    const standartDisplayedDate = dayjs(displayedDate, 'DD.MM.YYYY').format(
+      'YYYY-MM-DDTHH:mm:ss.SSS[Z]',
+    );
+
+    if (!e.target.value) {
+      setCurrentDay({
+        date: standartDisplayedDate,
+        hoursSpent: '0',
+      });
+    }
+
+    if (currentDay.hoursSpent >= 0) {
+      dispatch(
+        tasksOperations.updateHoursPerDay(
+          projectId,
+          sprintId,
+          taskId,
+          currentDay,
+        ),
+      );
+    } else {
+      console.log('Please enter a non-negative integer');
+      toast.error('Please enter a non-negative integer');
+    }
+  };
 
   useEffect(() => {
     const standartDisplayedDate = dayjs(displayedDate, 'DD.MM.YYYY').format(
@@ -45,6 +92,7 @@ export default function TaskItem({
 
   return (
     <li className={st.listItem}>
+      <ToastContainer autoClose={5000} hideProgressBar />
       <ul className={st.listItem_tasks}>
         <li className={st.title}>{title}</li>
         <li className={st.planHours}>{plannedHours}</li>
@@ -54,16 +102,8 @@ export default function TaskItem({
               <input
                 type="text"
                 value={currentDay.hoursSpent}
-                onChange={e => {
-                  const standartDisplayedDate = dayjs(
-                    displayedDate,
-                    'DD.MM.YYYY',
-                  ).format('YYYY-MM-DDTHH:mm:ss.SSS[Z]');
-                  setCurrentDay({
-                    date: standartDisplayedDate,
-                    hoursSpent: e.target.value,
-                  });
-                }}
+                onChange={e => handleHoursPerDayChange(e)}
+                onBlur={e => handleHoursPerDayBlur(e)}
                 className={st.hoursPerDay_input}
               ></input>
             </div>
