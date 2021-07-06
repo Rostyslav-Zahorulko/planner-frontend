@@ -41,6 +41,8 @@ export default function TasksPage() {
   const sprintTitle = useSelector(getCurrentSprintTitle);
   const sprintStartDate = useSelector(getCurrentSprintStartDate);
   const visibleTasks = useSelector(tasksSelectors.getVisibleTasks);
+  const [showInput, setShowInput] = useState(false);
+  const [title, setTitle] = useState('');
 
   const [isCreateSprintModalShown, setCreateSprintModalIsShown] =
     useState(false);
@@ -62,6 +64,29 @@ export default function TasksPage() {
     history.push(location?.state?.from?.location ?? `/projects/${projectId}`);
   };
 
+  // const toggleModal = useCallback(() => {
+  //   setIsShown(prevIsShown => !prevIsShown);
+  // }, []);
+
+  const handleClickBtnChange = () => {
+    setShowInput(prevshowInput => !prevshowInput);
+  };
+  const handleInputChangeTitle = e => {
+    setTitle(e.target.value);
+  };
+
+  const handleSubmit = e => {
+    e.preventDefault();
+    if (sprintTitle !== title) {
+      dispatch(
+        sprintsOperations.editSprintTitle(projectId, sprintId, {
+          title: title,
+        }),
+      );
+    }
+    setShowInput(false);
+  };
+
   useEffect(() => {
     dispatch(sprintsOperations.getSprintInfo(projectId, sprintId));
   }, [dispatch, projectId, sprintId]);
@@ -76,7 +101,8 @@ export default function TasksPage() {
         <SidebarForReuse
           text={'sprint'}
           onOpen={toggleCreateSprintModal}
-          onClick={handleGoBack}>
+          onClick={handleGoBack}
+        >
           <SprintLinkList />
         </SidebarForReuse>
 
@@ -88,9 +114,36 @@ export default function TasksPage() {
 
           <div className={st.header}>
             <div className={st.title_wrapper}>
-              <h1 className={st.title}> {sprintTitle}</h1>
-              <ChangeButton />
-              <ChangeTitleInput />
+              <h1 className={showInput ? st.titleDisable : st.title}>
+                {sprintTitle}
+              </h1>
+              {/* <ChangeButton /> */}
+              {/* ДОПИЛИТЬ ИЗМЕНЕНИЕ ТАЙТЛА */}
+              {/* <ChangeTitleInput /> */}
+
+              <form
+                onSubmit={handleSubmit}
+                className={
+                  showInput ? st.changeTitleFormActive : st.changeTitleForm
+                }
+              >
+                <label className={st.label}>
+                  <input
+                    className={st.input}
+                    placeholder=" "
+                    type="text"
+                    required
+                    value={title}
+                    onChange={handleInputChangeTitle}
+                  />
+                </label>
+              </form>
+              <button
+                type="button"
+                className={showInput ? st.btnChangeDisable : st.btnChange}
+                onClick={handleClickBtnChange}
+              ></button>
+              {/* <ChangeTitleInput /> */}
             </div>
             <div className={st.button_wrapper}>
               <AddButton onOpen={toggleCreateTaskModal} />
@@ -107,21 +160,27 @@ export default function TasksPage() {
           </div>
           <SprintHeader />
 
-          {visibleTasks.length > 0 ? <TasksList
-            visibleTasks={visibleTasks}
-            projectId={projectId}
-            sprintId={sprintId}
-          /> : <div>You have no tasks yet</div>}
-          
+          {visibleTasks.length > 0 ? (
+            <TasksList
+              visibleTasks={visibleTasks}
+              projectId={projectId}
+              sprintId={sprintId}
+            />
+          ) : (
+            <div>You have no tasks yet</div>
+          )}
 
           {isCreateSprintModalShown && (
-          <Modal title={'Creating a sprint'} onClose={toggleCreateSprintModal}>
-            <FormCreateSprint
-              projectId={projectId}
+            <Modal
+              title={'Creating a sprint'}
               onClose={toggleCreateSprintModal}
-            />
-          </Modal>
-        )}
+            >
+              <FormCreateSprint
+                projectId={projectId}
+                onClose={toggleCreateSprintModal}
+              />
+            </Modal>
+          )}
 
           {isCreateTaskModalShown && (
             <Modal title={'Creating a task'} onClose={toggleCreateTaskModal}>

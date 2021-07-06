@@ -83,7 +83,10 @@ const SprintsPage = () => {
 
       <div className={styles.sprints}>
         <ProjectName />
-        <ChangeTitleInput />
+
+        {/* ДОПИЛИТЬ ИЗМЕНЕНИЕ ТАЙТЛА */}
+        {/* <ChangeTitleInput /> */}
+
         <div className={styles.addSprintButton}>
           <AddButton onOpen={toggleCreateSprintModal} />
           <p className={styles.createSprint}>Create a sprint</p>
