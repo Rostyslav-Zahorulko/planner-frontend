@@ -14,7 +14,6 @@ import {
 // dayjs
 import * as dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
-
 dayjs.extend(customParseFormat);
 
 export default function TaskItem({ projectId, sprintId, taskId }) {
@@ -73,10 +72,6 @@ export default function TaskItem({ projectId, sprintId, taskId }) {
       toast.error('Please enter a non-negative integer');
     }
   };
-
-  useEffect(() => {
-    dispatch(tasksOperations.getAllTasks(projectId, sprintId));
-  }, [dispatch, projectId, sprintId]);
 
   useEffect(() => {
     const standartDisplayedDate = dayjs(displayedDate, 'DD.MM.YYYY').format(
