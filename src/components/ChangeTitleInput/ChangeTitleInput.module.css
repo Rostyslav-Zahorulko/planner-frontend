@@ -24,10 +24,11 @@
 }
 .input {
   padding: 10px;
-  width: 100%;
+  width: 250px;
   outline: none;
   border-style: none;
   margin-bottom: 40px;
+  background-color: #f1f2f7;
   border-bottom: 1px solid #d1d2d4;
 }
 
@@ -45,11 +46,4 @@
 .input:not(:placeholder-shown) + .headline {
   transform: translateY(-8px);
   font-size: 12px;
-}
-.text {
-  font-weight: 400;
-  font-size: 14px;
-  line-height: 1.2142;
-  color: rgba(24, 28, 39, 0.6);
-  margin-bottom: 20px;
 }

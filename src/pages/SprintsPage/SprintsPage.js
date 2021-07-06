@@ -13,11 +13,13 @@ import Modal from '../../components/Modal';
 import CreateProjectForm from '../../components/CreatePojectForm';
 import FormAddPeople from '../../components/FormAddPeople';
 import FormCreateSprint from '../../components/FormCreateSprint';
+import ChangeTitleInput from '../../components/ChangeTitleInput';
 
 // Redux
 import { projectsOperations } from '../../redux/projects';
 import { projectsSelectors } from '../../redux/projects';
 import { sprintsSelectors } from '../../redux/sprints';
+import { currentProjectSelectors } from '../../redux/current-project';
 
 // Styles
 import styles from './SprintsPage.module.css';
@@ -27,11 +29,13 @@ const SprintsPage = () => {
   const { getProjectsItems } = projectsSelectors;
   // const { getAllSprints } = sprintsOperations;
   const { getSprintsItems } = sprintsSelectors;
+  const { getCurrentProjectTeam } = currentProjectSelectors;
 
   const dispatch = useDispatch();
   const { projectId } = useParams();
   const projects = useSelector(getProjectsItems);
   const sprints = useSelector(getSprintsItems);
+  const users = useSelector(getCurrentProjectTeam);
 
   const [isCreateProjectModalShown, setCreateProjectModalIsShown] =
     useState(false);
@@ -72,7 +76,7 @@ const SprintsPage = () => {
 
       <div className={styles.sprints}>
         <ProjectName />
-
+        <ChangeTitleInput/>
         <div className={styles.addSprintButton}>
           <AddButton onOpen={toggleCreateSprintModal} />
           <p className={styles.createSprint}>Create a sprint</p>
@@ -100,15 +104,15 @@ const SprintsPage = () => {
         {isCreateSprintModalShown && (
           <Modal title={'Creating a sprint'} onClose={toggleCreateSprintModal}>
             <FormCreateSprint
-              onClose={toggleCreateSprintModal}
               projectId={projectId}
+              onClose={toggleCreateSprintModal}
             />
           </Modal>
         )}
 
         {isAddPeopleModalShown && (
           <Modal title={'Add people'} onClose={toggleAddPeopleModal}>
-            <FormAddPeople />
+            <FormAddPeople users={users} onClose={toggleAddPeopleModal} />
           </Modal>
         )}
       </div>

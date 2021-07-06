@@ -9,6 +9,7 @@ const currentProjectReducer = createReducer(initialProjectState, {
   [getProjectInfoSuccess]: (_, { payload }) => ({
     title: payload.title,
     description: payload.description,
+    team: payload.team,
   }),
 });
 
