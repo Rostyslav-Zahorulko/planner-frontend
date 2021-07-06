@@ -49,12 +49,13 @@ const FormAddPeople = ({ onClose, users }) => {
         />
         <span className={styles.headline}>Enter e-mail</span>
       </label>
-      <p>Added users:</p>
-      {users.length > 0 ? (
+      <p className={styles.text}>Added users:</p>
+      <EmailPeopleList users={users} />
+      {/* {users.length > 0 ? (
         <EmailPeopleList users={users} />
       ) : (
-        "You haven't any users yet"
-      )}
+        <div>You have no users yet</div>
+      )} */}
       <FormButtons onClose={onClose} />
     </form>
   );

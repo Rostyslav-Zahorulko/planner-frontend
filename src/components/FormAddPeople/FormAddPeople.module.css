@@ -46,3 +46,10 @@
   transform: translateY(-8px);
   font-size: 12px;
 }
+.text {
+  font-weight: 400;
+  font-size: 14px;
+  line-height: 1.2142;
+  color: rgba(24, 28, 39, 0.6);
+  margin-bottom: 20px;
+}

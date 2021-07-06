@@ -78,7 +78,6 @@ const getProjectInfo = id => async dispatch => {
 
   try {
     const { data } = await axios.get(`/projects/${id}`);
-    console.log(data.project);
 
     dispatch(getProjectInfoSuccess(data.project));
   } catch ({ response }) {
