@@ -19,7 +19,6 @@ import { projectsOperations } from '../../redux/projects';
 import { projectsSelectors } from '../../redux/projects';
 // import { sprintsOperations } from '../../redux/sprints';
 import { sprintsSelectors } from '../../redux/sprints';
-import { authSelectors } from '../../redux/auth'; //создать getUserEmail!!!
 
 // Styles
 import styles from './SprintsPage.module.css';
@@ -29,13 +28,11 @@ const SprintsPage = () => {
   const { getProjectsItems } = projectsSelectors;
   // const { getAllSprints } = sprintsOperations;
   const { getSprintsItems } = sprintsSelectors;
-  const { getUserEmail } = authSelectors; //создать getUserEmail!!!
 
   const dispatch = useDispatch();
   const { projectId } = useParams();
   const projects = useSelector(getProjectsItems);
   const sprints = useSelector(getSprintsItems);
-  const users = useSelector(getUserEmail); //создать getUserEmail!!!
 
   const [isCreateProjectModalShown, setCreateProjectModalIsShown] =
     useState(false);
@@ -104,15 +101,15 @@ const SprintsPage = () => {
         {isCreateSprintModalShown && (
           <Modal title={'Creating a sprint'} onClose={toggleCreateSprintModal}>
             <FormCreateSprint
-              onClose={toggleCreateSprintModal}
               projectId={projectId}
+              onClose={toggleCreateSprintModal}              
             />
           </Modal>
         )}
 
         {isAddPeopleModalShown && (
           <Modal title={'Add people'} onClose={toggleAddPeopleModal}>
-            <FormAddPeople onClose={toggleAddPeopleModal} users={users} />
+            <FormAddPeople users={users} onClose={toggleAddPeopleModal} />
           </Modal>
         )}
       </div>
