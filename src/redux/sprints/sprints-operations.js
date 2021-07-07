@@ -50,24 +50,22 @@ const deleteSprint = (projectId, sprintId) => async dispatch => {
   }
 };
 
-const editSprintTitle =
-  ({ projectId, sprintId, title }) =>
-  async dispatch => {
-    const update = { title };
+const editSprintTitle = (projectId, sprintId, title) => async dispatch => {
+  const update = { title };
 
-    dispatch(editSprintTitleRequest());
+  dispatch(editSprintTitleRequest());
 
-    try {
-      const { data } = await axios.patch(
-        `/projects/${projectId}/sprints/${sprintId}`,
-        update,
-      );
+  try {
+    const { data } = await axios.patch(
+      `/projects/${projectId}/sprints/${sprintId}`,
+      update,
+    );
 
-      dispatch(editSprintTitleSuccess(data));
-    } catch ({ message }) {
-      dispatch(editSprintTitleError(message));
-    }
-  };
+    dispatch(editSprintTitleSuccess(data.sprint.title));
+  } catch ({ message }) {
+    dispatch(editSprintTitleError(message));
+  }
+};
 
 const getSprintInfo = (projectId, sprintId) => async dispatch => {
   dispatch(getSprintInfoRequest());

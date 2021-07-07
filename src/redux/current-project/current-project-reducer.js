@@ -1,10 +1,15 @@
 import { combineReducers, createReducer } from '@reduxjs/toolkit';
 import { projectsActions } from '../projects';
 
-const { getProjectInfoSuccess, addUserInProjectSuccess } = projectsActions;
+const {
+  getProjectInfoSuccess,
+  addUserInProjectSuccess,
+  editProjectTitleSuccess,
+} = projectsActions;
 
 const titleReducer = createReducer('', {
   [getProjectInfoSuccess]: (_, { payload }) => payload.title,
+  [editProjectTitleSuccess]: (_, { payload }) => payload,
 });
 
 const descriptionReducer = createReducer('', {

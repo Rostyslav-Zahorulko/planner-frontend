@@ -61,20 +61,19 @@ const deleteProject = id => async dispatch => {
   }
 };
 
-const editProjectTitle =
-  ({ id, title }) =>
-  async dispatch => {
-    const update = { title };
+const editProjectTitle = (id, title) => async dispatch => {
+  const update = { title };
 
-    dispatch(editProjectTitleRequest());
-    try {
-      const { data } = await axios.patch(`/projects/${id}`, update);
+  dispatch(editProjectTitleRequest());
+  try {
+    const { data } = await axios.patch(`/projects/${id}`, update);
+    // console.log(data);
 
-      dispatch(editProjectTitleSuccess(data));
-    } catch ({ message }) {
-      dispatch(editProjectTitleError(message));
-    }
-  };
+    dispatch(editProjectTitleSuccess(data.project.title));
+  } catch ({ message }) {
+    dispatch(editProjectTitleError(message));
+  }
+};
 
 const getProjectInfo = id => async dispatch => {
   dispatch(getProjectInfoRequest());

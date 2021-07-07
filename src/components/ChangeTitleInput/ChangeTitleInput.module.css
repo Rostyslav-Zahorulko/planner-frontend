@@ -13,7 +13,7 @@
 .label {
   position: relative;
   display: block;
-  margin-bottom: 30px;
+  margin-right: 15px;
   font-weight: 600;
   color: rgba(24, 28, 39, 0.6);
 }
@@ -27,7 +27,6 @@
   width: 250px;
   outline: none;
   border-style: none;
-  margin-bottom: 40px;
   background-color: #f1f2f7;
   border-bottom: 1px solid #d1d2d4;
 }

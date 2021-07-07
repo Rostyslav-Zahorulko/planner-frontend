@@ -1,0 +1,11 @@
+.title {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+.project_title {
+  margin-right: 20px;
+}
+
