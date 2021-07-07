@@ -2,7 +2,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useLocation, useHistory } from 'react-router';
-import { ToastContainer } from 'react-toastify';
 
 // Components
 import SidebarProjectsList from '../../components/SidebarProjectsList';
@@ -85,7 +84,6 @@ const SprintsPage = () => {
 
   return (
     <div className={styles.project}>
-      <ToastContainer autoClose={5000} hideProgressBar />
       <SidebarForReuse
         text={'project'}
         onOpen={toggleCreateProjectModal}

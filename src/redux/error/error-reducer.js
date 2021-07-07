@@ -1,9 +1,9 @@
 import { createReducer } from '@reduxjs/toolkit';
+
 import { authActions } from '../auth';
 import { projectsActions } from '../projects';
 import { sprintsActions } from '../sprints';
 import { tasksActions } from '../tasks';
-import deleteError from './error-actions';
 
 const { registerError, loginError, logoutError, getCurrentUserError } =
   authActions;
@@ -13,8 +13,8 @@ const {
   addProjectError,
   deleteProjectError,
   editProjectTitleError,
-  getProjectInfoError,
   addUserInProjectError,
+  getProjectInfoError,
 } = projectsActions;
 
 const {
@@ -24,11 +24,10 @@ const {
   getSprintInfoError,
 } = sprintsActions;
 
-const { addTaskError, deleteTaskError } = tasksActions;
+const { addTaskError, deleteTaskError, updateHoursSpentOnTaskPerDayError } =
+  tasksActions;
 
 const errorReducer = createReducer(null, {
-  [deleteError]: () => null,
-
   [registerError]: (_, { payload }) => payload,
   [loginError]: (_, { payload }) => payload,
   [logoutError]: (_, { payload }) => payload,
@@ -38,8 +37,8 @@ const errorReducer = createReducer(null, {
   [addProjectError]: (_, { payload }) => payload,
   [deleteProjectError]: (_, { payload }) => payload,
   [editProjectTitleError]: (_, { payload }) => payload,
-  [getProjectInfoError]: (_, { payload }) => payload,
   [addUserInProjectError]: (_, { payload }) => payload,
+  [getProjectInfoError]: (_, { payload }) => payload,
 
   [addSprintError]: (_, { payload }) => payload,
   [deleteSprintError]: (_, { payload }) => payload,
@@ -48,6 +47,7 @@ const errorReducer = createReducer(null, {
 
   [addTaskError]: (_, { payload }) => payload,
   [deleteTaskError]: (_, { payload }) => payload,
+  [updateHoursSpentOnTaskPerDayError]: (_, { payload }) => payload,
 });
 
 export default errorReducer;

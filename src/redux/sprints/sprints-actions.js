@@ -1,9 +1,5 @@
 import { createAction } from '@reduxjs/toolkit';
 
-// const getSprintsRequest = createAction('sprints/getRequest');
-// const getSprintsSuccess = createAction('sprints/getSuccess');
-// const getSprintsError = createAction('sprints/getError');
-
 const addSprintRequest = createAction('sprints/addRequest');
 const addSprintSuccess = createAction('sprints/addSuccess');
 const addSprintError = createAction('sprints/addError');
@@ -20,10 +16,6 @@ const getSprintInfoRequest = createAction('sprints/getInfoRequest');
 const getSprintInfoSuccess = createAction('sprints/getInfoSuccess ');
 const getSprintInfoError = createAction('sprints/getInfoError');
 
-const getAllSprintsRequest = createAction('sprints/getAllSprintsRequest');
-const getAllSprintsSuccess = createAction('sprints/getAllSprintsSuccess');
-const getAllSprintsError = createAction('sprints/getAllSprintsError');
-
 const sprintsActions = {
   addSprintRequest,
   addSprintSuccess,
@@ -37,9 +29,6 @@ const sprintsActions = {
   getSprintInfoRequest,
   getSprintInfoSuccess,
   getSprintInfoError,
-  getAllSprintsRequest,
-  getAllSprintsSuccess,
-  getAllSprintsError,
 };
 
 export default sprintsActions;
