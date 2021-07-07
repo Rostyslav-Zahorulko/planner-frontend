@@ -1,11 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { authOperations } from '../../redux/auth';
-import resetErrorOperation from '../../redux/error/error-operations';
 
 import { Formik } from 'formik';
 import * as yup from 'yup';
-import { ToastContainer } from 'react-toastify';
 
 import styles from './LoginPage.module.css';
 
@@ -18,7 +16,6 @@ class LoginPage extends Component {
   render() {
     const updateState = values => {
       this.setState({ email: values.email, password: values.password });
-      // console.log(this.state);
     };
 
     const validationsSchema = yup.object().shape({
@@ -35,7 +32,6 @@ class LoginPage extends Component {
 
     return (
       <>
-        <ToastContainer autoClose={5000} hideProgressBar />
         <Formik
           initialValues={{
             email: '',
@@ -45,7 +41,6 @@ class LoginPage extends Component {
           onSubmit={(values, { resetForm }) => {
             updateState(values);
             this.props.onLogin(this.state);
-            this.props.resetError();
             this.setState({ email: '', password: '' });
             resetForm();
           }}
@@ -138,7 +133,6 @@ const mapStateToProps = state => {
 };
 const mapDispatchToProps = {
   onLogin: authOperations.logIn,
-  resetError: resetErrorOperation,
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(LoginPage);

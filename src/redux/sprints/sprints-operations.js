@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
+
 import { sprintsActions } from '../sprints';
 
 const {
@@ -14,9 +16,6 @@ const {
   getSprintInfoRequest,
   getSprintInfoSuccess,
   getSprintInfoError,
-  getAllSprintsRequest,
-  getAllSprintsSuccess,
-  getAllSprintsError,
 } = sprintsActions;
 
 const addSprint =
@@ -30,11 +29,16 @@ const addSprint =
         sprint,
       );
 
-      // console.dir(data.data.sprints);
-
       dispatch(addSprintSuccess(data.data.sprints));
-    } catch ({ message }) {
-      dispatch(addSprintError(message));
+    } catch (e) {
+      if (e.response) {
+        dispatch(addSprintError(e.response.data.message));
+        toast.error(e.response.data.message);
+        return;
+      }
+
+      dispatch(addSprintError(e.message));
+      toast.error(e.message);
     }
   };
 
@@ -45,8 +49,15 @@ const deleteSprint = (projectId, sprintId) => async dispatch => {
     await axios.delete(`/projects/${projectId}/sprints/${sprintId}`);
 
     dispatch(deleteSprintSuccess(sprintId));
-  } catch ({ message }) {
-    dispatch(deleteSprintError(message));
+  } catch (e) {
+    if (e.response) {
+      dispatch(deleteSprintError(e.response.data.message));
+      toast.error(e.response.data.message);
+      return;
+    }
+
+    dispatch(deleteSprintError(e.message));
+    toast.error(e.message);
   }
 };
 
@@ -64,8 +75,15 @@ const editSprintTitle =
       );
 
       dispatch(editSprintTitleSuccess(data));
-    } catch ({ message }) {
-      dispatch(editSprintTitleError(message));
+    } catch (e) {
+      if (e.response) {
+        dispatch(editSprintTitleError(e.response.data.message));
+        toast.error(e.response.data.message);
+        return;
+      }
+
+      dispatch(editSprintTitleError(e.message));
+      toast.error(e.message);
     }
   };
 
@@ -78,29 +96,33 @@ const getSprintInfo = (projectId, sprintId) => async dispatch => {
     );
 
     dispatch(getSprintInfoSuccess(data));
-  } catch ({ message }) {
-    dispatch(getSprintInfoError(message));
+  } catch (e) {
+    if (e.response) {
+      dispatch(getSprintInfoError(e.response.data.message));
+      toast.error(e.response.data.message);
+      return;
+    }
   }
 };
 
-const getAllSprints = projectId => async dispatch => {
-  dispatch(getAllSprintsRequest());
+// const getAllSprints = projectId => async dispatch => {
+//   dispatch(getAllSprintsRequest());
 
-  try {
-    const { data } = await axios.get(`/projects/${projectId}`);
+//   try {
+//     const { data } = await axios.get(`/projects/${projectId}`);
 
-    dispatch(getAllSprintsSuccess(data.project.sprints));
-  } catch ({ response }) {
-    dispatch(getAllSprintsError(response.data.message));
-  }
-};
+//     dispatch(getAllSprintsSuccess(data.project.sprints));
+//   } catch ({ response }) {
+//     dispatch(getAllSprintsError(response.data.message));
+//   }
+// };
 
 const sprintsOperations = {
   addSprint,
   deleteSprint,
   editSprintTitle,
   getSprintInfo,
-  getAllSprints,
+  // getAllSprints,
 };
 
 export default sprintsOperations;

@@ -32,12 +32,12 @@ const {
   editProjectTitleRequest,
   editProjectTitleSuccess,
   editProjectTitleError,
-  getProjectInfoRequest,
-  getProjectInfoSuccess,
-  getProjectInfoError,
   addUserInProjectRequest,
   addUserInProjectSuccess,
   addUserInProjectError,
+  getProjectInfoRequest,
+  getProjectInfoSuccess,
+  getProjectInfoError,
 } = projectsActions;
 
 const {
@@ -62,6 +62,9 @@ const {
   deleteTaskRequest,
   deleteTaskSuccess,
   deleteTaskError,
+  updateHoursSpentOnTaskPerDayRequest,
+  updateHoursSpentOnTaskPerDaySuccess,
+  updateHoursSpentOnTaskPerDayError,
 } = tasksActions;
 
 const isLoadingReducer = createReducer(false, {
@@ -90,12 +93,12 @@ const isLoadingReducer = createReducer(false, {
   [editProjectTitleRequest]: () => true,
   [editProjectTitleSuccess]: () => false,
   [editProjectTitleError]: () => false,
-  [getProjectInfoRequest]: () => true,
-  [getProjectInfoSuccess]: () => false,
-  [getProjectInfoError]: () => false,
   [addUserInProjectRequest]: () => true,
   [addUserInProjectSuccess]: () => false,
   [addUserInProjectError]: () => false,
+  [getProjectInfoRequest]: () => true,
+  [getProjectInfoSuccess]: () => false,
+  [getProjectInfoError]: () => false,
 
   [addSprintRequest]: () => true,
   [addSprintSuccess]: () => false,
@@ -116,6 +119,9 @@ const isLoadingReducer = createReducer(false, {
   [deleteTaskRequest]: () => true,
   [deleteTaskSuccess]: () => false,
   [deleteTaskError]: () => false,
+  [updateHoursSpentOnTaskPerDayRequest]: () => true,
+  [updateHoursSpentOnTaskPerDaySuccess]: () => false,
+  [updateHoursSpentOnTaskPerDayError]: () => false,
 });
 
 export default isLoadingReducer;
