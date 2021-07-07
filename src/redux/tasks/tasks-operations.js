@@ -1,7 +1,10 @@
 import axios from 'axios';
-import { tasksActions } from '../tasks';
+import { toast } from 'react-toastify';
 import * as dayjs from 'dayjs';
 import customParseFormat from 'dayjs/plugin/customParseFormat';
+
+import { tasksActions } from '../tasks';
+
 dayjs.extend(customParseFormat);
 
 const {
@@ -40,8 +43,15 @@ const addTask =
       // console.log(sprint);
 
       dispatch(addTaskSuccess(sprint.tasks));
-    } catch ({ message }) {
-      dispatch(addTaskError(message));
+    } catch (e) {
+      if (e.response) {
+        dispatch(addTaskError(e.response.data.message));
+        toast.error(e.response.data.message);
+        return;
+      }
+
+      dispatch(addTaskError(e.message));
+      toast.error(e.message);
     }
   };
 
@@ -52,8 +62,15 @@ const deleteTask = (projectId, sprintId, taskId) => async dispatch => {
     await axios.delete(`/projects/${projectId}/sprints/${sprintId}/${taskId}`);
 
     dispatch(deleteTaskSuccess(taskId));
-  } catch ({ message }) {
-    dispatch(deleteTaskError(message));
+  } catch (e) {
+    if (e.response) {
+      dispatch(deleteTaskError(e.response.data.message));
+      toast.error(e.response.data.message);
+      return;
+    }
+
+    dispatch(deleteTaskError(e.message));
+    toast.error(e.message);
   }
 };
 
@@ -76,8 +93,15 @@ const updateHoursPerDay =
       // console.log(data);
 
       dispatch(updateHoursSpentOnTaskPerDaySuccess(data.tasks));
-    } catch ({ message }) {
-      dispatch(updateHoursSpentOnTaskPerDayError(message));
+    } catch (e) {
+      if (e.response) {
+        dispatch(updateHoursSpentOnTaskPerDayError(e.response.data.message));
+        toast.error(e.response.data.message);
+        return;
+      }
+
+      dispatch(updateHoursSpentOnTaskPerDayError(e.message));
+      toast.error(e.message);
     }
   };
 

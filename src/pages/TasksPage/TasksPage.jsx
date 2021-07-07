@@ -2,7 +2,6 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory, useLocation } from 'react-router';
 import Media from 'react-media';
-import { ToastContainer } from 'react-toastify';
 
 // STYLES
 import st from './TasksPage.module.css';
@@ -27,9 +26,7 @@ import { sprintsOperations } from '../../redux/sprints';
 import { currentSprintSelectors } from '../../redux/current-sprint';
 import { tasksSelectors } from '../../redux/tasks';
 
-// import addTask from '../../redux/tasks/tasks-operations';
 import { currentSprintOperations } from '../../redux/current-sprint';
-// import { getVisibleTasks } from '../../redux/tasks/tasks-selectors';
 
 const { getCurrentSprintTitle, getCurrentSprintStartDate } =
   currentSprintSelectors;
@@ -94,8 +91,7 @@ export default function TasksPage() {
 
   return (
     <>
-      <div className={st.wrapper}>
-        <ToastContainer autoClose={5000} hideProgressBar />
+      <div className={st.wrapper}>      
         <SidebarForReuse
           text={'sprint'}
           onOpen={toggleCreateSprintModal}
@@ -190,7 +186,7 @@ export default function TasksPage() {
             </Modal>
           )}
         </div>
-        {/* {tasks.length > 3 ? <ChartModalContainer /> : ''} */}
+        {/* {visibleTasks.length > 3 ? <ChartModalContainer /> : ''} */}
       </div>
       <div className={st.chart_wrapper}>
         <ChartModalContainer />

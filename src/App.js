@@ -1,6 +1,7 @@
 import { Suspense, lazy, useEffect } from 'react';
 import { connect } from 'react-redux';
 import { Switch } from 'react-router-dom';
+import { ToastContainer } from 'react-toastify';
 
 import Container from './components/Container';
 import AppBar from './components/AppBar';
@@ -10,7 +11,6 @@ import PublicRoute from './components/PublicRoute';
 import { authOperations } from './redux/auth';
 
 import routes from './routes';
-// import { connect } from 'formik';
 
 const { register, login, projects, sprints, tasks } = routes;
 
@@ -47,6 +47,7 @@ function App(props) {
 
   return (
     <Container>
+      <ToastContainer autoClose={5000} hideProgressBar />
       <AppBar />
 
       <Suspense fallback={<div>Loading...</div>}>

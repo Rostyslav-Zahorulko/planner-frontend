@@ -16,12 +16,12 @@ const {
   editProjectTitleRequest,
   editProjectTitleSuccess,
   editProjectTitleError,
-  getProjectInfoRequest,
-  getProjectInfoSuccess,
-  getProjectInfoError,
   addUserInProjectRequest,
   addUserInProjectSuccess,
   addUserInProjectError,
+  getProjectInfoRequest,
+  getProjectInfoSuccess,
+  getProjectInfoError,
 } = projectsActions;
 
 const getProjects = () => async dispatch => {
@@ -29,11 +29,17 @@ const getProjects = () => async dispatch => {
 
   try {
     const { data } = await axios.get('/projects');
-    // console.log(data.data.projects);
 
     dispatch(getProjectsSuccess(data.data.projects));
-  } catch ({ message }) {
-    dispatch(getProjectsError(message));
+  } catch (e) {
+    if (e.response) {
+      dispatch(getProjectsError(e.response.data.message));
+      toast.error(e.response.data.message);
+      return;
+    }
+
+    dispatch(getProjectsError(e.message));
+    toast.error(e.message);
   }
 };
 
@@ -43,11 +49,16 @@ const addProject = project => async dispatch => {
   try {
     const { data } = await axios.post('/projects', project);
 
-    // console.dir(data.project);
-
     dispatch(addProjectSuccess(data.project));
-  } catch ({ message }) {
-    dispatch(addProjectError(message));
+  } catch (e) {
+    if (e.response) {
+      dispatch(addProjectError(e.response.data.message));
+      toast.error(e.response.data.message);
+      return;
+    }
+
+    dispatch(addProjectError(e.message));
+    toast.error(e.message);
   }
 };
 
@@ -58,8 +69,15 @@ const deleteProject = id => async dispatch => {
     await axios.delete(`/projects/${id}`);
 
     dispatch(deleteProjectSuccess(id));
-  } catch ({ message }) {
-    dispatch(deleteProjectError(message));
+  } catch (e) {
+    if (e.response) {
+      dispatch(deleteProjectError(e.response.data.message));
+      toast.error(e.response.data.message);
+      return;
+    }
+
+    dispatch(deleteProjectError(e.message));
+    toast.error(e.message);
   }
 };
 
@@ -73,23 +91,17 @@ const editProjectTitle =
       const { data } = await axios.patch(`/projects/${id}`, update);
 
       dispatch(editProjectTitleSuccess(data));
-    } catch ({ message }) {
-      dispatch(editProjectTitleError(message));
+    } catch (e) {
+      if (e.response) {
+        dispatch(editProjectTitleError(e.response.data.message));
+        toast.error(e.response.data.message);
+        return;
+      }
+
+      dispatch(editProjectTitleError(e.message));
+      toast.error(e.message);
     }
   };
-
-const getProjectInfo = id => async dispatch => {
-  dispatch(getProjectInfoRequest());
-
-  try {
-    const { data } = await axios.get(`/projects/${id}`);
-
-    dispatch(getProjectInfoSuccess(data.project));
-  } catch ({ response }) {
-    dispatch(getProjectInfoError(response.data.message));
-    toast.error(response.data.message);
-  }
-};
 
 const addUser =
   ({ projectId, user }) =>
@@ -102,20 +114,44 @@ const addUser =
       console.log(data);
 
       // dispatch(addUserInProjectSuccess());
-    } catch ({ response }) {
-      console.log(response.data.message);
-      // dispatch(addUserInProjectError(response.data.message));
-      toast.error(response.data.message);
+    } catch (e) {
+      if (e.response) {
+        dispatch(addUserInProjectError(e.response.data.message));
+        toast.error(e.response.data.message);
+        return;
+      }
+
+      dispatch(addUserInProjectError(e.message));
+      toast.error(e.message);
     }
   };
+
+const getProjectInfo = id => async dispatch => {
+  dispatch(getProjectInfoRequest());
+
+  try {
+    const { data } = await axios.get(`/projects/${id}`);
+
+    dispatch(getProjectInfoSuccess(data.project));
+  } catch (e) {
+    if (e.response) {
+      dispatch(getProjectInfoError(e.response.data.message));
+      toast.error(e.response.data.message);
+      return;
+    }
+
+    dispatch(getProjectInfoError(e.message));
+    toast.error(e.message);
+  }
+};
 
 const projectsOperations = {
   getProjects,
   addProject,
   deleteProject,
   editProjectTitle,
-  getProjectInfo,
   addUser,
+  getProjectInfo,
 };
 
 export default projectsOperations;
