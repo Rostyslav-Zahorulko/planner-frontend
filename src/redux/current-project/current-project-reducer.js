@@ -1,16 +1,25 @@
-import { createReducer } from '@reduxjs/toolkit';
+import { combineReducers, createReducer } from '@reduxjs/toolkit';
 import { projectsActions } from '../projects';
 
-const { getProjectInfoSuccess } = projectsActions;
+const { getProjectInfoSuccess, addUserInProjectSuccess } = projectsActions;
 
-const initialProjectState = { title: '', description: '' };
+const titleReducer = createReducer('', {
+  [getProjectInfoSuccess]: (_, { payload }) => payload.title,
+});
 
-const currentProjectReducer = createReducer(initialProjectState, {
-  [getProjectInfoSuccess]: (_, { payload }) => ({
-    title: payload.title,
-    description: payload.description,
-    team: payload.team,
-  }),
+const descriptionReducer = createReducer('', {
+  [getProjectInfoSuccess]: (_, { payload }) => payload.description,
+});
+
+const teamReducer = createReducer([], {
+  [getProjectInfoSuccess]: (_, { payload }) => payload.team,
+  // [addUserInProjectSuccess]: (state, { payload }) => [...state, payload],
+});
+
+const currentProjectReducer = combineReducers({
+  title: titleReducer,
+  description: descriptionReducer,
+  team: teamReducer,
 });
 
 export default currentProjectReducer;

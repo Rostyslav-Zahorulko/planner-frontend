@@ -35,6 +35,9 @@ const {
   getProjectInfoRequest,
   getProjectInfoSuccess,
   getProjectInfoError,
+  addUserInProjectRequest,
+  addUserInProjectSuccess,
+  addUserInProjectError,
 } = projectsActions;
 
 const {
@@ -90,6 +93,9 @@ const isLoadingReducer = createReducer(false, {
   [getProjectInfoRequest]: () => true,
   [getProjectInfoSuccess]: () => false,
   [getProjectInfoError]: () => false,
+  [addUserInProjectRequest]: () => true,
+  [addUserInProjectSuccess]: () => false,
+  [addUserInProjectError]: () => false,
 
   [addSprintRequest]: () => true,
   [addSprintSuccess]: () => false,

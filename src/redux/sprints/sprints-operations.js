@@ -25,7 +25,10 @@ const addSprint =
     dispatch(addSprintRequest());
 
     try {
-      const { data } = await axios.post(`/projects/${projectId}`, sprint);
+      const { data } = await axios.post(
+        `/projects/${projectId}/sprints`,
+        sprint,
+      );
 
       // console.dir(data.data.sprints);
 
@@ -39,7 +42,7 @@ const deleteSprint = (projectId, sprintId) => async dispatch => {
   dispatch(deleteSprintRequest());
 
   try {
-    await axios.delete(`/projects/${projectId}/${sprintId}`);
+    await axios.delete(`/projects/${projectId}/sprints/${sprintId}`);
 
     dispatch(deleteSprintSuccess(sprintId));
   } catch ({ message }) {
@@ -56,7 +59,7 @@ const editSprintTitle =
 
     try {
       const { data } = await axios.patch(
-        `/projects/${projectId}/${sprintId}`,
+        `/projects/${projectId}/sprints/${sprintId}`,
         update,
       );
 
@@ -70,7 +73,9 @@ const getSprintInfo = (projectId, sprintId) => async dispatch => {
   dispatch(getSprintInfoRequest());
 
   try {
-    const { data } = await axios.get(`/projects/${projectId}/${sprintId}`);
+    const { data } = await axios.get(
+      `/projects/${projectId}/sprints/${sprintId}`,
+    );
 
     dispatch(getSprintInfoSuccess(data));
   } catch ({ message }) {

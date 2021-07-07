@@ -22,7 +22,7 @@ export default function TaskItem({ projectId, sprintId, taskId }) {
   const task = tasks.find(task => task.id === taskId);
   const { title, plannedHours, totalHours } = task;
 
-  const [currentDay, setCurrentDay] = useState({ date: '', hoursSpent: '0' });
+  const [currentDay, setCurrentDay] = useState({ date: '', hoursSpent: 0 });
 
   const handleHoursPerDayChange = e => {
     e.preventDefault();
@@ -38,7 +38,7 @@ export default function TaskItem({ projectId, sprintId, taskId }) {
 
     setCurrentDay({
       date: standartDisplayedDate,
-      hoursSpent: e.target.value,
+      hoursSpent: +e.target.value,
     });
   };
 
@@ -51,7 +51,7 @@ export default function TaskItem({ projectId, sprintId, taskId }) {
     if (!e.target.value) {
       setCurrentDay({
         date: standartDisplayedDate,
-        hoursSpent: '0',
+        hoursSpent: 0,
       });
     }
 

@@ -7,21 +7,6 @@ const { getSprintInfoSuccess } = sprintsActions;
 const { getSprintDisplayedDateSuccess, setNewDisplayedDateSuccess } =
   currentSprintActions;
 
-// const initialSprintState = {
-//   title: '',
-//   duration: '',
-//   startDate: '',
-//   displayedDate: '',
-// };
-
-// const currentSprintReducer = createReducer(initialSprintState, {
-//   [getSprintInfoSuccess]: (_, { payload }) => ({
-//     title: payload.sprint.title,
-//     duration: payload.sprint.duration,
-//     startDate: payload.sprint.startDate,
-//   }),
-// });
-
 const titleReducer = createReducer('', {
   [getSprintInfoSuccess]: (_, { payload }) => payload.sprint.title,
 });

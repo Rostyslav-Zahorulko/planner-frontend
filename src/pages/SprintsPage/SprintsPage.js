@@ -29,7 +29,11 @@ const SprintsPage = () => {
   const { getProjectsItems } = projectsSelectors;
   // const { getAllSprints } = sprintsOperations;
   const { getSprintsItems } = sprintsSelectors;
-  const { getCurrentProjectTeam } = currentProjectSelectors;
+  const {
+    getCurrentProjectTitle,
+    getCurrentProjectDescription,
+    getCurrentProjectTeam,
+  } = currentProjectSelectors;
 
   const dispatch = useDispatch();
   const history = useHistory();
@@ -37,6 +41,8 @@ const SprintsPage = () => {
   const { projectId } = useParams();
   const projects = useSelector(getProjectsItems);
   const sprints = useSelector(getSprintsItems);
+  const title = useSelector(getCurrentProjectTitle);
+  const description = useSelector(getCurrentProjectDescription);
   const users = useSelector(getCurrentProjectTeam);
 
   const [isCreateProjectModalShown, setCreateProjectModalIsShown] =
@@ -82,9 +88,9 @@ const SprintsPage = () => {
       </SidebarForReuse>
 
       <div className={styles.sprints}>
-        <ProjectName />
-
-        {/* ДОПИЛИТЬ ИЗМЕНЕНИЕ ТАЙТЛА */}
+        
+        <ProjectName title={title} description={description} />
+           {/* ДОПИЛИТЬ ИЗМЕНЕНИЕ ТАЙТЛА */}
         {/* <ChangeTitleInput /> */}
 
         <div className={styles.addSprintButton}>
@@ -122,7 +128,11 @@ const SprintsPage = () => {
 
         {isAddPeopleModalShown && (
           <Modal title={'Add people'} onClose={toggleAddPeopleModal}>
-            <FormAddPeople users={users} onClose={toggleAddPeopleModal} />
+            <FormAddPeople
+              projectId={projectId}
+              users={users}
+              onClose={toggleAddPeopleModal}
+            />
           </Modal>
         )}
       </div>
