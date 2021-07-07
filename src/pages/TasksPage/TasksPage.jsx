@@ -11,7 +11,6 @@ import TasksList from '../../components/TasksList';
 import TasksDatesNav from '../../components/TasksDatesNav';
 import TasksSearch from '../../components/TasksSearchFull';
 import SprintHeader from '../../components/SprintHeader';
-import ChangeButton from '../../components/СhangeButton/ChangeButton';
 import SidebarForReuse from '../../components/SidebarForReuse';
 import SprintLinkList from '../../components/SprintLinkList';
 import Modal from '../../components/Modal';
@@ -19,7 +18,7 @@ import FormCreateTask from '../../components/FormCreateTask';
 import FormCreateSprint from '../../components/FormCreateSprint';
 import ChartModalContainer from '../../components/ChartModal';
 import AddButton from '../../components/AddButton';
-import ChangeTitleInput from '../../components/ChangeTitleInput';
+import PageTitle from '../../components/PageTitle';
 
 // REDUX
 import { sprintsOperations } from '../../redux/sprints';
@@ -39,8 +38,6 @@ export default function TasksPage() {
   const sprintTitle = useSelector(getCurrentSprintTitle);
   const sprintStartDate = useSelector(getCurrentSprintStartDate);
   const visibleTasks = useSelector(tasksSelectors.getVisibleTasks);
-  const [showInput, setShowInput] = useState(false);
-  const [title, setTitle] = useState('');
 
   const [isCreateSprintModalShown, setCreateSprintModalIsShown] =
     useState(false);
@@ -62,23 +59,12 @@ export default function TasksPage() {
     history.push(location?.state?.from?.location ?? `/projects/${projectId}`);
   };
 
-  const handleClickBtnChange = () => {
-    setShowInput(prevshowInput => !prevshowInput);
-  };
-  const handleInputChangeTitle = e => {
-    setTitle(e.target.value);
-  };
-
-  const handleSubmit = e => {
-    e.preventDefault();
-    if (sprintTitle !== title) {
+  const handleSprintTitleChange = newTitle => {
+    if (sprintTitle !== newTitle && newTitle !== '') {
       dispatch(
-        sprintsOperations.editSprintTitle(projectId, sprintId, {
-          title: title,
-        }),
+        sprintsOperations.editSprintTitle(projectId, sprintId, newTitle),
       );
     }
-    setShowInput(false);
   };
 
   useEffect(() => {
@@ -108,35 +94,10 @@ export default function TasksPage() {
 
           <div className={st.header}>
             <div className={st.title_wrapper}>
-              <h1 className={showInput ? st.titleDisable : st.title}>
-                {sprintTitle}
-              </h1>
-              {/* <ChangeButton /> */}
-              {/* ДОПИЛИТЬ ИЗМЕНЕНИЕ ТАЙТЛА */}
-              {/* <ChangeTitleInput /> */}
-
-              <form
-                onSubmit={handleSubmit}
-                className={
-                  showInput ? st.changeTitleFormActive : st.changeTitleForm
-                }
-              >
-                <label className={st.label}>
-                  <input
-                    className={st.input}
-                    placeholder=" "
-                    type="text"
-                    required
-                    value={title}
-                    onChange={handleInputChangeTitle}
-                  />
-                </label>
-              </form>
-              <button
-                type="button"
-                className={showInput ? st.btnChangeDisable : st.btnChange}
-                onClick={handleClickBtnChange}
-              ></button>
+              <PageTitle
+                title={sprintTitle}
+                onChangeTitle={newTitle => handleSprintTitleChange(newTitle)}
+              />
               {/* <ChangeTitleInput /> */}
             </div>
             <div className={st.button_wrapper}>

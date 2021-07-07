@@ -6,14 +6,13 @@ import { useParams, useLocation, useHistory } from 'react-router';
 // Components
 import SidebarProjectsList from '../../components/SidebarProjectsList';
 import SprintList from '../../components/SprintsList';
-import ProjectName from '../../components/ProjectName';
+import PageTitle from '../../components/PageTitle';
 import AddButton from '../../components/AddButton';
 import SidebarForReuse from '../../components/SidebarForReuse';
 import Modal from '../../components/Modal';
 import CreateProjectForm from '../../components/CreatePojectForm';
 import FormAddPeople from '../../components/FormAddPeople';
 import FormCreateSprint from '../../components/FormCreateSprint';
-import ChangeTitleInput from '../../components/ChangeTitleInput';
 
 // Redux
 import { projectsOperations } from '../../redux/projects';
@@ -25,7 +24,7 @@ import { currentProjectSelectors } from '../../redux/current-project';
 import styles from './SprintsPage.module.css';
 
 const SprintsPage = () => {
-  const { getProjectInfo } = projectsOperations;
+  const { getProjectInfo, editProjectTitle } = projectsOperations;
   const { getProjectsItems } = projectsSelectors;
   const { getSprintsItems } = sprintsSelectors;
   const {
@@ -72,6 +71,13 @@ const SprintsPage = () => {
     history.push(location?.state?.from?.location ?? '/projects');
   };
 
+  // Change project title
+  const handleProjectTitleChange = newTitle => {
+    if (title !== newTitle && newTitle !== '') {
+      dispatch(editProjectTitle(projectId, newTitle));
+    }
+  };
+
   useEffect(() => {
     dispatch(getProjectInfo(projectId));
   }, [dispatch, projectId, getProjectInfo]);
@@ -87,9 +93,11 @@ const SprintsPage = () => {
       </SidebarForReuse>
 
       <div className={styles.sprints}>
-        <ProjectName title={title} description={description} />
-        {/* ДОПИЛИТЬ ИЗМЕНЕНИЕ ТАЙТЛА */}
-        {/* <ChangeTitleInput /> */}
+        <PageTitle
+          title={title}
+          onChangeTitle={newTitle => handleProjectTitleChange(newTitle)}
+        />
+        <p className={styles.project_desc}>{description}</p>
 
         <div className={styles.addSprintButton}>
           <AddButton onOpen={toggleCreateSprintModal} />

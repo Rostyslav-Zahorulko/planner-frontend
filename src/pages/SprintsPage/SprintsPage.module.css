@@ -1,3 +1,5 @@
+
+
 .subject {
   display: inline-flex;
   align-items: center;
@@ -8,6 +10,17 @@
   letter-spacing: 0.04em;
   text-decoration-line: underline;
 }
+
+.project_desc {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0, 04em;
+
+  margin-bottom: 30px;
+}
+
 
 .subject::before {
   content: '';
@@ -23,6 +36,15 @@
   transition: all 0.25s linear;
   transform: scale(1.03);
 }
+
+.title {
+  display: flex;
+  align-items: center;
+  height: 32px;
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
 
 @media screen and (min-width: 768px) {
   .project {
@@ -72,4 +94,10 @@
     color: #181c27;
     margin-left: 20px;
   }
+
+  .project_desc {
+  width: 400px;
+  height: 66px;
+}
+
 }
