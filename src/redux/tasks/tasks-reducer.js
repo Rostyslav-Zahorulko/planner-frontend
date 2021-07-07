@@ -5,7 +5,7 @@ import { tasksActions } from '../tasks';
 
 const { getSprintInfoSuccess } = sprintsActions;
 const {
-  addTaskSuccess,
+  // addTaskSuccess,
   deleteTaskSuccess,
   changeFilter,
   updateHoursSpentOnTaskPerDaySuccess,
@@ -13,7 +13,7 @@ const {
 
 const itemsReducer = createReducer([], {
   [getSprintInfoSuccess]: (_, { payload }) => payload.sprint.tasks,
-  [addTaskSuccess]: (_, { payload }) => payload,
+  // [addTaskSuccess]: (_, { payload }) => payload,
   [deleteTaskSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
   [updateHoursSpentOnTaskPerDaySuccess]: (_, { payload }) => payload,

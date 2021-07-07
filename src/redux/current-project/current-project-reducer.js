@@ -13,7 +13,7 @@ const descriptionReducer = createReducer('', {
 
 const teamReducer = createReducer([], {
   [getProjectInfoSuccess]: (_, { payload }) => payload.team,
-  [addUserInProjectSuccess]: (state, { payload }) => [...state, payload],
+  // [addUserInProjectSuccess]: (state, { payload }) => [...state, payload],
 });
 
 const currentProjectReducer = combineReducers({

@@ -23,11 +23,13 @@ const addTask =
 
     try {
       const { data } = await axios.post(
-        `/projects/${projectId}/${sprintId}`,
+        `/projects/${projectId}/sprints/${sprintId}`,
         task,
       );
 
-      dispatch(addTaskSuccess(data.project.sprints));
+      console.dir(data.projects.sprints);
+
+      // dispatch(addTaskSuccess());
     } catch ({ message }) {
       dispatch(addTaskError(message));
     }
@@ -37,7 +39,7 @@ const deleteTask = (projectId, sprintId, taskId) => async dispatch => {
   dispatch(deleteTaskRequest());
 
   try {
-    await axios.delete(`/projects/${projectId}/${sprintId}/${taskId}`);
+    await axios.delete(`/projects/${projectId}/sprints/${sprintId}/${taskId}`);
 
     dispatch(deleteTaskSuccess(taskId));
   } catch ({ message }) {
@@ -58,7 +60,7 @@ const updateHoursPerDay =
     // console.log(normalizedDaywithHours);
     try {
       const { data } = await axios.patch(
-        `/projects/${projectId}/${sprintId}/${taskId}`,
+        `/projects/${projectId}/sprints/${sprintId}/${taskId}`,
         normalizedDaywithHours,
       );
       // console.log(data);

@@ -88,19 +88,21 @@ const getProjectInfo = id => async dispatch => {
   }
 };
 
-const addUser = user => async dispatch => {
-  dispatch(addUserInProjectRequest());
+const addUser =
+  ({ projectId, user }) =>
+  async dispatch => {
+    dispatch(addUserInProjectRequest());
 
-  try {
-    const { data } = axios.post('/projects', user);
+    try {
+      const { data } = axios.post(`/projects/${projectId}`, user);
 
-    console.log(data.user);
+      // console.log(data);
 
-    dispatch(addUserInProjectSuccess(data.user));
-  } catch ({ message }) {
-    dispatch(addUserInProjectError(message));
-  }
-};
+      // dispatch(addUserInProjectSuccess(data.user));
+    } catch ({ message }) {
+      dispatch(addUserInProjectError(message));
+    }
+  };
 
 const projectsOperations = {
   getProjects,

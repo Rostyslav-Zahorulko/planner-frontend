@@ -128,7 +128,11 @@ const SprintsPage = () => {
 
         {isAddPeopleModalShown && (
           <Modal title={'Add people'} onClose={toggleAddPeopleModal}>
-            <FormAddPeople users={users} onClose={toggleAddPeopleModal} />
+            <FormAddPeople
+              projectId={projectId}
+              users={users}
+              onClose={toggleAddPeopleModal}
+            />
           </Modal>
         )}
       </div>
