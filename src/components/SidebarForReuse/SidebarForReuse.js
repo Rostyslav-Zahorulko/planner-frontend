@@ -1,15 +1,14 @@
+import { useSelector } from 'react-redux';
 import ShowBackArrow from '../ShowBackArrow';
 import SidebarAddButton from '../SidebarAddButton';
-import { useHistory, useLocation } from 'react-router-dom';
-// import FormCreateSprint from '../FormCreateSprint';
 
 import styles from './SidebarForReuse.module.css';
 
-//   return (
-//     <div className={styles.sidebar}>
-//       <ShowBackArrow goBackTo={goBackTo} onClick={handleGoBack} />
+import { currentSprintSelectors } from '../../redux/current-sprint';
 
 const SidebarForReuse = ({ children, text, onOpen, onClick }) => {
+  const sprintTitle = useSelector(currentSprintSelectors.getCurrentSprintTitle);
+
   return (
     <div className={styles.sidebar}>
       <ShowBackArrow text={text} onClick={onClick} />
