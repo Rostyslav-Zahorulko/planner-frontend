@@ -23,10 +23,13 @@ import PageTitle from '../../components/PageTitle';
 
 // REDUX
 import { sprintsOperations } from '../../redux/sprints';
+import { sprintsSelectors } from '../../redux/sprints';
 import { currentSprintSelectors } from '../../redux/current-sprint';
 import { tasksSelectors } from '../../redux/tasks';
 
 import { currentSprintOperations } from '../../redux/current-sprint';
+
+const {getSprintsItems } = sprintsSelectors;
 
 const {
   getCurrentSprintTitle,
@@ -39,6 +42,7 @@ export default function TasksPage() {
   const history = useHistory();
   const location = useLocation();
   const { projectId, sprintId } = useParams();
+  const sprints = useSelector(getSprintsItems);
   const sprintTitle = useSelector(getCurrentSprintTitle);
   const sprintStartDate = useSelector(getCurrentSprintStartDate);
   const sprintDuration = useSelector(getCurrentSprintDuration);
@@ -153,7 +157,7 @@ export default function TasksPage() {
           onOpen={toggleCreateSprintModal}
           onClick={handleGoBack}
         >
-          <SprintLinkList />
+          <SprintLinkList sprints={sprints} />
         </SidebarForReuse>
 
         <div className={st.wrapper_tasks}>

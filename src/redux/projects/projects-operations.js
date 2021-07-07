@@ -109,7 +109,7 @@ const addUser =
     dispatch(addUserInProjectRequest());
 
     try {
-      const { data } = await axios.post(`/projects/${projectId}`, user);
+      const { data } = await axios.post(`/projects/${projectId}`, user); 
 
       console.log(data);
 

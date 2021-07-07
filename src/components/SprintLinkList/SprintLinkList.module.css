@@ -3,7 +3,24 @@
     display: none;
   }
 }
+
 @media screen and (min-width: 768px) {
+  .link_list {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .link_list::-webkit-scrollbar {
+    width: 3px;
+  }
+
+  .link_list::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    background: #ff6b08;
+  }
+
   .list_item {
     margin-bottom: 15px;
   }
@@ -34,8 +51,5 @@
     background: white;
     box-shadow: 2px 2px 4px rgb(0 5 97 / 20%);
     border-radius: 5px;
-  }
-  .link_list_item_sp {
-    margin-left: 15px;
   }
 }
