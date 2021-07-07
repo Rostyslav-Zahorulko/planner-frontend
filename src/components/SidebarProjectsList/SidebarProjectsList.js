@@ -8,4 +8,5 @@ const SidebarProjectsList = ({ projects }) => (
     ))}
   </ul>
 );
+
 export default SidebarProjectsList;
