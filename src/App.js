@@ -72,18 +72,6 @@ function App(props) {
             <TasksPage />
           </PrivateRoute>
         </Switch>
-
-        {/* <Switch>
-          <RegisterPage exact path={register} />
-
-          <LoginPage path={login} />
-
-          <ProjectsPage exact path={projects} />
-
-          <SprintsPage exact path={sprints} />
-
-          <TasksPage path={tasks} />
-        </Switch> */}
       </Suspense>
     </Container>
   );
