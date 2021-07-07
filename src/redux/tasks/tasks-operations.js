@@ -27,9 +27,19 @@ const addTask =
         task,
       );
 
-      console.dir(data.projects.sprints);
+      // console.log(data.project.sprints);
 
-      // dispatch(addTaskSuccess());
+      const {
+        project: { sprints },
+      } = data;
+
+      // console.log(sprints);
+
+      const sprint = sprints.find(sprint => sprint.id === sprintId);
+
+      // console.log(sprint);
+
+      dispatch(addTaskSuccess(sprint.tasks));
     } catch ({ message }) {
       dispatch(addTaskError(message));
     }
