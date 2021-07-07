@@ -1,6 +1,7 @@
 import axios from 'axios';
 import { useState, useEffect } from 'react';
 import Chart from './Chart';
+
 const ChartService = () => {
   const [chartData, setChartData] = useState({});
 

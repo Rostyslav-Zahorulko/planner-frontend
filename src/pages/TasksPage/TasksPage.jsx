@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory, useLocation } from 'react-router';
 import Media from 'react-media';
+import * as dayjs from 'dayjs';
 
 // STYLES
 import st from './TasksPage.module.css';
@@ -40,8 +41,14 @@ export default function TasksPage() {
   const { projectId, sprintId } = useParams();
   const sprintTitle = useSelector(getCurrentSprintTitle);
   const sprintStartDate = useSelector(getCurrentSprintStartDate);
+  const sprintDuration = useSelector(getCurrentSprintDuration);
   const visibleTasks = useSelector(tasksSelectors.getVisibleTasks);
   const allTasks = useSelector(tasksSelectors.getTasks);
+  const array = new Array(sprintDuration).fill('');
+  const sprintDates = array.map((item, ind) => {
+    const date = dayjs(sprintStartDate).add(ind, 'day').format('DD.MM.YYYY');
+    return date;
+  });
 
   const [isCreateSprintModalShown, setCreateSprintModalIsShown] =
     useState(false);
@@ -53,7 +60,6 @@ export default function TasksPage() {
     (totalPlannedHours, task) => totalPlannedHours + task.plannedHours,
     0,
   );
-  const sprintDuration = useSelector(getCurrentSprintDuration);
   const leg = totalPlannedHours / sprintDuration;
 
   // Array for red chart line
@@ -102,6 +108,9 @@ export default function TasksPage() {
       return acc;
     }, []);
   console.log(factHoursLeftByPerDay);
+
+  // DatesArray for chart
+  console.log(sprintDates);
   // ======== END OF CHART LOGIC ========
 
   /*Create sprint*/
@@ -138,7 +147,7 @@ export default function TasksPage() {
 
   return (
     <>
-      <div className={st.wrapper}>      
+      <div className={st.wrapper}>
         <SidebarForReuse
           text={'sprint'}
           onOpen={toggleCreateSprintModal}
@@ -149,7 +158,7 @@ export default function TasksPage() {
 
         <div className={st.wrapper_tasks}>
           <div className={st.headPanelWrapper}>
-            <TasksDatesNav />
+            <TasksDatesNav sprintDates={sprintDates} />
             {window.matchMedia('(max-width: 1279px)') && <TasksSearch />}
           </div>
 
