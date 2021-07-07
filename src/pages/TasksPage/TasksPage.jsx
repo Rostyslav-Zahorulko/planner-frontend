@@ -2,6 +2,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory, useLocation } from 'react-router';
 import Media from 'react-media';
+import { ToastContainer } from 'react-toastify';
 
 // STYLES
 import st from './TasksPage.module.css';
@@ -94,6 +95,7 @@ export default function TasksPage() {
   return (
     <>
       <div className={st.wrapper}>
+        <ToastContainer autoClose={5000} hideProgressBar />
         <SidebarForReuse
           text={'sprint'}
           onOpen={toggleCreateSprintModal}
