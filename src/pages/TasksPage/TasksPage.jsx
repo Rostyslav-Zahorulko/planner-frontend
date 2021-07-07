@@ -27,8 +27,11 @@ import { tasksSelectors } from '../../redux/tasks';
 
 import { currentSprintOperations } from '../../redux/current-sprint';
 
-const { getCurrentSprintTitle, getCurrentSprintStartDate } =
-  currentSprintSelectors;
+const {
+  getCurrentSprintTitle,
+  getCurrentSprintStartDate,
+  getCurrentSprintDuration,
+} = currentSprintSelectors;
 
 export default function TasksPage() {
   const dispatch = useDispatch();
@@ -38,11 +41,68 @@ export default function TasksPage() {
   const sprintTitle = useSelector(getCurrentSprintTitle);
   const sprintStartDate = useSelector(getCurrentSprintStartDate);
   const visibleTasks = useSelector(tasksSelectors.getVisibleTasks);
+  const allTasks = useSelector(tasksSelectors.getTasks);
 
   const [isCreateSprintModalShown, setCreateSprintModalIsShown] =
     useState(false);
-
   const [isCreateTaskModalShown, setCreateTaskModalIsShown] = useState(false);
+
+  // ======== CHART LOGIC ========
+  // console.log(allTasks);
+  const totalPlannedHours = allTasks.reduce(
+    (totalPlannedHours, task) => totalPlannedHours + task.plannedHours,
+    0,
+  );
+  const sprintDuration = useSelector(getCurrentSprintDuration);
+  const leg = totalPlannedHours / sprintDuration;
+
+  // Array for red chart line
+  const plannedHoursLeftPerDay = new Array(sprintDuration + 1)
+    .fill(0)
+    .reduce((acc, _, ind) => {
+      const value = Math.ceil(totalPlannedHours - leg * ind);
+      acc.push(value);
+      return acc;
+    }, []);
+  console.log(plannedHoursLeftPerDay);
+
+  const totalSpentHoursPerDay = new Array(sprintDuration)
+    .fill(0)
+    .reduce((acc, _, ind) => {
+      const HoursPerDayObjectsByDay = allTasks.map(
+        task => task.hoursPerDay[ind],
+      );
+
+      const totalHoursSpentForAllTasksToday = HoursPerDayObjectsByDay.reduce(
+        (total, obj) => total + obj.hoursSpent,
+        0,
+      );
+      acc.push(totalHoursSpentForAllTasksToday);
+      return acc;
+    }, []);
+
+  // Array for blue chart line
+  const factHoursLeftByPerDay = new Array(sprintDuration + 1)
+    .fill(0)
+    .reduce((acc, _, ind) => {
+      let value = 0;
+      const i = ind - 1;
+
+      if (acc.length > 0) {
+        const number = acc.length - 1;
+        // console.log(number);
+        const previousHoursLeft = acc[number];
+        value = Math.ceil(previousHoursLeft - totalSpentHoursPerDay[i]);
+        ind !== 0 && acc.push(value);
+
+        return acc;
+      }
+      ind === 0 && acc.push(totalPlannedHours);
+
+      return acc;
+    }, []);
+  console.log(factHoursLeftByPerDay);
+  // ======== END OF CHART LOGIC ========
 
   /*Create sprint*/
   const toggleCreateSprintModal = useCallback(() => {
@@ -59,6 +119,7 @@ export default function TasksPage() {
     history.push(location?.state?.from?.location ?? `/projects/${projectId}`);
   };
 
+  // Change Title
   const handleSprintTitleChange = newTitle => {
     if (sprintTitle !== newTitle && newTitle !== '') {
       dispatch(
