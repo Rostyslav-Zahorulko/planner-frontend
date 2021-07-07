@@ -24,6 +24,7 @@ import PageTitle from '../../components/PageTitle';
 import { sprintsOperations } from '../../redux/sprints';
 import { currentSprintSelectors } from '../../redux/current-sprint';
 import { tasksSelectors } from '../../redux/tasks';
+
 import { currentSprintOperations } from '../../redux/current-sprint';
 
 const {
@@ -137,7 +138,7 @@ export default function TasksPage() {
 
   return (
     <>
-      <div className={st.wrapper}>
+      <div className={st.wrapper}>      
         <SidebarForReuse
           text={'sprint'}
           onOpen={toggleCreateSprintModal}
@@ -207,7 +208,7 @@ export default function TasksPage() {
             </Modal>
           )}
         </div>
-        {/* {tasks.length > 3 ? <ChartModalContainer /> : ''} */}
+        {/* {visibleTasks.length > 3 ? <ChartModalContainer /> : ''} */}
       </div>
       <div className={st.chart_wrapper}>
         <ChartModalContainer />
