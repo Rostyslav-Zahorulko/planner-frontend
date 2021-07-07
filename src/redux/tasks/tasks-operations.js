@@ -22,20 +22,14 @@ const addTask =
     dispatch(addTaskRequest());
 
     try {
-      const {
-        data: {
-          project: { sprints },
-        },
-      } = await axios.post(`/projects/${projectId}/sprints/${sprintId}`, task);
+      const { data } = await axios.post(
+        `/projects/${projectId}/sprints/${sprintId}`,
+        task,
+      );
 
-      // console.dir(sprints);
+      console.dir(data.projects.sprints);
 
-      // Не працює, оскільки вибирає не поточний спринт, а останній в масиві
-      // const lastSprint = sprints[sprints.length - 1];
-
-      // console.dir(lastSprint.tasks);
-
-      // dispatch(addTaskSuccess(currentSprint.tasks));
+      // dispatch(addTaskSuccess());
     } catch ({ message }) {
       dispatch(addTaskError(message));
     }

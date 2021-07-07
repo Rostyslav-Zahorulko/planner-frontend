@@ -88,8 +88,11 @@ const SprintsPage = () => {
       </SidebarForReuse>
 
       <div className={styles.sprints}>
+        
         <ProjectName title={title} description={description} />
-        <ChangeTitleInput />
+           {/* ДОПИЛИТЬ ИЗМЕНЕНИЕ ТАЙТЛА */}
+        {/* <ChangeTitleInput /> */}
+
         <div className={styles.addSprintButton}>
           <AddButton onOpen={toggleCreateSprintModal} />
           <p className={styles.createSprint}>Create a sprint</p>
