@@ -1,4 +1,6 @@
 import axios from 'axios';
+import { toast } from 'react-toastify';
+
 import { projectsActions } from '../projects';
 
 const {
@@ -84,6 +86,7 @@ const getProjectInfo = id => async dispatch => {
     dispatch(getProjectInfoSuccess(data.project));
   } catch ({ response }) {
     dispatch(getProjectInfoError(response.data.message));
+    toast.error(response.data.message);
   }
 };
 
@@ -93,13 +96,15 @@ const addUser =
     dispatch(addUserInProjectRequest());
 
     try {
-      const { data } = axios.post(`/projects/${projectId}`, user);
+      const { data } = await axios.post(`/projects/${projectId}`, user);
 
-      // console.log(data);
+      console.log(data);
 
-      // dispatch(addUserInProjectSuccess(data.user));
-    } catch ({ message }) {
-      dispatch(addUserInProjectError(message));
+      // dispatch(addUserInProjectSuccess());
+    } catch ({ response }) {
+      console.log(response.data.message);
+      // dispatch(addUserInProjectError(response.data.message));
+      toast.error(response.data.message);
     }
   };
 
