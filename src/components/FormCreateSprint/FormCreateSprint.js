@@ -13,6 +13,8 @@ const { addSprint } = sprintsOperations;
 const FormCreateSprint = ({ onClose, projectId }) => {
   const [title, setTitle] = useState('');
   const [duration, setDuration] = useState('');
+  const [prevDaysChoosingDisabled, setPrevDaysChoosingDisabled] =
+    useState(false);
 
   const dispatch = useDispatch();
 
@@ -31,6 +33,10 @@ const FormCreateSprint = ({ onClose, projectId }) => {
     }
   }, []);
 
+  const handleCheckboxChange = useCallback(({ target: { checked } }) => {
+    setPrevDaysChoosingDisabled(checked);
+  }, []);
+
   const handleFormSubmit = useCallback(
     event => {
       event.preventDefault();
@@ -39,15 +45,11 @@ const FormCreateSprint = ({ onClose, projectId }) => {
         '.react-datepicker__input-container > input',
       );
 
-      // console.log(input.value);
-
       const sprint = {
         title,
         startDate: input.value,
         duration,
       };
-
-      // console.log(sprint);
 
       dispatch(addSprint({ projectId, sprint }));
 
@@ -57,6 +59,8 @@ const FormCreateSprint = ({ onClose, projectId }) => {
     },
     [title, duration, projectId, onClose, dispatch],
   );
+
+  const sprintStartMinDate = prevDaysChoosingDisabled ? new Date() : null;
 
   return (
     <form autoComplete="off" onSubmit={handleFormSubmit}>
@@ -73,22 +77,21 @@ const FormCreateSprint = ({ onClose, projectId }) => {
         <span className={styles.headline}>The name of the sprint</span>
       </label>
 
-      <div className={styles.inner_radio}>
-        <label className={styles.label_radio}>
-          <input
-            className={styles.input_radio}
-            type="radio"
-            // checked="prev-date"
-            // value="prev-date"
-            // readOnly
-          />
-          <span className={styles.headline_radio}>Previous days</span>
-        </label>
-      </div>
-      <div className={styles.inner}>
+      <label className={styles.label_checkbox}>
+        <input
+          className={styles.input_checkbox}
+          type="checkbox"
+          checked={prevDaysChoosingDisabled}
+          onChange={handleCheckboxChange}
+        />
+        Disable / enable past days choosing
+      </label>
+
+      <div className={styles.wrapper}>
         <div className={styles.label_picker}>
-          <Calendar />
+          <Calendar sprintStartMinDate={sprintStartMinDate} />
         </div>
+
         <label className={styles.label}>
           <input
             className={styles.input}
@@ -104,6 +107,7 @@ const FormCreateSprint = ({ onClose, projectId }) => {
           <span className={styles.headline}>Duration</span>
         </label>
       </div>
+
       <FormButtons onClose={onClose} />
     </form>
   );

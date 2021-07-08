@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
-const Calendar = () => {
+
+const Calendar = ({ sprintStartMinDate }) => {
   const [startDate, setStartDate] = useState(new Date());
 
   return (
@@ -9,11 +10,11 @@ const Calendar = () => {
       dateFormat="yyyy-MM-dd"
       selected={startDate}
       onChange={date => setStartDate(date)}
-      startDate={startDate}
       shouldCloseOnSelect={true}
-      className=""
-      placeholderText=" Start Date "
+      minDate={sprintStartMinDate}
+      placeholderText="Sprint start date"
     />
   );
 };
+
 export default Calendar;
