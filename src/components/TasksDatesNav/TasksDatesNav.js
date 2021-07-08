@@ -12,23 +12,14 @@ import { ReactComponent as RightIcon } from '../../images/arrow-right.svg';
 // redux
 import { currentSprintOperations } from '../../redux/current-sprint';
 import { currentSprintSelectors } from '../../redux/current-sprint';
-const {
-  getCurrentSprintDisplayedDate,
-  getCurrentSprintDuration,
-  getCurrentSprintStartDate,
-} = currentSprintSelectors;
+const { getCurrentSprintDisplayedDate, getCurrentSprintDuration } =
+  currentSprintSelectors;
 const { setNextDate, setPreviousDate } = currentSprintOperations;
 
-export default function TasksDatesNav() {
+export default function TasksDatesNav({ sprintDates }) {
   const dispatch = useDispatch();
   const displayedDate = useSelector(getCurrentSprintDisplayedDate);
-  const startDate = useSelector(getCurrentSprintStartDate);
   const duration = useSelector(getCurrentSprintDuration);
-  const array = new Array(duration).fill('');
-  const sprintDates = array.map((item, ind) => {
-    const date = dayjs(startDate).add(ind, 'day').format('DD.MM.YYYY');
-    return date;
-  });
   const displayedDay =
     sprintDates.findIndex(date => date === displayedDate) + 1;
 
