@@ -7,7 +7,8 @@ import styles from './SidebarForReuse.module.css';
 import { currentSprintSelectors } from '../../redux/current-sprint';
 
 const SidebarForReuse = ({ children, text, onOpen, onClick }) => {
-  const sprintTitle = useSelector(currentSprintSelectors.getCurrentSprintTitle);
+  const { getCurrentSprintTitle } = currentSprintSelectors;
+  const sprintTitle = useSelector(getCurrentSprintTitle);
 
   return (
     <div className={styles.sidebar}>
@@ -23,4 +24,5 @@ const SidebarForReuse = ({ children, text, onOpen, onClick }) => {
     </div>
   );
 };
+
 export default SidebarForReuse;
