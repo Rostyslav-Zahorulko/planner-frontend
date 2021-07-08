@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
 import Chart from './Chart';
 
@@ -88,7 +88,29 @@ const ChartService = () => {
 
   const [chartData, setChartData] = useState({});
 
-  const handleGetData = () => {
+  // const handleGetData = () => {
+  //   setChartData({
+  //     labels: sprintDates, // days
+  //     datasets: [
+  //       {
+  //         label: 'Remaining planned working ours',
+  //         data: plannedHoursLeftPerDay, //remainingHours
+  //         backgroundColor: ['rgb(247, 0, 0)'],
+  //         borderColor: ['rgb(247, 0, 0)'],
+  //         borderWidth: 3,
+  //       },
+  //       {
+  //         label: 'Actual working hours',
+  //         data: factHoursLeftByPerDay,
+  //         backgroundColor: ['rgb(33, 17, 255)'], //plannedHours
+  //         borderColor: ['rgb(33, 17, 255)'],
+  //         borderWidth: 3,
+  //       },
+  //     ],
+  //   });
+  // };
+
+  const handleGetData = useCallback(() => {
     setChartData({
       labels: sprintDates, // days
       datasets: [
@@ -108,11 +130,11 @@ const ChartService = () => {
         },
       ],
     });
-  };
+  }, [sprintDates, plannedHoursLeftPerDay, factHoursLeftByPerDay]);
 
   useEffect(() => {
     handleGetData();
-  }, []);
+  }, [handleGetData]);
 
   return (
     <>

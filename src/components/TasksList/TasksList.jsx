@@ -1,6 +1,6 @@
 import st from './TasksList.module.css';
-import TaskItem from '../TaskItem/TaskItem';
-import TaskItemCard from '../TaskItemCard/TaskItemCard';
+import TaskItem from '../TaskItem';
+import TaskItemCard from '../TaskItemCard';
 import Media from 'react-media';
 
 const TasksList = ({ visibleTasks, projectId, sprintId }) => {

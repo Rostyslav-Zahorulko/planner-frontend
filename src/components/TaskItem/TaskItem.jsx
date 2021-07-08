@@ -2,7 +2,7 @@ import st from './TaskItem.module.css';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 // Redux
 import { tasksOperations, tasksSelectors } from '../../redux/tasks';
@@ -82,8 +82,7 @@ export default function TaskItem({ projectId, sprintId, taskId }) {
   }, [displayedDate, taskId, tasks]);
 
   return (
-    <li className={st.listItem}>
-      <ToastContainer autoClose={5000} hideProgressBar />
+    <li className={st.listItem}>     
       <ul className={st.listItem_tasks}>
         <li className={st.title}>{title}</li>
         <li className={st.planHours}>{plannedHours}</li>

@@ -1,6 +1,4 @@
-// import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import * as dayjs from 'dayjs';
 
 // Styles
 import s from './TasksDatesNav.module.css';

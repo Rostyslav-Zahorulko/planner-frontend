@@ -18,7 +18,7 @@ const ChartModal = ({ onClose, children }) => {
     return () => {
       window.removeEventListener('keydown', handleEscape);
     };
-  }, []);
+  }, [onClose]);
 
   const handleBackdropClick = e => {
     if (e.currentTarget === e.target) {

@@ -2,11 +2,10 @@ import st from './TaskItemCard.module.css';
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 
-import { toast, ToastContainer } from 'react-toastify';
+import { toast } from 'react-toastify';
 
 import { tasksOperations, tasksSelectors } from '../../redux/tasks/';
 import {
-  currentSprintOperations,
   currentSprintSelectors,
 } from '../../redux/current-sprint';
 
