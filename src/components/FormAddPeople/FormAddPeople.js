@@ -10,7 +10,7 @@ import { projectsOperations } from '../../redux/projects';
 
 const { addUser } = projectsOperations;
 
-const FormAddPeople = ({ projectId, onClose, users }) => {
+const FormAddPeople = ({ projectId, users, onClose }) => {
   const [email, setEmail] = useState('');
 
   const dispatch = useDispatch();
@@ -50,11 +50,6 @@ const FormAddPeople = ({ projectId, onClose, users }) => {
       </label>
       <p className={styles.text}>Added users:</p>
       <EmailPeopleList users={users} />
-      {/* {users.length > 0 ? (
-        <EmailPeopleList users={users} />
-      ) : (
-        <div>You have no users yet</div>
-      )} */}
       <FormButtons onClose={onClose} />
     </form>
   );

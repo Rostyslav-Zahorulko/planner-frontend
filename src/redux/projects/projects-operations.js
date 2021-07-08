@@ -88,20 +88,19 @@ const editProjectTitle = (id, title) => async dispatch => {
   try {
     const { data } = await axios.patch(`/projects/${id}`, update);
     // console.log(data);
-    
-    dispatch(editProjectTitleSuccess(data.project.title));
- 
-    } catch (e) {
-      if (e.response) {
-        dispatch(editProjectTitleError(e.response.data.message));
-        toast.error(e.response.data.message);
-        return;
-      }
 
-      dispatch(editProjectTitleError(e.message));
-      toast.error(e.message);
+    dispatch(editProjectTitleSuccess(data.project.title));
+  } catch (e) {
+    if (e.response) {
+      dispatch(editProjectTitleError(e.response.data.message));
+      toast.error(e.response.data.message);
+      return;
     }
-  };
+
+    dispatch(editProjectTitleError(e.message));
+    toast.error(e.message);
+  }
+};
 
 const addUser =
   ({ projectId, user }) =>
@@ -109,11 +108,9 @@ const addUser =
     dispatch(addUserInProjectRequest());
 
     try {
-      const { data } = await axios.post(`/projects/${projectId}`, user); 
+      const { data } = await axios.post(`/projects/${projectId}`, user);
 
-      console.log(data);
-
-      // dispatch(addUserInProjectSuccess());
+      dispatch(addUserInProjectSuccess(data.data));
     } catch (e) {
       if (e.response) {
         dispatch(addUserInProjectError(e.response.data.message));

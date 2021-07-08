@@ -66,12 +66,12 @@ const SprintsPage = () => {
     setAddPeopleModalIsShown(prevValue => !prevValue);
   }, []);
 
-  // Show sprints btn for sidebar
+  /*Show sprints btn for sidebar*/
   const handleGoBack = () => {
     history.push(location?.state?.from?.location ?? '/projects');
   };
 
-  // Change project title
+  /*Change project title*/
   const handleProjectTitleChange = newTitle => {
     if (title !== newTitle && newTitle !== '') {
       dispatch(editProjectTitle(projectId, newTitle));
