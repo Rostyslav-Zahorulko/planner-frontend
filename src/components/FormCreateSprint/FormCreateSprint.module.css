@@ -37,6 +37,8 @@
   line-height: 17px;
 }
 .inner_radio {
+   width: 34px;
+  height: 34px;
   width: 176px;
   height: 34px;
   margin-bottom: 40px;
@@ -45,20 +47,61 @@
   display: flex;
   align-items: center;
 }
-.input_radio {
-  width: 34px;
-  height: 34px;
-}
+
 .headline_radio {
   font-style: normal;
   font-weight: normal;
   font-size: 16px;
   line-height: 20px;
   letter-spacing: 0.04em;
-  margin-left: 10px;
+  
   color: rgba(24, 28, 39, 0.6);
 }
+/*//////////Стилизация радиокнопки /////////////*/
+.input_radio {
+	position: absolute;
+	z-index: -1;
+	opacity: 0;
 
+}
+.headline_radio {
+	position: relative;
+	padding: 0 0 0 45px;
+	cursor: pointer;
+}
+.headline_radio:before {
+	content: '';
+	position: absolute;
+  top: -6px;
+  left: 0;
+	width: 34px;
+	height:34px;
+	border: 1px solid #CDD1DA;
+	border-radius: 50%;
+	background: #FFF;
+  margin-right: 10px;
+}
+.headline_radio:after {
+	content: '';
+	position: absolute;
+  top: 3px;
+  left: 9px;
+	width: 16px;
+	height: 16px;
+	border-radius: 50%;
+	background: #ff6b08;
+	box-shadow: inset 0 1px 1px rgba(0,0,0,.5);
+	opacity: 0;
+	transition: .2s;
+}
+.input_radio:checked + .headline_radio:after {
+	opacity: 1;
+}
+.input_radio:focus + .headline_radio:before {
+	box-shadow: 0 0 0 3px rgba(247, 152, 75, 0.966);
+}
+
+/*//////////////////////////*/
 .input {
   padding: 10px;
   width: 100%;
@@ -83,20 +126,20 @@
   transform: translateY(-8px);
   font-size: 12px;
 }
-.input_radio {
+/*.input_radio {
   color: coral;
   border: 4px solid #ffffff;
-}
+}*/
 
 @media screen and (min-width: 320px) {
-  .radio {
+ /* .radio {
     position: absolute;
     left: 20px;
     top: 254px;
     background: #ff6b08;
     border: 1px solid #d1d2d4;
     box-sizing: border-box;
-  }
+  }*/
 }
 @media screen and (min-width: 768px) {
   .inner {
