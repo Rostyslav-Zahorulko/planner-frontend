@@ -7,6 +7,7 @@ import Container from './components/Container';
 import AppBar from './components/AppBar';
 import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
+import Spinner from './components/Spinner';
 
 import { authOperations } from './redux/auth';
 
@@ -50,7 +51,7 @@ function App(props) {
       <ToastContainer autoClose={5000} hideProgressBar />
       <AppBar />
 
-      <Suspense fallback={<div>Loading...</div>}>
+      <Suspense fallback={<Spinner />}>
         <Switch>
           <PublicRoute exact path={register} restricted redirectTo={projects}>
             <RegisterPage />

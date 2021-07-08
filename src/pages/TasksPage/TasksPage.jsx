@@ -112,7 +112,6 @@ export default function TasksPage() {
                 title={sprintTitle}
                 onChangeTitle={newTitle => handleSprintTitleChange(newTitle)}
               />
-              {/* <ChangeTitleInput /> */}
             </div>
             <div className={st.button_wrapper}>
               <AddButton onOpen={toggleCreateTaskModal} />
@@ -128,7 +127,6 @@ export default function TasksPage() {
             </div>
           </div>
           <SprintHeader />
-
           {visibleTasks.length > 0 ? (
             <TasksList
               visibleTasks={visibleTasks}
