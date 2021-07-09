@@ -10,7 +10,7 @@ const {
 
 const titleReducer = createReducer('', {
   [getProjectInfoSuccess]: (_, { payload }) => payload.title,
-  [editProjectTitleSuccess]: (_, { payload }) => payload,
+  [editProjectTitleSuccess]: (_, { payload }) => payload.title,
 });
 
 const descriptionReducer = createReducer('', {

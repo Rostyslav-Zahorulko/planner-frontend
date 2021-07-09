@@ -17,7 +17,7 @@ const itemsReducer = createReducer([], {
   [deleteSprintSuccess]: (state, { payload }) =>
     state.filter(({ id }) => id !== payload),
   [editSprintTitleSuccess]: (state, { payload }) =>
-    state.map(sprint => (sprint.id !== payload.id ? sprint : payload)),
+    state.map(sprint => (sprint.id === payload.id ? payload : sprint)),
   [getAllSprintsSuccess]: (_, { payload }) => payload,
 });
 

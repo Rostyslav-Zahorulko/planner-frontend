@@ -22,7 +22,7 @@ export default function TaskItem({ projectId, sprintId, taskId }) {
   const task = tasks.find(task => task.id === taskId);
   const { title, plannedHours, totalHours } = task;
 
-  const [currentDay, setCurrentDay] = useState({ date: '', hoursSpent: 0 });
+  const [currentDay, setCurrentDay] = useState({ date: '', hoursSpent: "0" });
 
   const handleHoursPerDayChange = e => {
     e.preventDefault();
@@ -82,7 +82,7 @@ export default function TaskItem({ projectId, sprintId, taskId }) {
   }, [displayedDate, taskId, tasks]);
 
   return (
-    <li className={st.listItem}>     
+    <li className={st.listItem}>
       <ul className={st.listItem_tasks}>
         <li className={st.title}>{title}</li>
         <li className={st.planHours}>{plannedHours}</li>

@@ -9,7 +9,7 @@ const { getSprintDisplayedDateSuccess, setNewDisplayedDateSuccess } =
 
 const titleReducer = createReducer('', {
   [getSprintInfoSuccess]: (_, { payload }) => payload.sprint.title,
-  [editSprintTitleSuccess]: (_, { payload }) => payload,
+  [editSprintTitleSuccess]: (_, { payload }) => payload.title,
 });
 
 const durationReducer = createReducer(0, {
