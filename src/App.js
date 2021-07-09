@@ -1,6 +1,6 @@
 import { Suspense, lazy, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Switch } from 'react-router-dom';
+import { Switch, Redirect } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
 import Container from './components/Container';
@@ -79,6 +79,8 @@ function App() {
           <PrivateRoute path={tasks} redirectTo={login}>
             <TasksPage />
           </PrivateRoute>
+
+          <Redirect to={login} />
         </Switch>
       </Suspense>
     </Container>
