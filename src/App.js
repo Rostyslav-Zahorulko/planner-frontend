@@ -1,5 +1,5 @@
 import { Suspense, lazy, useEffect } from 'react';
-import { connect } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Switch } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
 
@@ -10,10 +10,9 @@ import PublicRoute from './components/PublicRoute';
 import Spinner from './components/Spinner';
 
 import { authOperations } from './redux/auth';
+import { isLoadingSelectors } from './redux/is-loading';
 
 import routes from './routes';
-
-const { register, login, projects, sprints, tasks } = routes;
 
 const RegisterPage = lazy(() =>
   import(
@@ -41,17 +40,25 @@ const TasksPage = lazy(() =>
   import('./pages/TasksPage/TasksPage' /* webpackChunkName: "tasks-page" */),
 );
 
-function App(props) {
+function App() {
+  const { register, login, projects, sprints, tasks } = routes;
+  const { getCurrentUser } = authOperations;
+  const { getIsLoading } = isLoadingSelectors;
+
+  const isLoading = useSelector(getIsLoading);
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    props.onGetCurrentUser();
-  });
+    dispatch(getCurrentUser());
+  }, [dispatch, getCurrentUser]);
 
   return (
     <Container>
       <ToastContainer autoClose={5000} hideProgressBar />
       <AppBar />
+      {isLoading && <Spinner />}
 
-      <Suspense fallback={<Spinner />}>
+      <Suspense fallback={<div>Loading...</div>}>
         <Switch>
           <PublicRoute exact path={register} restricted redirectTo={projects}>
             <RegisterPage />
@@ -78,8 +85,4 @@ function App(props) {
   );
 }
 
-const mapDispatchToProps = {
-  onGetCurrentUser: authOperations.getCurrentUser,
-};
-
-export default connect(null, mapDispatchToProps)(App);
+export default App;
