@@ -72,8 +72,6 @@ const editSprintTitle = (projectId, sprintId, title) => async dispatch => {
       update,
     );
 
-    // console.dir(data.sprint);
-
     dispatch(editSprintTitleSuccess(data.sprint));
   } catch (e) {
     if (e.response) {

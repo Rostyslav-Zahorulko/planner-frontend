@@ -1,12 +1,13 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import Chart from './Chart';
+import * as dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+
+import Chart from '../Chart';
 
 import { currentSprintSelectors } from '../../redux/current-sprint';
 import { tasksSelectors } from '../../redux/tasks';
 
-import * as dayjs from 'dayjs';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
 dayjs.extend(customParseFormat);
 
 const { getCurrentSprintStartDate, getCurrentSprintDuration } =
@@ -88,34 +89,12 @@ const ChartService = () => {
 
   const [chartData, setChartData] = useState({});
 
-  // const handleGetData = () => {
-  //   setChartData({
-  //     labels: sprintDates, // days
-  //     datasets: [
-  //       {
-  //         label: 'Remaining planned working ours',
-  //         data: plannedHoursLeftPerDay, //remainingHours
-  //         backgroundColor: ['rgb(247, 0, 0)'],
-  //         borderColor: ['rgb(247, 0, 0)'],
-  //         borderWidth: 3,
-  //       },
-  //       {
-  //         label: 'Actual working hours',
-  //         data: factHoursLeftByPerDay,
-  //         backgroundColor: ['rgb(33, 17, 255)'], //plannedHours
-  //         borderColor: ['rgb(33, 17, 255)'],
-  //         borderWidth: 3,
-  //       },
-  //     ],
-  //   });
-  // };
-
-  const handleGetData = useCallback(() => {
+  const handleGetData = () => {
     setChartData({
       labels: sprintDates, // days
       datasets: [
         {
-          label: 'Remaining planned working ours',
+          label: 'Remaining planned working hours',
           data: plannedHoursLeftPerDay, //remainingHours
           backgroundColor: ['rgb(247, 0, 0)'],
           borderColor: ['rgb(247, 0, 0)'],
@@ -130,11 +109,33 @@ const ChartService = () => {
         },
       ],
     });
-  }, [sprintDates, plannedHoursLeftPerDay, factHoursLeftByPerDay]);
+  };
+
+  // const handleGetData = useCallback(() => {
+  //   setChartData({
+  //     labels: sprintDates, // days
+  //     datasets: [
+  //       {
+  //         label: 'Remaining planned working hours',
+  //         data: plannedHoursLeftPerDay, //remainingHours
+  //         backgroundColor: ['rgb(247, 0, 0)'],
+  //         borderColor: ['rgb(247, 0, 0)'],
+  //         borderWidth: 3,
+  //       },
+  //       {
+  //         label: 'Actual working hours',
+  //         data: factHoursLeftByPerDay,
+  //         backgroundColor: ['rgb(33, 17, 255)'], //plannedHours
+  //         borderColor: ['rgb(33, 17, 255)'],
+  //         borderWidth: 3,
+  //       },
+  //     ],
+  //   });
+  // }, [sprintDates, plannedHoursLeftPerDay, factHoursLeftByPerDay]);
 
   useEffect(() => {
     handleGetData();
-  }, [handleGetData]);
+  }, []);
 
   return (
     <>
@@ -142,4 +143,5 @@ const ChartService = () => {
     </>
   );
 };
+
 export default ChartService;

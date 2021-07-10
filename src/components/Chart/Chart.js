@@ -7,4 +7,5 @@ const Chart = ({ onChartData }) => {
     </div>
   );
 };
+
 export default Chart;
