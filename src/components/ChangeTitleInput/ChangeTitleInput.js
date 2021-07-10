@@ -1,6 +1,6 @@
 import styles from './ChangeTitleInput.module.css';
 
-const ChangeTitleInput = ({ value, onChange, onBlur }) => (
+const ChangeTitleInput = ({ value, onChange, onBlur, onKeyPress }) => (
   <label className={styles.label}>
     <input
       className={styles.input}
@@ -10,6 +10,7 @@ const ChangeTitleInput = ({ value, onChange, onBlur }) => (
       value={value}
       onChange={onChange}
       onBlur={onBlur}
+      onKeyPress={onKeyPress}
       autoFocus
     />
     <span className={styles.headline}>New title</span>
