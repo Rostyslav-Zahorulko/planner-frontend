@@ -6,18 +6,23 @@ import СhangeTitleInput from '../ChangeTitleInput';
 import styles from './PageTitle.module.css';
 
 export default function PageTitle({ title, onChangeTitle }) {
-  const [newTitle, setNewTitle] = useState(title);
+  const [newTitle, setNewTitle] = useState('');
   const [isInputShown, setIsInputShown] = useState(false);
 
   const handleChangeBtnClick = () => {
     setIsInputShown(!isInputShown);
-    onChangeTitle(newTitle);
-    setNewTitle(title);
   };
 
   const handleInputChange = e => {
     e.preventDefault();
+
     setNewTitle(e.target.value);
+  };
+
+  const handleTitleChange = () => {
+    onChangeTitle(newTitle);
+    setNewTitle('');
+    setIsInputShown(!isInputShown);
   };
 
   return (
@@ -26,7 +31,12 @@ export default function PageTitle({ title, onChangeTitle }) {
         <СhangeTitleInput
           value={newTitle}
           onChange={e => handleInputChange(e)}
-          onBlur={e => handleChangeBtnClick(e)}
+          onBlur={handleTitleChange}
+          onKeyPress={event => {
+            if (event.key === 'Enter') {
+              handleTitleChange();
+            }
+          }}
         />
       ) : (
         <h1 className={styles.project_title}>{title}</h1>
