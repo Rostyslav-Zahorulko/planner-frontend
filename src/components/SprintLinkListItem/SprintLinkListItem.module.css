@@ -18,7 +18,7 @@
     font-weight: bold;
   }
 
-  .list_item:nth-child(3n + 1)::before {
+  /*.list_item:nth-child(3n + 1)::before {
     background: #8c72df;
   }
 
@@ -28,7 +28,7 @@
 
   .list_item:nth-child(3n + 3)::before {
     background: #71df87;
-  }
+  }*/
 
   .list_item::before {
     content: '';

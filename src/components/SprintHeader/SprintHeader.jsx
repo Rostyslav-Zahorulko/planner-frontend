@@ -3,49 +3,24 @@ import { useState } from 'react';
 
 import SearchButton from '../SearchButton';
 import TasksSearchInput from '../TasksSearchInput';
-import Media from 'react-media';
 
 const SprintHeader = () => {
   const [searchActive, setSearchActive] = useState(false);
 
   return (
-    <div className={st.title_sprint}>
-      <Media queries={{ small: { minWidth: 768 } }}>
-        {matches =>
-          matches.small ? (
-            <ul className={st.list_sprint}>
-              <Media queries={{ big: { maxWidth: 1280 } }}>
-                {matches =>
-                  matches.big ? (
-                    <>
-                      <li className={st.list_sprint_item}>Scheduled hours</li>
-                      <li className={st.list_sprint_item}>Spent hour / day</li>
-                      <li className={st.list_sprint_item}>Hours spent</li>
-                    </>
-                  ) : (
-                    <>
-                      <li className={st.list_sprint_item}>Task</li>
-                      <li className={st.list_sprint_item}>Scheduled hours</li>
-                      <li className={st.list_sprint_item}>Spent hour / day</li>
-                      <li className={st.list_sprint_item}>Hours spent</li>
-                      <li className={st.list_sprint_item}>
-                        {searchActive && (
-                          <TasksSearchInput
-                            onBlur={() => setSearchActive(false)}
-                          />
-                        )}
-                        <SearchButton onClick={() => setSearchActive(true)} />
-                      </li>
-                    </>
-                  )
-                }
-              </Media>
-            </ul>
-          ) : (
-            ''
-          )
-        }
-      </Media>
+    <div className={st.sprint_header}>
+      <div className={st.title_sprint}>
+        <p className={st.list_sprint_item}>Task</p>
+        <p className={st.list_sprint_item}>Scheduled hours</p>
+        <p className={st.list_sprint_item}>Spent hour / day</p>
+        <p className={st.list_sprint_item}>Hours spent</p>
+      </div>
+      <div className={st.search_input}>
+        {searchActive && (
+          <TasksSearchInput onBlur={() => setSearchActive(false)} />
+        )}
+        <SearchButton onClick={() => setSearchActive(true)} />
+      </div>
     </div>
   );
 };

@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory, useLocation } from 'react-router';
-import Media from 'react-media';
+//import Media from 'react-media';
 import * as dayjs from 'dayjs';
 
 // STYLES
@@ -107,26 +107,17 @@ export default function TasksPage() {
           </div>
 
           <div className={st.header}>
-            <div className={st.title_wrapper}>
-              <PageTitle
-                title={sprintTitle}
-                onChangeTitle={newTitle => handleSprintTitleChange(newTitle)}
-              />
-            </div>
-            <div className={st.button_wrapper}>
+            <PageTitle
+              title={sprintTitle}
+              onChangeTitle={newTitle => handleSprintTitleChange(newTitle)}
+            />
+            <div className={st.addTasksButton}>
               <AddButton onOpen={toggleCreateTaskModal} />
-              <Media queries={{ big: { minWidth: 1280 } }}>
-                {matches =>
-                  matches.big ? (
-                    <p className={st.name_button}>Create a task</p>
-                  ) : (
-                    ' '
-                  )
-                }
-              </Media>
+              <p className={st.name_button}>Create a task</p>
             </div>
           </div>
-          <SprintHeader />
+          {window.matchMedia('(max-width: 1280px)') && <SprintHeader />}
+
           {visibleTasks.length > 0 ? (
             <TasksList
               visibleTasks={visibleTasks}
@@ -134,7 +125,7 @@ export default function TasksPage() {
               sprintId={sprintId}
             />
           ) : (
-            <div>You have no tasks yet</div>
+            <p>You have no tasks yet</p>
           )}
 
           {isCreateSprintModalShown && (
@@ -148,7 +139,6 @@ export default function TasksPage() {
               />
             </Modal>
           )}
-
           {isCreateTaskModalShown && (
             <Modal title={'Creating a task'} onClose={toggleCreateTaskModal}>
               <FormCreateTask
@@ -160,6 +150,7 @@ export default function TasksPage() {
           )}
         </div>
       </div>
+
       <div className={st.chart_wrapper}>
         {visibleTasks.length >= 3 ? <ChartModalContainer /> : ''}
         {/* <ChartModalContainer /> */}

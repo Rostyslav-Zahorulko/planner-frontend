@@ -18,6 +18,14 @@
     font-weight: bold;
   }
 
+  .list_item::before {
+    content: '';
+    width: 36px;
+    height: 36px;
+    background: white;
+    box-shadow: 2px 2px 4px rgb(0 5 97 / 20%);
+    border-radius: 5px;
+  }
   .list_item:nth-child(3n + 1)::before {
     background: #8c72df;
   }
@@ -28,15 +36,6 @@
 
   .list_item:nth-child(3n + 3)::before {
     background: #71df87;
-  }
-
-  .list_item::before {
-    content: '';
-    width: 36px;
-    height: 36px;
-    background: white;
-    box-shadow: 2px 2px 4px rgb(0 5 97 / 20%);
-    border-radius: 5px;
   }
 
   .link_list_item_sp {
