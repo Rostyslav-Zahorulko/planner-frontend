@@ -80,43 +80,37 @@ export default function TaskItemCard({ projectId, sprintId, taskId }) {
     );
     setCurrentDay(day);
   }, [displayedDate, taskId, tasks]);
-
+  /*<div className={st.list_sprint}>
+      <ul>*/
   return (
-    <div className={st.list_sprint}>
-      <ul>
-        <li className={st.list_sprint_item}>
-          <h3 className={st.title}>{title}</h3>
-          <p className={st.list_sprint_item_title}>
-            ScheduledHours
-            <span>{plannedHours}</span>
-          </p>
-
-          <p className={st.list_sprint_item_title}>
-            Spent hour / day
-            <input
-              type="text"
-              value={currentDay.hoursSpent}
-              onChange={e => handleHoursPerDayChange(e)}
-              onBlur={e => handleHoursPerDayBlur(e)}
-              className={st.hoursPerDay_input}
-            ></input>
-          </p>
-          <p className={st.list_sprint_item_title}>
-            Hours spent <span>{totalHours}</span>
-          </p>
-          <p className={st.list_sprint_item_title}>
-            <button
-              className={st.delete_btn}
-              type="button"
-              onClick={() =>
-                dispatch(
-                  tasksOperations.deleteTask(projectId, sprintId, taskId),
-                )
-              }
-            ></button>
-          </p>
-        </li>
-      </ul>
-    </div>
+    <li className={st.list_sprint_item}>
+      <h3 className={st.title}>{title}</h3>
+      <p className={st.list_sprint_item_title}>
+        ScheduledHours
+        <span>{plannedHours}</span>
+      </p>
+      <p className={st.list_sprint_item_title}>
+        Spent hour / day
+        <input
+          type="text"
+          value={currentDay.hoursSpent}
+          onChange={e => handleHoursPerDayChange(e)}
+          onBlur={e => handleHoursPerDayBlur(e)}
+          className={st.hoursPerDay_input}
+        ></input>
+      </p>
+      <p className={st.list_sprint_item_title}>
+        Hours spent <span>{totalHours}</span>
+      </p>
+      <p className={st.list_sprint_item_title}>
+        <button
+          className={st.delete_btn}
+          type="button"
+          onClick={() =>
+            dispatch(tasksOperations.deleteTask(projectId, sprintId, taskId))
+          }
+        ></button>
+      </p>
+    </li>
   );
 }

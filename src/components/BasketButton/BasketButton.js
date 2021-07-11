@@ -1,11 +1,11 @@
 import React from 'react';
 import styles from './BasketButton.module.css';
 
-const BasketButton = ({ children, onDeleteSprint, projectId, sprintId }) => (
+const BasketButton = ({ children, onDelete, projectId, sprintId, taskId }) => (
   <button
     type="button"
     className={styles.basket}
-    onClick={() => onDeleteSprint(projectId, sprintId)}
+    onClick={() => onDelete(projectId, sprintId, taskId)}
   >
     {children}
   </button>
