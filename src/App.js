@@ -9,7 +9,7 @@ import PrivateRoute from './components/PrivateRoute';
 import PublicRoute from './components/PublicRoute';
 import Spinner from './components/Spinner';
 
-import { authOperations } from './redux/auth';
+import { authOperations, authSelectors } from './redux/auth';
 import { isLoadingSelectors } from './redux/is-loading';
 
 import routes from './routes';
@@ -42,10 +42,14 @@ const TasksPage = lazy(() =>
 
 function App() {
   const { register, login, projects, sprints, tasks } = routes;
+
   const { getCurrentUser } = authOperations;
+  const { getIsRefreshing } = authSelectors;
   const { getIsLoading } = isLoadingSelectors;
 
   const isLoading = useSelector(getIsLoading);
+  const isRefreshing = useSelector(getIsRefreshing);
+
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -58,6 +62,7 @@ function App() {
       <AppBar />
       {isLoading && <Spinner />}
 
+      {/* {!isRefreshing && ( */}
       <Suspense fallback={<div>Loading...</div>}>
         <Switch>
           <PublicRoute exact path={register} restricted redirectTo={projects}>
@@ -83,6 +88,7 @@ function App() {
           <Redirect to={login} />
         </Switch>
       </Suspense>
+      {/* )} */}
     </Container>
   );
 }

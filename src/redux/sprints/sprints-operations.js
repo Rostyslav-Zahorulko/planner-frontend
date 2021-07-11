@@ -72,18 +72,18 @@ const editSprintTitle = (projectId, sprintId, title) => async dispatch => {
       update,
     );
 
-    dispatch(editSprintTitleSuccess(data.sprint.title));
-    } catch (e) {
-      if (e.response) {
-        dispatch(editSprintTitleError(e.response.data.message));
-        toast.error(e.response.data.message);
-        return;
-      }
-
-      dispatch(editSprintTitleError(e.message));
-      toast.error(e.message);
+    dispatch(editSprintTitleSuccess(data.sprint));
+  } catch (e) {
+    if (e.response) {
+      dispatch(editSprintTitleError(e.response.data.message));
+      toast.error(e.response.data.message);
+      return;
     }
-  };
+
+    dispatch(editSprintTitleError(e.message));
+    toast.error(e.message);
+  }
+};
 
 const getSprintInfo = (projectId, sprintId) => async dispatch => {
   dispatch(getSprintInfoRequest());

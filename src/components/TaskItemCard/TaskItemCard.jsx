@@ -4,6 +4,7 @@ import { useSelector, useDispatch } from 'react-redux';
 
 import { toast } from 'react-toastify';
 
+
 import { tasksOperations, tasksSelectors } from '../../redux/tasks/';
 import { currentSprintSelectors } from '../../redux/current-sprint';
 
@@ -21,7 +22,7 @@ export default function TaskItemCard({ projectId, sprintId, taskId }) {
   const task = tasks.find(task => task.id === taskId);
   const { title, plannedHours, totalHours } = task;
 
-  const [currentDay, setCurrentDay] = useState({ date: '', hoursSpent: '0' });
+  const [currentDay, setCurrentDay] = useState({ date: '', hoursSpent: "0" });
 
   const handleHoursPerDayChange = e => {
     e.preventDefault();

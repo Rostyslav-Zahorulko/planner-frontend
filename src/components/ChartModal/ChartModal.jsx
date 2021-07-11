@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { createPortal } from 'react-dom';
+
 import styles from './ChartModal.module.css';
 import styleButton from '../Modal/Modal.module.css';
 
@@ -31,11 +32,12 @@ const ChartModal = ({ onClose, children }) => {
       <div className={styles.modal}>
         <button className={styleButton.ModalCloseBtn} onClick={onClose}>
           +
-        </button>{' '}
+        </button>
         {children}
       </div>
     </div>,
     ChartModalRoot,
   );
 };
+
 export default ChartModal;

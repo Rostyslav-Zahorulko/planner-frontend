@@ -17,7 +17,7 @@ import SprintLinkList from '../../components/SprintLinkList';
 import Modal from '../../components/Modal';
 import FormCreateTask from '../../components/FormCreateTask';
 import FormCreateSprint from '../../components/FormCreateSprint';
-import ChartModalContainer from '../../components/ChartModal';
+import ChartModalContainer from '../../components/ChartModalContainer';
 import AddButton from '../../components/AddButton';
 import PageTitle from '../../components/PageTitle';
 
@@ -153,8 +153,7 @@ export default function TasksPage() {
 
       <div className={st.chart_wrapper}>
         {visibleTasks.length >= 3 ? <ChartModalContainer /> : ''}
-        {/* <ChartModalContainer /> */}
-      </div>
+      </div> 
     </>
   );
 }

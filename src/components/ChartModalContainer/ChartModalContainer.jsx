@@ -1,12 +1,19 @@
-import ChartModal from './ChartModal';
 import { useState } from 'react';
-import Chart from '../Chart';
+
+import ChartModal from '../ChartModal';
+import ChartService from '../ChartService';
+
 import styles from './ChartModalContainer.module.css';
+
 import { ReactComponent as AnalyticsIcon } from '../../images/analytics.svg';
+
+
+
 const ChartModalContainer = () => {
-  const [ShowModal, setShowModal] = useState(false);
+  const [isModalShown, setIsModalShown] = useState(false);
+
   const toggleModal = () => {
-    setShowModal(!ShowModal);
+    setIsModalShown(!isModalShown);
   };
 
   return (
@@ -14,14 +21,16 @@ const ChartModalContainer = () => {
       <button type="button" className={styles.btn} onClick={toggleModal}>
         <AnalyticsIcon />
       </button>
-      {ShowModal && (
-        <ChartModal onClose={toggleModal}>
-          <h2>Burndown Chart(Calendar Team)</h2>
 
-          <Chart />
+      {isModalShown && (
+        <ChartModal onClose={toggleModal}>
+          <h2>Burndown Chart (Calendar Team)</h2>
+
+          <ChartService/>
         </ChartModal>
       )}
     </div>
   );
 };
+
 export default ChartModalContainer;

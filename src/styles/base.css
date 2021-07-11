@@ -2,6 +2,7 @@ body {
   font-family: 'Montserrat', sans-serif;
   color: #181c27;
   background-color: #f1f2f7;
+  overflow: hidden;
 }
 
 img {

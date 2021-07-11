@@ -87,9 +87,10 @@ const editProjectTitle = (id, title) => async dispatch => {
   dispatch(editProjectTitleRequest());
   try {
     const { data } = await axios.patch(`/projects/${id}`, update);
-    // console.log(data);
 
-    dispatch(editProjectTitleSuccess(data.project.title));
+    // console.dir(data.project);
+
+    dispatch(editProjectTitleSuccess(data.project));
   } catch (e) {
     if (e.response) {
       dispatch(editProjectTitleError(e.response.data.message));

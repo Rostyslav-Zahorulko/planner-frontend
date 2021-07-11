@@ -1,1 +1,1 @@
-export { default } from './ChartModalContainer';
+export { default } from './ChartModal';
