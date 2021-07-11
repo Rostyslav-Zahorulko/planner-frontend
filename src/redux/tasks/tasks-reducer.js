@@ -4,11 +4,12 @@ import { sprintsActions } from '../sprints';
 import { tasksActions } from '../tasks';
 
 const { getSprintInfoSuccess } = sprintsActions;
+
 const {
   addTaskSuccess,
   deleteTaskSuccess,
-  changeFilter,
   updateHoursSpentOnTaskPerDaySuccess,
+  changeFilter,
 } = tasksActions;
 
 const itemsReducer = createReducer([], {
