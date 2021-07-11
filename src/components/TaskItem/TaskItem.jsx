@@ -24,7 +24,7 @@ export default function TaskItem({ projectId, sprintId, taskId }) {
   const task = tasks.find(task => task.id === taskId);
   const { id, title, plannedHours, totalHours } = task;
 
-  const [currentDay, setCurrentDay] = useState({ date: '', hoursSpent: "0" });
+  const [currentDay, setCurrentDay] = useState({ date: '', hoursSpent: '0' });
 
   const handleHoursPerDayChange = e => {
     e.preventDefault();
