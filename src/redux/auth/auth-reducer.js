@@ -39,10 +39,16 @@ const tokenReducer = createReducer(null, {
   [logoutSuccess]: () => null,
 });
 
+const isRefreshingReducer = createReducer(true, {
+  [getCurrentUserSuccess]: () => false,
+  [getCurrentUserError]: () => false,
+});
+
 const authReducer = combineReducers({
   user: userReducer,
   isLoggedIn: isLoggedInReducer,
   token: tokenReducer,
+  isRefreshing: isRefreshingReducer,
 });
 
 export default authReducer;
