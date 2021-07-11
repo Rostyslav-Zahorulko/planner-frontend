@@ -88,7 +88,6 @@ export default function TaskItem({ projectId, sprintId, taskId }) {
 
   return (
     <li className={st.listItem}>
-      {/*<ul className={st.listItem_tasks}>*/}
       <h3 className={st.title}>{title}</h3>
 
       <div className={st.sprint_desc}>
@@ -100,7 +99,8 @@ export default function TaskItem({ projectId, sprintId, taskId }) {
         <p className={st.list_sprint_item_title}>Spent hour / day</p>
         <label className={st.hoursPerDay_wrapper_input}>
           <input
-            type="text"
+            type="number"
+            max="24"
             value={currentDay.hoursSpent}
             onChange={e => handleHoursPerDayChange(e)}
             onBlur={e => handleHoursPerDayBlur(e)}
@@ -122,16 +122,6 @@ export default function TaskItem({ projectId, sprintId, taskId }) {
           aria-label="delete"
         ></BasketButton>
       </div>
-      {/*<li className={st.delete_item}>*/}
-      {/* <button
-        className={st.delete_btn}
-        type="button"
-        onClick={() =>
-          dispatch(tasksOperations.deleteTask(projectId, sprintId, taskId))
-        }
-      ></button>*/}
-      {/*</li>
-     </ul>*/}
     </li>
   );
 }

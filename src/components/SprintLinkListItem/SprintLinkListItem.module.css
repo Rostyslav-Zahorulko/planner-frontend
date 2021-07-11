@@ -46,4 +46,9 @@
     color: #181c27;
     overflow-wrap: break-word;
   }
+  .link_list_item_sp:hover {
+    text-shadow: 1px 1px 12px rgba(0, 0, 0, 0.53);
+    transition: all 0.25s linear;
+    transform: scale(1.03);
+  }
 }

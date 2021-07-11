@@ -10,8 +10,6 @@
   border-radius: 50%;
   border: none;
   cursor: pointer;
-
-  z-index: 1;
 }
 .basket:hover {
   transform: rotate(65deg);
