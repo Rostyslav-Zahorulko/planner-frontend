@@ -62,33 +62,33 @@ function App() {
       <AppBar />
       {isLoading && <Spinner />}
 
-      {!isRefreshing && (
-        <Suspense fallback={<div>Loading...</div>}>
-          <Switch>
-            <PublicRoute exact path={register} restricted redirectTo={projects}>
-              <RegisterPage />
-            </PublicRoute>
+      {/* {!isRefreshing && ( */}
+      <Suspense fallback={<div>Loading...</div>}>
+        <Switch>
+          <PublicRoute exact path={register} restricted redirectTo={projects}>
+            <RegisterPage />
+          </PublicRoute>
 
-            <PublicRoute path={login} restricted redirectTo={projects}>
-              <LoginPage />
-            </PublicRoute>
+          <PublicRoute path={login} restricted redirectTo={projects}>
+            <LoginPage />
+          </PublicRoute>
 
-            <PrivateRoute exact path={projects} redirectTo={login}>
-              <ProjectsPage />
-            </PrivateRoute>
+          <PrivateRoute exact path={projects} redirectTo={login}>
+            <ProjectsPage />
+          </PrivateRoute>
 
-            <PrivateRoute exact path={sprints} redirectTo={login}>
-              <SprintsPage />
-            </PrivateRoute>
+          <PrivateRoute exact path={sprints} redirectTo={login}>
+            <SprintsPage />
+          </PrivateRoute>
 
-            <PrivateRoute path={tasks} redirectTo={login}>
-              <TasksPage />
-            </PrivateRoute>
+          <PrivateRoute path={tasks} redirectTo={login}>
+            <TasksPage />
+          </PrivateRoute>
 
-            <Redirect to={login} />
-          </Switch>
-        </Suspense>
-      )}
+          <Redirect to={login} />
+        </Switch>
+      </Suspense>
+      {/* )} */}
     </Container>
   );
 }
