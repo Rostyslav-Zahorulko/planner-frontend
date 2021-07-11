@@ -44,11 +44,12 @@ function App() {
   const { register, login, projects, sprints, tasks } = routes;
 
   const { getCurrentUser } = authOperations;
-  const { getIsRefreshing } = authSelectors;
+  const { getIsRefreshed, getToken } = authSelectors;
   const { getIsLoading } = isLoadingSelectors;
 
   const isLoading = useSelector(getIsLoading);
-  const isRefreshing = useSelector(getIsRefreshing);
+  const isRefreshed = useSelector(getIsRefreshed);
+  const token = useSelector(getToken);
 
   const dispatch = useDispatch();
 
@@ -57,39 +58,39 @@ function App() {
   }, [dispatch, getCurrentUser]);
 
   return (
-    <Container>
-      <ToastContainer autoClose={5000} hideProgressBar />
-      <AppBar />
-      {isLoading && <Spinner />}
+    (!token || isRefreshed) && (
+      <Container>
+        <ToastContainer autoClose={5000} hideProgressBar />
+        <AppBar />
+        {isLoading && <Spinner />}
 
-      {/* {!isRefreshing && ( */}
-      <Suspense fallback={<div>Loading...</div>}>
-        <Switch>
-          <PublicRoute exact path={register} restricted redirectTo={projects}>
-            <RegisterPage />
-          </PublicRoute>
+        <Suspense fallback={<div>Loading...</div>}>
+          <Switch>
+            <PublicRoute exact path={register} restricted redirectTo={projects}>
+              <RegisterPage />
+            </PublicRoute>
 
-          <PublicRoute path={login} restricted redirectTo={projects}>
-            <LoginPage />
-          </PublicRoute>
+            <PublicRoute path={login} restricted redirectTo={projects}>
+              <LoginPage />
+            </PublicRoute>
 
-          <PrivateRoute exact path={projects} redirectTo={login}>
-            <ProjectsPage />
-          </PrivateRoute>
+            <PrivateRoute exact path={projects} redirectTo={login}>
+              <ProjectsPage />
+            </PrivateRoute>
 
-          <PrivateRoute exact path={sprints} redirectTo={login}>
-            <SprintsPage />
-          </PrivateRoute>
+            <PrivateRoute exact path={sprints} redirectTo={login}>
+              <SprintsPage />
+            </PrivateRoute>
 
-          <PrivateRoute path={tasks} redirectTo={login}>
-            <TasksPage />
-          </PrivateRoute>
+            <PrivateRoute path={tasks} redirectTo={login}>
+              <TasksPage />
+            </PrivateRoute>
 
-          <Redirect to={login} />
-        </Switch>
-      </Suspense>
-      {/* )} */}
-    </Container>
+            <Redirect to={login} />
+          </Switch>
+        </Suspense>
+      </Container>
+    )
   );
 }
 
