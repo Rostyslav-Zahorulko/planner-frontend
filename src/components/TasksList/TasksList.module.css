@@ -9,7 +9,6 @@
 }
 @media screen and (min-width: 320px) {
   .task_list {
-    padding: 20px;
     margin-left: auto;
     margin-right: auto;
   }
@@ -17,6 +16,7 @@
 
 @media screen and (min-width: 768px) {
   .task_list {
+    padding-left: 20px;
     display: flex;
     flex-wrap: wrap;
   }
@@ -25,6 +25,5 @@
   .task_list {
     padding-left: 70px;
     max-width: 100%;
-    margin-top: 20px;
   }
 }

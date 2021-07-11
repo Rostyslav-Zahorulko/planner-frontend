@@ -116,7 +116,7 @@ export default function TasksPage() {
               <p className={st.name_button}>Create a task</p>
             </div>
           </div>
-          {window.matchMedia('(max-width: 1280px)') && <SprintHeader />}
+          {window.matchMedia('(min-width: 1280px)') && <SprintHeader />}
 
           {visibleTasks.length > 0 ? (
             <TasksList
