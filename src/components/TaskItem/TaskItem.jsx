@@ -1,18 +1,16 @@
-import st from './TaskItem.module.css';
+import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import * as dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
+import { toast } from 'react-toastify';
 
 import BasketButton from '../BasketButton';
-import { useState, useEffect } from 'react';
 
-import { toast } from 'react-toastify';
-//import {} from 'react-transition-group';
-// Redux
+import st from './TaskItem.module.css';
+
 import { tasksOperations, tasksSelectors } from '../../redux/tasks';
 import { currentSprintSelectors } from '../../redux/current-sprint';
 
-// dayjs
-import * as dayjs from 'dayjs';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
 dayjs.extend(customParseFormat);
 
 export default function TaskItem({ projectId, sprintId, taskId }) {
@@ -110,17 +108,18 @@ export default function TaskItem({ projectId, sprintId, taskId }) {
       </div>
 
       <div className={st.sprint_desc}>
-        <p className={st.list_sprint_item_title}>Hours spent </p>
+        <p className={st.list_sprint_item_title}>Hours spent</p>
         <span className={st.totalHours}>{totalHours}</span>
       </div>
       <div className={st.basketButton}>
         <BasketButton
           type="button"
           onDelete={onDeleteTask}
-          projectId={taskId}
-          taskId={id}
+          projectId={projectId}
+          sprintId={sprintId}
+          taskId={taskId}
           aria-label="delete"
-        ></BasketButton>
+        />
       </div>
     </li>
   );
