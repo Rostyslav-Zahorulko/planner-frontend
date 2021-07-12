@@ -32,7 +32,7 @@ const ProjectsPage = () => {
 
   useEffect(() => {
     dispatch(getProjects());
-  }, [dispatch, getProjects]);
+  }, [dispatch]);
 
   return (
     <div className={s.container}>

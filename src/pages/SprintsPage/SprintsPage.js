@@ -80,11 +80,11 @@ const SprintsPage = () => {
 
   useEffect(() => {
     dispatch(getProjectInfo(projectId));
-  }, [dispatch, projectId, getProjectInfo]);
+  }, [dispatch, projectId]);
 
   useEffect(() => {
     dispatch(getProjects());
-  }, [dispatch, getProjects]);
+  }, [dispatch]);
 
   return (
     <div className={styles.project}>
