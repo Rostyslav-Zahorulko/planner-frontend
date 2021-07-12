@@ -1,62 +1,14 @@
 .header {
-  width: 100%;
   display: flex;
   justify-content: space-between;
 }
-
-.title {
-  margin-right: 40px;
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: 500;
-  font-size: 36px;
-  line-height: 44px;
-  letter-spacing: 0.04em;
-  color: #181c27;
-  max-width: 340px;
-  word-wrap: break-word;
-}
-
-.title_wrapper {
+.headPanelWrapper {
   display: flex;
-  align-items: center;
-  font-family: 'Montserrat';
-  font-style: normal;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 22px;
-  letter-spacing: 0.04em;
-  color: #181c27;
-  margin-right: 30px;
-  position: relative;
-  margin-right: 30px;
-}
-
-.name_button {
-  cursor: pointer;
-  margin-left: 20px;
-  font-weight: 500;
-}
-
-.button_wrapper {
-  /* width: 240px; */
-  display: flex;
-  align-items: center;
-}
-
-.list_sprint {
-  padding: 0 30px 0 30px;
-  display: flex;
-  align-items: center;
   justify-content: space-between;
 }
-.title_sprint {
-  position: relative;
-  border-bottom: 1px solid rgba(24, 28, 39, 0.1);
-  /* padding: 0 30px 10px 70px; */
-  padding: 20px 0 10px 0;
+.chart_wrapper {
+  position: fixed;
 }
-
 .search {
   width: 20px;
   height: 20px;
@@ -72,29 +24,11 @@
   top: 50%;
   background-image: url('../../images/search.svg');
 }
-
-.headPanelWrapper {
-  display: flex;
-  justify-content: space-between;
-  /* margin-top: 20px; */
-  margin-bottom: 7.5px;
-}
-
-.chart_wrapper {
-  position: fixed;
-}
-
 @media screen and (max-width: 767px) {
   .header {
     margin-top: 20px;
   }
-  .button_wrapper {
-    position: fixed;
-    right: 20px;
-    bottom: 20px;
 
-    /* width: 0px; */
-  }
   .headPanelWrapper {
     flex-direction: column;
     align-items: baseline;
@@ -110,21 +44,30 @@
 @media screen and (min-width: 768px) {
   .wrapper {
     display: flex;
-    /* justify-content: space-between; */
-    border-right: 1px solid rgba(24, 28, 39, 0.1);
   }
-  .wrapper_tasks {
-    padding: 20px;
-    width: 100%;
+  .headPanelWrapper {
+    margin-top: 10px;
   }
-
-  .button_wrapper {
-    width: 44px;
+  @media screen and (max-width: 1279px) {
+    .header {
+      padding-left: 20px;
+      border-bottom: 1px solid rgba(24, 28, 39, 0.1);
+    }
   }
-
+  .addTasksButton {
+    position: absolute;
+    top: 140px;
+    right: 40px;
+  }
   .chart_wrapper {
     right: 55px;
     bottom: 60px;
+  }
+}
+
+@media screen and (max-width: 1279px) {
+  .name_button {
+    display: none;
   }
 }
 
@@ -137,93 +80,26 @@
     width: 970px;
   }
 
-  .button_wrapper {
-    width: 240px;
+  .header {
+    padding-left: 70px;
   }
-}
 
-.headline {
-  position: absolute;
-  left: 5px;
-  font-style: normal;
-  font-weight: normal;
-  font-size: 16px;
-  line-height: 20px;
-  letter-spacing: 0.04em;
-  color: rgba(24, 28, 39, 0.6);
-  transform: translateY(9px);
-  transition: transform 250ms linear;
-}
-.label {
-  position: relative;
-  display: block;
-  margin-bottom: 30px;
-  font-weight: 600;
-  color: rgba(24, 28, 39, 0.6);
-}
-.label:focus-within > .headline {
-  transform: translateY(-18px);
-  font-size: 14px;
-  line-height: 17px;
-}
-.input {
-  /* padding: 10px;
-  width: 250px;
-  outline: none;
-  border-style: none;
-  margin-bottom: 40px;
-  background-color: #f1f2f7;
-  border-bottom: 1px solid #d1d2d4; */
+  .addTasksButton {
+    position: absolute;
+    height: 44px;
+    right: 90px;
+    top: 140px;
+    display: flex;
+    align-items: center;
+    letter-spacing: 0, 04em;
+  }
 
-   display: inline-block;
-  border: none;
-  outline: none;
-  box-shadow: 2px 4px 8px rgba(0, 5, 97, 0.1);
-  border-radius: 5px;
-  font-size: 20px;
-  padding: 5px;
-}
-
-.input:invalid {
-  margin-bottom: 5px;
-  color: #ff2c0c;
-  border-bottom: 1px solid #ff2c0c;
-}
-.input:focus {
-  border-color: #f37c2d;
-  box-shadow: -2px 22px 16px -14px rgba(254, 138, 8, 0.75);
-  -webkit-box-shadow: -2px 22px 16px -14px rgba(254, 138, 8, 0.75);
-  -moz-box-shadow: -2px 22px 16px -14px rgba(254, 138, 8, 0.75);
-}
-.input:not(:placeholder-shown) + .headline {
-  transform: translateY(-8px);
-  font-size: 12px;
-}
-.titleDisable {
-  display: none;
-}
-
-.changeTitleForm {
-  display: none;
-}
-.changeTitleFormActive {
-  display: flex;
-  align-items: center;
-}
-
-.btnChangeDisable {
-  display: none;
-}
-.btnChange {
-  width: 20px;
-  height: 20px;
-  background-image: url(../../images/pencil.svg);
-  border-radius: 50%;
-  border: none;
-  cursor: pointer;
-}
-.btnChange:hover {
-  transform: rotate(65deg);
-  box-shadow: 8px 2px 13px rgba(156, 54, 6, 0.294);
-  transition: all 0.25s linear;
+  .name_button {
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.04em;
+    color: #181c27;
+    margin-left: 20px;
+  }
 }
