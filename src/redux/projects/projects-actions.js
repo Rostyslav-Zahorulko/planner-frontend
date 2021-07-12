@@ -21,7 +21,7 @@ const addUserInProjectSuccess = createAction('projects/addUserSuccess');
 const addUserInProjectError = createAction('projects/addUserError');
 
 const getProjectInfoRequest = createAction('projects/getInfoRequest');
-const getProjectInfoSuccess = createAction('projects/getInfoSuccess ');
+const getProjectInfoSuccess = createAction('projects/getInfoSuccess');
 const getProjectInfoError = createAction('projects/getInfoError');
 
 const projectsActions = {
