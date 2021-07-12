@@ -1,16 +1,17 @@
-import st from './TaskItem.module.css';
+
 import { useState, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
+import * as dayjs from 'dayjs';
+import customParseFormat from 'dayjs/plugin/customParseFormat';
 import { toast } from 'react-toastify';
+
 import BasketButton from '../BasketButton';
-// Redux
+
+import st from './TaskItem.module.css';
+
 import { tasksOperations, tasksSelectors } from '../../redux/tasks';
 import { currentSprintSelectors } from '../../redux/current-sprint';
 
-// dayjs
-import * as dayjs from 'dayjs';
-import customParseFormat from 'dayjs/plugin/customParseFormat';
 dayjs.extend(customParseFormat);
 
 export default function TaskItem({ projectId, sprintId, taskId }) {
@@ -86,7 +87,7 @@ export default function TaskItem({ projectId, sprintId, taskId }) {
       <h3 className={st.title}>{title}</h3>
 
       <div className={st.sprint_desc}>
-        <p className={st.list_sprint_item_title}>Scheduled hours </p>
+        <p className={st.list_sprint_item_title}>Scheduled hours</p>
         <span className={st.planHours}>{plannedHours}</span>
       </div>
 
@@ -94,39 +95,29 @@ export default function TaskItem({ projectId, sprintId, taskId }) {
         <p className={st.list_sprint_item_title}>Spent hour / day</p>
         <label className={st.hoursPerDay_wrapper_input}>
           <input
-            type="number"
-            max="24"
+            type="text"
             value={currentDay.hoursSpent}
             onChange={e => handleHoursPerDayChange(e)}
             onBlur={e => handleHoursPerDayBlur(e)}
             className={st.hoursPerDay_input}
-          ></input>
+          />
         </label>
       </div>
 
       <div className={st.sprint_desc}>
-        <p className={st.list_sprint_item_title}>Hours spent </p>
+        <p className={st.list_sprint_item_title}>Hours spent</p>
         <span className={st.totalHours}>{totalHours}</span>
       </div>
       <div className={st.basketButton}>
         <BasketButton
           type="button"
-          // onDelete={onDeleteTask}
-          projectId={taskId}
-          // taskId={id}
+          onDelete={() => dispatch(tasksOperations.deleteTask( projectId,
+          sprintId,
+          taskId,))}
           aria-label="delete"
-        ></BasketButton>
+       />
       </div>
     </li>
   );
 }
-/*
-         <button
-            className={st.delete_btn}
-            type="button"
-            onClick={() =>
-              dispatch(tasksOperations.deleteTask(projectId, sprintId, taskId))
-            }
-          ></button>
-     
-  */
+

@@ -22,8 +22,6 @@ export default function SprintItem({ sprint }) {
 
   const { projectId } = useParams();
   const dispatch = useDispatch();
-  const onDeleteSprint = (id1, id2) =>
-    dispatch(sprintsOperations.deleteSprint(id1, id2));
 
   return (
     <li className={styles.sprint_item}>
@@ -41,14 +39,12 @@ export default function SprintItem({ sprint }) {
           Duration
           <span className={styles.sprint_desc_item}>{duration}</span>
         </p>
-        </Link>
-        <BasketButton
-          type="button"
-          onDeleteSprint={onDeleteSprint}
-          projectId={projectId}
-          sprintId={id}
-          aria-label="delete"
-        ></BasketButton>
+      </Link>
+      <BasketButton
+        type="button"
+        onDelete={() => dispatch(sprintsOperations.deleteSprint(projectId, id))}
+        aria-label="delete"
+      />
     </li>
   );
 }

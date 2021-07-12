@@ -6,7 +6,7 @@ const addTaskError = createAction('tasks/addError');
 
 const deleteTaskRequest = createAction('tasks/deleteRequest');
 const deleteTaskSuccess = createAction('tasks/deleteSuccess');
-const deleteTaskError = createAction('tasks/deleteErTasks');
+const deleteTaskError = createAction('tasks/deleteTasks');
 
 const updateHoursSpentOnTaskPerDayRequest = createAction(
   'tasks/updateSpentHoursPerDayRequest',

@@ -1,11 +1,8 @@
+// Libraries
 import React, { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory, useLocation } from 'react-router';
-//import Media from 'react-media';
 import * as dayjs from 'dayjs';
-
-// STYLES
-import st from './TasksPage.module.css';
 
 // Components
 import TasksList from '../../components/TasksList';
@@ -21,7 +18,10 @@ import ChartModalContainer from '../../components/ChartModalContainer';
 import AddButton from '../../components/AddButton';
 import PageTitle from '../../components/PageTitle';
 
-// REDUX
+// Styles
+import st from './TasksPage.module.css';
+
+// Redux
 import { projectsOperations } from '../../redux/projects';
 import { sprintsOperations, sprintsSelectors } from '../../redux/sprints';
 import { tasksSelectors } from '../../redux/tasks';
@@ -81,7 +81,7 @@ export default function TasksPage() {
     history.push(location?.state?.from?.location ?? `/projects/${projectId}`);
   };
 
-  // Change Title
+  // Change title
   const handleSprintTitleChange = newTitle => {
     if (sprintTitle !== newTitle && newTitle !== '') {
       dispatch(editSprintTitle(projectId, sprintId, newTitle));
