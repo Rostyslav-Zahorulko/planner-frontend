@@ -14,25 +14,25 @@ import CreateProjectForm from '../../components/CreatePojectForm';
 import FormAddPeople from '../../components/FormAddPeople';
 import FormCreateSprint from '../../components/FormCreateSprint';
 
+// Styles
+import styles from './SprintsPage.module.css';
+
 // Redux
 import { projectsOperations } from '../../redux/projects';
 import { projectsSelectors } from '../../redux/projects';
 import { sprintsSelectors } from '../../redux/sprints';
 import { currentProjectSelectors } from '../../redux/current-project';
 
-// Styles
-import styles from './SprintsPage.module.css';
+const { getProjectInfo, getProjects, editProjectTitle } = projectsOperations;
+const { getProjectsItems } = projectsSelectors;
+const { getSprintsItems } = sprintsSelectors;
+const {
+  getCurrentProjectTitle,
+  getCurrentProjectDescription,
+  getCurrentProjectTeam,
+} = currentProjectSelectors;
 
 const SprintsPage = () => {
-  const { getProjectInfo, getProjects, editProjectTitle } = projectsOperations;
-  const { getProjectsItems } = projectsSelectors;
-  const { getSprintsItems } = sprintsSelectors;
-  const {
-    getCurrentProjectTitle,
-    getCurrentProjectDescription,
-    getCurrentProjectTeam,
-  } = currentProjectSelectors;
-
   const dispatch = useDispatch();
   const history = useHistory();
   const location = useLocation();

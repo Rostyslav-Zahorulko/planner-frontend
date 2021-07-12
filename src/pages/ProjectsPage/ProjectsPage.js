@@ -15,10 +15,10 @@ import s from './ProjectsPage.module.css';
 import { projectsOperations } from '../../redux/projects';
 import { projectsSelectors } from '../../redux/projects';
 
-const ProjectsPage = () => {
-  const { getProjects } = projectsOperations;
-  const { getProjectsItems } = projectsSelectors;
+const { getProjects } = projectsOperations;
+const { getProjectsItems } = projectsSelectors;
 
+const ProjectsPage = () => {
   const dispatch = useDispatch();
   const projects = useSelector(getProjectsItems);
 
