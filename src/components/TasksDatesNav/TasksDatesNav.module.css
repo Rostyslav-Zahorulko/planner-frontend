@@ -1,71 +1,69 @@
 .wrapper {
-    display: flex;
-    justify-content:space-between;
-    align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
 }
 
 .daysPanel {
-    display: flex;
-    align-items: baseline;
+  display: flex;
+  align-items: baseline;
 
-    margin-left: 18px;
+  margin-left: 18px;
 }
 
 .daysPanelItem:not(:last-child) {
-margin-right: 18px;
+  margin-right: 18px;
 }
 
 .btn {
-    border: none;
-    background: transparent;
+  border: none;
+  background: transparent;
 
-    width: 12px;
-    height: 16px;
-    padding: 0;
+  width: 12px;
+  height: 16px;
+  padding: 0;
 
-    cursor: pointer;
+  cursor: pointer;
 }
 
-
 .days {
-    display: block;
-    padding: 0;
-    margin-top: 4px;
+  display: block;
+  padding: 0;
+  margin-top: 4px;
 }
 
 .currentDay {
-    font-size: 18px;
-    line-height: 22px;
-    letter-spacing: 0.04em;
-
+  font-size: 18px;
+  line-height: 22px;
+  letter-spacing: 0.04em;
 }
 
-.daysTotal, .date {
-    font-size: 12px;
-    line-height: 15px;
-    letter-spacing: 0.04em;
-    color: rgba(24, 28, 39, 0.6);
+.daysTotal,
+.date {
+  font-size: 12px;
+  line-height: 15px;
+  letter-spacing: 0.04em;
+  color: rgba(24, 28, 39, 0.6);
 }
 
 @media screen and (max-width: 767px) {
-    .wrapper {
-        width: 100%;
-        margin-top: 20px;
-        margin-bottom: 30px;
-    }
-
+  .wrapper {
+    width: 100%;
+    margin-top: 20px;
+    margin-bottom: 30px;
+  }
 }
 
-
 @media screen and (min-width: 768px) {
-    .daysPanel {
-        margin-left: 20px;
-        margin-right: 40px;
-    }
+  .daysPanel {
+    margin-left: 20px;
+    margin-right: 40px;
+  }
 }
 
 @media screen and (min-width: 1280px) {
   .daysPanel {
+    padding-left: 70px;
     margin-left: 0px;
   }
 }

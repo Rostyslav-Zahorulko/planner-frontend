@@ -27,7 +27,7 @@
     bottom: 40px;
     right: 150px;
 
-    z-index: 2;
+    z-index: 10;
   }
 }
 @media screen and (max-width: 767px) {
@@ -36,6 +36,6 @@
     bottom: 20px;
     left: 20px;
 
-    z-index: 2;
+    z-index: 10;
   }
 }

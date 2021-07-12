@@ -140,5 +140,6 @@
   .basketButton {
     position: relative;
     top: 20px;
+    z-index: 1;
   }
 }
