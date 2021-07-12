@@ -24,7 +24,7 @@ import { currentProjectSelectors } from '../../redux/current-project';
 import styles from './SprintsPage.module.css';
 
 const SprintsPage = () => {
-  const { getProjectInfo, editProjectTitle } = projectsOperations;
+  const { getProjectInfo, getProjects, editProjectTitle } = projectsOperations;
   const { getProjectsItems } = projectsSelectors;
   const { getSprintsItems } = sprintsSelectors;
   const {
@@ -81,6 +81,10 @@ const SprintsPage = () => {
   useEffect(() => {
     dispatch(getProjectInfo(projectId));
   }, [dispatch, projectId, getProjectInfo]);
+
+  useEffect(() => {
+    dispatch(getProjects());
+  }, [dispatch, getProjects]);
 
   return (
     <div className={styles.project}>
