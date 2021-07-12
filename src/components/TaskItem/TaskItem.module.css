@@ -1,135 +1,144 @@
-@media screen and (max-width: 1279px) {
-  .listItem {
-    display: flex;
-    padding: 20px 30px;
-    width: 100%;
-    background: #ffffff;
-    box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
-    border-radius: 5px;
-    transition: all 250ms linear;
-  }
-}
 .listItem {
-  display: flex;
-  padding: 20px 30px;
-  width: 100%;
+  position: relative;
+  padding: 20px;
   background: #ffffff;
   box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
   border-radius: 5px;
+  margin-bottom: 10px;
   transition: all 250ms linear;
 }
-
-.listItem:not(:last-child) {
-  margin-bottom: 10px;
-}
-
-.listItem_tasks {
-  display: flex;
-  justify-content: space-between;
-  width: 100%;
-  /* flex-wrap: wrap; */
-}
-
-.listItem_tasks li:hover {
-  transform: scale(1.02);
-}
-
-.listItem_tasks li:not(:last-child) {
-  margin-bottom: 10px;
-}
-
-.listItem_tasks li:first-child {
-  width: 170px;
-  margin-right: 30px;
-}
-
-.listItem_tasks li:first-child::after {
-  padding-top: 7px;
-  display: block;
-  content: '';
-  border-bottom: 1px solid rgba(24, 28, 39, 0.2);
-}
-
-.listItem_tasks li:nth-child(2n) {
-  width: 100px;
-}
-
-.listItem_tasks li:nth-child(3) {
-  width: 106px;
-}
-
-.listItem_tasks li:nth-child(3)::after {
-  /* padding-top: 7px; */
-  display: block;
-  content: '';
-  border-bottom: 1px solid rgba(24, 28, 39, 0.2);
-}
-
-/* .listItem_tasks li:not(:first-child) {
-  width: 130px;
-} */
-
-/* .listItem_tasks li:nth-child(4) {
-  margin-right: 100px;
-  justify-content: center;
-} */
-
-/* .listItem_tasks li:not(:nth-last-child(-n + 2)):not(:first-child) {
-  margin-right: 100px;
-} */
-
-.planHours {
-  padding-bottom: 8px;
-  font-weight: normal;
-  font-size: 18px;
-  line-height: 22px;
-  justify-content: center;
-}
-
-.totalHours {
-  padding-left: 10px;
-  color: rgba(24, 28, 39, 0.6);
-}
-
-.delete_btn {
-  width: 20px;
-  height: 20px;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: contain;
-  background-color: transparent;
-  cursor: pointer;
-  background-image: url('../../images/basket.svg');
-  border: none;
-  border-radius: 50%;
-}
-.delete_item {
-  align-self: center;
-}
-
-.delete_btn:hover {
-  transform: rotate(65deg);
-  box-shadow: 8px 2px 13px rgba(156, 54, 6, 0.294);
+.listItem:hover {
+  box-shadow: 10px 10px 8px 2px rgba(0, 0, 0, 0.3);
+  transform: scale(1.03);
   transition: all 0.25s linear;
 }
-.hoursPerDay_wrapper {
-  border: 0;
-  margin: 0;
-  display: inline-flex;
-  padding: 0;
-  position: relative;
-  min-width: 0;
-  flex-direction: column;
-  vertical-align: top;
+.title {
+  font-weight: 500;
+  font-size: 16px;
+  line-height: 20px;
+  letter-spacing: 0.04em;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(24, 28, 39, 0.2);
 }
+.sprint_desc {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+.sprint_desc:nth-child(3n + 1) {
+  margin-bottom: 10px;
+}
+
 .hoursPerDay_input {
-  width: 100%;
+  width: 60px;
+  height: 44px;
+  outline: none;
+  border-style: none;
   border: none;
-  height: 1.1876em;
-  margin: 0;
-  display: block;
-  padding: 6px 0 7px;
-  min-width: 0;
   background: none;
-  box-sizing: content-box;
+  border-bottom: 1px solid rgba(24, 28, 39, 0.2);
+}
+
+.hoursPerDay_wrapper_input:hover {
+  border-bottom: 1px solid #ff2c0c;
+  transform: scale(1.03);
+  border-color: #f37c2d;
+  box-shadow: -2px 22px 16px -14px rgba(254, 138, 8, 0.75);
+  -webkit-box-shadow: -2px 22px 16px -14px rgba(254, 138, 8, 0.75);
+  -moz-box-shadow: -2px 22px 16px -14px rgba(254, 138, 8, 0.75);
+}
+
+@media screen and (max-width: 767px) {
+  .listItem {
+    width: 100%;
+  }
+}
+@media screen and (min-width: 768px) {
+  .listItem {
+    width: 216px;
+    margin-right: 20px;
+    margin-bottom: 20px;
+  }
+  @media screen and (max-width: 1279px) {
+    .listItem:nth-child(2n) {
+      margin-right: 0;
+    }
+  }
+}
+@media screen and (max-width: 1279px) {
+  .sprint_desc {
+    font-style: normal;
+    font-weight: normal;
+    font-size: 14px;
+    line-height: 17px;
+    letter-spacing: 0.04em;
+    margin-bottom: 20px;
+  }
+
+  .sprint_desc:nth-child(3n + 1) {
+    margin-bottom: 10px;
+  }
+  .hoursPerDay_input {
+    text-align-last: right;
+  }
+  .title {
+    margin-bottom: 20px;
+  }
+}
+@media screen and (min-width: 1280px) {
+  .listItem {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 869px;
+    height: 114px;
+    padding: 20px 30px;
+  }
+
+  .listItem:not(:last-child) {
+    margin-bottom: 10px;
+  }
+  .list_sprint_item_title {
+    display: none;
+  }
+  .title {
+    display: flex;
+    width: 190px;
+    height: 44px;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 22px;
+    letter-spacing: 0.04em;
+    color: #181c27;
+    border-bottom: 1px solid rgba(24, 28, 39, 0.2);
+  }
+  /*.list_sprint_item_title{}*/
+  .planHours {
+    width: 100px;
+
+    font-weight: normal;
+    font-size: 18px;
+    line-height: 22px;
+    justify-content: center;
+  }
+
+  .hoursPerDay_input {
+    width: 100px;
+    height: 44px;
+    border: none;
+    background: none;
+    border-bottom: 1px solid rgba(24, 28, 39, 0.2);
+    box-sizing: content-box;
+  }
+  .totalHours {
+    width: 100px;
+    color: rgba(24, 28, 39, 0.6);
+  }
+  .basketButton {
+    position: relative;
+    top: 20px;
+  }
 }

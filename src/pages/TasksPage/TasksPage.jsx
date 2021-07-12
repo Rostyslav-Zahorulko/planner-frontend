@@ -1,7 +1,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { useParams, useHistory, useLocation } from 'react-router';
-import Media from 'react-media';
+//import Media from 'react-media';
 import * as dayjs from 'dayjs';
 
 // STYLES
@@ -22,15 +22,17 @@ import AddButton from '../../components/AddButton';
 import PageTitle from '../../components/PageTitle';
 
 // REDUX
-import { projectsOperations } from "../../redux/projects";
+import { projectsOperations } from '../../redux/projects';
 import { sprintsOperations, sprintsSelectors } from '../../redux/sprints';
 import { tasksSelectors } from '../../redux/tasks';
-import { currentSprintOperations, currentSprintSelectors } from '../../redux/current-sprint';
+import {
+  currentSprintOperations,
+  currentSprintSelectors,
+} from '../../redux/current-sprint';
 
+const { getProjectInfo } = projectsOperations;
 
-const { getProjectInfo} = projectsOperations;
-
-const {getSprintInfo, editSprintTitle} = sprintsOperations;
+const { getSprintInfo, editSprintTitle } = sprintsOperations;
 
 const { getSprintsItems } = sprintsSelectors;
 
@@ -82,9 +84,7 @@ export default function TasksPage() {
   // Change Title
   const handleSprintTitleChange = newTitle => {
     if (sprintTitle !== newTitle && newTitle !== '') {
-      dispatch(
-       editSprintTitle(projectId, sprintId, newTitle),
-      );
+      dispatch(editSprintTitle(projectId, sprintId, newTitle));
     }
   };
 
@@ -92,9 +92,9 @@ export default function TasksPage() {
     dispatch(getSprintInfo(projectId, sprintId));
   }, [dispatch, projectId, sprintId]);
 
-    useEffect(() => {
+  useEffect(() => {
     dispatch(getProjectInfo(projectId));
-  }, [dispatch, projectId,]);
+  }, [dispatch, projectId]);
 
   useEffect(() => {
     dispatch(getDisplayedDate(sprintStartDate));
@@ -118,26 +118,17 @@ export default function TasksPage() {
           </div>
 
           <div className={st.header}>
-            <div className={st.title_wrapper}>
-              <PageTitle
-                title={sprintTitle}
-                onChangeTitle={newTitle => handleSprintTitleChange(newTitle)}
-              />
-            </div>
-            <div className={st.button_wrapper}>
+            <PageTitle
+              title={sprintTitle}
+              onChangeTitle={newTitle => handleSprintTitleChange(newTitle)}
+            />
+            <div className={st.addTasksButton}>
               <AddButton onOpen={toggleCreateTaskModal} />
-              <Media queries={{ big: { minWidth: 1280 } }}>
-                {matches =>
-                  matches.big ? (
-                    <p className={st.name_button}>Create a task</p>
-                  ) : (
-                    ' '
-                  )
-                }
-              </Media>
+              <p className={st.name_button}>Create a task</p>
             </div>
           </div>
-          <SprintHeader />
+          {window.matchMedia('(min-width: 1280px)') && <SprintHeader />}
+
           {visibleTasks.length > 0 ? (
             <TasksList
               visibleTasks={visibleTasks}
@@ -145,7 +136,7 @@ export default function TasksPage() {
               sprintId={sprintId}
             />
           ) : (
-            <div>You have no tasks yet</div>
+            <p>You have no tasks yet</p>
           )}
 
           {isCreateSprintModalShown && (
@@ -159,7 +150,6 @@ export default function TasksPage() {
               />
             </Modal>
           )}
-
           {isCreateTaskModalShown && (
             <Modal title={'Creating a task'} onClose={toggleCreateTaskModal}>
               <FormCreateTask
@@ -171,9 +161,10 @@ export default function TasksPage() {
           )}
         </div>
       </div>
+
       <div className={st.chart_wrapper}>
         {visibleTasks.length >= 3 ? <ChartModalContainer /> : ''}
-      </div> 
+      </div>
     </>
   );
 }
