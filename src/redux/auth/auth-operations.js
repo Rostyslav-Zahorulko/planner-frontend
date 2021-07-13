@@ -3,7 +3,7 @@ import { toast } from 'react-toastify';
 
 import { authActions } from '../auth';
 
-axios.defaults.baseURL = 'https://dreamteam-planner-api.herokuapp.com/';
+axios.defaults.baseURL = 'https://dreamteam-planner-api.herokuapp.com';
 
 const token = {
   set(token) {
