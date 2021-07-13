@@ -8,11 +8,7 @@ const SidebarForReuse = ({ children, text, onOpen, onClick }) => {
     <div className={styles.sidebar}>
       <ShowBackArrow text={text} onClick={onClick} />
       {children}
-      <SidebarAddButton
-        text={`Create a ${text}`}
-        onOpen={onOpen}
-        onClick={onClick}
-      ></SidebarAddButton>
+      <SidebarAddButton text={`Create a ${text}`} onOpen={onOpen} />
     </div>
   );
 };
