@@ -1,39 +1,34 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import { authOperations } from '../../redux/auth';
-
 import { Formik } from 'formik';
 import * as yup from 'yup';
 
 import styles from './RegisterPage.module.css';
 
+import { authOperations } from '../../redux/auth';
+
 class RegisterPage extends Component {
-  state = {
-    email: '',
-    password: '',
+  updateState = values => {
+    this.setState({ email: values.email, password: values.password });
   };
 
+  validationsSchema = yup.object().shape({
+    email: yup.string().email('Type correct email').required('Required'),
+    password: yup
+      .string()
+      .typeError('Must be a string')
+      .matches(
+        /^(?=.*[0-9]).{8,32}$/,
+        'Password must contain at least 8 characters and at least one number',
+      )
+      .required('Required'),
+    confirmPassword: yup
+      .string()
+      .oneOf([yup.ref('password')], 'Passwords do not match')
+      .required('Required'),
+  });
+
   render() {
-    const updateState = values => {
-      this.setState({ email: values.email, password: values.password });
-    };
-
-    const validationsSchema = yup.object().shape({
-      email: yup.string().email('Type correct email').required('Required'),
-      password: yup
-        .string()
-        .typeError('Must be a string')
-        .matches(
-          /^(?=.*[0-9]).{8,32}$/,
-          'Password must contain at least 8 characters and at least one number',
-        )
-        .required('Required'),
-      confirmPassword: yup
-        .string()
-        .oneOf([yup.ref('password')], 'Passwords do not match')
-        .required('Required'),
-    });
-
     return (
       <>
         <Formik
@@ -44,12 +39,12 @@ class RegisterPage extends Component {
           }}
           validateOnBlur
           onSubmit={(values, { resetForm }) => {
-            updateState(values);
+            this.updateState(values);
             this.props.onRegister(this.state);
             this.setState({ email: '', password: '' });
             resetForm();
           }}
-          validationSchema={validationsSchema}
+          validationSchema={this.validationsSchema}
         >
           {({
             values,
@@ -155,6 +150,7 @@ const mapStateToProps = state => {
     error: state.error,
   };
 };
+
 const mapDispatchToProps = {
   onRegister: authOperations.register,
 };

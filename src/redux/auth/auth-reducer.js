@@ -44,6 +44,7 @@ const isRefreshedReducer = createReducer(false, {
   [getCurrentUserError]: () => true,
   [registerSuccess]: () => true,
   [loginSuccess]: () => true,
+  [logoutSuccess]: () => false,
 });
 
 const authReducer = combineReducers({
