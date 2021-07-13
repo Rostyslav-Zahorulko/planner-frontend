@@ -1,0 +1,52 @@
+.button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  background-color: inherit;
+  cursor: pointer;
+}
+
+.button:hover,
+.button:focus {
+  transform: scale(1.1);
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  border-radius: 50px;
+  background-color: #a6a6a6;
+}
+
+.icon {
+  fill: #f1f2f7;
+}
+
+.text {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.2142;
+  color: #181c27;
+}
+
+@media screen and (max-width: 767px) {
+  .text {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .iconWrapper {
+    margin-right: 6px;
+    background-color: inherit;
+  }
+
+  .icon {
+    fill: #181c27;
+  }
+}

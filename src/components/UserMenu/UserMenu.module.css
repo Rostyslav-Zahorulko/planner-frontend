@@ -1,25 +1,19 @@
 .userMenu {
   display: flex;
+  justify-content: space-between;
   align-items: center;
 }
 
 .userName {
+  font-size: 14px;
   font-weight: 600;
+  line-height: 1.2142;
   color: #181c27;
-  margin-right: 77px;
+  margin-right: 20px;
 }
 
-.logOutBtn {
-  padding: 0;
-  display: flex;
-  align-content: center;
-  align-items: center;
-  font-weight: 400;
-  color: rgba(24, 28, 39, 0.6);
-
-  border: none;
-  outline: none;
-  cursor: pointer;
-  transition: all 0.3s linear;
-  background-color: transparent;
+@media screen and (min-width: 768px) {
+  .userName {
+    margin-right: 69px;
+  }
 }
