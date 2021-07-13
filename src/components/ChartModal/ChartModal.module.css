@@ -5,6 +5,8 @@
   width: 100vw;
   height: 100vh;
   background-color: rgba(0, 0, 0, 0.5);
+
+  z-index: 100;
 }
 
 .modal {
@@ -20,4 +22,6 @@
   background-color: #fff;
   border-radius: 3px;
   box-shadow: 0px 6px 26px rgba(0, 5, 97, 0.1);
+
+  z-index: 1000;
 }
