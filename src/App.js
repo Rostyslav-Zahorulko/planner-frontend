@@ -40,13 +40,13 @@ const TasksPage = lazy(() =>
   import('./pages/TasksPage/TasksPage' /* webpackChunkName: "tasks-page" */),
 );
 
+const { getCurrentUser } = authOperations;
+const { getIsRefreshed, getToken } = authSelectors;
+const { getIsLoading } = isLoadingSelectors;
+
+const { register, login, projects, sprints, tasks } = routes;
+
 function App() {
-  const { register, login, projects, sprints, tasks } = routes;
-
-  const { getCurrentUser } = authOperations;
-  const { getIsRefreshed, getToken } = authSelectors;
-  const { getIsLoading } = isLoadingSelectors;
-
   const isLoading = useSelector(getIsLoading);
   const isRefreshed = useSelector(getIsRefreshed);
   const token = useSelector(getToken);
@@ -55,7 +55,7 @@ function App() {
 
   useEffect(() => {
     dispatch(getCurrentUser());
-  }, [dispatch, getCurrentUser]);
+  }, [dispatch]);
 
   return (
     (!token || isRefreshed) && (
